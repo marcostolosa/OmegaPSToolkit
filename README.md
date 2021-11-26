@@ -10,4 +10,9 @@ Totally in development!
 
 ## Screenshots
 
-![Screenshot 2020-02-09 at 5 08 54 PM](https://zupimages.net/up/21/47/m7em.png)
+
+
+| The main page | 
+| ------------- | 
+| ![Screenshot 2020-02-09 at 5 08 54 PM](https://zupimages.net/up/21/47/m7em.png)   | 
+  
