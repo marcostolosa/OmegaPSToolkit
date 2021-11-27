@@ -13,16 +13,16 @@
 #-[Licence]-----------------------------------------------------#
 #  GNU General Public License v3.0                              #
 #---------------------------------------------------------------#
- 
+
+version = "0.1.0"
 
 #-Import section-----------------------------------------------------#
+import time
 import os
+from progress.bar import Bar
 from typing import Text
-import colored
-from colored import fg, attr # fg = la couleur de départ // attr = la fin de la couleur, pour pas que tout le texte qui suit sera en couleur
-#from pythonping import ping     #   https://www.ictshore.com/python/python-ping-tutorial/
-import os
-import shutil
+from colored import fg, attr                    # fg = la couleur de départ // attr = la fin de la couleur, pour pas que tout le texte qui suit sera en couleur
+from pythonping import ping                     #   https://www.ictshore.com/python/python-ping-tutorial/
 clear = lambda: os.system("cls")
 clear = lambda: os.system("clear")
 import shutil
@@ -53,7 +53,15 @@ r = attr('reset') # pour terminer le formatage de la couleur
 #--------------------------------------------------------------------#
 
 #-Fonctions----------------------------------------------------------#
-
+## Progress bas when the tool starting
+def startbar():
+    with Bar(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Starting the OmegaDSToolkit..."+bC+"]"+r) as bar:
+        for i in range(100):
+            time.sleep(0.02)
+            bar.next()
+    print(bC+"["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Done"+bC+"]"+r)
+    time.sleep(1)
+    
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
     
@@ -91,14 +99,15 @@ def informationgathering_mainpage():
     print(rC2+"      _|   |_ |     |   _||  _  |   _|        |  _  ||   _|  ||  _  |     |      "+r)
     print(rC2+"     |_______||__|__|__|  |_____|__| |__|__|__|___._||____|__||_____|__|__|      "+r)
     print(bC+"   ◄════════════════════════════════════════════════════════════════════════►    "+r)
-    print(bC+"           _______         __   _                 __ ")
+    print(rC2+"          _______         __   __                __ ")
     print(rC2+"         |     __|.---.-.|  |_|  |--.-----.----.|__|.-----.-----.                "+r)
     print(rC2+"         |    |  ||  _  ||   _|     |  -__|   _||  ||     |  _  |                "+r)
     print(rC2+"         |_______||___._||____|__|__|_____|__|  |__||__|__|___  |                "+r)
     print(bC+"       ╔═════════════════════════════════════════════════╗"+r+rC2+"|_____|        "+r)
     print(bC+"       ╚═════╗                                           ╚════════►               "+r)
-    print(bC+"             ╟────"+r+gC+"► "+r+"In this category you will find tools to collect")
-    print(bC+"             ║"+r+"      information, such as port scan, SQL injections etc")
+    print(bC+"             ║"+r)
+    print(bC+"             ║"+r+"   In this category you will find tools to collect information,")
+    print(bC+"             ║"+r+"              such as port scan, SQL injections etc")
     print(bC+"             ║"+r)
     print(bC+"             ╟──── ["+r+gC+"  Made by   "+r+bC+"] ───"+r+gC+"► "+r+rC+"Thomas Pellissier"+r+bC2+" (© Delta_Society™)"+r)
     print(bC+"             ╟──── ["+r+gC+"  Codename  "+r+bC+"] ───"+r+gC+"► "+r+bC2+"@"+r+rC+"MyMeepSQL")
@@ -106,8 +115,7 @@ def informationgathering_mainpage():
     print(bC+"             ║"+r)
     print(bC+"             ╟────"+r+gC+"► "+r+"["+bC+"01"+r+"]"+gC+"    Scan"+r)
     print(bC+"             ╟────"+r+gC+"► "+r+"["+bC+"02"+r+"]"+gC+"    "+r)
-    print(bC+"             ╟────"+r+gC+"► "+r+"["+bC+"99"+r+"]"+gC+"    Return to the main page\n"+r) 
-    print("Not finish\n")
+    print(bC+"             ╟────"+r+gC+"► "+r+"["+bC+"99"+r+"]"+gC+"    Return to the main page\n"+r)
      
     while True:
         try:
@@ -139,15 +147,14 @@ def scan_mainpage():
     print(gC+"      |__   |  _| .'|   | | | | . | . | |_ -|          "+r)
     print(gC+"      |_____|___|__,|_|_| |_| |___|___|_|___|          "+r)
     print(bC+"     ╓────────────────────────────────────────"+r+gC+"►"+r)
-    print(bC+"     ╟────"+r+gC+"►"+r+" Some tools for scanning target") 
+    print(bC+"     ║"+r+"   Some tools for scanning target") 
     print(bC+"     ╙────╖")
-    print(bC+"          ║") 
     print(bC+"          ╟──────"+r+gC+"►"+r+bC2+" Created by :"+r+rC+"  Thomas Pellissier"+r+bC2+" (© Delta_Society™)"+r)
     print(bC+"          ╟──────"+r+gC+"►"+r+bC2+" Codename   : @"+r+rC+"MyMeepSQL"+r)
     print(bC+"          ╟──────"+r+gC+"►"+r+bC2+" Version    :"+r+rC+"  0.0.1"+r)
     print(bC+"          ╙─────╖"+r)
     print(bC+"                ╟────"+r+gC+"► "+r+"["+bC+"01"+r+"]"+gC+"    Nmap"+r)
-    print(bC+"                ╟────"+r+gC+"► "+r+"["+bC+"88"+r+"]"+gC+"    Return to the Information Gathering main page"+r)
+    print(bC+"                ╟────"+r+gC+"► "+r+"["+bC+"88"+r+"]"+gC+"    Return to the"+r+bC2+" Information Gathering"+r+gC+" main page"+r)
     print(bC+"                ╟────"+r+gC+"► "+r+"["+bC+"99"+r+"]"+gC+"    Return to the main page\n"+r)    
 
     while True:
@@ -188,16 +195,18 @@ def windowstools_mainpage():
     print(rC2+"     |  |  | | | | | | | . | . | |_ -| "+r)
     print(rC2+"     |_____|_____| |_| |___|___|_|___| "+r)
     print(bC+"     ┌──────────────────────────────────"+r+gC+"►"+r)
-    print(bC+"     └──┬──"+r+gC+"►"+r+" UsefulWindowsTools")
-    print(bC+"        │    ")
+    print(bC+"     └──┐")
+    print(bC+"        │"+r+"   UsefulWindowsTools include several  ")
+    print(bC+"        │"+r+"          useful windows tools")       
+    print(bC+"        │ ")
     print(bC+"        ├──── ["+r+gC+"  Made by   "+r+bC+"] ───"+r+gC+"►"+r+rC+" Thomas Pellissier"+r+bC2+" (© Delta_Society™)"+r)
     print(bC+"        ├──── ["+r+gC+"  Codename  "+r+bC+"] ───"+r+gC+"►"+r+bC2+" @"+r+rC+"MyMeepSQL")
     print(bC+"        ├──── ["+r+gC+"  Version   "+r+bC+"] ───"+r+gC+"►"+r+bC2+" v"+r+rC+"0.0.1"+r)
+    print(bC+"        │ ")
     print(bC+"        └────┐   ")
     print(bC+"             ├────"+r+r+gC+"► "+r+"["+bC+"01"+r+"]"+gC+"     Backup commands"+r)
     print(bC+"             ├────"+r+r+gC+"► "+r+"["+bC+"02"+r+"]"+gC+"     Network commands"+r)
     print(bC+"             ├────"+r+r+gC+"► "+r+"["+bC+"99"+r+"]"+gC+"     Return to the main page\n"+r)
-    print("Not finish\n")
 
     while True:
         try:
@@ -212,7 +221,7 @@ def windowstools_mainpage():
 
     if windowsT_mainpage == 1:
         cls()
-        windowstools_backup()
+        windowstools_backup_charging()
     
     elif windowsT_mainpage == 99:
         cls()
@@ -225,44 +234,125 @@ def windowstools_mainpage():
         
 
 ### Usefull Windows tool  | Backup tool ###
+def windowstools_backup_error():        # the function for the error with no respond
+    print()
+    print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type y or n "+bC+"]"+r)
+    
+def windowstools_backup_charging():
+    cls()
+    print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Starting the backup tool..."+bC+"]"+r)
+    time.sleep(3)
+    print(bC+"["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Done"+bC+"]"+r)
+    time.sleep(1)
+    windowstools_backup()
 def windowstools_backup():
     cls()
+    print
     print(rC2+"        _______                              ______              __                  "+r)
     print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
     print(rC2+"       |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  "+r)
     print(rC2+"       |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  "+r)
     print(rC2+"                               |_____|                                      |__|     "+r)
-    print(bC+"     ╓────────────────────────────────────────────────────────────────────────────"+r+gC+"►"+r)  
-    print(bC+"     ╚════════╗"+r+"")
-    print(bC+"              ║"+r+gC+"    A tool for make backup by file or "+r)
-    print(bC+"              ║"+r+gC+"          folder with robocopy"+r)         
-    print(bC+"              ║"+r+"") 
-    print(bC+"              ╟──────"+r+gC+"►"+r+bC2+" Created by :"+r+rC+"  Thomas Pellissier"+r+bC2+" (© Delta_Society™)"+r)
-    print(bC+"              ╟──────"+r+gC+"►"+r+bC2+" Version    :"+r+rC+"  0.1.0"+r)
-    print(bC+"              ╟──────"+r+gC+"►"+r+bC2+" Codename   : @"+r+rC+"MyMeepSQL"+r)
+    print(bC+"     ╓────────────────────────────────────────────────────────────────────────────"+gC+"►"+r)
+    print(bC+"     ╚════════╗"+r)
+    print(bC+"              ║"+r+"    A tool for make backup by file or "+r)
+    print(bC+"              ║"+r+"          folder with robocopy"+r)
+    print(bC+"              ║"+"") 
+    print(bC+"              ╟──────"+gC+"►"+bC2+" Created by :"+rC+"  Thomas Pellissier"+bC2+" (© Delta_Society™)"+r)
+    print(bC+"              ╟──────"+gC+"►"+bC2+" Version    :"+rC+"  0.0.7"+r)
+    print(bC+"              ╟──────"+gC+"►"+bC2+" Codename   : @"+rC+"MyMeepSQL"+r)
     print(bC+"     ╔════════╝"+r)
-    print(bC+"     ╚════════════════════════════════════════════"+r+gC+"►"+r)
-    print(gC+"       Whish folder or file you want backup it ?      "+r)
-    print(bC+"     ╔════════════════════════════════════════════"+r+gC+"►"+r)
+    print(bC+"     ╚═══════════════════════════════════════════╗"+r)
+    print("            Do you want make backup (y/n)"+bC+"        ║"+r)
+    print(bC+"     ════════════════════════════════════════════╝"+r)
     print()
+    print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
+    choiceB = str(input(bC+"└───"+yC+"$ "+r))
+    
+    if choiceB == "y":
+        windowstools_backup_source()
+        
+    elif choiceB == "n":
+        print()
+        print(bC+"["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Exiting backup tool..."+bC+"]"+r)
+        time.sleep(2.5)
+        windowstools_mainpage()
+    else:
+        windowstools_backup_error()
+        input()
+        cls()
+        windowstools_backup()
 
-    while True:     # user type his file/folder | with 
-        try:
-            print(bC+"┌─("+r+rC+"OmegaDSToolkit"+r+bC+")─["+r+yC+"~"+r+bC+"]─["+r+gC+"OmegaBackup"+r+bC+"]")
-            folderfile = input(bC+"└───"+r+yC+"$ "+r)
-            break
-        except:
-            invalid_option()
-    
-    print()
-    print("Were you want to copy ?")
-    print(bC+"┌─("+r+rC+"OmegaDSToolkit"+r+bC+")─["+r+yC+"~"+r+bC+"]─["+r+gC+"OmegaBackup"+r+bC+"]")
-    target = input(bC+"└───"+r+yC+"$ "+r)
-    print()
-    print("Backuping...")
-    shutil.copy(folderfile, target)
-    
-    
+def windowstools_backup_source():
+        cls()
+        print(rC2+"        _______                              ______              __                  "+r)
+        print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
+        print(rC2+"       |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  "+r)
+        print(rC2+"       |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  "+r)
+        print(rC2+"                               |_____|                                      |__|     "+r)
+        print(bC+"     ╓────────────────────────────────────────────────────────────────────────────"+r+gC+"►"+r)  
+        print(bC+"     ╚═══════════════════════════════════════════╗"+r)
+        print(gC+"       Whish folder or file you want backup it ?"+bC+" ║"+r)
+        print(rC+"           /!\ "+gC+"Type the folder/file path"+rC+" /!\ "+bC+"    ║"+r)
+        print(bC+"     ════════════════════════════════════════════╝"+r)
+        print()
+        print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
+        source = str(input(bC+"└───"+yC+"$ "+r))
+        if not source:
+            print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your source folder/file "+bC+"]"+r)
+            print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] to continue"+bC+"]"+r)
+            input()
+            windowstools_backup_source()
+        else:
+            windowstools_backup_target()
+        
+def windowstools_backup_target():
+        cls()        
+        print(rC2+"        _______                              ______              __                  "+r)
+        print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
+        print(rC2+"       |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  "+r)
+        print(rC2+"       |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  "+r)
+        print(rC2+"                               |_____|                                      |__|     "+r)
+        print(bC+"     ╓────────────────────────────────────────────────────────────────────────────"+r+gC+"►"+r)  
+        print(bC+"     ╚═══════════════════════════════════════════╗"+r)
+        print(gC+"             Where you want to backup it ?"+bC+"       ║"+r)
+        print(rC+"           /!\ "+gC+"Type the folder/file path"+rC+" /!\ "+bC+"    ║"+r)
+        print(bC+"     ════════════════════════════════════════════╝"+r)
+        print()
+        print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
+        target = str(input(bC+"└───"+yC+"$ "+r))
+        if not target:
+            print()
+            print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your source folder/file "+bC+"]"+r)
+            print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] to continue"+bC+"]"+r)
+            input()
+            windowstools_backup_target()
+        else:
+            windowstools_backup_sure()()
+def windowstools_backup_sure(target,source):
+        cls()
+        print(rC2+"        _______                              ______              __                  "+r)
+        print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
+        print(rC2+"       |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  "+r)
+        print(rC2+"       |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  "+r)
+        print(rC2+"                               |_____|                                      |__|     "+r)
+        print(bC+"     ╓────────────────────────────────────────────────────────────────────────────"+r+gC+"►"+r)  
+        print(bC+"     ╚═══════════════════════════════════════════╗"+r)
+        print(gC+"          Are you sure you want backup (y/n)"+bC+" ║"+r)
+        print(bC+"     ╔═══════════════════════════════════════════╝"+r)
+        print(bC+"     ╚════╗"+r)
+        
+        
+
+            
+
+    # print()
+    # print("Were you want to copy ?")
+    # print(bC+"┌─("+r+rC+"OmegaDSToolkit"+r+bC+")─["+r+yC+"~"+r+bC+"]─["+r+gC+"OmegaBackup"+r+bC+"]")
+    # target = input(bC+"└───"+r+yC+"$ "+r)
+    # print()
+    # print("Backuping...")
+    # shutil.copy(folderfile, target)
     
 
 #--------------------------------------------------------------------#
@@ -272,42 +362,42 @@ def windowstools_backup():
 
 def main_page():
     cls()
-    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r)
-    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+gC+"       _____                   ____  _____ _____         _ _   _ _   ")
-    print(bC+"        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM "+r+gC+"      |     |_____ ___ ___ ___|    \|   __|_   _|___ ___| | |_|_| |_  ")
-    print(bC+"        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM "+r+gC+"      |  |  |     | -_| . | .'|  |  |__   | | | | . | . | | '_| |  _|  ")
-    print(bC+"        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM "+r+gC+"      |_____|_|_|_|___|_  |__,|____/|_____| |_| |___|___|_|_,_|_|_|  ") # Police = rectangle 
-    print(bC+"        MMMMMNo.    :dNMMMMMMMMMMMNo`   `/dMMMMM "+r+gC+"                      |___|                    ")
-    print(bC+"        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM "+r+bC+" ╓──────────────────────────────────────────────────────────────────────────"+r+gC+"►"+r)
-    print(bC+"        MMMy`     sMMMMMMMMMMMMMMMMMMm`     /MMM "+r+bC+" ║     ")
-    print(bC+"        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM "+r+bC+" ╚════╗")
-    print(bC+"        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM "+r+bC+"      ╟──────"+r+gC+"►"+r+" OmegaDSToolkit factory for penetration testing    ")
-    print(bC+"        MM-     `MMMMMMMMMMMMMMMMMMMMMMo      mM "+r+bC+"      ╟──────"+r+gC+"►"+r+bC2+" Created by :"+r+rC+" Thomas Pellissier"+r+bC2+" (© Delta_Society™)")
-    print(bC+"        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM "+r+bC+"      ╟──────"+r+gC+"►"+r+bC2+" Version    :"+r+rC+" 0.1.0")
-    print(bC+"        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM "+r+bC+"      ╟────╥─"+r+gC+"►"+r+bC2+" Codename   : @"+r+rC+"MyMeepSQL or "+r+bC2+"@"+r+bC2+"th300905")
-    print(bC+"        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM "+r+bC+"      ║"+r+bC+"    ╙───────────"+r+gC+"►"+r+bC2+rC+" The"+r+bC2+" seconde"+r+rC+" codname is alse mine"+r)
-    print(bC+"        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM "+r+bC+"      ╚════════╗"+r+"                                                                ")
-    print(bC+"        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM "+r+bC+"               ║"+r+"                Developed for linux and windows         ")
-    print(bC+"        NdMMMMMNy/.` -smMMMMMMMMNy/` `:smMMMMMNm "+r+bC+"               ║"+r+"                                                           ")
-    print(bC+"        m`hNMMMMMMNdy: `MMMMMMMM+ .shmMMMMMMNm:+ "+r+bC+"               ║"+r+gC+"               Welcome to the OmegaDSToolkit (ODST)."+r+"    ")
-    print(bC+'        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o '+r+bC+'               ║'+r+gC+' The toolkit which includes a set of "penetration testing" tools.')
-    print(bC+"        N               hMMMMMMM`              o "+r+bC+"               ║"+r+"                                                                 ")
-    print(bC+"        M               yMMMMMMM               s "+r+bC+"               ║"+r+rC+"       The Omega-DS-Toolkit is a product of Delta_Society™")
-    print(bC+"        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM "+r+bC+"               ║"+r+"                                                         ")
-    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║"+r+"                        SELECT AN OPTION                ")
-    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║") 
-    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r)
+    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+gC+"       _____                   ____  _____ _____         _ _   _ _"  +r)
+    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+gC+"      |     |_____ ___ ___ ___|    \|   __|_   _|___ ___| | |_|_| |_"  +r)
+    print(bC+"        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM "+r+gC+"      |  |  |     | -_| . | .'|  |  |__   | | | | . | . | | '_| |  _|"  +r)
+    print(bC+"        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM "+r+gC+"      |_____|_|_|_|___|_  |__,|____/|_____| |_| |___|___|_|_,_|_|_|"  +r) # Police = rectangle 
+    print(bC+"        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM "+r+gC+"                      |___|"  +r)
+    print(bC+"        MMMMMNo.    :dNMMMMMMMMMMMNo`   `/dMMMMM "+r+bC+" ╓──────────────────────────────────────────────────────────────────────────"+gC+"►"  +r)
+    print(bC+"        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM "+r+bC+" ║"  +r)
+    print(bC+"        MMMy`     sMMMMMMMMMMMMMMMMMMm`     /MMM "+r+bC+" ║"+r+"     OmegaDSToolkit factory for penetration testing"  +r)
+    print(bC+"        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM "+r+bC+" ║"  +r)
+    print(bC+"        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM "+r+bC+" ╚════╗"  +r)
+    print(bC+"        MM-     `MMMMMMMMMMMMMMMMMMMMMMo      mM "+r+bC+"      ║"  +r)
+    print(bC+"        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM "+r+bC+"      ╟──────"+gC+"►"+bC2+" Created by :"+rC+" Thomas Pellissier"+bC2+" (© Delta_Society™)"  +r)
+    print(bC+"        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM "+r+bC+"      ╟──────"+gC+"►"+bC2+" Version    :"+rC+f" {version}"  +r)
+    print(bC+"        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM "+r+bC+"      ╟────╥─"+gC+"►"+bC2+" Codename   : @"+r+rC+"MyMeepSQL or "+bC2+"@"+bC2+"th300905"  +r)
+    print(bC+"        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM "+r+bC+"      ║"+bC+"    ╙───────────"+gC+"►"+bC2+rC+" The"+bC2+" seconde"+rC+" codname is alse mine"  +r)
+    print(bC+"        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM "+r+bC+"      ╚════════╗"  +r)
+    print(bC+"        NdMMMMMNy/.` -smMMMMMMMMNy/` `:smMMMMMNm "+r+bC+"               ║"+r+"                Developed for linux and windows"  +r)
+    print(bC+"        m`hNMMMMMMNdy: `MMMMMMMM+ .shmMMMMMMNm:+ "+r+bC+"               ║"  +r)
+    print(bC+'        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o '+r+bC+"               ║"+gC+"               Welcome to the OmegaDSToolkit (ODST)."  +r)
+    print(bC+"        N               hMMMMMMM`              o "+r+bC+'               ║'+gC+' The toolkit which includes a set of "penetration testing" tools.'  +r)
+    print(bC+"        M               yMMMMMMM               s "+r+bC+"               ║"  +r)
+    print(bC+"        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM "+r+bC+"               ║"+rC+"       The Omega-DS-Toolkit is a product of Delta_Society™"  +r)
+    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║"  +r)
+    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║"+r+"                        SELECT AN OPTION"  +r)
+    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║"  +r)
     print()
-    print("                ["+bC+"01"+r+"]"+gC+"    Information Gathering"+r)
-    print("                ["+bC+"02"+r+"]"+gC+"    Wireless attacks"+r)
-    print("                ["+bC+"03"+r+"]"+gC+"    Useful Windows tools"+r)
-    print("                ["+bC+"99"+r+"]"+gC+"    Exit\n "+r)
-    print("Not finish\n")
+    print("                ["+bC+"01"+r+"]"+gC+"    Information Gathering"  +r)
+    print("                ["+bC+"02"+r+"]"+gC+"    Wireless attacks"  +r)
+    print("                ["+bC+"03"+r+"]"+gC+"    Useful Windows tools"  +r)
+    print("                ["+bC+"99"+r+"]"+gC+"    Exit\n"  +r)
+    print("All tools was not finish\n")
 
     while True:
         try:
-            print(bC+"┌─("+r+rC+"OmegaDSToolkit"+r+bC+")─["+r+yC+"~"+r+bC+"]─["+r+gC+"Menu"+r+bC+"]")
-            choice = int(input(bC+"└───"+r+yC+"$ "+r))
+            print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"Menu"+bC+"]")
+            choice = int(input(bC+"└───"+yC+"$ "+r))
             break
         except:
             error()
@@ -321,11 +411,6 @@ def main_page():
         wireless_mainpage()
     elif choice == 3:
         windowstools_mainpage()
-    elif choice == Text:
-        invalid_option()
-        input()
-        cls()
-        main_page()
     elif choice == 99:
         exit()
     else:
@@ -333,8 +418,12 @@ def main_page():
         input()
         cls()
         main_page()
-        
+
 cls()
-main_page()    # for show the main page on start 
+startbar()
+
+cls()
+main_page()    # for show the main page on starts
+input()
 
 #--------------------------------------------------------------------#
