@@ -1,6 +1,6 @@
 
 #---[Metadata]-----------------------------------------------------#
-#  Filename: OmegaDSToolkit[v0.0.1.2#dev]     [Update: 13-12-2021] #
+#  Filename: OmegaDSToolkit[v0.0.0.6#dev]     [Update: 13-12-2021] #
 #---[Info]---------------------------------------------------------#
 #  OmegaDSTookit - Factory for penetration testing                 #
 #  Language      - Python3                                         #
