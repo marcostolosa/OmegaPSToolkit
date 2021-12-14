@@ -12,7 +12,7 @@
 #  GNU General Public License v3.0                                 #
 #------------------------------------------------------------------#
 
-version = "0.1.0"
+version = "0.0.0.6"
 
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
@@ -51,10 +51,10 @@ try:
     sleep(1.5)
 except ImportError:
     print("Progress isn't installed, it will be installed now")
+    sleep(1)
     install('progress')
     print("Progress installed succefully")
     sleep(1.5)
-    
 
 ### for colored
 import pip
@@ -73,22 +73,7 @@ except ImportError:
     sleep(1.5)
 print()
 print("All modules are installed now !")
-sleep(2.5)
-cls()
-print("All modules are installed")
-print("Are you ready to reave ? (y/n)")
-reave = input("omegadstoolkit@root> ")
-while not reave:
-    cls()
-    print("All modules are installed")
-    print("Are you ready to reave ? (y/n)")
-    reave = input("omegadstoolkit@root> ")
-    if reave == "y":
-        continue
-    if reave == "n":
-        print("Exiting...")
-        sleep(1.3)
-        exit(cls())
+input("Press [ENTER] key to continue")
 
 #--------------------------------------------------------------------#
 
@@ -138,14 +123,12 @@ def startbar():
 ### if the user doesn't choose option
 def error():
     print()
-    print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Choose a option"+bC+"]"+r)
-    print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)
+    input(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Choose a option"+bC+"]"+r)
 
 ### if the user enter a bad option (if the option type by the user are)
 def invalid_option():
     print()
-    print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Invalid option"+bC+"]"+r)
-    print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)
+    input(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Invalid option"+bC+"]"+r)
 
 #--------------------------------------------------------------------#
 
@@ -192,11 +175,10 @@ def informationgathering_mainpage():
     while True:
         try:
             print(bC+"┌─("+r+rC+"OmegaDSToolkit"+r+bC+")─["+r+yC+"~"+r+bC+"]─["+r+gC+"Information Gathering"+r+bC+"]")
-            infogathering_mainpage = int(input(bC+"└──╼"+yC+"$ "+r))
+            infogathering_mainpage = int(input(bC+"└──╼ "+yC+"$ "+r))
             break
         except:
             error()
-            input()
             cls()
             informationgathering_mainpage()
 
@@ -207,7 +189,6 @@ def informationgathering_mainpage():
         main_page()
     else:
         invalid_option()
-        input()
         cls()
         informationgathering_mainpage()
         
@@ -218,38 +199,39 @@ def scan_mainpage():
     print(gC+"      |   __|___ ___ ___|_   _|___ ___| |___           "+r)
     print(gC+"      |__   |  _| .'|   | | | | . | . | |_ -|          "+r)
     print(gC+"      |_____|___|__,|_|_| |_| |___|___|_|___|          "+r)
-    print(bC+"     ╓────────────────────────────────────────"+r+gC+"►"+r)
+    print(bC+"     ╓────────────────────────────────────────"+gC+"►"+r)
     print(bC+"     ║"+r+"   Some tools for scanning target") 
     print(bC+"     ╙────╖")
-    print(bC+"          ╟──────"+r+gC+"►"+r+bC2+" Created by :"+r+rC+"  Thomas Pellissier"+r+bC2+" (© Delta_Society™)"+r)
-    print(bC+"          ╟──────"+r+gC+"►"+r+bC2+" Codename   : @"+r+rC+"MyMeepSQL"+r)
-    print(bC+"          ╟──────"+r+gC+"►"+r+bC2+" Version    :"+r+rC+"  0.0.1"+r)
+    print(bC+"          ╟──────"+gC+"►"+r+bC2+" Created by :"+r+rC+"  Thomas Pellissier"+bC2+" (© Delta_Society™)"+r)
+    print(bC+"          ╟──────"+gC+"►"+r+bC2+" Codename   : @"+r+rC+"MyMeepSQL"+r)
+    print(bC+"          ╟──────"+gC+"►"+r+bC2+" Version    :"+r+rC+"  0.0.1"+r)
     print(bC+"          ╙─────╖"+r)
-    print(bC+"                ╟────"+r+gC+"► "+r+"["+bC+"01"+r+"]"+gC+"    Nmap"+r)
-    print(bC+"                ╟────"+r+gC+"► "+r+"["+bC+"88"+r+"]"+gC+"    Return to the"+r+bC2+" Information Gathering"+r+gC+" main page"+r)
-    print(bC+"                ╟────"+r+gC+"► "+r+"["+bC+"99"+r+"]"+gC+"    Return to the main page\n"+r)    
+    print(bC+"                ╟────"+gC+"► "+r+"["+bC+"01"+r+"]"+gC+"    Nmap"+r)
+    print(bC+"                ╟────"+gC+"► "+r+"["+bC+"02"+r+"]"+gC+"    sqlmap"+r)
+    print(bC+"                ╟────"+gC+"► "+r+"["+bC+"88"+r+"]"+gC+"    Return to the"+bC2+" Information Gathering"+gC+" main page"+r)
+    print(bC+"                ╟────"+gC+"► "+r+"["+bC+"99"+r+"]"+gC+"    Return to the"+bC2+"OmegaDSToolkit"+gC+" main page\n"+r)    
 
     while True:
         try:
-            print(bC+"┌─("+r+rC+"OmegaDSToolkit"+r+bC+")─["+r+yC+"~"+r+bC+"]─["+r+gC+"Information Gathering | ScanTools"+r+bC+"]")
-            fyodor_mainpage = int(input(bC+"└──╼"+yC+"$ "+r))
+            print(bC+"┌─("+r+rC+"OmegaDSToolkit"+r+bC+")─["+r+yC+"~"+r+bC+"]─["+r+gC+"ScanTools"+r+bC+"]")
+            scan_mainpage_ = int(input(bC+"└──╼ "+yC+"$ "+r))
             break
         except:
             error()
-            input()
             cls()
             scan_mainpage()
             
-    if fyodor_mainpage == 88:
+    # if scan_mainpage_ == 2:
+            
+    if scan_mainpage_ == 88:
         cls()
         informationgathering_mainpage()
         
-    elif fyodor_mainpage == 99:
+    elif scan_mainpage_ == 99:
         cls()
         main_page()
     else:
         invalid_option()
-        input()
         cls()
         scan_mainpage()
         
@@ -283,16 +265,14 @@ def windowstools_mainpage():
     while True:
         try:
             print(bC+"┌─("+r+rC+"OmegaDSToolkit"+r+bC+")─["+r+yC+"~"+r+bC+"]─["+r+gC+"UWTools"+r+bC+"]")
-            windowsT_mainpage = int(input(bC+"└──╼"+yC+"$ "+r))
+            windowsT_mainpage = int(input(bC+"└──╼ "+yC+"$ "+r))
             break
         except:
             error()
-            input()
             cls()
             windowstools_mainpage()
 
     if windowsT_mainpage == 1:
-        cls()
         windowstools_backup_charging()
     
     elif windowsT_mainpage == 99:
@@ -308,14 +288,13 @@ def windowstools_mainpage():
 ### Usefull Windows tool  | Backup tool ###
 def windowstools_backup_error():        # the function for the error with no respond
     print()
-    print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Chose y or n"+bC+"]"+r)
+    input(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Chose y or n"+bC+"]"+r)
     
 def windowstools_backup_charging():
-    cls()
     print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Starting the backup tool..."+bC+"]"+r)
-    sleep(3)
+    sleep(2)
     print(bC+"["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Done"+bC+"]"+r)
-    sleep(1)
+    sleep(0.5)
     windowstools_backup()
 def windowstools_backup():
     cls()
@@ -339,7 +318,7 @@ def windowstools_backup():
     print(bC+"     ════════════════════════════════════════════╝"+r)
     print()
     print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-    choiceB = str(input(bC+"└──╼"+yC+"$ "+r))
+    choiceB = str(input(bC+"└──╼ "+yC+"$ "+r))
     
     if choiceB == "y":
         windowstools_backup_config()
@@ -351,7 +330,6 @@ def windowstools_backup():
         windowstools_mainpage()
     else:
         windowstools_backup_error()
-        input()
         cls()
         windowstools_backup()
 
@@ -369,10 +347,9 @@ def windowstools_backup_config():
         print(bC+"     ════════════════════════════════════════════╝"+r)
         print()
         print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-        source = str(input(bC+"└──╼"+yC+"$ "+r))
+        source = str(input(bC+"└──╼ "+yC+"$ "+r))
         if not source:
-            print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your source folder/file "+bC+"]"+r)
-            input()
+            input(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your source folder/file "+bC+"]"+r)
             windowstools_backup_config()
             
         cls()        
@@ -384,15 +361,14 @@ def windowstools_backup_config():
         print(bC+"     ╓────────────────────────────────────────────────────────────────────────────"+r+gC+"►"+r)  
         print(bC+"     ╚═══════════════════════════════════════════╗"+r)
         print(gC+"             Where you want to backup it ?"+bC+"       ║"+r)
-        print(rC+"           /!\ "+gC+"Type the folder path"+rC+" /!\ "+bC+"    ║"+r)
+        print(rC+"              /!\ "+gC+"Type the folder path"+rC+" /!\ "+bC+"       ║"+r)
         print(bC+"     ════════════════════════════════════════════╝"+r)
         print()
         print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-        target = str(input(bC+"└──╼"+yC+"$ "+r))
+        target = str(input(bC+"└──╼ "+yC+"$ "+r))
         
         while not target:
-            print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your source folder/file "+bC+"]"+r)
-            input()
+            input(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your source folder/file "+bC+"]"+r)
             cls()        
             print(rC2+"        _______                              ______              __                  "+r)
             print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
@@ -402,11 +378,11 @@ def windowstools_backup_config():
             print(bC+"     ╓────────────────────────────────────────────────────────────────────────────"+r+gC+"►"+r)  
             print(bC+"     ╚═══════════════════════════════════════════╗"+r)
             print(gC+"             Where you want to backup it ?"+bC+"       ║"+r)
-            print(rC+"           /!\ "+gC+"Type the folder path"+rC+" /!\ "+bC+"    ║"+r)
+            print(rC+"              /!\ "+gC+"Type the folder path"+rC+" /!\ "+bC+"      ║"+r)
             print(bC+"     ════════════════════════════════════════════╝"+r)
             print()
             print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-            target = str(input(bC+"└──╼"+yC+"$ "+r))
+            target = str(input(bC+"└──╼ "+yC+"$ "+r))
     
         cls()
         print(rC2+"        _______                              ______              __                  "+r)
@@ -423,12 +399,11 @@ def windowstools_backup_config():
         print(bC+"          ╚──────"+gC+"►"+bC2+"Source =>"+r+f" {target}")
         print()
         print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-        sure = str(input(bC+"└──╼"+yC+"$ "+r))
+        sure = str(input(bC+"└──╼ "+yC+"$ "+r))
 
         while not sure:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Chose y or n"+bC+"]"+r)
-            print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
-            input()
+            input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
             cls()
             print(rC2+"        _______                              ______              __                  "+r)
             print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
@@ -444,7 +419,7 @@ def windowstools_backup_config():
             print(bC+"          ╚──────"+gC+"►"+bC2+"Source =>"+r+f" {target}")
             print()
             print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-            sure = str(input(bC+"└──╼"+yC+"$ "+r))
+            sure = str(input(bC+"└──╼ "+yC+"$ "+r))
             if sure == "y":
                 try:
                     print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Backuping..."+bC+"]"+r)
@@ -475,8 +450,7 @@ def windowstools_backup_config():
                     
                 print(bC+"["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Backup finish !"+bC+"]"+r)
                 print(bC+"["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Check if the folder's copy it's all good, else remake the config"+bC+"]"+r)
-                print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
-                input()           
+                input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
             elif sure == "n":
                 cls()
                 print(rC2+"        _______                              ______              __                  "+r)
@@ -490,14 +464,13 @@ def windowstools_backup_config():
                 print(bC+"     ═════════════════════════════════════════════════════╝"+r)
                 print()
                 print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-                choice2 = str(input(bC+"└──╼"+yC+"$ "+r))
+                choice2 = str(input(bC+"└──╼ "+yC+"$ "+r))
                 while not choice2:                    
                     print(bC+"["+r+rC2+"?"+r+bC+"]"+r+bC+"──["+r+gC+"Do you want reconfig the backup config ? (y/n)"+bC+"]"+r)
                     print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
                     choice2 = str(input(bC+"└──╼ "+yC+"$ "+r))
                 if choice2 == "y":
-                    print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
-                    input()
+                    input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
                     windowstools_backup_config()
                 elif choice2 == "n":
                     print()
@@ -525,7 +498,7 @@ def main_page():
     print(bC+"        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM "+r+bC+" ╚════╗"  +r)
     print(bC+"        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM "+r+bC+"      ╟──────"+gC+"►"+bC2+" Created by :"+rC+" Thomas Pellissier"+bC2+" (© Delta_Society™)"  +r)
     print(bC+"        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM "+r+bC+"      ╟──────"+gC+"►"+bC2+" Version    :"+rC+f" {version}"  +r)
-    print(bC+"        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM "+r+bC+"      ╟────╥─"+gC+"►"+bC2+" Codename   : @"+r+rC+"MyMeepSQL or "+bC2+"@"+bC2+"th300905"  +r)
+    print(bC+"        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM "+r+bC+"      ╟────╥─"+gC+"►"+bC2+" Codename   : @"+rC+"MyMeepSQL or "+bC2+"@"+bC2+"th300905"  +r)
     print(bC+"        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM "+r+bC+"      ║"+bC+"    ╙───────────"+gC+"►"+bC2+rC+" The"+bC2+" seconde"+rC+" codname is alse mine"  +r)
     print(bC+"        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM "+r+bC+"      ╚════════╗"  +r)
     print(bC+"        NdMMMMMNy/.` -smMMMMMMMMNy/` `:smMMMMMNm "+r+bC+"               ║"+r+"                Developed for linux and windows"  +r)
@@ -547,11 +520,10 @@ def main_page():
     while True:
         try:
             print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"Menu"+bC+"]")
-            choice = int(input(bC+"└──╼"+yC+"$ "+r))
+            choice = int(input(bC+"└──╼ "+yC+"$ "+r))
             break
         except:
             error()
-            input()
             cls()
             main_page()
 
@@ -561,17 +533,16 @@ def main_page():
         wireless_mainpage()
     elif choice == 3:
         windowstools_mainpage()
-    elif choice == 99:
-        print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Starting the OmegaDSToolkit..."+bC+"]"+r)
-        sleep(3)
+    elif choice == 99 or choice:
+        print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Exiting..."+bC+"]"+r)
+        sleep(2.5)
     else:
         invalid_option()
-        input()
         cls()
         main_page()
 
-cls()
-startbar()
+# cls()
+# startbar()
 cls()
 main_page()    # for show the main page on starts
 input()
