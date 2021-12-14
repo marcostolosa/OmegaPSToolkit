@@ -1,6 +1,6 @@
 * v0.0.0.6  -  Adding OmegaBackup
 
-* v0.0.0.5  -  Add sub-menu
+* v0.0.0.5  -  Add some sub-menu
 
 * v0.0.0.2  -  Creation differents menu (for exemple the main page and USWtools)
 
