@@ -12,6 +12,8 @@
 #  GNU General Public License v3.0                                 #
 #------------------------------------------------------------------#
 
+# https://shields.io/ for made custom labels
+
 version = "0.0.0.6"
 
 
