@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/badge/Version-0.0.0.6-brightgreen)]()
 [![Release](https://img.shields.io/badge/Release-Stable-success)]()
 [![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux%20--%20Windows-success)]()
-[![Licence](https://img.shields.io/badge/Licence-GNU--GPL--3.0-important)]()
+[![Licence](https://img.shields.io/badge/License-GNU--GPL--3.0-important)]()
 [![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow)]()
 
 
