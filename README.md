@@ -16,7 +16,11 @@
 
 
 ## Features
-- 
+- The tools will be categorized as: 
+  - Scanning tools (Local Area Network, online and other, for example NMap, sqlmap etc), 
+  - password cracking tools offline or online (such as Hydra, John The Ripper etc), 
+  - Social engineering tools,
+  - Etc.
 
 ## Installation
 Instructions to install ***OmegaDSToolkit***...
