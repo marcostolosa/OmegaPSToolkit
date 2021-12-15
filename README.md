@@ -20,7 +20,7 @@
   - Scanning tools (Local Area Network, online and other, for example NMap, sqlmap etc), 
   - password cracking tools offline or online (such as Hydra, John The Ripper etc), 
   - Social engineering tools,
-  - Etc.
+  - Wireless atacks
 
 ## Installation
 Instructions to install ***OmegaDSToolkit***...
