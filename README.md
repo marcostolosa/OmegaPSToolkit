@@ -3,6 +3,8 @@
 [![Version](https://img.shields.io/badge/Version-0.0.0.6-brightgreen)]()
 [![Codename](https://img.shields.io/badge/Release-Stable-success)]()
 [![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow)]()
+[![Licence](https://img.shields.io/badge/Licence-GNU--GPL--3.0-important)]()
+
 
 ### A massive penetration testing toolkit
 
