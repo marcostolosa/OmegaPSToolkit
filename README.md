@@ -7,7 +7,7 @@
 [![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow)]()
 
 
-### $_A massive penetration testing toolkit
+### A massive penetration testing toolkit
 
 **OmegaDSToolkit (ODST)** is a toolkit that brings together penetration testing tools such as wireless tools, web tools, password cracking tools, etc.
 
@@ -19,9 +19,14 @@
 ## $_Features
 - The tools will be categorized as: 
   - Scanning tools (Local Area Network, online and other, for example NMap, sqlmap etc), 
-  - password cracking tools offline or online (such as Hydra, John The Ripper etc), 
-  - Social engineering tools,
-  - Wireless atacks
+  - Password Attacks (such as Hydra, John The Ripper etc), 
+  - Social Engineering Tools,
+  - Wireless Attacks,
+  - Web Application Analysis,
+  - Sniffing & Spoofing,
+  - Vulnerability Analysis,
+  - Exploitation Tools,
+  - 
 
 ## $_Installation
 Instructions to install ***OmegaDSToolkit***...
@@ -38,3 +43,6 @@ python3 ./OmegaDSToolkit[v0.0.0.6#dev].py
 
 ## $_Changelog
 All new changes compared to OmegaDSToolkit can be found [here](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/CHANGLOG.md).
+
+## $_License 
+This program uses the license [General Public License v3.0](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/LICENSEGNU).
