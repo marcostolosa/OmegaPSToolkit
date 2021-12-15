@@ -1,9 +1,10 @@
 # OmegaDSToolkit
 [![Codename](https://img.shields.io/badge/Codename-MyMeepSQL-informational)]()
 [![Version](https://img.shields.io/badge/Version-0.0.0.6-brightgreen)]()
-[![Codename](https://img.shields.io/badge/Release-Stable-success)]()
-[![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow)]()
+[![Release](https://img.shields.io/badge/Release-Stable-success)]()
+[![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux%20--%20Windows-success)]()
 [![Licence](https://img.shields.io/badge/Licence-GNU--GPL--3.0-important)]()
+[![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow)]()
 
 
 ### A massive penetration testing toolkit
