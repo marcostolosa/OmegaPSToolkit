@@ -1,90 +1,90 @@
 
 #---[Metadata]-----------------------------------------------------#
-#  Filename: OmegaDSToolkit[v0.0.0.6#dev]     [Update: 13-12-2021] #
+#  Filename: OmegaDSToolkit[v0.0.0.6#dev]     [Update: 15-12-2021] #
 #---[Info]---------------------------------------------------------#
-#  OmegaDSTookit - Factory for penetration testing                 #
+#  OmegaDSTookit - A massive penetration testing toolkit           #
 #  Language      - Python3                                         #
 #---[Author{s}]----------------------------------------------------#
-#  Thomas Pellissier ~ @Meep                                       #
+#  Thomas Pellissier ~ @MyMeepSSQL                                 #
 #---[Operating System]---------------------------------------------#
-#  Developed for linux and windows                                 #
+#  Developed for linux                                             #
 #---[Licence]------------------------------------------------------#
 #  GNU General Public License v3.0                                 #
 #------------------------------------------------------------------#
 
 version = "0.0.0.6"
 
-def cls():
-    os.system('cls' if os.name=='nt' else 'clear')
 
+# #-Check module is installed------------------------------------------#
+# ###for time
+# import pip
+# import os
+# from time import sleep
+# cls()
 
-#-Check module is installed------------------------------------------#
-###for time
-import pip
-import os
-from time import sleep
-cls()
+# print("Checking if the current modules of ODST are installed...")
+# print()
+# sleep(2)
 
-print("Checking if the current modules of ODST are installed...")
-print()
-sleep(2)
-
-def install(package):
-    pip.main(['install', package])
-try:
-    import time
-    print("Time is installed")
-    sleep(1.5)
+# def install(package):
+#     pip.main(['install', package])
+# try:
+#     import time
+#     print("Time is installed")
+#     sleep(1.5)
     
-except ImportError:
-    print("Time isn't installed, it will be installed now")
-    install('progress')
+# except ImportError:
+#     print("Time isn't installed, it will be installed now")
+#     install('progress')
     
-### for progress 
-import pip
+# ### for progress 
+# import pip
 
-def install(package):
-    pip.main(['install', package])
-try:
-    import progress
-    print("Progress is installed")
-    sleep(1.5)
-except ImportError:
-    print("Progress isn't installed, it will be installed now")
-    sleep(1)
-    install('progress')
-    print("Progress installed succefully")
-    sleep(1.5)
+# def install(package):
+#     pip.main(['install', package])
+# try:
+#     import progress
+#     print("Progress is installed")
+#     sleep(1.5)
+# except ImportError:
+#     print("Progress isn't installed, it will be installed now")
+#     sleep(1)
+#     install('progress')
+#     print("Progress installed succefully")
+#     sleep(1.5)
 
-### for colored
-import pip
+# ### for colored
+# import pip
 
-def install(package):
-    pip.main(['install', package])
+# def install(package):
+#     pip.main(['install', package])
 
-try:
-    import colored
-    print("Colored is installed")
-    sleep(1.5)
-except ImportError:
-    print("Colored isn't installed, it will be installed now")
-    install('colored')
-    print("Colored installed succefully")
-    sleep(1.5)
-print()
-print("All modules are installed now !")
-input("Press [ENTER] key to continue")
+# try:
+#     import colored
+#     print("Colored is installed")
+#     sleep(1.5)
+# except ImportError:
+#     print("Colored isn't installed, it will be installed now")
+#     install('colored')
+#     print("Colored installed succefully")
+#     sleep(1.5)
+# print()
+# print("All modules are installed now !")
+# input("Press [ENTER] key to continue")
 
 #--------------------------------------------------------------------#
 
 #-Import section-----------------------------------------------------#
-import time
+import shutil
+import os
+
+from time import sleep
 from progress.bar import Bar
-from typing import Text
 from colored import fg, attr                    # fg = la couleur de départ // attr = la fin de la couleur, pour pas que tout le texte qui suit sera en couleur
 #from pythonping import ping                     #   https://www.ictshore.com/python/python-ping-tutorial/
-import shutil
 
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
 
 #--------------------------------------------------------------------#
 
@@ -597,4 +597,4 @@ input()
     #       |       |         |
     #       | ____  | ______j |
     #       |_______|_________| build by Thomas Pellissier | Please don’t change that. This is my signature
-    #                           Codename MyMeepSQL in © Delta_Society™
+    #                           Codename MyMeepSQL for © Delta_Society™
