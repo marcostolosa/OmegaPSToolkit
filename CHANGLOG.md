@@ -1,3 +1,5 @@
+* v0.0.0.6  -  Adding my signature
+
 * v0.0.0.6  -  Adding OmegaBackup
 
 * v0.0.0.5  -  Add some sub-menu
