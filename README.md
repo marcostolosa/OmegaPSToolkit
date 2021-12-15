@@ -26,7 +26,7 @@
 Instructions to install ***OmegaDSToolkit***...
 ```bash
 git clone https://github.com/MyMeepSQL/OmegaDSToolkit.git
-cd OmegaDSToolki
+cd OmegaDSToolkit
 python3 ./OmegaDSToolkit[v0.0.0.6#dev].py
 ```
 ## Tool overview
