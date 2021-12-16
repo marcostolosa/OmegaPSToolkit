@@ -1,6 +1,7 @@
 from setuptools import setup
 
 setup(
+   packages=['Coconut'],
    install_requires=['colored', 'progress'],
    version='0.0.0.6',
    name='OmegaDSToolkit[v0.0.0.6#dev]',
