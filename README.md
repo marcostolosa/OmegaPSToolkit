@@ -1,10 +1,10 @@
 # $_OmegaDSToolkit
-> [![Codename](https://img.shields.io/badge/Codename-MyMeepSQL-informational?style=for-the-badge)]()
-[![Version](https://img.shields.io/badge/Version-0.0.0.6-brightgreen?style=for-the-badge)]()
-[![Release](https://img.shields.io/badge/Release-Stable-success?style=for-the-badge)]()
-[![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux%20--%20Windows-success?style=for-the-badge)]()
-[![Licence](https://img.shields.io/badge/License-GNU--GPL--3.0-important?style=for-the-badge)]()
-[![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow?style=for-the-badge)]()
+> [![Codename](https://img.shields.io/badge/Codename-MyMeepSQL-informational?style=flat-square)]()
+[![Version](https://img.shields.io/badge/Version-0.0.0.6-brightgreen?style=flat-square)]()
+[![Release](https://img.shields.io/badge/Release-Stable-success?style=flat-square)]()
+[![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux%20--%20Windows-success?style=flat-square)]()
+[![Licence](https://img.shields.io/badge/License-GNU--GPL--3.0-important?style=flat-square)]()
+[![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow?style=flat-square)]()
 
 > > ### A massive penetration testing toolkit
 > **OmegaDSToolkit (ODST)** is a toolkit that brings together penetration testing tools such as wireless tools, web tools, password cracking tools, etc.
