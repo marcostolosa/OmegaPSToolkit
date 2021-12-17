@@ -23,7 +23,7 @@
 >   - Sniffing & Spoofing,
 >   - Vulnerability Analysis,
 >   - Exploitation Tools,
->   - And more !
+>   - _**And more !**_
 
 > ## $_Installation
 > Instructions to install ***OmegaDSToolkit***...
@@ -39,7 +39,7 @@ python3 ./OmegaDSToolkit[v0.0.0.6#dev].py
 > | ![Screenshot 2020-02-09 at 5 08 54 PM](https://zupimages.net/up/21/50/98oo.jpg)   |
 
 > ## $_Changelog
-> All new changes compared to OmegaDSToolkit can be found [here](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/CHANGLOG.md).
+> All new changes compared to _**OmegaDSToolkit**_ can be found _[here](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/CHANGLOG.md)_
 
 > ## $_License 
-> This program uses the license [General Public License v3.0](https://github.com/MyMeepSQL/OmegaDSToolki)
+> This program uses the license _[General Public License v3.0](https://github.com/MyMeepSQL/OmegaDSToolki)_
