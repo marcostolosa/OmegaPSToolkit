@@ -32,7 +32,7 @@
 > git clone https://github.com/MyMeepSQL/OmegaDSToolkit.git
 > cd OmegaDSToolkit
 > python setup.py
-> cd OmegaDSToolkit main tool
+> cd OmegaDSToolkit
 > python OmegaDSToolkit[v0.0.0.6#dev].py
 > ```
 
