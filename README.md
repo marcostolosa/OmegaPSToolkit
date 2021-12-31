@@ -15,7 +15,7 @@
 >   - Scanning tools (Local Area Network, online and other, for example NMap, sqlmap etc), 
 >   - Password Attacks (such as Hydra, John The Ripper etc), 
 >   - Social Engineering Tools,
->   - Wireless Attacks,
+>   - Wireless Attacks (such as Wifite2),
 >   - Web Application Analysis,
 >   - Sniffing & Spoofing,
 >   - Vulnerability Analysis,
