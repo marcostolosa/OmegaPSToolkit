@@ -23,13 +23,13 @@
 >   - _**And more !**_
 > ## $_Installation
 > Instructions to install ***OmegaDSToolkit***...
-```bash
-git clone https://github.com/MyMeepSQL/OmegaDSToolkit.git
-cd OmegaDSToolkit
-python setup.py
-cd OmegaDSToolkit main tool
-python OmegaDSToolkit[v0.0.0.6#dev].py
-```
+> ```bash
+> git clone https://github.com/MyMeepSQL/OmegaDSToolkit.git
+> cd OmegaDSToolkit
+> python setup.py
+> cd OmegaDSToolkit main tool
+> python OmegaDSToolkit[v0.0.0.6#dev].py
+> ```
 > ## $_Tool overview
 > | The main page | 
 > | ------------- | 
