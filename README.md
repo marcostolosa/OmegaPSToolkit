@@ -9,7 +9,7 @@
 > >  ### _**A massive penetration testing toolkit**_
 > **OmegaDSToolkit (ODST)** is a toolkit that brings together penetration testing tools such as wireless tools, web tools, password cracking tools, etc.
 > 
-> ## $_Informations!
+> ## $_Informations
 > > **! The OmegaDSToolkit is a product of Delta_Society™ !**
 > - Totally in development!
 > - This tool is for educational purposes only, the use of **OmegaDSToolkit** on a target without its consent is totally **illegal!** I will not take any responsibility if this program is used explicitly
