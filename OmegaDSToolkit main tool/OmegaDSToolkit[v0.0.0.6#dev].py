@@ -483,7 +483,7 @@ def main_page():
     print(bC+'        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o '+r+bC+"               ║"+gC+"               Welcome to the OmegaDSToolkit (ODST)."  +r)
     print(bC+"        N               hMMMMMMM`              o "+r+bC+'               ║'+gC+' The toolkit which includes a set of "penetration testing" tools.'  +r)
     print(bC+"        M               yMMMMMMM               s "+r+bC+"               ║"  +r)
-    print(bC+"        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM "+r+bC+"               ║"+rC+"       The Omega-DS-Toolkit is a product of Delta_Society™"  +r)
+    print(bC+"        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM "+r+bC+"               ║"+rC+"         The OmegaDSToolkit is a product of Delta_Society™"  +r)
     print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║"  +r)
     print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║"+r+"                        SELECT AN OPTION"  +r)                         
     print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║"  +r)
