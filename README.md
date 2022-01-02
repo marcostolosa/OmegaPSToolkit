@@ -7,10 +7,10 @@
 [![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow?style=flat-square)]()
 > >  ### _**A massive penetration testing toolkit**_
 > ## About
-> **OmegaDSToolkit (ODST)** is a toolkit that brings together penetration testing tools such as wireless tools, web tools, password cracking tools, etc.
-> 
-> > _**`The OmegaDSToolkit is a product of Delta_Society™`**_
-> * Totally in development!
+> _**`The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL !`**_
+>
+>  **OmegaDSToolkit (ODST)** is a toolkit that brings together penetration testing tools such as wireless tools, web tools, password cracking tools, etc.
+> * **`Totally in development!`**
 > * This tool is for educational purposes only, the use of **OmegaDSToolkit** on a target without its consent is totally **illegal!** I will not take any responsibility if this program is used explicitly
 > 
 > ## Features
