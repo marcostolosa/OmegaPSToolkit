@@ -1,60 +1,97 @@
-
 #---[Metadata]-----------------------------------------------------#
-#  Filename: OmegaDSToolkit[v0.0.0.6#dev]     [Update: 15-12-2021] #
+#  Filename ~ OmegaDSToolkit[v0.0.0.6#dev]    [Update: 11-01-2022] #
 #---[Info]---------------------------------------------------------#
-#  OmegaDSTookit - A massive penetration testing toolkit           #
-#  Language      - Python3                                         #
-#---[Author{s}]----------------------------------------------------#
-#  Thomas Pellissier ~ @MyMeepSSQL                                 #
+#  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}#
+#                                                                  #
+#  OmegaDSTookit ~ A massive penetration testing toolkit           #
+#  Language      ~ Python3                                         #
+#---[Author]-------------------------------------------------------#
+#  Thomas Pellissier ~ @MyMeepSQL                                  #
 #---[Operating System]---------------------------------------------#
 #  Developed for linux                                             #
+#  Compatible with Windows 10 (for the moment)                     #
 #---[Licence]------------------------------------------------------#
 #  GNU General Public License v3.0                                 #
 #------------------------------------------------------------------#
 
-version = "0.0.0.6"
+version = "v0.0.0.6"
 
 from time import sleep
 
+def cls():                                                  # check if the user use windows or linux for the "clear" or "cls" function
+    os.system('cls' if os.name=='nt' else 'clear')          #
+
 #-Check module is installed------------------------------------------#
 def checkmodules():
+    cls()
+    import sys
+    sys.stdout.write("\x1b]2;Checking if all modules are [OK]\x07")
+
     print("Checking if the current modules of ODST are installed...")
     print()
-    sleep(1.5)
-    
-    try:
-        import time    
-    except ImportError:
-        print("Time module note detected, run the setup.py to install it.")
-        
-    try:
-        import progress
-    except ImportError:
-        print("Progress module not detected, run the setup.py to install it")
-        
-    try:
-        import colored
-    except ImportError:
-        print("Colored module not detected, run the setup.py to install it")
-    print("All modules are installed.")
     sleep(1)
 
+# for time
+    try:
+        import time
+        print("[OK]     Time is installed")
+    except ImportError:
+        print("     [ERROR]     Time isn't installed")
+        print("     [ERROR]     Time module note detected, run the setup.py to install it.")
 
-#--------------------------------------------------------------------#
+# for progress
+    try:
+        import progress
+        print("[OK]     Progress is installed")
+    except ImportError:
+        print("     [ERROR]     Progress isn't installed")
+        print("     [ERROR]     Progress module not detected, run the setup.py to install it")
+
+# for colored
+    try:
+        import colored
+        print("[OK]     Colored is installed")
+    except ImportError:
+        print("     [ERROR]     Colored isn't installed")
+        print(      "[ERROR]     Colored module not detected, run the setup.py to install it")
+
+# for nslookup
+    try:
+        import nslookup
+        print("[OK]     NSLookup is installed")
+    except ImportError:
+        print("     [ERROR]     Nslookup isn't installed")
+        print("     [ERROR]     Nslookup module not detected, run the setup.py to install it")
+
+# for keyboard
+    try:
+        import keyboard
+        print("[OK]     Keyboard is installed")
+    except ImportError:
+        print("     [ERROR]     Keyboard isn't installed")
+        print("     [ERROR]     Keyboard module not detected, run the setup.py to install it")
+        exit()
+
+# for pythonping
+    try:
+        import pythonping
+        print("[OK]     Pythonping is installed")
+    except ImportError:
+        print("     [ERROR]     Pythonping isn't installed")
+        print("     [ERROR]     Pythonping module not detected, run the setup.py to install it")
+        exit()
+
+    sleep(1.5)
+#-END-OF-MODULES-CHECKER---------------------------------------------#
 
 #-Import section-----------------------------------------------------#
 import shutil
 import os
 
-from time import sleep
 from progress.bar import Bar
-from colored import fg, attr                    # fg = la couleur de départ // attr = la fin de la couleur, pour pas que tout le texte qui suit sera en couleur
-#from pythonping import ping                     #   https://www.ictshore.com/python/python-ping-tutorial/
-
-def cls():
-    os.system('cls' if os.name=='nt' else 'clear')
-
-#--------------------------------------------------------------------#
+from colored import fg, attr                        # fg = la couleur de départ // attr = la fin de la couleur, pour pas que tout le texte qui suit sera en couleur
+from pythonping import ping                        #   https://www.ictshore.com/python/python-ping-tutorial/
+#-END-OF-IMPORT-SECTION----------------------------------------------#
 
 #-Colors section-----------------------------------------------------#
 
@@ -78,26 +115,17 @@ r = attr('reset') # pour terminer le formatage de la couleur
 #--------------------------------------------------------------------#
 
 #-Fonctions----------------------------------------------------------#
-## Progress bas when the tool starting
-def startbar():
-    with Bar(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Starting the OmegaDSToolkit..."+bC+"]"+r) as bar:
-        for i in range(100):
-            sleep(0.02)
-            bar.next()
-    print(bC+"["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Done"+bC+"]"+r)
-    sleep(0.5)
-    
-    
+
 ### if the user doesn't choose option
 def error():
-    print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Choose a option"+bC+"]"+r)
-    input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
+    print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+"Choose a option"+bC+"]"+r)
+    input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
 
 
 ### if the user enter a bad option (if the option type by the user are)
 def invalid_option():
-    print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Invalid option"+bC+"]"+r)
-    input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
+    print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+"Invalid option"+bC+"]"+r)
+    input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
 
 #--------------------------------------------------------------------#
 
@@ -143,8 +171,8 @@ def informationgathering_mainpage():
      
     while True:
         try:
-            print(bC+"┌─("+r+rC+"OmegaDSToolkit"+r+bC+")─["+r+yC+"~"+r+bC+"]─["+r+gC+"Information Gathering"+r+bC+"]")
-            infogathering_mainpage = int(input(bC+"└──╼ "+yC+"$ "+r))
+            print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"Information Gathering"+r+bC+"]")
+            infogathering_mainpage = int(input(bC+"└╼"+rC+"$ "+r))
             break
         except:
             error()
@@ -153,9 +181,11 @@ def informationgathering_mainpage():
 
     if infogathering_mainpage == 1:
         scan_mainpage()
+
     elif infogathering_mainpage == 99:
         cls()
         main_page()
+
     else:
         invalid_option()
         cls()
@@ -172,18 +202,18 @@ def scan_mainpage():
     print(bC+"     ║"+r+"   Some tools for scanning target") 
     print(bC+"     ╙────╖")
     print(bC+"          ╟──────"+gC+"►"+r+bC2+" Created by :"+r+rC+"  Thomas Pellissier"+bC2+" (© Delta_Society™)"+r)
-    print(bC+"          ╟──────"+gC+"►"+r+bC2+" Codename   : @"+r+rC+"MyMeepSQL"+r)
+    print(bC+"          ╟──────"+gC+"►"+r+bC2+" Codename   :  @"+r+rC+"MyMeepSQL"+r)
     print(bC+"          ╟──────"+gC+"►"+r+bC2+" Version    :"+r+rC+"  0.0.1"+r)
     print(bC+"          ╙─────╖"+r)
     print(bC+"                ╟────"+gC+"► "+r+"["+bC+"01"+r+"]"+gC+"    Nmap"+r)
     print(bC+"                ╟────"+gC+"► "+r+"["+bC+"02"+r+"]"+gC+"    sqlmap"+r)
-    print(bC+"                ╟────"+gC+"► "+r+"["+bC+"88"+r+"]"+gC+"    Return to the"+bC2+" Information Gathering"+gC+" main page"+r)
-    print(bC+"                ╟────"+gC+"► "+r+"["+bC+"99"+r+"]"+gC+"    Return to the"+bC2+"OmegaDSToolkit"+gC+" main page\n"+r)    
+    print(bC+"                ╟────"+gC+"► "+r+"["+bC+"88"+r+"]"+gC+"    Return to the"+rC+" Information Gathering"+gC+" main page"+r)
+    print(bC+"                ╟────"+gC+"► "+r+"["+bC+"99"+r+"]"+gC+"    Return to the"+rC+" OmegaDSToolkit"+gC+" main page\n"+r)
 
     while True:
         try:
-            print(bC+"┌─("+r+rC+"OmegaDSToolkit"+r+bC+")─["+r+yC+"~"+r+bC+"]─["+r+gC+"ScanTools"+r+bC+"]")
-            scan_mainpage_ = int(input(bC+"└──╼ "+yC+"$ "+r))
+            print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"ScanTools"+r+bC+"]")
+            scan_mainpage_ = int(input(bC+"└╼"+rC+"$ "+r))
             break
         except:
             error()
@@ -191,7 +221,7 @@ def scan_mainpage():
             scan_mainpage()
             
     # if scan_mainpage_ == 2:
-            
+
     if scan_mainpage_ == 88:
         cls()
         informationgathering_mainpage()
@@ -217,24 +247,24 @@ def windowstools_mainpage():
     print(rC2+"     |  |  | | | |_   _|___ ___| |___  "+r)
     print(rC2+"     |  |  | | | | | | | . | . | |_ -| "+r)
     print(rC2+"     |_____|_____| |_| |___|___|_|___| "+r)
-    print(bC+"     ┌──────────────────────────────────"+r+gC+"►"+r)
-    print(bC+"     └──┐")
-    print(bC+"        │"+r+"   UsefulWindowsTools include several  ")
-    print(bC+"        │"+r+"          useful windows tools")       
-    print(bC+"        │ ")
-    print(bC+"        ├──── ["+r+gC+"  Made by   "+r+bC+"] ───"+r+gC+"►"+r+rC+" Thomas Pellissier"+r+bC2+" (© Delta_Society™)"+r)
-    print(bC+"        ├──── ["+r+gC+"  Codename  "+r+bC+"] ───"+r+gC+"►"+r+bC2+" @"+r+rC+"MyMeepSQL")
-    print(bC+"        ├──── ["+r+gC+"  Version   "+r+bC+"] ───"+r+gC+"►"+r+bC2+" v"+r+rC+"0.0.1"+r)
-    print(bC+"        │ ")
-    print(bC+"        └────┐   ")
-    print(bC+"             ├────"+r+r+gC+"► "+r+"["+bC+"01"+r+"]"+gC+"     Backup commands"+r)
-    print(bC+"             ├────"+r+r+gC+"► "+r+"["+bC+"02"+r+"]"+gC+"     Network commands"+r)
-    print(bC+"             ├────"+r+r+gC+"► "+r+"["+bC+"99"+r+"]"+gC+"     Return to the main page\n"+r)
+    print(bC+"    ╔════════════════════════════════════"+r+gC+"►"+r)
+    print(bC+"    ╚════╗")
+    print(bC+"         ║"+r+"   UsefulWindowsTools include several  ")
+    print(bC+"         ║"+r+"          useful windows tools")       
+    print(bC+"         ║ ")
+    print(bC+"         ╟──── ["+r+gC+"  Made by   "+r+bC+"] ───"+r+gC+"►"+r+rC+" Thomas Pellissier"+r+bC2+" (© Delta_Society™)"+r)
+    print(bC+"         ╟──── ["+r+gC+"  Codename  "+r+bC+"] ───"+r+gC+"►"+r+bC2+" @"+r+rC+"MyMeepSQL")
+    print(bC+"         ╟──── ["+r+gC+"  Version   "+r+bC+"] ───"+r+gC+"►"+r+bC2+" v"+r+rC+"0.0.1"+r)
+    print(bC+"         ║ ")
+    print(bC+"         ╚════╗   ")
+    print(bC+"              ╟────"+r+r+gC+"► "+r+"["+bC+"01"+r+"]"+gC+"     Backup tool (for make backup quickly)"+r)
+    print(bC+"              ╟────"+r+r+gC+"► "+r+"["+bC+"02"+r+"]"+gC+"     Network commands (ping, telnet etc)"+r)
+    print(bC+"              ╟────"+r+r+gC+"► "+r+"["+bC+"99"+r+"]"+gC+"     Return to the main page\n"+r)
 
     while True:
         try:
-            print(bC+"┌─("+r+rC+"OmegaDSToolkit"+r+bC+")─["+r+yC+"~"+r+bC+"]─["+r+gC+"UWTools"+r+bC+"]")
-            windowsT_mainpage = int(input(bC+"└──╼ "+yC+"$ "+r))
+            print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"UWTools"+r+bC+"]")
+            windowsT_mainpage = int(input(bC+"└╼"+rC+"$ "+r))
             break
         except:
             error()
@@ -242,62 +272,135 @@ def windowstools_mainpage():
             windowstools_mainpage()
 
     if windowsT_mainpage == 1:
-        windowstools_backup_charging()
-    
+        windowstools_backup()
+
+    if windowsT_mainpage == 2:
+        windowstools_networkC_main_page()
+
     elif windowsT_mainpage == 99:
         cls()
         main_page()
+        
     else:
         invalid_option()
-        input()
         cls()
         windowstools_mainpage()
         
+### Usefull Windows tool  | Network commands ###
+def windowstools_networkC_main_page():
+    cls()
+    print(rC2+"      _______         __                           __         ______                                              __        "+r)
+    print(rC2+"     |    |  |.-----.|  |_ .--.--.--..-----..----.|  |--.    |      |.-----..--------..--------..---.-..-----..--|  |.-----."+r)
+    print(rC2+"     |       ||  -__||   _||  |  |  ||  _  ||   _||    <     |   ---||  _  ||        ||        ||  _  ||     ||  _  ||__ --|"+r)
+    print(rC2+"     |__|____||_____||____||________||_____||__|  |__|__|    |______||_____||__|__|__||__|__|__||___._||__|__||_____||_____|"+r)
+    print(bC+"   ╓─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"+gC+"►"+r)
+    print(bC+"   ╚═══╗"+r)
+    print(bC+"       ║"+r+"    Some windows network commands  "+r)
+    print(bC+"       ║"+r)
+    print(bC+"       ╟──────"+gC+"►"+bC2+" Created by :"+rC+"  Thomas Pellissier"+bC2+" (© Delta_Society™)"+r)
+    print(bC+"       ╟──────"+gC+"►"+bC2+" Codename   : @"+rC+"MyMeepSQL"+r)
+    print(bC+"       ╟──────"+gC+"►"+bC2+" Version    :"+rC+"  0.0.1"+r)
+    print(bC+"       ║"+r)
+    print(bC+"       ╙──────"+gC+"►"+r+" Type -h, --help for all commands\n")
+  
+    print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"Network commands"+r+bC+"]")
+    networkC_main_page = str(input(bC+"└╼"+rC+"$ "+r))
+    
+    if networkC_main_page == "-h" or networkC_main_page == "--help":
+        print()
+        print("===========================================================================")
+        print("Optional arguments:")
+        print("        -h, --help                                 show this help message")
+        print()
+        print(gC+"Network commands"+r)
+        print("        nslookup                                   nslookup for DNS domain")
+        print("===========================================================================")
+        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"Network commands | Nslookup"+r+bC+"]")
+        domain = str(input(bC+"└╼"+rC+"$ "+r))
+        
+    elif networkC_main_page == "nslookup":
+        print("""==============================================================================
+    Type your domain for scan it (type exit for return to the main prompt)
+==============================================================================""")
+        
+        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"Network commands | Nslookup"+r+bC+"]")
+        domain = str(input(bC+"└╼"+rC+"$ "+r))
+    
+        if domain == True:
+            from nslookup import Nslookup
+            dns_query = Nslookup(dns_servers=["1.1.1.1"])               # set optional Cloudflare public DNS server
+            
+            ips_record = dns_query.dns_lookup(domain)
+            print(ips_record.response_full, ips_record.answer)
+            
+            soa_record = dns_query.soa_lookup(domain)
+            print(soa_record.response_full, soa_record.answer)
+            
+            print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"Network commands | Nslookup"+r+bC+"]")
+            domain = str(input(bC+"└╼"+rC+"$ "+r))
+            
+        elif not domain:
+            print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"Network commands | Nslookup"+r+bC+"]")
+            domain = str(input(bC+"└╼"+rC+"$ "+r))
+
+    elif networkC_main_page == "ping":
+        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"Network commands | Ping"+r+bC+"]")
+        IP = str(input(bC+"└╼"+rC+"$ "+r))
+
+        while not IP: 
+            if IP == True:
+                try:
+                    ping(IP)
+                except RuntimeError:
+                    print(f"{IP} not found, please ckeck the IP before ping it")
+            else:
+                print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+f"No IP found, write an IP to ping it"+bC+"]\n"+r)
+
+            
+    while not networkC_main_page:
+        print()
+        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"Network commands"+r+bC+"]")
+        networkC_main_page = str(input(bC+"└╼"+rC+"$ "+r))
+
+    else:
+        print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+f"Command '{networkC_main_page}' not found"+bC+"]\n"+r)
+        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"Network commands"+r+bC+"]")
+        networkC_main_page = str(input(bC+"└╼"+rC+"$ "+r))
 
 ### Usefull Windows tool  | Backup tool ###
-def windowstools_backup_error():        # the function for the error with no respond
-    print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Chose y or n"+bC+"]"+r)
-    input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
-    
-def windowstools_backup_charging():
-    print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Starting the backup tool..."+bC+"]"+r)
-    sleep(2)
-    windowstools_backup()
-    
+def windowstools_backup_error():                                                                    # the function for the error with no respond
+    print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+"Chose y or n"+bC+"]"+r)                         #
+    input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)        #
+
 def windowstools_backup():
     cls()
-    print(rC2+"        _______                              ______              __                  "+r)
-    print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
-    print(rC2+"       |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  "+r)
-    print(rC2+"       |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  "+r)
-    print(rC2+"                               |_____|                                      |__|     "+r)
+    print(rC2+"      _______                              ______              __                  "+r)
+    print(rC2+"     |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
+    print(rC2+"     |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  "+r)
+    print(rC2+"     |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  "+r)
+    print(rC2+"                             |_____|                                      |__|     "+r)
     print(bC+"     ╓────────────────────────────────────────────────────────────────────────────"+gC+"►"+r)
     print(bC+"     ╚════════╗"+r)
     print(bC+"              ║"+r+"    A tool for make backup by file or "+r)
     print(bC+"              ║"+r+"          folder with robocopy"+r)
     print(bC+"              ║"+"") 
     print(bC+"              ╟──────"+gC+"►"+bC2+" Created by :"+rC+"  Thomas Pellissier"+bC2+" (© Delta_Society™)"+r)
-    print(bC+"              ╟──────"+gC+"►"+bC2+" Version    :"+rC+"  0.0.7"+r)
+    print(bC+"              ╟──────"+gC+"►"+bC2+" Version    :"+rC+"  0.0.2"+r)
     print(bC+"              ╟──────"+gC+"►"+bC2+" Codename   : @"+rC+"MyMeepSQL"+r)
     print(bC+"     ╔════════╝"+r)
     print(bC+"     ╚═══════════════════════════════════════════╗"+r)
     print("            Do you want make backup (y/n)"+bC+"        ║"+r)
     print(bC+"     ════════════════════════════════════════════╝"+r)
     print()
-    print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-    choiceB = str(input(bC+"└──╼ "+yC+"$ "+r))
+    print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+gC+"OmegaBackup"+bC+"]")
+    choiceB = str(input(bC+"└╼"+rC+"$ "+r))
     
     if choiceB == "y":
         windowstools_backup_config()
-        
     elif choiceB == "n":
-        print()
-        print(bC+"["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Exiting backup tool..."+bC+"]"+r)
-        sleep(2.5)
         windowstools_mainpage()
     else:
         windowstools_backup_error()
-        cls()
         windowstools_backup()
 
 def windowstools_backup_config():
@@ -313,8 +416,8 @@ def windowstools_backup_config():
         print(rC+"           /!\ "+gC+"Type the folder/file path"+rC+" /!\ "+bC+"    ║"+r)
         print(bC+"     ════════════════════════════════════════════╝"+r)
         print()
-        print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-        source = str(input(bC+"└──╼ "+yC+"$ "+r))
+        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+gC+"OmegaBackup"+bC+"]")
+        source = str(input(bC+"└╼"+rC+"$ "+r))
         if not source:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your source folder/file "+bC+"]"+r)
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
@@ -332,8 +435,8 @@ def windowstools_backup_config():
         print(rC+"              /!\ "+gC+"Type the target path"+rC+" /!\ "+bC+"      ║"+r)
         print(bC+"     ════════════════════════════════════════════╝"+r)
         print()
-        print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-        target = str(input(bC+"└──╼ "+yC+"$ "+r))
+        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+gC+"OmegaBackup"+bC+"]")
+        target = str(input(bC+"└╼"+rC+"$ "+r))
         
         while not target:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your target folder/file"+bC+"]"+r)
@@ -350,8 +453,8 @@ def windowstools_backup_config():
             print(rC+"              /!\ "+gC+"Type the target path"+rC+" /!\ "+bC+"     ║"+r)
             print(bC+"     ════════════════════════════════════════════╝"+r)
             print()
-            print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-            target = str(input(bC+"└──╼ "+yC+"$ "+r))
+            print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+gC+"OmegaBackup"+bC+"]")
+            target = str(input(bC+"└╼"+rC+"$ "+r))
     
         cls()
         print(rC2+"        _______                              ______              __                  "+r)
@@ -367,8 +470,8 @@ def windowstools_backup_config():
         print(bC+"          ╟──────"+gC+"►"+rC+" Source"+bC+" ="+gC+">"+r+f" {source}")
         print(bC+"          ╚──────"+gC+"►"+rC+" Target"+bC+" ="+gC+">"+r+f" {target}")
         print()
-        print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-        sure = str(input(bC+"└──╼ "+yC+"$ "+r))
+        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+gC+"OmegaBackup"+bC+"]")
+        sure = str(input(bC+"└╼"+rC+"$ "+r))
 
         while not sure:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Chose y or n"+bC+"]"+r)
@@ -387,8 +490,8 @@ def windowstools_backup_config():
             print(bC+"          ╟──────"+gC+"►"+rC+" Source"+bC+" ="+gC+">"+r+f" {source}")
             print(bC+"          ╚──────"+gC+"►"+rC+" Target"+bC+" ="+gC+">"+r+f" {target}")
             print()
-            print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-            sure = str(input(bC+"└──╼ "+yC+"$ "+r))
+            print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+gC+"OmegaBackup"+bC+"]")
+            sure = str(input(bC+"└╼"+rC+"$ "+r))
             if sure == "y":
                 try:
                     print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Backuping..."+bC+"]"+r)
@@ -402,8 +505,8 @@ def windowstools_backup_config():
                     print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Permission denied"+bC+"]"+r)
                     print(bC+"["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Please check your permissions with your folder/users"+bC+"]"+r)
                     print(bC+"["+r+rC2+"*"+r+bC+"]"+r+bC+"──["+r+gC+"If you want remake the backup config, type y else type n"+bC+"]\n"+r)
-                    print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-                    permerror = str(input(bC+"└──╼"+yC+"$ "+r))
+                    print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+gC+"OmegaBackup"+bC+"]")
+                    permerror = str(input(bC+"└╼"+rC+"$ "+r))
                     if permerror == "y":
                         windowstools_backup_config()
                     if permerror == "n":
@@ -431,8 +534,8 @@ def windowstools_backup_config():
                 print(gC+"          Do you want reconfig the backup config ? (y/n)"+bC+"       ║"+r)
                 print(bC+"     ═════════════════════════════════════════════════════╝"+r)
                 print()
-                print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-                choice2 = str(input(bC+"└──╼ "+yC+"$ "+r))
+                print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+gC+"OmegaBackup"+bC+"]")
+                choice2 = str(input(bC+"└╼"+rC+"$ "+r))
                 while not choice2:
                     print(rC2+"        _______                              ______              __                  "+r)
                     print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
@@ -444,8 +547,8 @@ def windowstools_backup_config():
                     print(gC+"          Do you want reconfig the backup config ? (y/n)"+bC+"       ║"+r)
                     print(bC+"     ═════════════════════════════════════════════════════╝"+r)
                     print()                 
-                    print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-                    choice2 = str(input(bC+"└──╼ "+yC+"$ "+r))
+                    print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")-["+yC+"~"+bC+"]-["+gC+"OmegaBackup"+bC+"]")
+                    choice2 = str(input(bC+"└╼"+rC+"$ "+r))
                 if choice2 == "y":
                     input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
                     windowstools_backup_config()
@@ -454,20 +557,27 @@ def windowstools_backup_config():
                     print(bC+"["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Exiting backup tool..."+bC+"]"+r)
                     sleep(2.5)
                     windowstools_mainpage()
-                                
+#-END-OF-BACKUP-TOOL-------------------------------------------------#
 
-#--------------------------------------------------------------------#
 
 
 #-Main page----------------------------------------------------------#
+# def print_time_date():                                                    # Try to make a digital clock direcly in the main page. Look under the last phrase at the "##????##"
+#     import time                                                           #
+#     from time import strftime                                             #
+#     while True:                                                           #
+#         print(strftime("%a, %b %d, %Y | "), end="", flush=True)           #
+#         print(strftime("%H:%M:%S"), end="", flush=True)                   #
+#         print("\r", end="", flush=True)                                   #
+#         time.sleep(1)                                                     #
 
 def main_page():
     cls()
-    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+gC+"       _____                   ____  _____ _____         _ _   _ _"  +r)
-    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+gC+"      |     |_____ ___ ___ ___|    \|   __|_   _|___ ___| | |_|_| |_"  +r)
-    print(bC+"        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM "+r+gC+"      |  |  |     | -_| . | .'|  |  |__   | | | | . | . | | '_| |  _|"  +r)
-    print(bC+"        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM "+r+gC+"      |_____|_|_|_|___|_  |__,|____/|_____| |_| |___|___|_|_,_|_|_|"  +r) # Police = rectangle 
-    print(bC+"        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM "+r+gC+"                      |___|"  +r)
+    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+gC+"       _____                   ____  _____ _____         _ _   _ _"  +r)                                 # Police = rectangle
+    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+gC+"      |     |_____ ___ ___ ___|    \|   __|_   _|___ ___| | |_|_| |_"  +r)                               #
+    print(bC+"        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM "+r+gC+"      |  |  |     | -_| . | .'|  |  |__   | | | | . | . | | '_| |  _|"  +r)                              #
+    print(bC+"        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM "+r+gC+f"      |_____|_|_|_|___|_  |__,|____/|_____| |_| |___|___|_|_,_|_|_| "+r)                                #
+    print(bC+"        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM "+r+gC+"                      |___|"+rC+f"                                          {version}"+r)                #
     print(bC+"        MMMMMNo.    :dNMMMMMMMMMMMNo`   `/dMMMMM "+r+bC+" ╓──────────────────────────────────────────────────────────────────────────"+gC+"►"  +r)
     print(bC+"        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM "+r+bC+" ║"  +r)
     print(bC+"        MMMy`     sMMMMMMMMMMMMMMMMMMm`     /MMM "+r+bC+" ║"+r+"     OmegaDSToolkit factory for penetration testing"  +r)
@@ -476,17 +586,21 @@ def main_page():
     print(bC+"        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM "+r+bC+"      ╟──────"+gC+"►"+bC2+" Created by :"+rC+" Thomas Pellissier"+bC2+" (© Delta_Society™)"  +r)
     print(bC+"        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM "+r+bC+"      ╟──────"+gC+"►"+bC2+" Version    :"+rC+f" {version}"  +r)
     print(bC+"        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM "+r+bC+"      ╟────╥─"+gC+"►"+bC2+" Codename   : @"+rC+"MyMeepSQL or "+bC2+"@"+bC2+"th300905"  +r)
-    print(bC+"        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM "+r+bC+"      ║"+bC+"    ╙───────────"+gC+"►"+bC2+rC+" The"+bC2+" seconde"+rC+" codname is alse mine"  +r)
+    print(bC+"        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM "+r+bC+"      ║"+bC+"    ╙───────────"+gC+"►"+bC2+rC+" The"+bC2+" seconde"+rC+" codename is also mine"  +r)
     print(bC+"        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM "+r+bC+"      ╚════════╗"  +r)
-    print(bC+"        NdMMMMMNy/.` -smMMMMMMMMNy/` `:smMMMMMNm "+r+bC+"               ║"+r+"                Developed for linux and windows"  +r)
+    print(bC+"        NdMMMMMNy/.` -smMMMMMMMMNy/` `:smMMMMMNm "+r+bC+"               ║"+r+"                       Developed for linux "  +r)
     print(bC+"        m`hNMMMMMMNdy: `MMMMMMMM+ .shmMMMMMMNm:+ "+r+bC+"               ║"  +r)
     print(bC+'        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o '+r+bC+"               ║"+gC+"               Welcome to the OmegaDSToolkit (ODST)."  +r)
     print(bC+"        N               hMMMMMMM`              o "+r+bC+'               ║'+gC+' The toolkit which includes a set of "penetration testing" tools.'  +r)
     print(bC+"        M               yMMMMMMM               s "+r+bC+"               ║"  +r)
     print(bC+"        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM "+r+bC+"               ║"+rC+"         The OmegaDSToolkit is a product of Delta_Society™"  +r)
     print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║"  +r)
-    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║"+r+"                        SELECT AN OPTION"  +r)                         
-    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║"  +r)
+    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║"+r) ##????## Date | Time : {here i want to make a digital clock in real time if enyone know how to make it, please contact me}
+    print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+r+bC+"               ║"+r)
+    print(bC+"                                                                ║"+r)
+    print(bC+"                                                                ║"+r+"                        SELECT AN OPTION"  +r)
+    print()
+    print()
     print()
     print("                ["+bC+"01"+r+"]"+gC+"    Information Gathering"  +r)
     print("                ["+bC+"02"+r+"]"+gC+"    Wireless attacks"  +r)
@@ -496,8 +610,8 @@ def main_page():
 
     while True:
         try:
-            print(bC+"┌─("+rC+"OmegaDSToolkit"+bC+")─["+yC+"~"+bC+"]─["+gC+"Menu"+bC+"]")
-            choice = int(input(bC+"└──╼ "+yC+"$ "+r))
+            print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+gC+"Menu"+bC+"]")
+            choice = int(input(bC+"└╼"+rC+"$ "+r))
             break
         except:
             error()
@@ -512,22 +626,55 @@ def main_page():
         windowstools_mainpage()
     elif choice == 99:
         choice = str(choice)
-        print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Exiting..."+bC+"]"+r)
+        print(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Exiting..."+bC+"]"+r)
         sleep(0.5)
         exit()
     else:
         invalid_option()
         cls()
         main_page()
+        
 
-# cls()
-# startbar()
-cls()
-checkmodules()
-main_page()    # for show the main page on starts
+
+
+checkmodules()                                                                                  # checking if modules are installed
+
+import sys                                                                                      # Title page
+sys.stdout.write("\x1b]2;OmegaDSToolkit coded by @MyMeepSQL for Delta_Scoiety\x07")             #
+
+main_page()                                                                                     # for show the main page on starts
 input()
+#-END-OF-MAIN-PAGE---------------------------------------------------#
 
-#--------------------------------------------------------------------#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -575,5 +722,5 @@ input()
 #       |       |         |
 #       |       |         |
 #       | ____  | ______j |
-#       |_______|_________|     Build by Thomas Pellissier | Please don’t change that. This is my signature.
-#                               Codename MyMeepSQL for © Delta_Society™.
+#       |_______|_________| build by MyMeepSQL | Please don’t change that. This is my signature
+#                           Codename MyMeepSQL in © Delta_Society™
