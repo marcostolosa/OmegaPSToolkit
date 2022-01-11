@@ -30,9 +30,9 @@
 > ```bash
 > git clone https://github.com/MyMeepSQL/OmegaDSToolkit.git
 > cd OmegaDSToolkit
-> python setup.py
+> python3 setup.py
 > cd OmegaDSToolkit
-> python OmegaDSToolkit[v0.0.0.6#dev].py
+> python3 OmegaDSToolkit[v0.0.0.6#dev].py
 > ```
 > 
 > ## Tool overview
