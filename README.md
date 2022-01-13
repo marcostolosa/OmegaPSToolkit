@@ -85,7 +85,7 @@
 >     
 > For _Windows_ : This time it’s easier on windows,
 >   * _Step 1_ : Run the "**setup.py**" just by double clicking on it,
-
+>
 >   * _Step 2_ : Run the "**OmegaDSToolkit[v0.0.0.6#dev].py**" just by double clicking on it too.
 >   
 > ## Tool overview
