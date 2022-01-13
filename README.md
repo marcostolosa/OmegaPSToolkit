@@ -29,14 +29,14 @@
 > 
 > ## Requirement
 > What you need to install before use ODST :
->   * **Python 3.X.X** or later.
->     * For _Windows_ : **[Python download page](https://www.python.org/downloads/)**
+>  * ### **Python 3.X.X** or later.
+>     * For _Windows_ : **[Python download page](https://www.python.org/downloads/)**, launch the installer and go to the next step
 >     * For _Linux_ : 
 >       ```bash
 >       sudo apt update & sudo apt upgrade -y     # Update and upgrade your system, if doesn't update,
 >       sudo apt install python3                  # Install Python3
 >       ```
->   * **PIP3**
+>  * ### **PIP3**
 >     * For _Windows_ : PIP installs at the same time as Python,
 >       * _Step 1_ : Check the "**Add Python 3.X to PATH**" check box if not checked and click "**Customize installation**",
 >         | Python installation main page | 
