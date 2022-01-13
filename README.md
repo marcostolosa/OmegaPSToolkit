@@ -15,25 +15,71 @@
 > 
 > ## Features
 > * The tools will be categorized as: 
->   * Scanning tools (Local Area Network, online and other, for example Nmap, sqlmap etc), 
->   * Password Attacks (such as Hydra, John The Ripper etc), 
+>   * Scanning tools,
+>   * Password Attacks, 
+>   * Wireless Attacks,
+>   * Web Attack,
 >   * Social Engineering Tools,
->   * Wireless Attacks (such as Wifite2),
->   * Web Application Analysis,
->   * Sniffing & Spoofing (suck as BruteShark),
+>   * Sniffing & Spoofing,
 >   * Vulnerability Analysis,
 >   * Exploitation Tools,
+>   * UWTools (Usefull Windows Tools made by me),
 >   * _**And more**_
+> 
+> ## Requirement
+> What you need to install before use ODST :
+>   * Python 3.X.X or later.
+>     * For Windows : **[Python download page](https://www.python.org/downloads/)**
+>     * For Linux : 
+>       ```bash
+>       sudo apt update & sudo apt upgrade -y     # Update and upgrade your system, if doesn't update,
+>       sudo apt install python3                  # Install Python3
+>       ```
+>   * PIP3
+>     * For Windows : PIP installs at the same time as Python,
+>       * Step 1 : Check the "Add Python 3.X to PATH" check box if not checked and click "Customize installation",
+>         | Python installation main page | 
+>         | ----------------------------- | 
+>         | ![python_installation_main_page](https://zupimages.net/up/22/02/vhsc.png)  
+>         
+>       * Step 2 : If the "pip" box is not checked, check it, otherwise click "Next",
+>         | Python optional features page |  
+>         | ----------------------------- | 
+>         | ![python_optional_features_page](https://zupimages.net/up/22/02/qblp.png) 
+>         
+>       * Step 3 : In this page, it is up to you to choose the options displayed but I advise you to activate everything, and sure, click "Install",
+>         | Python advanced option |  
+>         | ---------------------- | 
+>         | ![python_advanced_option](https://zupimages.net/up/22/02/bgmk.png) 
+>         
+>     * For Linux : It's more simple,
+>       ```bash
+>       sudo apt update & sudo apt upgrade -y     # Update and upgrade your system, if doesn't update,
+>       sudo apt install python3-pip              # Install pip3
+>       ```
 > 
 > ## Installation
 > Instructions to install ***OmegaDSToolkit***...
-> ```bash
-> git clone https://github.com/MyMeepSQL/OmegaDSToolkit.git
-> cd OmegaDSToolkit
-> python3 setup.py
-> cd OmegaDSToolkit
-> python3 OmegaDSToolkit[v0.0.0.6#dev].py
-> ```
+>   * Step 1 : **Clone** the repositories,
+>     ```bash
+>     git clone https://github.com/MyMeepSQL/OmegaDSToolkit.git
+>     ```
+>   * Step 2 : Go to the "**OmegaDSToolkit" repositories folder**,
+>     ```bash
+>     cd OmegaDSToolkit
+>     ```
+>   * Step 3 : Run the "**setup.py**" for install all _pip modules_ that you must have,
+>     ```bash
+>     python3 setup.py
+>     ```
+>   * Step 4 : Go to the **OmegaDSToolkit folder**,
+>     ```bash
+>     cd OmegaDSToolkit
+>     ```
+>   * Step 5 : And run the **OmegaDSToolkit** with :
+>     ```bash
+>     python3 OmegaDSToolkit[v0.0.0.6#dev].py
+>     ```
 > 
 > ## Tool overview
 > | The main page | 
