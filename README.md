@@ -6,6 +6,7 @@
 [![Licence](https://img.shields.io/badge/License-GNU--GPL--3.0-important?style=flat-square)]()
 [![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow?style=flat-square)]()
 > >  ### _**A massive penetration testing toolkit**_
+> 
 > ## About
 > _**`The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL !`**_
 >
@@ -28,31 +29,31 @@
 > 
 > ## Requirement
 > What you need to install before use ODST :
->   * Python 3.X.X or later.
->     * For Windows : **[Python download page](https://www.python.org/downloads/)**
->     * For Linux : 
+>   * **Python 3.X.X** or later.
+>     * For _Windows_ : **[Python download page](https://www.python.org/downloads/)**
+>     * For _Linux_ : 
 >       ```bash
 >       sudo apt update & sudo apt upgrade -y     # Update and upgrade your system, if doesn't update,
 >       sudo apt install python3                  # Install Python3
 >       ```
->   * PIP3
->     * For Windows : PIP installs at the same time as Python,
->       * Step 1 : Check the "Add Python 3.X to PATH" check box if not checked and click "Customize installation",
+>   * **PIP3**
+>     * For _Windows_ : PIP installs at the same time as Python,
+>       * _Step 1_ : Check the "**Add Python 3.X to PATH**" check box if not checked and click "**Customize installation**",
 >         | Python installation main page | 
 >         | ----------------------------- | 
 >         | ![python_installation_main_page](https://zupimages.net/up/22/02/vhsc.png)  
 >         
->       * Step 2 : If the "pip" box is not checked, check it, otherwise click "Next",
+>       * _Step 2_ : If the "**pip**" box is not checked, check it, otherwise click "**Next**",
 >         | Python optional features page |  
 >         | ----------------------------- | 
 >         | ![python_optional_features_page](https://zupimages.net/up/22/02/qblp.png) 
 >         
->       * Step 3 : In this page, it is up to you to choose the options displayed but I advise you to activate everything, and sure, click "Install",
+>       * _Step 3_ : In this page, it is up to you to choose the options displayed but I advise you to **activate everything**, and sure, click "**Install**",
 >         | Python advanced option |  
 >         | ---------------------- | 
 >         | ![python_advanced_option](https://zupimages.net/up/22/02/bgmk.png) 
 >         
->     * For Linux : It's more simple,
+>     * For _Linux_ : It's more simple,
 >       ```bash
 >       sudo apt update & sudo apt upgrade -y     # Update and upgrade your system, if doesn't update,
 >       sudo apt install python3-pip              # Install pip3
@@ -60,27 +61,33 @@
 > 
 > ## Installation
 > Instructions to install ***OmegaDSToolkit***...
->   * Step 1 : **Clone** the repositories,
+> For _Linux_ :
+>   * _Step 1_ : **Clone** the repositories,
 >     ```bash
 >     git clone https://github.com/MyMeepSQL/OmegaDSToolkit.git
 >     ```
->   * Step 2 : Go to the "**OmegaDSToolkit" repositories folder**,
+>   * _Step 2_ : Go to the "**OmegaDSToolkit" repositories folder**,
 >     ```bash
 >     cd OmegaDSToolkit
 >     ```
->   * Step 3 : Run the "**setup.py**" for install all _pip modules_ that you must have,
+>   * _Step 3_ : Run the "**setup.py**" for install all _pip modules_ that you must have,
 >     ```bash
 >     python3 setup.py
 >     ```
->   * Step 4 : Go to the **OmegaDSToolkit folder**,
+>   * _Step 4_ : Go to the **OmegaDSToolkit folder**,
 >     ```bash
 >     cd OmegaDSToolkit
 >     ```
->   * Step 5 : And run the **OmegaDSToolkit** with :
+>   * _Step 5_ : And run the **OmegaDSToolkit** with :
 >     ```bash
 >     python3 OmegaDSToolkit[v0.0.0.6#dev].py
 >     ```
-> 
+>     
+> For _Windows_ : This time it’s easier on windows,
+>   * _Step 1_ : Run the "**setup.py**" just by double clicking on it,
+
+>   * _Step 2_ : Run the "**OmegaDSToolkit[v0.0.0.6#dev].py**" just by double clicking on it too.
+>   
 > ## Tool overview
 > | The main page | 
 > | ------------- | 
