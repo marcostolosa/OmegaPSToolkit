@@ -22,10 +22,8 @@ print("""  /$$$$$$              /$$                      /$$$$$$$$              
                                         | $$                                  
                                         |__/
 """,end="")
-print("================== Welcome to the ODST modules verification. ==================")
+print("========================= Welcome to the ODST setup. =========================")
 sleep(1.2)
-print("                 Checking if the ODST modules are installed...    ")
-sleep(0.6)
 print()
 setup(name='OmegaDSToolkit',
       version='0.0.0.6',
