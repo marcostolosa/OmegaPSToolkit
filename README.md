@@ -60,11 +60,12 @@
 >       ```
 > 
 > ## Installation
-> Instructions to install ***OmegaDSToolkit***...
+> Instructions to install ***OmegaDSToolkit***..
+> 
 > For _Linux_ :
 >   * _Step 1_ : **Clone** the repositories,
 >     ```bash
->     git clone https://github.com/MyMeepSQL/OmegaDSToolkit.git
+>     sudo git clone https://github.com/MyMeepSQL/OmegaDSToolkit.git
 >     ```
 >   * _Step 2_ : Go to the "**OmegaDSToolkit" repositories folder**,
 >     ```bash
@@ -72,7 +73,7 @@
 >     ```
 >   * _Step 3_ : Run the "**setup.py**" for install all _pip modules_ that you must have,
 >     ```bash
->     python3 setup.py
+>     sudo setup.py install
 >     ```
 >   * _Step 4_ : Go to the **OmegaDSToolkit folder**,
 >     ```bash
@@ -80,13 +81,16 @@
 >     ```
 >   * _Step 5_ : And run the **OmegaDSToolkit** with :
 >     ```bash
->     python3 OmegaDSToolkit[v0.0.0.6#dev].py
+>     sudo python3 OmegaDSToolkit[v0.0.0.6#dev].py
 >     ```
->     
+>  
 > For _Windows_ : This time it’s easier on windows,
->   * _Step 1_ : Run the "**setup.py**" just by double clicking on it,
+>   * _Step 1_ : Open the folder an terminal with administrator rights and type this command :
+>     ```bash
+>     setup.py install
+>     ```
 >
->   * _Step 2_ : Run the "**OmegaDSToolkit[v0.0.0.6#dev].py**" just by double clicking on it too.
+>   * _Step 2_ : Run the "**OmegaDSToolkit[v0.0.0.6#dev].py**" just by double clicking on it or you can run it with terminal directly.
 >   
 > ## Tool overview
 > | The main page | 
