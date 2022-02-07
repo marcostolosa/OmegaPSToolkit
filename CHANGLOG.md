@@ -8,6 +8,8 @@
 > # The changlog of OmegaDSToolkit
 > 
 > 
+> * v0.0.0.6  -   Finish the OmegaBackup tool
+> 
 > * v0.0.0.6  -   Add more precision to the installation of required programs and OmegaDSToolkit in the README.md
 > 
 > * v0.0.0.6  -  Adding my signature
