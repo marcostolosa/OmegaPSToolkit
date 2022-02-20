@@ -10,6 +10,10 @@
 > # The changlog of OmegaDSToolkit
 > 
 > 
+> * v0.0.0.8  -   Add the NSLookup command
+> 
+> * v0.0.0.7  -   Add ping command (just for test an IP)
+> 
 > * v0.0.0.6  -   Finish the OmegaBackup tool
 > 
 > * v0.0.0.6  -   Add more precision to the installation of required programs and OmegaDSToolkit in the README.md
