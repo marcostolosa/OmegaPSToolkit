@@ -3,7 +3,7 @@
 #---[Info]----------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL} #
 #                                                                   #
-#  The setup of ODST                                                #
+#  The setup of OmegaDSToolkit (ODST toolkit)                       #
 #  Language  ~  Python3                                             #
 #---[Author]--------------------------------------------------------#
 #  Thomas Pellissier ~ @MyMeepSQL                                   #
