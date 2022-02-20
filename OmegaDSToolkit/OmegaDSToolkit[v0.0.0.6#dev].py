@@ -16,7 +16,7 @@
 from re import S
 
 
-version = "0.0.0.6"
+version = "0.0.0.8"
 
 from time import sleep
 import os
@@ -64,7 +64,7 @@ try:                                                                     #
     print("[>>]         Launching of ODST...")                           #
     from colored import fg, attr                                         #   fg = la couleur de départ // attr = la fin de la couleur, pour pas que tout le texte qui suit sera en couleur
     from pythonping import ping                                          #   https://www.ictshore.com/python/python-ping-tutorial/
-    sleep(1.5)                                                           #
+    sleep(1)                                                           #
                                                                             #
 except KeyboardInterrupt:                                                #
     print()                                                              #
@@ -255,9 +255,9 @@ try:
     #---Usefull Windows tool---------------------------------------------#
 
     ### Usefull Windows tool | main page ###
-    def windowstools_mainpage():
+    def usefulltools_mainpage():
         import sys                                                                                      # Title page
-        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UWTools/\x07")                                    #
+        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UTools/\x07")                                   #
         cls()
         print(rC2+"      _____ _____         _     ")
         print(rC2+"     |  |  |_   _|___ ___| |___ ")
@@ -265,8 +265,8 @@ try:
         print(rC2+"     |_____| |_| |___|___|_|___|")
         print(bC+"   ╔═════════════════════════════"+gC+"►"+r)
         print(bC+"   ╚════╗")
-        print(bC+"        ║"+r+"   UsefulWindowsTools include several")
-        print(bC+"        ║"+r+"    useful tools like Windows tools")
+        print(bC+"        ║"+r+"   UsefulTools include several useful")
+        print(bC+"        ║"+r+"        tools like Windows tools")
         print(bC+"        ║")
         print(bC+"        ╟──── ["+gC+"  Made by   "+bC+"] ───"+gC+"►"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
         print(bC+"        ╟──── ["+gC+"  Codename  "+bC+"] ───"+gC+"►"+bC2+" @"+rC+"MyMeepSQL")
@@ -281,31 +281,31 @@ try:
         windowsT_mainpage = str(input(bC+"└╼"+rC+"$ "+r))
 
         if windowsT_mainpage == "1":
-            windowstools_backup_main()
+            usefulltools_backup_main()
         if windowsT_mainpage == "2":
-            windowstools_networkC_main_page()
+            usefulltools_networkC_main_page()
         elif windowsT_mainpage == "x":
             cls()
             main_page()
         elif windowsT_mainpage == "X":
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+"For this page, the correct command is 'x' and not 'X' for return to the main page the"+rC+" OmegaDSToolkit"+gC+" main page"+bC+"]"+r)
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
-            windowstools_mainpage()
+            usefulltools_mainpage()
         elif not windowsT_mainpage:
                 error()
                 cls()
-                windowstools_mainpage()
+                usefulltools_mainpage()
         elif windowsT_mainpage == "exit":
             exitodst()
         else:
             invalid_option()
             cls()
-            windowstools_mainpage()
+            usefulltools_mainpage()
             
     ### Usefull Windows tool  | Network commands ###
-    def windowstools_networkC_main_page():
+    def usefulltools_networkC_main_page():
         import sys                                                                                      # Title page
-        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UWTools/NetworkCommands/\x07")               #
+        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UTools/NetworkCommands/\x07")                   #
         cls()
         print(rC2+"      _____       _                     _      _____                                 _      ")
         print(rC2+"     |   | | ___ | |_  _ _ _  ___  ___ | |_   |     | ___  _____  _____  ___  ___  _| | ___ ")
@@ -313,7 +313,7 @@ try:
         print(rC2+"     |_|___||___||_|  |_____||___||_|  |_,_|  |_____||___||_|_|_||_|_|_||__,||_|_||___||___|")
         print(bC+"   ╓─────────────────────────────────────────────────────────────────────────────────────────"+gC+"►"+r)
         print(bC+"   ╚════╗"+r)
-        print(bC+"        ║"+r+"    Some windows network commands  "+r)
+        print(bC+"        ║"+r+"    Some network commands  "+r)
         print(bC+"        ║"+r)
         print(bC+"        ╟──────"+gC+"►"+bC2+" Created by       :"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
         print(bC+"        ╟──────"+gC+"►"+bC2+" Codename         : @"+rC+"MyMeepSQL"+r)
@@ -321,36 +321,36 @@ try:
         print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  : "+rC+f"{connectionstatus}"+r)
         print(bC+"        ║"+r)
         print(bC+"        ╚══════╗"  )
-        print(bC+"               ╟────"+r+r+gC+"► "+r+"["+bC+"1"+r+"]"+gC+"     Ping (just test if a"+r)
-        print(bC+"               ╟────"+r+r+gC+"► "+r+"["+bC+"2"+r+"]"+gC+"     NSLookup"+r)
-        print(bC+"               ╟────"+r+r+gC+"► "+r+"["+bC+"x"+r+"]"+gC+"     Return to the"+rC+" UWTools"+gC+" main page"+r)
-        print(bC+"               ╟────"+r+r+gC+"► "+r+"["+bC+"X"+r+"]"+gC+"     Return to the"+rC+" OmegaDSToolkit"+gC+" main page"+r)
-        print(bC+"               ╙────"+r+r+gC+"► "+r+"["+bC+"exit"+r+"]"+gC+"  Exit the ODST\n"  +r)
+        print(bC+"               ╟────"+gC+"► "+r+"["+bC+"1"+r+"]"+gC+"     Ping (Just check if the destination is responding)"+r)
+        print(bC+"               ╟────"+gC+"► "+r+"["+bC+"2"+r+"]"+gC+"     NSLookup (Find a domain's IP)"+r)
+        print(bC+"               ╟────"+gC+"► "+r+"["+bC+"x"+r+"]"+gC+"     Return to the"+rC+" UTools"+gC+" main page"+r)
+        print(bC+"               ╟────"+gC+"► "+r+"["+bC+"X"+r+"]"+gC+"     Return to the"+rC+" OmegaDSToolkit"+gC+" main page"+r)
+        print(bC+"               ╙────"+gC+"► "+r+"["+bC+"exit"+r+"]"+gC+"  Exit the ODST\n"  +r)
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"Network commands"+r+bC+"]")
         networkC_main_page = str(input(bC+"└╼"+rC+"$ "+r))
 
         if networkC_main_page == "1":
-            windowstools_networkC_ping()
+            usefulltools_networkC_ping()
         elif networkC_main_page == "2":
-            windowstools_networkC_nslookup()
+            usefulltools_networkC_nslookup()
         elif networkC_main_page == "exit":
             exitodst()
         elif networkC_main_page == "x":
-            windowstools_mainpage()
+            usefulltools_mainpage()
         elif networkC_main_page == "X":
             main_page()
         elif not networkC_main_page:
                 error()
                 cls()
-                windowstools_networkC_main_page()
+                usefulltools_networkC_main_page()
         else:
             invalid_option()
             cls()
-            windowstools_networkC_main_page()
+            usefulltools_networkC_main_page()
 
-    def windowstools_networkC_nslookup():
+    def usefulltools_networkC_nslookup():
         import sys                                                                                      # Title page
-        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UWTools/NetworkCommands/NSLookup\x07")          #
+        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UTools/NetworkCommands/NSLookup\x07")           #
         cls()
         print(rC2+"      _______ _______ _____                __")
         print(rC2+"     |    |  |     __|     |_.-----.-----.|  |--.--.--.-----.")
@@ -372,7 +372,7 @@ try:
         domain = str(input(bC+"└╼"+rC+"$ "+r))
 
         if domain == "exit":
-            windowstools_networkC_main_page()
+            usefulltools_networkC_main_page()
         elif domain:
             if connection() == True:
                 try:
@@ -387,7 +387,7 @@ try:
                     print(bC+"╙──────"+gC+"►"+bC2+" Adresse :"+rC+f" {addresse}")
                     print()
                     input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to write an another domain for nslookup"+bC+"]"+r)
-                    windowstools_networkC_nslookup()
+                    usefulltools_networkC_nslookup()
                     # from nslookup import Nslookup
 
                     # # set optional Cloudflare public DNS server
@@ -402,79 +402,79 @@ try:
                 except socket.gaierror:
                     print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+f"'{domain}' not found, please ckeck the domain before lookup it"+bC+"]"+r)
                     input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)
-                    windowstools_networkC_nslookup()
+                    usefulltools_networkC_nslookup()
             else:
                 print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+"Can’t reach the destination, check your Internet connection and try again"+bC+"]"+r)
                 input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)
-                windowstools_networkC_ping()
+                usefulltools_networkC_ping()
         else:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+f"No domain found, write an domain for lookup it"+bC+"]"+r)
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)
-            windowstools_networkC_nslookup()
+            usefulltools_networkC_nslookup()
 
-    def windowstools_networkC_ping():
+    def usefulltools_networkC_ping():
         import sys                                                                                      # Title page
-        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UWTools/NetworkCommands/Ping\x07")              #
+        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UTools/NetworkCommands/Ping\x07")               #
         cls()
         print(rC2+"      ______ __               ")
         print(rC2+"     |   __ \__|.-----.-----. ")
         print(rC2+"     |    __/  ||     |  _  | ")
         print(rC2+"     |___|  |__||__|__|___  | ")
         print(bC+"   ╓──────────────────"+rC2+"|_____|"+bC+"──"+gC+"►"+r)
-        print(bC+"   ╚═══╗"+r)
-        print(bC+"       ║"+r+"    Ping IP for verified it's online  "+r)
-        print(bC+"       ║"+r)
-        print(bC+"       ╟──────"+gC+"►"+bC2+" Created by       :"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
-        print(bC+"       ╟──────"+gC+"►"+bC2+" Codename         : @"+rC+"MyMeepSQL"+r)
-        print(bC+"       ╟──────"+gC+"►"+bC2+" Version          : v"+rC+"0.0.9"+r)
-        print(bC+"       ╟──────"+gC+"►"+bC2+" Internet Status  : "+rC+f"{connectionstatus}"+r)
-        print(bC+"     ╔═╝"+r)
-        print(bC+"     ╚═════════════════════════════════════════════════════════════════════╗"+r)
-        print("        Write an IP to ping it with the '-t' option so press CTRL + C for"+bC+"  ║"+r)
-        print("           stop the ping process (type 'exit' for exit the ping tool)"+bC+"      ║"+r)
-        print(bC+"     ══════════════════════════════════════════════════════════════════════╝\n"+r)
+        print(bC+"   ╚════╗"+r)
+        print(bC+"        ║"+r+"    Ping IP for verified it's online  "+r)
+        print(bC+"        ║"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Created by       :"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Codename         : @"+rC+"MyMeepSQL"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Version          : v"+rC+"0.0.9"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  : "+rC+f"{connectionstatus}"+r)
+        print(bC+"      ╔═╝"+r)
+        print(bC+"      ╚════════════════════════════════════════════════════════╗"+r)
+        print("         Write an IP to ping it, press CTRL + C for stop the "+bC+"  ║"+r)
+        print("          ping process (type 'exit' for exit the ping tool)"+bC+"    ║"+r)
+        print(bC+"      ═════════════════════════════════════════════════════════╝\n"+r)
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+r+gC+"Network commands | Ping"+r+bC+"]")
         IP = str(input(bC+"└╼"+rC+"$ "+r))
 
         if IP == "exit":
-            windowstools_networkC_main_page()
+            usefulltools_networkC_main_page()
         elif IP:
             if connection() == True:
                 try:
-                    hostname = IP 
-                    response = os.system("ping " + hostname)
+                    hostname = IP
+                    response = os.system("ping " + hostname + "-c 4")
                     print(response)
 
                     # ping(IP, verbose=True, count=6)
                     # print(ping(IP))
                     # print()
                     # input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to write an another IP for pinging"+bC+"]"+r)
-                    # windowstools_networkC_ping()
-                                
+                    # usefulltools_networkC_ping()
+                    
+                    input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to write an another IP for pinging"+bC+"]"+r)
+                    usefulltools_networkC_ping()
                 except KeyboardInterrupt:
                     print()
                     print(bC+"["+r+rC2+"*"+r+bC+"]"+r+bC+"-["+r+gC+"CTRL + C detected stop the ping."+bC+"]"+r)
                     input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to write an another IP for pinging"+bC+"]"+r)
-                    windowstools_networkC_ping()
+                    usefulltools_networkC_ping()
                 except RuntimeError:
-                    print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+f"'{IP}' not found, please ckeck the IP before ping it"+bC+"]"+r)
+                    print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+f"'{IP}' not found, prlease ckeck the IP before ping it"+bC+"]"+r)
                     input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)
-                    windowstools_networkC_ping()
-            else:                                                  
+                    usefulltools_networkC_ping()
+            else:
                 print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+"Can’t reach the destination, check your Internet connection and try again"+bC+"]"+r)
                 input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)
-                windowstools_networkC_ping()
+                usefulltools_networkC_ping()
         else:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+f"No IP found, write an IP to ping it"+bC+"]"+r)
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)
-            windowstools_networkC_ping()
-
-
+            usefulltools_networkC_ping()
 
     ### Usefull Windows tool  | Backup tool ###
-    def windowstools_backup_main():
+    def usefulltools_backup_main():
         import sys                                                                                      # Title page
-        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UWTools/BackupTool/\x07")                         #
+        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UTools/BackupTool/\x07")                        #
         cls()
         print(rC2+"      _______                              ______              __                  "+r)
         print(rC2+"     |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
@@ -497,21 +497,21 @@ try:
         choiceB = str(input(bC+"└╼"+rC+"$ "+r))
 
         if choiceB == "y" or choiceB == "Y":
-            windowstools_backup_source()
+            usefulltools_backup_source()
         elif choiceB == "n":
-            windowstools_mainpage()
+            usefulltools_mainpage()
         elif not choiceB:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+"Chose y or n"+bC+"]"+r)                                         # the function for the error with no respond
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)                           #
-            windowstools_backup_main()
+            usefulltools_backup_main()
         else:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+"Invalid option, chose y or n"+bC+"]"+r)                         # the function for the error with no respond
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)                           #
-            windowstools_backup_main()
+            usefulltools_backup_main()
 
-    def windowstools_backup_source():
+    def usefulltools_backup_source():
         import sys                                                                                      # Title page
-        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UWTools/BackupTool/Source\x07")                  #
+        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UTools/BackupTool/Source\x07")                  #
         cls()
         print(rC2+"        _______                              ______              __                  "+r)
         print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
@@ -531,13 +531,13 @@ try:
         if not source:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your source folder/file "+bC+"]"+r)
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
-            windowstools_backup_source()
+            usefulltools_backup_source()
         else:
-            windowstools_backup_destination()
+            usefulltools_backup_destination()
 
-    def windowstools_backup_destination():
+    def usefulltools_backup_destination():
         import sys                                                                                      # Title page
-        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UWTools/BackupTool/Destination\x07")             #
+        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UTools/BackupTool/Destination\x07")             #
         cls()
         print(rC2+"        _______                              ______              __                  "+r)
         print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
@@ -557,13 +557,13 @@ try:
         if not destination:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your target folder/file"+bC+"]"+r)
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)
-            windowstools_backup_destination()
+            usefulltools_backup_destination()
         else:
-            windowstools_backup_verification()
+            usefulltools_backup_verification()
 
-    def windowstools_backup_verification():
+    def usefulltools_backup_verification():
         import sys                                                                                      # Title page
-        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UWTools/BackupTool/Verification\x07")            #
+        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UTools/BackupTool/Verification\x07")            #
         cls()
         print(rC2+"        _______                              ______              __                  "+r)
         print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
@@ -584,11 +584,11 @@ try:
         if not sure:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Chose y or n"+bC+"]"+r)
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
-            windowstools_backup_verification()
+            usefulltools_backup_verification()
 
         elif sure == "y" or sure == "Y":
             import sys                                                                                      # Title page
-            sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UWTools/BackupTool/Backuping...\x07")            #
+            sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UTools/BackupTool/Backuping...\x07")            #
             cls()
             print(rC2+"        _______                              ______              __                  "+r)
             print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
@@ -650,7 +650,7 @@ try:
                 # Close the created zip file
                 zip_file.close()
                 import sys                                                                                      # Title page
-                sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UWTools/BackupTool/Successully backuped\x07")    #
+                sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UTools/BackupTool/Successully_backuped\x07")    #
                 cls()
                 print(rC2+"        _______                              ______              __                  "+r)
                 print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
@@ -662,46 +662,43 @@ try:
                 print(gC+"          Folder/file copied successfully !"+bC+"     ║"+r)
                 print(bC+"     ═══════════════════════════════════════════╝"+r)
                 sleep(1.5)
-                windowstools_backup_reconfig()
+                usefulltools_backup_reconfig()
 
             except PermissionError:
                 print(bC+"║ ["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Permission denied"+bC+"]"+r)
                 print(bC+"║ ["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Please check your permissions with your folder/users"+bC+"]"+r)
+                print(bC+"["+r+rC2+"*"+r+bC+"]"+r+bC+"──["+r+gC+"If you want remake the backup config, type y else type n"+bC+"]"+r)
                 print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+gC+"OmegaBackup"+bC+"]")
                 permerror = str(input(bC+"└╼"+rC+"$ "+r))
 
                 while not permerror:
-                    print(bC+"["+r+rC2+"*"+r+bC+"]"+r+bC+"──["+r+gC+"If you want remake the backup config, type y else type n"+bC+"]"+r)
                     print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Chose y or n"+bC+"]"+r)
                     print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")-["+r+"~"+bC+"]-["+gC+"OmegaBackup"+bC+"]")
                     permerror = str(input(bC+"└╼"+rC+"$ "+r))
 
                 if permerror == "y" or permerror == "Y":
-                    windowstools_backup_source()
+                    usefulltools_backup_source()
 
                 if permerror == "n" or permerror == "N":
-                    print()
-                    print(bC+"["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Exiting backup tool..."+bC+"]"+r)
-                    sleep(2.5)
-                    windowstools_mainpage()
+                    usefulltools_mainpage()
                     
             except:
                 print(bC+"║ ["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Error occurred while copying file"+bC+"]"+r)
-                print(bC+"║ ["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Check if the folder's copy it's all good and remake the config"+bC+"]"+r)
+                print(bC+"║ ["+r+rC2+"+"+r+bC+"]"+r+bC+"──["+r+gC+"Check that the files are not corrupted or some other problem and redo the backup configuration"+bC+"]"+r)
                 input(bC+"║ ["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to remake the backup configuration"+bC+"]"+r)
-                windowstools_backup_source()
+                usefulltools_backup_source()
 
         elif sure == "n" or sure =="N":
-            windowstools_backup_reconfig()
+            usefulltools_backup_reconfig()
 
         else:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+"Invalid option, chose y or n"+bC+"]"+r)                             # the function for the error with no respond
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)                               #
-            windowstools_backup_verification()
+            usefulltools_backup_verification()
 
-    def windowstools_backup_reconfig():
+    def usefulltools_backup_reconfig():
         import sys                                                                                       # Title page
-        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UWTools/BackupTool/Remake_the_backup_config\x07")#
+        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UTools/BackupTool/Remake_the_backup_config\x07") #
         cls()
         print(rC2+"        _______                              ______              __                  "+r)
         print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
@@ -717,17 +714,17 @@ try:
         choice = str(input(bC+"└╼"+rC+"$ "+r))
 
         if choice == "y" or choice == "Y":
-            windowstools_backup_source()
+            usefulltools_backup_source()
         elif choice == "n" or choice == "N":
-            windowstools_mainpage()
+            usefulltools_mainpage()
         elif not choice:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+"Choose y or n"+bC+"]"+r)
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)
-            windowstools_backup_reconfig()
+            usefulltools_backup_reconfig()
         else:
             print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"-["+r+gC+"Invalid option"+bC+"]"+r)                                       # the function for the error with no respond
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"-["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)                           #
-            windowstools_backup_reconfig()
+            usefulltools_backup_reconfig()
     #-End-Usefull Windows tool-------------------------------------------#
 
     #-OmegaDSToolkit-main-page-------------------------------------------#
@@ -755,7 +752,7 @@ try:
         print(bC+'        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o '+bC+"               ║"+gC+"             Welcome to the OmegaDSToolkit (ODST)."+r)
         print(bC+"        N               hMMMMMMM`              o "+bC+'               ║'+gC+' The toolkit which includes a set of penetration testing tools.'+r)
         print(bC+"        M               yMMMMMMM               s "+bC+"               ║"+r)
-        print(bC+"        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM "+bC+"               ║"+rC+"         The OmegaDSToolkit is a product of Delta_Society™"  +r)
+        print(bC+"        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM "+bC+"               ║"+rC+"         The OmegaDSToolkit is a product of © Delta_Society™"  +r)
         print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+bC+"               ║"+r) ##????## Date | Time : {here i want to make a digital clock in real time if enyone know how to make it, please contact me}
         print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+bC+"               ║"+r)
         print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+bC+"               ║"+r+"                        SELECT AN OPTION"  )
@@ -763,7 +760,7 @@ try:
         print()
         print("                ["+bC+"1"+r+"]"+gC+"    Information Gathering"  +r)
         print("                ["+bC+"2"+r+"]"+gC+"    Wireless attacks"  +r)
-        print("                ["+bC+"3"+r+"]"+gC+"    Useful Windows tools (UWTools)"  +r)
+        print("                ["+bC+"3"+r+"]"+gC+"    Useful tools (UT)"  +r)
         print("                ["+bC+"exit"+r+"]"+gC+" Exit the ODST\n"  +r)
         print("ODST was not finish and he's totally in development!\n")
 
@@ -775,7 +772,7 @@ try:
         elif choice == "2":
             wireless_mainpage()
         elif choice == "3":
-            windowstools_mainpage()
+            usefulltools_mainpage()
         elif choice == "exit":
             exitodst()
         elif not choice:
