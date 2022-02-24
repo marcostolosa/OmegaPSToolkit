@@ -1,5 +1,5 @@
 #---[Metadata]-------------------------------------------------------#
-#  Filename ~ OmegaDSToolkit[v0.0.0.6#dev]     [Update: 20-02-2022]  #
+#  Filename ~ OmegaDSToolkit[v0.0.0.6#dev]     [Update: 24-02-2022]  #
 #---[Info]-----------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}  #
 #                                                                    #
@@ -11,9 +11,7 @@
 #  Developed for linux                                               #
 #---[Licence]--------------------------------------------------------#
 #  GNU General Public License v3.0                                   #
-#--------------------------------------------------------------------#
-
-from re import S
+#--------------------------------------------------------------------
 
 
 version = "0.0.0.8"
