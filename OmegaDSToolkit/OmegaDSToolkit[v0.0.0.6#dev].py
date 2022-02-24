@@ -25,53 +25,53 @@ def cls():                                                  # check if the user 
 
 #-Check module is installed------------------------------------------#
 
-######################################################################
-# import ctypes                                                        #
-# try:                                                                 #
-#     is_admin = os.getuid() == 0                                      #
-# except AttributeError:                                               #
-#     is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0            #
-# if is_admin == False:                                                #
-#     if os.name=='nt':                                                #
-#         systemname = "administrator"                                 #   check if the user run ODST with root/admin privilege
-#     else:                                                            #   if user are on windows, he sayed "administrator", on linux he sayed "root"
-#         systemname = "root"                                          #
-#     print(f"Run it as {systemname}")                                 #
-#     input("Press [ENTER] key to continue")                           #
-#     exit()                                                           #
-#                                                                      #
-# elif is_admin == True:                                               #
-cls()                                                            ######### checking if modules are installed
-import sys                                                               #
-sys.stdout.write("\x1b]2;Checking if all modules are [OK]\x07")          #
-                                                                            #
-try:                                                                     #
-    print("Checking if the current modules of ODST are installed...")    #
-    print()                                                              #
-    sleep(1.5)                                                           #
-                                                                            #
-    import progress                                                      #
-    import colored                                                       #
-    import nslookup                                                      #
-    import keyboard                                                      #
-    import pythonping                                                    #
-    import urllib.request                                                #
-    import shutil                                                        #
-    import time
-    print("[OK]         All modules are install !")                      #
-    print("[>>]         Launching of ODST...")                           #
-    from colored import fg, attr                                         #   fg = la couleur de départ // attr = la fin de la couleur, pour pas que tout le texte qui suit sera en couleur
-    from pythonping import ping                                          #   https://www.ictshore.com/python/python-ping-tutorial/
-    sleep(1)                                                           #
-                                                                            #
-except KeyboardInterrupt:                                                #
-    print()                                                              #
-    msg = "[ERROR]      User aborted"                                    #
-    exit(msg)                                                            #
-                                                                            #
-except ImportError:                                                      #############################
-    msg1 = "[CRITICAL]   A current(s) module(s) was not installed, run the 'setup.py' for install it" #
-    exit(msg1)                                                     #############################
+#####################################################################
+import ctypes                                                        #
+try:                                                                 #
+    is_admin = os.getuid() == 0                                      #
+except AttributeError:                                               #
+    is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0            #
+if is_admin == False:                                                #
+    if os.name=='nt':                                                #
+        systemname = "administrator"                                 #   check if the user run ODST with root/admin privilege
+    else:                                                            #   if user are on windows, he sayed "administrator", on linux he sayed "root"
+        systemname = "root"                                          #
+    print(f"Run it as {systemname}")                                 #
+    input("Press [ENTER] key to continue")                           #
+    exit()                                                           #
+                                                                     #
+elif is_admin == True:                                               #
+    cls()                                                            ######### checking if modules are installed
+    import sys                                                               #
+    sys.stdout.write("\x1b]2;Checking if all modules are [OK]\x07")          #
+                                                                             #
+    try:                                                                     #
+        print("Checking if the current modules of ODST are installed...")    #
+        print()                                                              #
+        sleep(1.5)                                                           #
+                                                                             #
+        import progress                                                      #
+        import colored                                                       #
+        import nslookup                                                      #
+        import keyboard                                                      #
+        import pythonping                                                    #
+        import urllib.request                                                #
+        import shutil                                                        #
+        import time                                                          #
+        print("[OK]         All modules are install !")                      #
+        print("[>>]         Launching of ODST...")                           #
+        from colored import fg, attr                                         #
+        from pythonping import ping                                          #
+        sleep(1)                                                             #
+                                                                             #
+    except KeyboardInterrupt:                                                #
+        print()                                                              #
+        msg = "[ERROR]      User aborted"                                    #
+        exit(msg)                                                            #
+                                                                             #
+    except ImportError:                                                      #############################
+        msg1 = "[CRITICAL]   A current(s) module(s) was not installed, run the 'setup.py' for install it"#
+        exit(msg1)                                                           #############################
 ##############################################################################
 
 #-END-OF-MODULES-CHECKER---------------------------------------------#
