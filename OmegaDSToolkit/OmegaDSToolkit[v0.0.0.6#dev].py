@@ -13,19 +13,16 @@
 #  GNU General Public License v3.0                                   #
 #--------------------------------------------------------------------
 
-
 version = "0.0.0.8"
 
-from time import sleep
 import os
+from time import sleep
 
 def cls():                                                  # check if the user use windows or linux for the "clear" or "cls" function
-    os.system('cls' if os.name=='nt' else 'clear')          #
-
+    os.system('cls' if os.name=='nt' else 'clear')              #
 
 #-Check module is installed------------------------------------------#
-
-#####################################################################
+######################################################################
 import ctypes                                                        #
 try:                                                                 #
     is_admin = os.getuid() == 0                                      #
@@ -38,17 +35,14 @@ if is_admin == False:                                                #
         systemname = "root"                                          #
     print(f"Run it as {systemname}")                                 #
     exit()                                                           #
-                                                                     #
 elif is_admin == True:                                               #
     cls()                                                            ######### checking if modules are installed
     import sys                                                               #
     sys.stdout.write("\x1b]2;Checking if all modules are [OK]\x07")          #
-                                                                             #
     try:                                                                     #
         print("Checking if the current modules of ODST are installed...")    #
         print()                                                              #
         sleep(1.5)                                                           #
-                                                                             #
         import progress                                                      #
         import colored                                                       #
         import nslookup                                                      #
@@ -62,20 +56,16 @@ elif is_admin == True:                                               #
         from colored import fg, attr                                         #
         from pythonping import ping                                          #
         sleep(1)                                                             #
-                                                                             #
     except KeyboardInterrupt:                                                #
         print()                                                              #
-        msg = "[ERROR]      User aborted"                                    #
-        exit(msg)                                                            #
-                                                                             #
-    except ImportError:                                                      #############################
-        msg1 = "[CRITICAL]   A current(s) module(s) was not installed, run the 'setup.py' for install it"#
-        exit(msg1)                                                           #############################
+        abortmsg = "[ERROR]      User aborted"                               #
+        exit(abortmsg)                                                       #
+    except ImportError:                                                      ####################################
+        criticalmsg = "[CRITICAL]   A current(s) module(s) was not installed, run the 'setup.py' for install it"#
+        exit(criticalmsg)                                                    ####################################
 ##############################################################################
 
 #-END-OF-MODULES-CHECKER---------------------------------------------#
-
-
 
 #-Colors section-----------------------------------------------------#
 
