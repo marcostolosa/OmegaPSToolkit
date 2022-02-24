@@ -37,7 +37,6 @@ if is_admin == False:                                                #
     else:                                                            #   if user are on windows, he sayed "administrator", on linux he sayed "root"
         systemname = "root"                                          #
     print(f"Run it as {systemname}")                                 #
-    input("Press [ENTER] key to continue")                           #
     exit()                                                           #
                                                                      #
 elif is_admin == True:                                               #
