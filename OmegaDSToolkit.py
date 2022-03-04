@@ -1,5 +1,5 @@
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ OmegaDSToolkit[v0.0.0.8#dev]             [Update: 27-02-2022] #
+#  Filename ~ OmegaDSToolkit.py             [Update: 2022-03-04 | 11:47 AM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -7,7 +7,7 @@
 #  Language  ~  Python3                                                     #
 #---[Author]----------------------------------------------------------------#
 #  Thomas Pellissier ~ @MyMeepSQL                                           #
-#  Copyright (C) 2022 MyMeepSQL                                             #
+#  Copyright (C) 2022 MyMeepSQL - © Delta_Society™                          #
 #---[Operating System]------------------------------------------------------#
 #  Developed for linux                                                      #
 #---[Licence]---------------------------------------------------------------#
@@ -29,73 +29,22 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.               #
 #---------------------------------------------------------------------------#
 
-
-from time import sleep
 import os
-import sys
-
-def cls():                      #
-    os.system('clear')
-
-#-First-colors section-----------------------------------------------#
-
-### Color for the starting's page (modules checker)
-
-# Basic color's
-gray ="\033[30m"
-red = "\033[1;31m"
-lime = "\033[1;32m"
-orange = "\033[1;33m"
-blue = "\033[1;34m"
-purple = "\033[1;35m"
-light_blue = "\033[1;36m"
-ghostwhite = "\033[1;37m"
-
-# Light color's
-cyan = "\033[36m"
-white = "\033[37m"
-light_gray = "\033[90m"
-light_red = "\033[91m"
-light_lime = "\033[92m"
-light_yellow = "\033[93m"
-light_blue2 = "\033[94m"
-light_purple = "\033[95m"
-
-# Dark color's
-darkblack = "\033[0,30m"
-darkred = "\033[0,31m"
-darkgreen = "\033[0,32m"
-darkyellow = "\033[0,33m"
-darkblue = "\033[0,34m"
-darkmagenta = "\033[0,35m"
-darkcyan = "\033[0,36m"
-darkwhite = "\033[0,37m"
-
-# Text formating
-reset = "\033[0m"
-bold = '\033[1m'
-dark = "\033[2m"
-italic = "\033[3m"
-underscore = "\033[4m"
-normal = "\033[22m"
-
-###
-
-# Some color code in https://replit.com/talk/learn/Styling-Text-In-Python/135224?v=1
-
-#-End-of-the-first-colors section------------------------------------#
-
-
+from functions import *
+def invalid_option():
+    print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+f"'{command}' is not a valid command"+bC+"]"+r)                   # if the user enter a bad option (if the option type by the user are not recognized)
+    input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to continue"+bC+"]"+r)    #
 #-Check module is installed------------------------------------------#
 
 #########################################################################
-if os.getuid() != 0:                                                    #   check if the user run ODST with root privilege
+if os.getuid() != 0:                                                    #   Check if the user run ODST with root privilege
     print("OmegaDSToolkit could be run with root privilege")            #
     print("Re-run the OmegaDSToolkit with sudo")                        #
+    print('Run "sudo python3 OmegaDSToolkit.py"')                       #
     sys.exit()                                                          #
 else:                                                                   #
     cls()                                                               ############################# checking if modules are installed
-    version = underscore+"0.0.0.8"                                                                  #
+    version = underscore+"0.0.1.3"                                                                  #
     sys.stdout.write("\x1b]2;Checking if all modules are [OK]\x07")                                 #
     try:                                                                                            #
         print(white+underscore+"Checking if the current modules of ODST are installed..."+reset)    #
@@ -114,63 +63,21 @@ else:                                                                   #
         import textwrap                                                                             #
         from collections import namedtuple                                                          #
         from builtins import format                                                                 #
-        from colored import fg, attr                                                                #
-        from pythonping import ping                                                                 #
         print(blue+"["+lime+"OK"+blue+"]"+ghostwhite+"         All modules are install !"+reset)    #
         print(blue+"["+red+">>"+blue+"]"+ghostwhite+"         Launching of ODST..."+reset)          #
         sleep(0.8)                                                                                  #
     except KeyboardInterrupt:                                                                       #
         print()                                                                                     #
-        abortmsg = "[ERROR]      User aborted"                                                      #
+        abortmsg = blue+"["+red+"ERROR"+blue+"]"+ghostwhite+"      User aborted"                    #
         exit(abortmsg)                                                                              #
-    except ImportError:                                                                             #############
-        criticalmsg = "[CRITICAL]   A current(s) module(s) was not installed, run the 'setup.py' for install it"#
-        exit(criticalmsg)                                                    ####################################
+    except ImportError:                                                                             ###############################################
+        criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it"#
+        exit(criticalmsg)                                                    ######################################################################
 ##############################################################################
 
 #-END-OF-MODULES-CHECKER---------------------------------------------#
 
-
-#-Second-colors section----------------------------------------------#
-
-### The colors for the rest of the tool
-# The blues
-bC = fg('#1d89f3')      # blue
-bC2 = fg('#0B4D8F')     # dark blue
-
-# The reds
-rC = fg('#F44336')      # red
-rC3 = fg('#ffa000')     # light orange
-rC2 = fg('#ec5a0d')     # orange
-
-# The greens
-gC = fg('#39CC3F')      # green
-
-# The yellows
-yC = fg('#EDFF00')
-
-# Reset
-r = attr('reset')       # to finish the color formatting
-
-underscore = "\033[4m"
-###
-
-#-End-of-the-second-colors-section-----------------------------------#
-
-
 #-Fonctions----------------------------------------------------------#
-#########################################################
-def connection(host='https://google.com'):              #
-    try:                                                #
-        urllib.request.urlopen(host)                    #
-        return True                                     #
-    except:                                             #   Check if the user have an Internet connection 
-        return False                                    #
-if connection() == True:                                #
-    connectionstatus = (gC+"Connected"+r)               #
-else:                                                   #
-    connectionstatus = (rC3+"No Internet"+r)            #
-#########################################################
 
 try:
     def exitodst():
@@ -290,9 +197,9 @@ try:
         print(bC+"     ╙────╖")
         print(bC+"          ║"+r+"   Some tools for scanning target")
         print(bC+"          ║"+r)
-        print(bC+"          ╟──────"+gC+"►"+r+bC2+" Created by :"+r+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
-        print(bC+"          ╟──────"+gC+"►"+r+bC2+" Codename   : @"+r+rC+"MyMeepSQL"+r)
-        print(bC+"          ╟──────"+gC+"►"+r+bC2+" Version    : v"+r+rC+"0.0.1"+r)
+        print(bC+"          ╟──────"+gC+"►"+r+bC2+" Created by ::"+r+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
+        print(bC+"          ╟──────"+gC+"►"+r+bC2+" Codename   :: @"+r+rC+"MyMeepSQL"+r)
+        print(bC+"          ╟──────"+gC+"►"+r+bC2+" Version    :: v"+r+rC+"0.0.1"+r)
         print(bC+"          ║"+r)
         print(bC+"          ╙─────╖"+r)
         print(bC+"                ╟────"+gC+"► "+r+"["+bC+"1"+r+"]"+gC+"    Nmap"+r)
@@ -390,10 +297,10 @@ try:
         print(bC+"   ╚════╗"+r)
         print(bC+"        ║"+r+"    Some network commands  "+r)
         print(bC+"        ║"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Created by       :"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Codename         : @"+rC+"MyMeepSQL"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Version          : v"+rC+"0.0.3"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  : "+rC+f"{connectionstatus}"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Created by       ::"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Codename         :: @"+rC+"MyMeepSQL"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Version          :: v"+rC+"0.0.3"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  :: "+rC+f"{connection}"+r)
         print(bC+"        ║"+r)
         print(bC+"        ╚══════╗"  )
         print(bC+"               ╟────"+gC+"► "+r+"["+bC+"1"+r+"]"+gC+"     Ping (Just check if the destination is responding)"+r)
@@ -438,10 +345,10 @@ try:
         print(bC+"   ╚════╗"+r)
         print(bC+"        ║"+r+"    Some windows network commands  "+r)
         print(bC+"        ║"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Created by       :"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Codename         : @"+rC+"MyMeepSQL"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Version          : v"+rC+"0.0.3"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  : "+rC+f"{connectionstatus}"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Created by       ::"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Codename         :: @"+rC+"MyMeepSQL"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Version          :: v"+rC+"0.0.8"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  :: "+rC+f"{connection}"+r)
         print(bC+"      ╔═╝"+r)
         print(bC+"      ╚════════════════════════════════════════════════════════════════════════════════════╗"+r)
         print("         Write a domain for look the IP he used (type 'exit' for exit the NSLookup tool)"+bC+"   ║"+r)
@@ -502,10 +409,10 @@ try:
         print(bC+"   ╚════╗"+r)
         print(bC+"        ║"+r+"    Ping IP for verified it's online  "+r)
         print(bC+"        ║"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Created by       :"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Codename         : @"+rC+"MyMeepSQL"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Version          : v"+rC+"0.0.9"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  : "+rC+f"{connectionstatus}"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Created by       ::"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Codename         :: @"+rC+"MyMeepSQL"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Version          :: v"+rC+"0.0.9"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  :: "+rC+f"{connection}"+r)
         print(bC+"      ╔═╝"+r)
         print(bC+"      ╚════════════════════════════════════════════════════════╗"+r)
         print("         Write an IP to ping it, press CTRL + C for stop the "+bC+"  ║"+r)
@@ -563,9 +470,9 @@ try:
         print(bC+"     ╚════════╗"+r)
         print(bC+"              ║"+r+"  A tool for make backup quickly"+r)
         print(bC+"              ║"+"") 
-        print(bC+"              ╟──────"+gC+"►"+bC2+" Created by :"+rC+"  Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
-        print(bC+"              ╟──────"+gC+"►"+bC2+" Version    :"+rC+"  0.1.1"+r)
-        print(bC+"              ╟──────"+gC+"►"+bC2+" Codename   :  @"+rC+"MyMeepSQL"+r)
+        print(bC+"              ╟──────"+gC+"►"+bC2+" Created by ::"+rC+"  Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
+        print(bC+"              ╟──────"+gC+"►"+bC2+" Version    ::"+rC+"  0.1.4"+r)
+        print(bC+"              ╟──────"+gC+"►"+bC2+" Codename   ::  @"+rC+"MyMeepSQL"+r)
         print(bC+"     ╔════════╝"+r)
         print(bC+"     ╚═══════════════════════════════════════════╗"+r)
         print("            Do you want make backup (y/n)"+bC+"        ║"+r)
@@ -821,7 +728,7 @@ try:
         print(bC+"        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM "+bC+" ╚════╗"  +r)
         print(bC+"        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Created by"+reset+bC2+"       ::"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
         print(bC+"        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Version"+reset+bC2+"          :: v"+rC+f"{version}"+r)
-        print(bC+"        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Internet Status"+reset+bC2+"  ::"+rC+f" {connectionstatus}"+r)
+        print(bC+"        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Internet Status"+reset+bC2+"  ::"+rC+f" {connection}"+r)
         print(bC+"        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM "+bC+"      ╟────╥─"+gC+"► "+bC2+underscore+"Codename"+reset+bC2+"         :: @"+rC+"MyMeepSQL or "+bC2+"@"+bC2+"th300905"+r)
         print(bC+"        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM "+bC+"      ║"+bC+"    ╙───────────────────"+gC+"►"+bC2+rC+"  The "+bC2+underscore+"seconde"+reset+rC+" codename is also mine"+r)
         print(bC+"        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM "+bC+"      ╚════════╗"  +r) 
@@ -863,7 +770,7 @@ try:
         print(bC+"        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM "+bC+" ╚════╗"  +r)
         print(bC+"        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Created by"+reset+bC2+"       ::"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
         print(bC+"        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Version"+reset+bC2+"          :: v"+rC+f"{version}"+r)
-        print(bC+"        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Internet Status"+reset+bC2+"  ::"+rC+f" {connectionstatus}"+r)
+        print(bC+"        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Internet Status"+reset+bC2+"  ::"+rC+f" {connection}"+r)
         print(bC+"        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM "+bC+"      ╟────╥─"+gC+"► "+bC2+underscore+"Codename"+reset+bC2+"         :: @"+rC+"MyMeepSQL or "+bC2+"@"+bC2+"th300905"+r)
         print(bC+"        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM "+bC+"      ║"+bC+"    ╙───────────────────"+gC+"►"+bC2+rC+"  The "+bC2+underscore+"seconde"+reset+rC+" codename is also mine"+r)
         print(bC+"        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM "+bC+"      ╚════════╗"  +r) 
