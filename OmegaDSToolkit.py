@@ -1,9 +1,11 @@
+#!/usr/bin/python3
+
 #---[Metadata]--------------------------------------------------------------#
 #  Filename ~ OmegaDSToolkit.py             [Update: 2022-03-04 | 11:47 AM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
-#  OmegaDSTookit ~ A massive penetration testing toolkit for pentester      #
+#  OmegaDSTookit ~ A massive penetration testing toolkit for penteser       #
 #  Language  ~  Python3                                                     #
 #---[Author]----------------------------------------------------------------#
 #  Thomas Pellissier ~ @MyMeepSQL                                           #
@@ -14,25 +16,27 @@
 #  GNU General Public License v3.0                                          #
 #  -------------------------------                                          #
 #                                                                           #
-# This program is free software; you can redistribute it and/or modify      #
-# it under the terms of the GNU General Public License as published by      #
-# the Free Software Foundation; either version 2 of the License, or         #
-# (at your option) any later version.                                       #
+#  This program is free software; you can redistribute it and/or modify     #
+#  it under the terms of the GNU General Public License as published by     #
+#  the Free Software Foundation; either version 2 of the License, or        #
+#  (at your option) any later version.                                      #
 #                                                                           #
-# This program is distributed in the hope that it will be useful,           #
-# but WITHOUT ANY WARRANTY; without even the implied warranty of            #
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the              #
-# GNU General Public License for more details.                              #
+#  This program is distributed in the hope that it will be useful,          #
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of           #
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the             #
+#  GNU General Public License for more details.                             #
 #                                                                           #
-# You should have received a copy of the GNU General Public License along   #
-# with this program; if not, write to the Free Software Foundation, Inc.,   #
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.               #
+#  You should have received a copy of the GNU General Public License along  #
+#  with this program; if not, write to the Free Software Foundation, Inc.,  #
+#  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.              #
 #---------------------------------------------------------------------------#
 
 from functions import *
+
 def invalid_option():
-    print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+f"'{command}' is not a valid command"+bC+"]"+r)                   # if the user enter a bad option (if the option type by the user are not recognized)
-    input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to continue"+bC+"]"+r)    #
+    print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+f"'{command}' is not a valid command"+bC+"]"+r)              # if the user enter a bad option (if the option type by the user are not recognized)
+    input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to continue"+bC+"]"+r)                    #
+
 #-Check module is installed------------------------------------------#
 
 #########################################################################
@@ -77,7 +81,6 @@ else:                                                                   #
 #-END-OF-MODULES-CHECKER---------------------------------------------#
 
 #-Fonctions----------------------------------------------------------#
-
 try:
     def exitodst():
         print(bC+"["+gC+"Goodby"+bC+"]"+r)
@@ -99,24 +102,24 @@ try:
         print()
         print("All commands of the OmegaDSToolkit you can use is the main page\n")
         print("""COMMAND:
-    1           :   Go to the Information Gathering page
-    2           :   Go to the Wireless Tools page
-    3           :   Go to the Usefull tools page
-    cli         :   Use the OmegaDSToolkit like a CLI
-    help        :   Print this help message
-    exit        :   Exit the OmegaDSToolkit
+        1           :   Go to the Information Gathering page
+        2           :   Go to the Wireless Tools page
+        3           :   Go to the Usefull tools page
+        cli         :   Use the OmegaDSToolkit like a CLI
+        help        :   Print this help message
+        exit        :   Exit the OmegaDSToolkit
         """)
 
     def helpmsg():
         print()
         print("All commands of the OmegaDSToolkit you can use is the main page\n")
         print("""COMMAND:
-    1           :   Go to the Information Gathering page
-    2           :   Go to the Wireless Tools page
-    3           :   Go to the Usefull tools page
-    cli         :   Use the OmegaDSToolkit like a CLI
-    help        :   Print this help message
-    exit        :   Exit the OmegaDSToolkit
+        1           :   Go to the Information Gathering page
+        2           :   Go to the Wireless Tools page
+        3           :   Go to the Usefull tools page
+        cli         :   Use the OmegaDSToolkit like a CLI
+        help        :   Print this help message
+        exit        :   Exit the OmegaDSToolkit
         """)
 
 #-End-of-functions-section-------------------------------------------#
@@ -764,7 +767,7 @@ try:
         print(bC+"        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM "+gC+"   |_____|_|_|_|___|_  |__,|____/|_____| |_| |___|___|_|_,_|_|_|   "+gC+"v"+rC+f"{version}"+r)        #
         print(bC+"        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM "+bC+" ╓─────────────────"+gC+"|___|"+bC+"─────────────────────────────────────────────────────"+gC+"►"  +r)
         print(bC+"        MMMMMNo.    :dNMMMMMMMMMMMNo`   `/dMMMMM "+bC+" ║"  +r)
-        print(bC+"        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM "+bC+" ║     "+r+"OmegaDSToolkit factory for penetration testing"+r)
+        print(bC+"        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM "+bC+" ║     "+r+"OmegaDSToolkit factory for penetration testing "+r)
         print(bC+"        MMMy`     sMMMMMMMMMMMMMMMMMMm`     /MMM "+bC+" ║"  +r)
         print(bC+"        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM "+bC+" ╚════╗"  +r)
         print(bC+"        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Created by"+reset+bC2+"       ::"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
