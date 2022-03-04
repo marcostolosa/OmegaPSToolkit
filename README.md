@@ -8,7 +8,7 @@
 [![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-brightgreen?style=flat-square)]()
 [![Licence](https://img.shields.io/badge/License-GNU--GPL--3.0-important?style=flat-square)]()
 [![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow?style=flat-square)]()
-> >  ### _**A massive penetration testing toolkit for penteser**_
+> >  ### _**A massive penetration testing toolkit for pentester**_
 > 
 > ## About
 > _**`The OmegaDSToolkit is a product of © Delta_Society™ by MyMeepSQL !`**_
