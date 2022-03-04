@@ -3,7 +3,7 @@
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
-#  OmegaDSTookit ~ A massive penetration testing toolkit                    #
+#  OmegaDSTookit ~ A massive penetration testing toolkit for pentester      #
 #  Language  ~  Python3                                                     #
 #---[Author]----------------------------------------------------------------#
 #  Thomas Pellissier ~ @MyMeepSQL                                           #
