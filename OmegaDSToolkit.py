@@ -50,6 +50,10 @@ else:                                                                   #
     version = underscore+"0.0.1.3"                                                                  #
     sys.stdout.write("\x1b]2;Checking if all modules are [OK]\x07")                                 #
     try:                                                                                            #
+        if connection() == True:                                                                    #
+            connectionstatus = (lime+"Connected"+reset)                                             #
+        else:                                                                                       #
+            connectionstatus = (red+"No Internet"+reset)                                            #
         print(white+underscore+"Checking if the current modules of ODST are installed..."+reset)    #
         print()                                                                                     #
         sleep(1.5)                                                                                  #
