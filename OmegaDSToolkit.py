@@ -29,7 +29,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.               #
 #---------------------------------------------------------------------------#
 
-import os
 from functions import *
 def invalid_option():
     print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+f"'{command}' is not a valid command"+bC+"]"+r)                   # if the user enter a bad option (if the option type by the user are not recognized)
