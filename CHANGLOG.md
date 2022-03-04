@@ -10,6 +10,14 @@
 > # The changlog of OmegaDSToolkit
 > 
 > 
+> * v0.0.1.3  -  Add a update file for install the latest version of OmegaDSToolki and the setuptool
+> 
+> * v0.0.1.2  -  Add a separated file for functions (better code)
+> 
+> * v0.0.1.1  -  Fix the OmegaDSToolkit
+> 
+> * v0.0.1.0  -  Fix the setuptool
+> 
 > * v0.0.0.8  -   Add the NSLookup command
 > 
 > * v0.0.0.7  -   Add ping command (just for test an IP)
