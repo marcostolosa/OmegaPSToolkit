@@ -92,12 +92,12 @@
 >   * _Step 1_ : Install OmegaDSToolkit repositorie and enter in with file explorer,
 >   * _Step 2_ : Open an terminal into the folder with administrator rights and type this command :
 >     ```bash
->     python3 setup.py install
+>     sudo python3 setup.py install
 >     ```
 >
->   * _Step 3_ : Run the "**OmegaDSToolkit[v0.0.0.6#dev].py**" just by double clicking on it or you can run it with terminal directly with :
+>   * _Step 3_ : Run the "**OmegaDSToolkit.py**" just by double clicking on it or you can run it with terminal directly with :
 >     ```bash
->     python3 OmegaDSToolkit[v0.0.0.6#dev].py
+>     sudo python3 OmegaDSToolkit.py
 >     ```
 >   
 > ## Tool overview
@@ -109,4 +109,4 @@
 > All new changes compared to _**OmegaDSToolkit**_ can be found _[here](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/CHANGLOG.md)_
 > 
 > ## License 
-> This program uses the license _[General Public License v3.0](https://github.com/MyMeepSQL/OmegaDSToolki)_
+> This program uses the license _[General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)_
