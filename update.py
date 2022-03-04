@@ -1,5 +1,5 @@
 #---[Metadata]-------------------------------------------------------#
-#  Filename ~ update.sh                        [Update: 04-03-2022]  #
+#  Filename ~ update.py                        [Update: 04-03-2022]  #
 #---[Info]-----------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}  #
 #                                                                    #
