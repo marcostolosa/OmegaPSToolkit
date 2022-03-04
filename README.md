@@ -8,7 +8,7 @@
 [![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-brightgreen?style=flat-square)]()
 [![Licence](https://img.shields.io/badge/License-GNU--GPL--3.0-important?style=flat-square)]()
 [![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow?style=flat-square)]()
-> >  ### _**A massive penetration testing toolkit**_
+> >  ### _**A massive penetration testing toolkit for penteser**_
 > 
 > ## About
 > _**`The OmegaDSToolkit is a product of © Delta_Society™ by MyMeepSQL !`**_
@@ -77,27 +77,23 @@
 >     ```
 >   * _Step 3_ : Run the "**setup.py**" for install all _pip modules_ that you must have :
 >     ```bash
->     sudo setup.py install
+>     sudo python3 setup.py install
 >     ```
->   * _Step 4_ : Go to the **OmegaDSToolkit folder**,
+>   * _Step 4_ : Run the **OmegaDSToolkit** with :
 >     ```bash
->     cd OmegaDSToolkit
->     ```
->   * _Step 5_ : And run the **OmegaDSToolkit** with :
->     ```bash
->     sudo python3 OmegaDSToolkit[v0.0.0.6#dev].py
+>     sudo python3 OmegaDSToolkit.py
 >     ```
 >  
 > For _Windows_ : This time it’s easier on windows,
 >   * _Step 1_ : Install OmegaDSToolkit repositorie and enter in with file explorer,
 >   * _Step 2_ : Open an terminal into the folder with administrator rights and type this command :
 >     ```bash
->     sudo python3 setup.py install
+>     python3 setup.py install
 >     ```
 >
 >   * _Step 3_ : Run the "**OmegaDSToolkit.py**" just by double clicking on it or you can run it with terminal directly with :
 >     ```bash
->     sudo python3 OmegaDSToolkit.py
+>     python3 OmegaDSToolkit.py
 >     ```
 >   
 > ## Tool overview
