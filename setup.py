@@ -1,19 +1,36 @@
-#---[Metadata]------------------------------------------------------#
-#  Filename: setup.py                          [Update: 27-02-2022] #
-#---[Info]----------------------------------------------------------#
-#  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL} #
-#                                                                   #
-#  The setup of ODST                                                #
-#  Language  ~  Python3                                             #
-#---[Author]--------------------------------------------------------#
-#  Thomas Pellissier ~ @MyMeepSQL                                   #
-#  Copyright (C) 2022 MyMeepSQL                                     #
-#-------------------------------------------------------------------#
+#---[Metadata]--------------------------------------------------------------#
+#  Filename ~ setup.py                      [Update: 2022-03-04 | 12:04 AM] #
+#---[Info]------------------------------------------------------------------#
+#  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
+#                                                                           #
+#  The SetupTool for ODST                                                   #
+#  Language  ~  Python3                                                     #
+#---[Author]----------------------------------------------------------------#
+#  Thomas Pellissier ~ @MyMeepSQL                                           #
+#  Copyright (C) 2022 MyMeepSQL - © Delta_Society™                          #
+#---[Operating System]------------------------------------------------------#
+#  Developed for linux                                                      #
+#---[Licence]---------------------------------------------------------------#
+#  GNU General Public License v3.0                                          #
+#  -------------------------------                                          #
+#                                                                           #
+#  This program is free software; you can redistribute it and/or modify     #
+#  it under the terms of the GNU General Public License as published by     #
+#  the Free Software Foundation; either version 2 of the License, or        #
+#  (at your option) any later version.                                      #
+#                                                                           #
+#  This program is distributed in the hope that it will be useful,          #
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of           #
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the             #
+#  GNU General Public License for more details.                             #
+#                                                                           #
+#  You should have received a copy of the GNU General Public License along  #
+#  with this program; if not, write to the Free Software Foundation, Inc.,  #
+#  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.              #
+#---------------------------------------------------------------------------#
 
-from setuptools import setup, find_packages
-from time import sleep
-import os, sys
-import urllib.request
+#!/usr/bin/python3
+
 from functions import *
 
 if os.getuid() != 0:                                                            #   check if the user run ODST with root privilege
@@ -30,7 +47,7 @@ else:                                                                           
         print(red+"Not Internet\n"+reset+"connexion found, please check you are connected to Internet and retry!")
         sys.exit()
     try:
-        print("The setup will install all pip packages that he needs.")
+        print("The setup will install all pip packages that ODST needs ")
         input("If you want to continue, press the [ENTER] to run the setup. Else press [CTRL + C] combination to exit the setup.")
         print()
         print("""
@@ -78,9 +95,9 @@ else:                                                                           
             ],
         )
         print()
-        print("<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~>")
-        print(' Done! All packages are install, now you can run OmegaDSToolkit with "python3 OmegaDSToolkit.py" ')
-        print("<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~>")
+        print("<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~>")
+        print(' Done! All packages are install, now you can run OmegaDSToolkit with "sudo python3 OmegaDSToolkit.py" ')
+        print("<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~>")
 
     except KeyboardInterrupt:
         print()
