@@ -2,7 +2,7 @@
 > [![MadeBy](https://img.shields.io/badge/Made%20by-Thomas%20Pellissier-informational?style=flat-square)]()
 [![Codename](https://img.shields.io/badge/Codename-MyMeepSQL-informational?style=flat-square)]()
 [![Owner](https://img.shields.io/badge/Owner-©%20Delta_Society™-informational?style=flat-square)]()
-[![Version](https://img.shields.io/badge/Version-0.0.0.8-brightgreen?style=flat-square)]()
+[![Version](https://img.shields.io/badge/Version-0.0.1.3-brightgreen?style=flat-square)]()
 [![Version](https://img.shields.io/badge/Language-Python3-brightgreen?style=flat-square)]()
 [![Release](https://img.shields.io/badge/Release-Stable-success?style=flat-square)]()
 [![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-brightgreen?style=flat-square)]()
