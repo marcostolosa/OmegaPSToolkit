@@ -34,7 +34,7 @@
 
 
 try:
-    import os
+    import os,sys
     from colors import *
 except ModuleNotFoundError:
     print()
@@ -79,6 +79,7 @@ def cli_helpmsg():
     cli         ::   Use the OmegaDSToolkit like a CLIy
     help        ::   Print this help message
     exit        ::   Exit the OmegaDSToolkit""")
+    input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to continue"+bC+"]"+r)
 
 def helpmsg():
     print()
