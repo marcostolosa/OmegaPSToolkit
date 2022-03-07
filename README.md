@@ -45,7 +45,7 @@
 >   ```
 > * _Step 3_ : To install **Python3** and **PIP3**, run the "install.sh" with:
 >   ```bash
->   sudo ./install.sh
+>   sudo sh install.sh
 >   ```
 > * _Step 4_ : Run the "**setup.py**" for install all _pip modules_ that you must have with:
 >   ```bash
