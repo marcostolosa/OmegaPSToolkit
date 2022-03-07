@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ OmegaDSToolkit.py             [Update: 2022-03-07 | 09:23 AM] #
+#  Filename ~ OmegaDSToolkit.py             [Update: 2022-03-07 | 14:24 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -745,10 +745,19 @@ try:
         print(bC+"["+gC+"This is the CLI version of OmegaDSToolkit, type help for all commands"+bC+"]"+r)
 
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~/CLI_BETA"+bC+"]─["+gC+"Menu"+bC+"]")
-        cli_main_page = str(input(bC+"└╼"+rC+"$ "+r))
-
-        if cli_main_page == "help":
+        command = str(input(bC+"└╼"+rC+"$ "+r))
+        while not command:
+            print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~/CLI_BETA"+bC+"]─["+gC+"Menu"+bC+"]")
+            command = str(input(bC+"└╼"+rC+"$ "+r))
+        
+        if command == "help":
             cli_helpmsg()
+            cls()
+            cli_main_page()
+        else:
+            print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+f"'{command}' is not a valid command"+bC+"]"+r)              # if the user enter a bad option (if the option type by the user are not recognized)
+
+        return command
 
 #-OmegaDSToolkit-main-page-------------------------------------------#
     def main_page():
@@ -789,29 +798,26 @@ try:
         print("                ["+bC+"exit"+r+"]"+gC+" Exit the ODST\n"  +r)
         print("ODST was not finish and he's totally in development!\n")
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"Menu"+bC+"]")
-        main_page_choice = str(input(bC+"└╼"+rC+"$ "+r))
+        command = str(input(bC+"└╼"+rC+"$ "+r))
 
-        global command
-        command = main_page_choice
-
-        if main_page_choice == "1":
+        if command == "1":
             cls()
             informationgathering_mainpage()
-        elif main_page_choice == "2":
+        elif command == "2":
             cls()
             wireless_mainpage()
-        elif main_page_choice == "3":
+        elif command == "3":
             cls()
             usefulltools_mainpage()
-        elif main_page_choice == "cli":
+        elif command == "cli":
             cls()
             cli_main_page()
-        elif main_page_choice == "help":
+        elif command == "help":
             cls()
             helpmsg()
-        elif main_page_choice == "exit":
+        elif command == "exit":
             exitodst()
-        elif not main_page_choice:
+        elif not command:
             error()
             cls()
             main_page()
@@ -819,6 +825,8 @@ try:
             invalid_option()
             cls()
             main_page()
+
+        return command
 
 #-END-OF-MAIN-PAGE---------------------------------------------------#
 
