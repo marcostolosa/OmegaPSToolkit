@@ -69,7 +69,6 @@ echo '+ ----------------------------------- +'
 echo '  Checking for internet connection...'
 echo '+ ----------------------------------- +'
 echo
-
 # First check of setup for internet connection by connecting to google over http
 wget -q --tries=10 --timeout=20 --spider http://google.com
 if [ $? -eq 0 ] 
@@ -77,14 +76,21 @@ then
     echo 'Internet status.......... Connected.'
     echo 'This tool will install Python3 and PIP3 on this PC to run OmegaDSToolkit.'
     read -p 'Do you want to continue? [Y/n] ' y_n
+
     if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ]
     then
         apt install python3 -y
         apt install python3-pip -y
-    echo
-    echo 'Done.'
-    echo
-    echo 'Python3 and PIP3 are now install on you PC. Now you can run the setup.py with "sudo python3 setup.py install".'
+
+        # Apply all rights
+        echo 'Apply all rights to files...'
+        chmod +xrw OmegaDSToolkit.py     # for the OmegaDSToolkitz
+        chmod +xrw setup.py              # for the SetupTool
+        chmod +xrw update.py             # for the UpdateTool
+        echo
+        echo 'Done.'
+        echo
+        echo 'Python3 and PIP3 are now install on you PC. Now you can run the setup.py with "sudo python3 setup.py install".'
     else
         echo 'Abort.'
     fi
@@ -92,5 +98,6 @@ else
     echo 'Internet status.......... Not connected.'
     echo 'Not Internet connexion found, please check you are connected to Internet and retry.'
     exit 0
+
 fi
 ####

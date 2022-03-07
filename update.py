@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ update.py                     [Update: 2022-03-07 | 11:51 AM] #
+#  Filename ~ update.py                     [Update: 2022-03-07 | 22:51 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -73,9 +73,10 @@ else:
         print("The update tool will be install the latest version of OmegaDSToolkit")
         yn = str(input("Do you want to continue? [Y/n] "))
 
-        while not yn:
-            yn = str(input("Do you want to continue? [Y/n] "))
         if yn != 'y' and yn != 'Y':
+            print("Abort.")
+            sys.exit()
+        elif not yn:
             print("Abort.")
             sys.exit()
         else:

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ colors.py                     [Update: 2022-03-07 | 14:21 PM] #
+#  Filename ~ colors.py                     [Update: 2022-03-04 | 14:21 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -82,6 +82,7 @@ except NameError:
     print()
     criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"
     exit(criticalmsg)
+
 ### The blues
 bC = fg('#1d89f3')      # blue
 bC2 = fg('#0B4D8F')     # dark blue

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ OmegaDSToolkit.py             [Update: 2022-03-07 | 14:24 PM] #
+#  Filename ~ OmegaDSToolkit.py             [Update: 2022-03-07 | 14:27 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -797,7 +797,7 @@ try:
         print("                ["+bC+"help"+r+"]"+gC+" Show the help message"  +r)
         print("                ["+bC+"exit"+r+"]"+gC+" Exit the ODST\n"  +r)
         print("ODST was not finish and he's totally in development!\n")
-        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"Menu"+bC+"]")
+        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"Menu"+bC+"]"+r)
         command = str(input(bC+"└╼"+rC+"$ "+r))
 
         if command == "1":
