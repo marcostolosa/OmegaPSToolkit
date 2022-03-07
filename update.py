@@ -33,12 +33,20 @@
 
 from functions import *
 
-if os.getuid() != 0:                                                            #   check if the user run update with root privilege
-    print("The OmegaDSToolkit's update tool could be run with root privilege")  #
-    print("Re-run the update.py with sudo")                                     #
-    print('Run "sudo python3 update.py"')                                       #
-    sys.exit()                                                                  #
-else:                                                                           #
+# heck if the user run update with root privilege
+try:
+    if os.getuid() != 0:
+        print("The OmegaDSToolkit's update tool could be run with root privilege") 
+        print("Re-run the update.py with sudo")
+        print('Run "sudo python3 update.py"')
+        sys.exit()
+
+# If the user tries to run ODST from a non-Linux machine
+except AttributeError:
+    print()
+    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+red+" You tried to run ODST on a no-linux machine, ODST can be run only on a Linux kernel"+reset#
+    exit(criticalmsg)
+else:
     print("Checking for Internet connection... ",end="")
     if connection() == True:
         print(lime+"Connected!"+reset)
