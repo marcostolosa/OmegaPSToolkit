@@ -1,5 +1,7 @@
+#!/usr/bin/python3
+
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ setup.py                      [Update: 2022-03-04 | 12:04 AM] #
+#  Filename ~ setup.py                      [Update: 2022-03-07 | 09:24 AM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -29,9 +31,21 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.              #
 #---------------------------------------------------------------------------#
 
-#!/usr/bin/python3
+import os,sys
+from setuptools import setup,find_packages
+from time import sleep
 
-from functions import *
+red = '\033[1;31m'
+lime = '\033[1;32m'
+reset = '\033[0m'
+
+def connection(host='https://google.com'):              #
+    import urllib.request                               #
+    try:                                                #
+        urllib.request.urlopen(host)                    #
+        return True                                     #
+    except:                                             #   Check if the user have an Internet connection
+        return False                                    #
 
 if os.getuid() != 0:                                                            #   check if the user run ODST with root privilege
     print("The OmegaDSToolkit's setup could be run with root privilege")        #
@@ -39,25 +53,26 @@ if os.getuid() != 0:                                                            
     print('Run "sudo python3 setup.py install"')                                #
     sys.exit()                                                                  #
 else:                                                                           #
-    print("Checking for Internet connection... ",end="")
+    print("Checking for Internet connection.......... ",end="")
     if connection() == True:
         print(lime+"Connected!"+reset)
         pass
     else:
-        print(red+"Not Internet\n"+reset+"connexion found, please check you are connected to Internet and retry!")
+        print(red+"Not Connected"+reset)
+        print("Not Internet connexion found, please check you are connected to Internet and retry!")
         sys.exit()
     try:
         print("The setup will install all pip packages that ODST needs ")
-        input("If you want to continue, press the [ENTER] to run the setup. Else press [CTRL + C] combination to exit the setup.")
+        input("If you want to continue, press the [ENTER] key to run the setup. Else press [CTRL + C] to exit the setup.")
         print()
         print("""
-    ███████╗███████╗████████╗██╗   ██╗██████╗ ████████╗ ██████╗  ██████╗ ██╗     
-    ██╔════╝██╔════╝╚══██╔══╝██║   ██║██╔══██╗╚══██╔══╝██╔═══██╗██╔═══██╗██║     
-    ███████╗█████╗     ██║   ██║   ██║██████╔╝   ██║   ██║   ██║██║   ██║██║     
-    ╚════██║██╔══╝     ██║   ██║   ██║██╔═══╝    ██║   ██║   ██║██║   ██║██║     
-    ███████║███████╗   ██║   ╚██████╔╝██║        ██║   ╚██████╔╝╚██████╔╝███████╗
-    ╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝        ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝""")    # Police = ANSI Shadow from https://www.coolgenerator.com/ascii-text-generator
-        print("~~~~~~~~~~~~~~~~~~~~~~~ Welcome to the ODST setuptool. ~~~~~~~~~~~~~~~~~~~~~~~")
+███████╗███████╗████████╗██╗   ██╗██████╗ ████████╗ ██████╗  ██████╗ ██╗
+██╔════╝██╔════╝╚══██╔══╝██║   ██║██╔══██╗╚══██╔══╝██╔═══██╗██╔═══██╗██║
+███████╗█████╗     ██║   ██║   ██║██████╔╝   ██║   ██║   ██║██║   ██║██║
+╚════██║██╔══╝     ██║   ██║   ██║██╔═══╝    ██║   ██║   ██║██║   ██║██║
+███████║███████╗   ██║   ╚██████╔╝██║        ██║   ╚██████╔╝╚██████╔╝███████╗
+╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝        ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝""")    # Police = ANSI Shadow from https://www.coolgenerator.com/ascii-text-generator
+        print("~~~~~~~~~~~~~~~~~~~~~~ Welcome to the ODST setuptool. ~~~~~~~~~~~~~~~~~~~~~~")
         sleep(1.2)
         print()
         requirements = ["requests"]
