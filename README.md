@@ -8,7 +8,7 @@
 [![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-brightgreen?style=flat-square)]()
 [![Licence](https://img.shields.io/badge/License-GNU%20GPL--3.0-important?style=flat-square)]()
 [![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow?style=flat-square)]()
-> >  ### _**A massive penetration testing toolkit**_
+> > ### _**A massive penetration testing toolkit**_
 > 
 > ## **About OmegaDSToolkit**
 > _**`The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL !`**_
@@ -31,48 +31,40 @@
 >   * UTools (UsefullTools made by me),
 >   * _**And more**_
 > 
-> ## **Requirement**
-> What you need to install before use ODST (Linux commands):
->  * ### **Python 3** or later.
->       ```bash
->       sudo apt update & sudo apt upgrade -y     # Update and upgrade your system, if doesn't update,
->       sudo apt install python3                  # Install Python3
->       ```
->  * ### **PIP3**
->       ```bash
->       sudo apt update & sudo apt upgrade -y     # Update and upgrade your system, if doesn't update,
->       sudo apt install python3-pip              # Install pip3
->       ```
 >
 > ## **Installation**
 > Instructions to install ***OmegaDSToolkit***... (Linux commands)
 > 
->* _Step 1_ : **Clone** the repositories,
+> * _Step 1_ : **Clone** the repositories with:
 >   ```bash
 >   sudo git clone https://github.com/MyMeepSQL/OmegaDSToolkit.git
 >   ```
-> * _Step 2_ : Go to the **OmegaDSToolkit repositories folder**,
+> * _Step 2_ : Go to the **OmegaDSToolkit repositories folder** with:
 >   ```bash
 >   cd OmegaDSToolkit
 >   ```
-> * _Step 3_ : Run the "**setup.py**" for install all _pip modules_ that you must have,
+> * _Step 3_ : To install **Python3** and **PIP3**, run the "install.sh" with:
+>   ```bash
+>   sudo ./install.sh
+>   ```
+> * _Step 4_ : Run the "**setup.py**" for install all _pip modules_ that you must have with:
 >   ```bash
 >   sudo python3 setup.py install
 >   ```
-> * _Step 4_ : Run the **OmegaDSToolkit** with:
+> * _Step 5_ : Run the **OmegaDSToolkit** with:
 >   ```bash
 >   sudo python3 OmegaDSToolkit.py          # To start ODST, you must be in its directory
 >   ``` 
-> ## **Update**
-> To download the latest version of OmegaDSToolkit and the SetupTool.
-> * Run the "update.py" like:
->   ```bash
->   sudo python3 OmegaDSToolkit.py
->   ```
+>>## **Update**
+>>To download the latest version of OmegaDSToolkit and the SetupTool.
+>>* Run the "update.py" with:
+>>   ```bash
+>>   sudo python3 update.py
+>>   ```
 > ## Tool overview
 > | The main page | 
 > | ------------- | 
-> | ![menu](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/Screens/odst_main_page.PNG)  |
+> | ![menu](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/Screens/odst_main_page.png)  |
 > 
 > ## Changelog
 > All new changes compared to _**OmegaDSToolkit**_ can be found _[here](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/CHANGLOG.md)_
