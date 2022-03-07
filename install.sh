@@ -73,7 +73,7 @@ echo
 wget -q --tries=10 --timeout=20 --spider http://google.com
 if [ $? -eq 0 ] 
 then
-    echo 'Internet status.......... Connected.'
+    echo 'Internet status.......... '"$lime"'Connected.'"$reset"
     echo 'This tool will install Python3 and PIP3 on this PC to run OmegaDSToolkit.'
     read -p 'Do you want to continue? [Y/n] ' y_n
 
@@ -95,9 +95,8 @@ then
         echo 'Abort.'
     fi
 else
-    echo 'Internet status.......... Not connected.'
+    echo 'Internet status.......... '"$red"'Not connected.'"$reset"
     echo 'Not Internet connexion found, please check you are connected to Internet and retry.'
     exit 0
-
 fi
 ####
