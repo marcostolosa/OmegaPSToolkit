@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ functions.py                  [Update: 2022-03-04 | 12:01 AM] #
+#  Filename ~ functions.py                  [Update: 2022-03-04 | 14:22 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
