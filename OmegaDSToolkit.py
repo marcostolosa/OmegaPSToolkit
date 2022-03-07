@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ OmegaDSToolkit.py             [Update: 2022-03-04 | 11:47 AM] #
+#  Filename ~ OmegaDSToolkit.py             [Update: 2022-03-07 | 09:23 AM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -31,29 +31,41 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.              #
 #---------------------------------------------------------------------------#
 
-from functions import *
+import os, sys
+from time import sleep
 
-def invalid_option():
-    print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+f"'{command}' is not a valid command"+bC+"]"+r)              # if the user enter a bad option (if the option type by the user are not recognized)
-    input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to continue"+bC+"]"+r)                    #
+try:
+    from functions import *
+    from colors import *
+except ModuleNotFoundError:
+    print()
+    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"
+    exit(criticalmsg)
+except ImportError:
+    print()
+    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"
+    exit(criticalmsg)
+except NameError:
+    print()
+    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"
+    exit(criticalmsg)
 
 #-Check module is installed------------------------------------------#
-
 #########################################################################
-if os.getuid() != 0:                                                    #   Check if the user run ODST with root privilege
-    print("OmegaDSToolkit could be run with root privilege")            #
-    print("Re-run the OmegaDSToolkit with sudo")                        #
-    print('Run "sudo python3 OmegaDSToolkit.py"')                       #
-    sys.exit()                                                          #
+try:                                                                    #
+    if os.getuid() != 0:                                                #   Check if the user run ODST with root privilege
+        print("OmegaDSToolkit could be run with root privilege")        #
+        print("Re-run the OmegaDSToolkit with sudo")                    #
+        print('Run "sudo python3 OmegaDSToolkit.py"')                   #
+        sys.exit()                                                      #
+except AttributeError:                                                  #
+    print()                                                             ############################################################
+    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+red+" You tried to run ODST on a no-linux machine, ODST can be run only on a Linux kernel"+reset#
+    exit(criticalmsg)                                                   ############################################################
 else:                                                                   #
     cls()                                                               ############################# checking if modules are installed
-    version = underscore+"0.0.1.3"                                                                  #
     sys.stdout.write("\x1b]2;Checking if all modules are [OK]\x07")                                 #
     try:                                                                                            #
-        if connection() == True:                                                                    #
-            connectionstatus = (lime+"Connected"+reset)                                             #
-        else:                                                                                       #
-            connectionstatus = (red+"No Internet"+reset)                                            #
         print(white+underscore+"Checking if the current modules of ODST are installed..."+reset)    #
         print()                                                                                     #
         sleep(1.5)                                                                                  #
@@ -73,58 +85,37 @@ else:                                                                   #
         print(blue+"["+lime+"OK"+blue+"]"+ghostwhite+"         All modules are install !"+reset)    #
         print(blue+"["+red+">>"+blue+"]"+ghostwhite+"         Launching of ODST..."+reset)          #
         sleep(0.8)                                                                                  #
+        version = underscore+"0.0.1.3"+reset                                                        #
+        cli_version = underscore+"0.0.0.4"+reset                                                    #
+        if connection() == True:                                                                    #
+            connectionstatus = (lime+"Connected"+reset)                                             #
+        else:                                                                                       #
+            connectionstatus = (red+"No Internet"+reset)                                            #
     except KeyboardInterrupt:                                                                       #
         print()                                                                                     #
-        abortmsg = blue+"["+red+"ERROR"+blue+"]"+ghostwhite+"      User aborted"                    #
+        abortmsg = blue+"["+red+"ERROR"+blue+"]"+ghostwhite+"      User aborted\n"                  #
         exit(abortmsg)                                                                              #
-    except ImportError:                                                                             ###############################################
-        criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it"#
-        exit(criticalmsg)                                                    ######################################################################
-##############################################################################
+    except ModuleNotFoundError:                                                                     #
+        print()                                                                                     ##########################################################################
+        criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"#
+        exit(criticalmsg)                                                                                                                                                    #
+    except ImportError:                                                                                                                                                      #
+        print()                                                                                                                                                              #
+        criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"#
+        exit(criticalmsg)                                                                                                                                                    #
+    except NameError:                                                                                                                                                        #
+        print()                                                                                                                                                              #
+        criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"#
+        exit(criticalmsg)                                                                                                                                                    #
+##############################################################################################################################################################################
 
 #-END-OF-MODULES-CHECKER---------------------------------------------#
 
 #-Fonctions----------------------------------------------------------#
 try:
-    def exitodst():
-        print(bC+"["+gC+"Goodby"+bC+"]"+r)
-        exit()
-
-    def error():
-        print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+"Choose a option"+bC+"]"+r)                  # if the user doesn't choose option
-        input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to continue"+bC+"]"+r)    #
-
     def invalid_option():
-        print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+f"'{command}' is not a valid command"+bC+"]"+r)                   # if the user enter a bad option (if the option type by the user are not recognized)
-        input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to continue"+bC+"]"+r)    #
-        
-    def y_or_n_error():
-        print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+"Chose y or n"+bC+"]"+r)                     # If the user does not choose "y" or "n"
-        input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to retry"+bC+"]"+r)       #
-
-    def cli_helpmsg():
-        print()
-        print("All commands of the OmegaDSToolkit you can use is the main page\n")
-        print("""COMMAND:
-        1           :   Go to the Information Gathering page
-        2           :   Go to the Wireless Tools page
-        3           :   Go to the Usefull tools page
-        cli         :   Use the OmegaDSToolkit like a CLI
-        help        :   Print this help message
-        exit        :   Exit the OmegaDSToolkit
-        """)
-
-    def helpmsg():
-        print()
-        print("All commands of the OmegaDSToolkit you can use is the main page\n")
-        print("""COMMAND:
-        1           :   Go to the Information Gathering page
-        2           :   Go to the Wireless Tools page
-        3           :   Go to the Usefull tools page
-        cli         :   Use the OmegaDSToolkit like a CLI
-        help        :   Print this help message
-        exit        :   Exit the OmegaDSToolkit
-        """)
+        print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+f"'{command}' is not a valid command"+bC+"]"+r)              # if the user enter a bad option (if the option type by the user are not recognized)
+        input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to continue"+bC+"]"+r)                    #
 
 #-End-of-functions-section-------------------------------------------#
 
@@ -305,8 +296,8 @@ try:
         print(bC+"        ║"+r)
         print(bC+"        ╟──────"+gC+"►"+bC2+" Created by       ::"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
         print(bC+"        ╟──────"+gC+"►"+bC2+" Codename         :: @"+rC+"MyMeepSQL"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Version          :: v"+rC+"0.0.3"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  :: "+rC+f"{connection}"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Version          :: v"+rC+"0.1.0"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  :: "+rC+f"{connectionstatus}"+r)
         print(bC+"        ║"+r)
         print(bC+"        ╚══════╗"  )
         print(bC+"               ╟────"+gC+"► "+r+"["+bC+"1"+r+"]"+gC+"     Ping (Just check if the destination is responding)"+r)
@@ -354,7 +345,7 @@ try:
         print(bC+"        ╟──────"+gC+"►"+bC2+" Created by       ::"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
         print(bC+"        ╟──────"+gC+"►"+bC2+" Codename         :: @"+rC+"MyMeepSQL"+r)
         print(bC+"        ╟──────"+gC+"►"+bC2+" Version          :: v"+rC+"0.0.8"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  :: "+rC+f"{connection}"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  :: "+rC+f"{connectionstatus}"+r)
         print(bC+"      ╔═╝"+r)
         print(bC+"      ╚════════════════════════════════════════════════════════════════════════════════════╗"+r)
         print("         Write a domain for look the IP he used (type 'exit' for exit the NSLookup tool)"+bC+"   ║"+r)
@@ -368,7 +359,8 @@ try:
             if connection() == True:
                 try:
                     import socket
-                    addresse = socket.gethostbyname(domain)
+                    addresse = socket.gethostbyname_ex(domain)
+                    addresse2 = socket.gethostbyaddr(domain)
                     print()
                     print(bC+"  ╔══════════════════════╗")
                     print(bC+"  ║   "+r+"NSLookup respond"+bC+"   ║")
@@ -376,6 +368,7 @@ try:
                     print("╔══════╝"+r)
                     print(bC+"╟──────"+gC+"►"+bC2+" Name    :"+rC+f" {domain}")
                     print(bC+"╙──────"+gC+"►"+bC2+" Adresse :"+rC+f" {addresse}")
+                    print(bC+"╙──────"+gC+"►"+bC2+" Adresse :"+rC+f" {addresse2}")
                     print()
                     input(bC+"["+rC2+"-"+bC+"]"+bC+"-["+gC+"Press [ENTER] key to write an another domain for nslookup"+bC+"]"+r)
                     usefulltools_networkC_nslookup()
@@ -418,7 +411,7 @@ try:
         print(bC+"        ╟──────"+gC+"►"+bC2+" Created by       ::"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
         print(bC+"        ╟──────"+gC+"►"+bC2+" Codename         :: @"+rC+"MyMeepSQL"+r)
         print(bC+"        ╟──────"+gC+"►"+bC2+" Version          :: v"+rC+"0.0.9"+r)
-        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  :: "+rC+f"{connection}"+r)
+        print(bC+"        ╟──────"+gC+"►"+bC2+" Internet Status  :: "+rC+f"{connectionstatus}"+r)
         print(bC+"      ╔═╝"+r)
         print(bC+"      ╚════════════════════════════════════════════════════════╗"+r)
         print("         Write an IP to ping it, press CTRL + C for stop the "+bC+"  ║"+r)
@@ -722,19 +715,19 @@ try:
 #-OmegaDSToolkit-CLI-main-page---------------------------------------#
     def cli_main_page():
         import sys                                                                                      # Title page
-        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/\x07")                                          #
-        print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+gC+"    _____                   ____  _____ _____         _ _   _ _"  +r)                                 # Police = rectangle
-        print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+gC+"   |     |_____ ___ ___ ___|    \|   __|_   _|___ ___| | |_|_| |_"  +r)                               #
-        print(bC+"        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM "+gC+"   |  |  |     | -_| . | .'|  |  |__   | | | | . | . | | '_| |  _|"  +r)                              #
-        print(bC+"        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM "+gC+"   |_____|_|_|_|___|_  |__,|____/|_____| |_| |___|___|_|_,_|_|_|   "+gC+"v"+rC+f"{version}"+r)        #
+        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/CLI_BETA\x07")                                  #
+        print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+gC+"    _____                   ____  _____ _____         _ _   _ _"  +r)                                                  # Police = rectangle
+        print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+gC+"   |     |_____ ___ ___ ___|    \|   __|_   _|___ ___| | |_|_| |_"  +r)                                                #
+        print(bC+"        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM "+gC+"   |  |  |     | -_| . | .'|  |  |__   | | | | . | . | | '_| |  _|"  +r)                                               #
+        print(bC+"        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM "+gC+"   |_____|_|_|_|___|_  |__,|____/|_____| |_| |___|___|_|_,_|_|_|   "+gC+"v"+rC+f"{cli_version} "+bC+"["+rC+"BETA"+bC+"]"+r)  #
         print(bC+"        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM "+bC+" ╓─────────────────"+gC+"|___|"+bC+"─────────────────────────────────────────────────────"+gC+"►"  +r)
         print(bC+"        MMMMMNo.    :dNMMMMMMMMMMMNo`   `/dMMMMM "+bC+" ║"  +r)
         print(bC+"        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM "+bC+" ║     "+r+"OmegaDSToolkit factory for penetration testing"+r)
         print(bC+"        MMMy`     sMMMMMMMMMMMMMMMMMMm`     /MMM "+bC+" ║"  +r)
         print(bC+"        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM "+bC+" ╚════╗"  +r)
         print(bC+"        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Created by"+reset+bC2+"       ::"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
-        print(bC+"        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Version"+reset+bC2+"          :: v"+rC+f"{version}"+r)
-        print(bC+"        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Internet Status"+reset+bC2+"  ::"+rC+f" {connection}"+r)
+        print(bC+"        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Version"+reset+bC2+"          :: v"+rC+f"{cli_version}"+r)
+        print(bC+"        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Internet Status"+reset+bC2+"  ::"+rC+f" {connectionstatus}"+r)
         print(bC+"        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM "+bC+"      ╟────╥─"+gC+"► "+bC2+underscore+"Codename"+reset+bC2+"         :: @"+rC+"MyMeepSQL or "+bC2+"@"+bC2+"th300905"+r)
         print(bC+"        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM "+bC+"      ║"+bC+"    ╙───────────────────"+gC+"►"+bC2+rC+"  The "+bC2+underscore+"seconde"+reset+rC+" codename is also mine"+r)
         print(bC+"        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM "+bC+"      ╚════════╗"  +r) 
@@ -743,22 +736,19 @@ try:
         print(bC+'        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o '+bC+"               ║"+gC+"             Welcome to the OmegaDSToolkit (ODST)."+r)
         print(bC+"        N               hMMMMMMM`              o "+bC+'               ║'+gC+' The toolkit which includes a set of penetration testing tools.'+r)
         print(bC+"        M               yMMMMMMM               s "+bC+"               ║"+r)
-        print(bC+"        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM "+bC+"               ║         "+rC+r+italic+"The OmegaDSToolkit is a product of © Delta_Society™"+reset+r)
+        print(bC+"        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM "+bC+"               ║      "+rC+r+italic+"The OmegaDSToolkit is a product of © Delta_Society™"+reset+r)
         print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+bC+"               ║"+r) ##????## Date | Time : {here i want to make a digital clock in real time if enyone know how to make it, please contact me}
         print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+bC+"               ║"+r)
         print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+bC+"               ║                        "+ghostwhite+underscore+"SELECT AN OPTION"+reset)
         print()
         print()
         print(bC+"["+gC+"This is the CLI version of OmegaDSToolkit, type help for all commands"+bC+"]"+r)
-        
-        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"/cli"+bC+"]─["+gC+"Menu"+bC+"]")
+
+        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~/CLI_BETA"+bC+"]─["+gC+"Menu"+bC+"]")
         cli_main_page = str(input(bC+"└╼"+rC+"$ "+r))
-            
+
         if cli_main_page == "help":
             cli_helpmsg()
-            
-
-
 
 #-OmegaDSToolkit-main-page-------------------------------------------#
     def main_page():
@@ -776,7 +766,7 @@ try:
         print(bC+"        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM "+bC+" ╚════╗"  +r)
         print(bC+"        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Created by"+reset+bC2+"       ::"+rC+" Thomas Pellissier"+bC2+" (from © Delta_Society™)"+r)
         print(bC+"        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Version"+reset+bC2+"          :: v"+rC+f"{version}"+r)
-        print(bC+"        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Internet Status"+reset+bC2+"  ::"+rC+f" {connection}"+r)
+        print(bC+"        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM "+bC+"      ╟──────"+gC+"► "+bC2+underscore+"Internet Status"+reset+bC2+"  ::"+rC+f" {connectionstatus}"+r)
         print(bC+"        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM "+bC+"      ╟────╥─"+gC+"► "+bC2+underscore+"Codename"+reset+bC2+"         :: @"+rC+"MyMeepSQL or "+bC2+"@"+bC2+"th300905"+r)
         print(bC+"        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM "+bC+"      ║"+bC+"    ╙───────────────────"+gC+"►"+bC2+rC+"  The "+bC2+underscore+"seconde"+reset+rC+" codename is also mine"+r)
         print(bC+"        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM "+bC+"      ╚════════╗"  +r) 
@@ -785,7 +775,7 @@ try:
         print(bC+'        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o '+bC+"               ║"+gC+"             Welcome to the OmegaDSToolkit (ODST)."+r)
         print(bC+"        N               hMMMMMMM`              o "+bC+'               ║'+gC+' The toolkit which includes a set of penetration testing tools.'+r)
         print(bC+"        M               yMMMMMMM               s "+bC+"               ║"+r)
-        print(bC+"        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM "+bC+"               ║         "+rC+r+italic+"The OmegaDSToolkit is a product of © Delta_Society™"+reset+r)
+        print(bC+"        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM "+bC+"               ║      "+rC+r+italic+"The OmegaDSToolkit is a product of © Delta_Society™"+reset+r)
         print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+bC+"               ║"+r) ##????## Date | Time : {here i want to make a digital clock in real time if enyone know how to make it, please contact me}
         print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+bC+"               ║"+r)
         print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+bC+"               ║                        "+ghostwhite+underscore+"SELECT AN OPTION"+reset)
@@ -794,7 +784,7 @@ try:
         print("                ["+bC+"1"+r+"]"+gC+"    Information Gathering tools"  +r)
         print("                ["+bC+"2"+r+"]"+gC+"    Wireless tools"  +r)
         print("                ["+bC+"3"+r+"]"+gC+"    Useful tools (UT)"  +r)
-        print("                ["+bC+"cli"+r+"]"+gC+"  Command Line Interpeter"  +r)
+        print("                ["+bC+"cli"+r+"]"+gC+"  Use ODST like a Command Line Interpeter "+bC+"["+rC+"BETA"+bC+"]"+r)
         print("                ["+bC+"help"+r+"]"+gC+" Show the help message"  +r)
         print("                ["+bC+"exit"+r+"]"+gC+" Exit the ODST\n"  +r)
         print("ODST was not finish and he's totally in development!\n")
