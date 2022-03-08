@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ setup.py                      [Update: 2022-03-07 | 14:21 PM] #
+#  Filename ~ setup.py                      [Update: 2022-03-08 | 15:00 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -87,7 +87,7 @@ else:
             print("Not Internet connexion found, please check you are connected to Internet and retry.")
             sys.exit()
 
-        print("The setup will install all pip packages that ODST needs ")
+        print('The setup will install all pip packages that ODST needs and copy the OemgaDSToolkit path to "/usr/share/OmegaDSToolkit"')
         yn = str(input("Do you want to continue? [Y/n] "))
 
         if yn != 'y' and yn != 'Y':
@@ -122,20 +122,28 @@ else:
             license='GNU-GPL-3.0',
             keywords="omegadstoolkit",
             version='0.0.1.3',
-            python_requires='>3.1.0',
+            python_requires='>=3.1.0',
             packages=find_packages(),
             zip_safe=False,
             include_package_data=True,
+            scripts=['osint/osint'],    
             install_requires=[
-                'progress', 'colored', 'nslookup', 'keyboard',
-                'pythonping'
+                'progress', 'colored'
             ],
         )
-        print()
-        print("<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~>")
-        print(' Done! All packages are install, now you can run OmegaDSToolkit with "sudo python3 OmegaDSToolkit.py" ')
-        print("<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~>")
+        
+        
+        print('Copy the OmegaDSToolkit to "/usr/share/OmegaDSToolkit"')
+        os.system("cd ..'")
+        os.system("cp OmegaDSToolkit /usr/share/OmegaDSToolkit")
 
+        print('Create the alias "omegadstoolkit"')
+        # make the alias for run odst just by typing "omegadstoolkit"
+        os.system("alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'")
+        print()
+        print("+ ----------------------------------------------------------------------------------------------------------------------------- +")
+        print(' Done! All packages are install, now you can run OmegaDSToolkit with "sudo omegadstoolkit" (you can run omegadstoolkit anywhere) ')
+        print("+ ----------------------------------------------------------------------------------------------------------------------------- +")
 
     except KeyboardInterrupt:
         print()
