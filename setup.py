@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ setup.py                      [Update: 2022-03-08 | 15:00 PM] #
+#  Filename ~ setup.py                      [Update: 2022-03-08 | 15:09 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -125,20 +125,23 @@ else:
             python_requires='>=3.1.0',
             packages=find_packages(),
             zip_safe=False,
-            include_package_data=True, 
+            include_package_data=True,
             install_requires=[
                 'progress', 'colored'
             ],
         )
         
+        print('Create OmegaDSToolkit folder to "/usr/share/OmegaDSToolkit"')
+        os.system("sudo mkdir /usr/share/OmegaDSToolkit")
+        print("Done for the folder\n")
         
         print('Copy the OmegaDSToolkit to "/usr/share/OmegaDSToolkit"')
-        os.system("cd ..'")
-        os.system("cp OmegaDSToolkit /usr/share/OmegaDSToolkit")
+        os.system("sudo cp * /usr/share/OmegaDSToolkit")
+        print("Done for the OmegaDSToolkit's copy\n")
 
         print('Create the alias "omegadstoolkit"')
         # make the alias for run odst just by typing "omegadstoolkit"
-        os.system("alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'")
+        os.system("sudo alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'")
         print()
         print("+ ----------------------------------------------------------------------------------------------------------------------------- +")
         print(' Done! All packages are install, now you can run OmegaDSToolkit with "sudo omegadstoolkit" (you can run omegadstoolkit anywhere) ')
