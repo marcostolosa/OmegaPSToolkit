@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ install.sh                    [Update: 2022-03-07 | 22:09 PM] #
+#  Filename ~ install.sh                    [Update: 2022-03-08 | 11:30 AM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -48,10 +48,10 @@ fi
 
 # Check if user have root privileges
 if [ $(id -u) != "0" ]; then
-echo 'The InstallTool could be run with root privilege.'
-echo 'Re-run the install.sh with sudo'
-echo 'Run sudo "sudo ./install.sh"';
-exit 0
+    echo 'The InstallTool could be run with root privilege.'
+    echo 'Re-run the install.sh with sudo'
+    echo 'Run sudo "sudo sh install.sh"';
+    exit 0
 fi
 ####
 
@@ -79,6 +79,7 @@ then
 
     if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ]
     then
+        apt update -y
         apt install python3 -y
         apt install python3-pip -y
 
