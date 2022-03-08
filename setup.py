@@ -125,8 +125,7 @@ else:
             python_requires='>=3.1.0',
             packages=find_packages(),
             zip_safe=False,
-            include_package_data=True,
-            scripts=['osint/osint'],    
+            include_package_data=True, 
             install_requires=[
                 'progress', 'colored'
             ],
