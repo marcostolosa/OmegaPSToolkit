@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ setup.py                      [Update: 2022-03-08 | 18:50 PM] #
+#  Filename ~ setup.py                      [Update: 2022-03-12 | 12:26 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -153,7 +153,7 @@ else:
         print("Done for the OmegaDSToolkit's copy.\n")
 
         print('Create the alias "sudo " and "omegadstoolkit"...')
-        user = str(input("Type your current usernme (not the root user): "))
+        user = str(input("Type your current usernme: "))
         # make the alias for run odst just by typing "omegadstoolkit" to the current user ".bashrc" (home)
         if user != "root":
             print(f"You username : {user} (not root user)")
