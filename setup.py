@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ setup.py                      [Update: 2022-03-08 | 15:09 PM] #
+#  Filename ~ setup.py                      [Update: 2022-03-08 | 18:50 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -32,7 +32,6 @@
 #---------------------------------------------------------------------------#
 
 # Import Section
-import urllib.request
 import os,sys
 from setuptools import setup,find_packages
 from time import sleep
@@ -43,6 +42,17 @@ red = '\033[1;31m'
 lime = '\033[1;32m'
 blue = '\033[1;34m'
 reset = '\033[0m'
+####
+
+# Check if the user have a Internet connexion
+import urllib.request
+def connection(host='https://google.com'):              #
+    import urllib.request                               #
+    try:                                                #
+        urllib.request.urlopen(host)                    #
+        return True                                     #
+    except:                                             #
+        return False                                    #
 ####
 
 # The SetupTool
@@ -73,13 +83,16 @@ else:
         print("  Checking for internet connection...")
         print("+ ----------------------------------- +")
         print()
-        try:
-            urllib.request.urlopen('https://google.com')
-            connection = True
-        except:
-            connection =  False
 
-        if connection == True:
+
+                
+        # try:
+        #     urllib.request.urlopen('http://google.com')
+        #     connection = True
+        # except:
+        #     connection =  False
+
+        if connection() == True:
             print("Internet status.......... "+lime+"Connected"+reset)
             pass
         else:
@@ -130,25 +143,93 @@ else:
                 'progress', 'colored'
             ],
         )
-        
-        print('Create OmegaDSToolkit folder to "/usr/share/OmegaDSToolkit"')
-        os.system("sudo mkdir /usr/share/OmegaDSToolkit")
-        print("Done for the folder\n")
-        
-        print('Copy the OmegaDSToolkit to "/usr/share/OmegaDSToolkit"')
-        os.system("sudo cp * /usr/share/OmegaDSToolkit")
-        print("Done for the OmegaDSToolkit's copy\n")
 
-        print('Create the alias "omegadstoolkit"')
-        # make the alias for run odst just by typing "omegadstoolkit"
-        os.system("sudo alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'")
+        print('Create OmegaDSToolkit folder to "/usr/share/OmegaDSToolkit"...')
+        os.system("sudo mkdir /usr/share/OmegaDSToolkit")
+        print("Done for the folder.\n")
+
+        print('Copy the OmegaDSToolkit to "/usr/share/OmegaDSToolkit"...')
+        os.system("sudo cp -r * /usr/share/OmegaDSToolkit")
+        print("Done for the OmegaDSToolkit's copy.\n")
+
+        print('Create the alias "sudo " and "omegadstoolkit"...')
+        user = str(input("Type your current usernme (not the root user): "))
+        # make the alias for run odst just by typing "omegadstoolkit" to the current user ".bashrc" (home)
+        if user != "root":
+            print(f"You username : {user} (not root user)")
+            print(f"Writing alias into your /home/{user}/.bashrc")
+
+            # # For remove the alias if already exist
+            # with open(f"/home/{user}/.bashrc", "r") as fp:
+            #     lines = fp.readlines()
+
+            # # Delete text "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py"
+            # with open(f"/home/{user}/.bashrc", "w") as fp:
+            #     for line in lines:
+            #         if line.strip("\n") != "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'":
+            #             fp.write(line)
+
+            # # Delete text "alias sudo='sudo '"
+            # with open(f"/home/{user}/.bashrc", "w") as fp:
+            #     for line in lines:
+            #         if line.strip("\n") != "alias sudo='sudo ''":
+            #             fp.write(line)
+
+            # Writing the alias
+            alias =["alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n", "alias sudo='sudo '\n"]
+            with open(f"/home/{user}/.bashrc", "a") as aliasfile:
+                # Writing data to a file
+                aliasfile.writelines(alias)
+            with open(f"/home/{user}/.zshrc", "a") as aliasfile:
+                # Writing data to a file
+                aliasfile.writelines(alias)
+
+            ## write to the "/root/.bashrc"
+            root_alias = "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n"
+            with open("/root/.bashrc", "a") as aliasfile:
+                # Writing data to a file
+                aliasfile.writelines(root_alias)
+        else:
+            # make the alias for run odst just by typing "omegadstoolkit" to the root user ".bashrc" (root)
+            print(f"You username : {user} (root)")
+            print(f'Writing alias into your "/root/.bashrc"')
+
+            # For remove the alias if already exist
+            # with open("/root/.bashrc", "r") as fp:
+            #     lines = fp.readlines()
+
+            # # Delete text "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py"
+            # with open("/root/.bashrc", "w") as fp:
+            #     for line in lines:
+            #         if line.strip("\n") != "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'":
+            #             fp.write(line)
+
+            ## write to the "/root/.bashrc"
+            root_alias = "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n"
+            with open("/root/.bashrc", "a") as aliasfile:
+                # Writing data to a file
+                aliasfile.writelines(root_alias)
+            with open("/root/.zshrc", "a") as aliasfile:
+                # Writing data to a file
+                aliasfile.writelines(root_alias)
+
+        print("Done for alias'.")
+
         print()
-        print("+ ----------------------------------------------------------------------------------------------------------------------------- +")
-        print(' Done! All packages are install, now you can run OmegaDSToolkit with "sudo omegadstoolkit" (you can run omegadstoolkit anywhere) ')
-        print("+ ----------------------------------------------------------------------------------------------------------------------------- +")
+        print("All done.")
+        print()
+
+        print("+ --------------------------------------------------------------------------------------------------------------------------------- +")
+        print('   Done! All packages are install, now you can run OmegaDSToolkit with "sudo omegadstoolkit" (you can run omegadstoolkit anywhere) ')
+        print("+ --------------------------------------------------------------------------------------------------------------------------------- +")
+
+    except EOFError:
+        print()
+        print("Abort.")
+        sys.exit()
 
     except KeyboardInterrupt:
         print()
         print("Abort.")
         sys.exit()
-####
+###
