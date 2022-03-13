@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ setup.py                      [Update: 2022-03-13 | 17:32 PM] #
+#  Filename ~ setup.py                      [Update: 2022-03-13 | 17:00 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -174,9 +174,9 @@ else:
             print()
             print()
 
-            print("+ -- --=[----------------------------------------------------]")
-            print("+ -- --=[  Create the alias \"sudo \" and \"omegadstoolkit\"...  ]")
-            print("+ -- --=[----------------------------------------------------]")
+            print("+ -- --=[------------------------------------------------------------------]")
+            print("+ -- --=[  Create the alias \"sudo \", \"omegadstoolkit\" and \"odstupdate\"...  ]")
+            print("+ -- --=[------------------------------------------------------------------]")
 
             print()
 
