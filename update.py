@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ update.py                     [Update: 2022-03-13 | 14:40 PM] #
+#  Filename ~ update.py                     [Update: 2022-03-13 | 16:40 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -31,8 +31,13 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.              #
 #---------------------------------------------------------------------------#
 
+# Import section
+import sys
 from time import sleep
 from functions import *
+####
+
+version = "v1.7"
 
 def updatetool():
     # heck if the user run update with root privilege
@@ -50,20 +55,20 @@ def updatetool():
         exit(criticalmsg)
     else:
         try:
-            print("""
-    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗████████╗ ██████╗  ██████╗ ██╗
-    ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝╚══██╔══╝██╔═══██╗██╔═══██╗██║
-    ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗     ██║   ██║   ██║██║   ██║██║
-    ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝     ██║   ██║   ██║██║   ██║██║
-    ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗   ██║   ╚██████╔╝╚██████╔╝███████╗
-     ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝   ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝v1.7""")   # Police = ANSI Shadow from https://www.coolgenerator.com/ascii-text-generator
+            print(f"""
+██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗████████╗ ██████╗  ██████╗ ██╗
+██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝╚══██╔══╝██╔═══██╗██╔═══██╗██║
+██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗     ██║   ██║   ██║██║   ██║██║
+██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝     ██║   ██║   ██║██║   ██║██║
+╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗   ██║   ╚██████╔╝╚██████╔╝███████╗
+ ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝   ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝ {version}""")   # Police = ANSI Shadow from https://www.coolgenerator.com/ascii-text-generator
             print("+ ------------------- !* UpdateTool for OmegaDSToolkit  *! ------------------- +")
             print()
             print("+ ----------------------------------- +")
             print("  Checking for internet connection...")
             print("+ ----------------------------------- +")
             print()
-            
+
             if connection() == True:
                 print("Internet status.......... "+lime+"Connected"+reset)
                 pass
@@ -84,58 +89,107 @@ def updatetool():
             else:
                 pass
 
-            print("+ -- --=[  Remove the current OmegaDSToolkit, setup and install tools...  ]")
+            # Removing the current local OmegaDSToolkit, SetupTool and InstallTool
+            print("+ -- --=[-------------------------------------------------------------------]")
+            print("+ -- --=[  Remove the current OmegaDSToolkit, SetupTool and InstallTool...  ]")
+            print("+ -- --=[-------------------------------------------------------------------]")
             os.system("rm -f /usr/share/OmegaDSToolkit/OmegaDSToolkit.py")
             os.system("rm -f /usr/share/OmegaDSToolkit/setup.py")
             os.system("rm -f /usr/share/OmegaDSToolkit/install.sh")
+            print("+ -- --=[--------------------]")
             print("+ -- --=[  Remove complete.  ]")
+            print("+ -- --=[--------------------]")
             sleep(1)
+
+            print()
+            print()
+
+            os.system("cd /usr/share/OmegaDSToolkit/")
             # For OmegaDSToolkit
+            print("+ -- --=[----------------------------------------------------]")
             print("+ -- --=[  Download the latest version of OmegaDSToolkit...  ]")
-            ## Removing the current local OmegaDSToolkit
-            os.system("rm -f OmegaDSToolkit.py")
+            print("+ -- --=[----------------------------------------------------]")
+            print()
             ## Download OmegaDSToolkit with wget from github raw
             os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/OmegaDSToolkit.py")
-            print("+ -- --=[  Done for OmegaDSToolkit,  ]\n")
+            print()
+            print("+ -- --=[----------------------------]")
+            print("+ -- --=[  Done for OmegaDSToolkit.  ]")
+            print("+ -- --=[----------------------------]")
+            sleep(1)
 
+            print()
+            print()
+
+            os.system("cd /usr/share/OmegaDSToolkit/")
             # For the SetupTool
-            print("+ -- --=[  Download the latest version of OmegaDSToolkit setuptool...")
-            ## Removing the current locl SetupTool
-            os.system("rm -f setup.py")
+            print("+ -- --=[-----------------------------------------------]")
+            print("+ -- --=[  Download the latest version of SetupTool...  ]")
+            print("+ -- --=[-----------------------------------------------]")
+            print()
             ## Download SetupTool with wget from github raw
             os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/setup.py")
-            print("+ -- --=[  Done the SetupTool,  ]\n")
+            print()
+            print("+ -- --=[-----------------------]")
+            print("+ -- --=[  Done the SetupTool.  ]")
+            print("+ -- --=[-----------------------]")
+            sleep(1)
 
+            print()
+            print()
+
+            os.system("cd /usr/share/OmegaDSToolkit/")
             # For the InstallTool
-            print("+ -- --=[  Download the latest version of OmegaDSToolkit setuptool...")
-            ## Removing the current locl InstallTool
-            os.system("rm -f install.py")
+            print("+ -- --=[-------------------------------------------------]")
+            print("+ -- --=[  Download the latest version of InstallTool...  ]")
+            print("+ -- --=[-------------------------------------------------]")
+            print()
             ## Download InstallTool with wget from github raw
             os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/install.sh")
-            print("+ -- --=[  Done the InstallTool,  ]\n")
+            print()
+            print("+ -- --=[-------------------------]")
+            print("+ -- --=[  Done the InstallTool.  ]")
+            print("+ -- --=[-------------------------]")
+            sleep(1)
+
+            print()
+            print()
 
             # Apply all rights to the new files
+            print("+ -- --=[----------------------------------------]")
             print("+ -- --=[  Apply all rights to the new files...  ]")
+            print("+ -- --=[----------------------------------------]")
+            print()
             os.system('chmod +xrw OmegaDSToolkit.py')     # for the OmegaDSToolkit
             os.system('chmod +xrw setup.py')              # for the SetupTool
             os.system('chmod +xrw install.sh')            # for the InstallTool
-            print("+ -- --=[  Done for the right files.  ]\n")
+            print("+ -- --=[-----------------------------]")
+            print("+ -- --=[  Done for the right files.  ]")
+            print("+ -- --=[-----------------------------]")
+            sleep(1)
 
-            print("All Done.\n")
-            print("+ -- --=[------------------------------------------------------------------------------------------------------------]")
-            print("+ -- --=[  Update complete! For be sure, run the setup.py with \"sudo python3 setup.py install\" before running ODST.]")
-            print("+ -- --=[  After, you can run OmegaDSToolkit with \"sudo python3 OmegaDSToolkit.py\".                                ]")
-            print("+ -- --=[------------------------------------------------------------------------------------------------------------]")
+            print()
+
+            print("+ -- --=[----------------------]")
+            print("+ -- --=[  Update complete! .  ]")
+            print("+ -- --=[----------------------]")
+
+            print()
+            print()
+
+            print("+ -- --=[--------------------------------------------------------------]")
+            print("+ -- --=[  You can run OmegaDSToolkit now. With \"sudo omegadstoolkit\"]")
+            print("+ -- --=[--------------------------------------------------------------]")
             sys.exit()
-
         except KeyboardInterrupt:
             print()
-            print("CTRL + C detected, stoping the update tool...")
+            print("CTRL + C detected, stopping the update tool...")
             sys.exit()
         except EOFError:
             print()
-            print("CTRL + C detected, stoping the update tool...")
+            print("CTRL + C detected, stopping the update tool...")
             sys.exit()
+
 
 # call the funtcion 'updatetool'
 updatetool()
