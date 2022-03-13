@@ -62,7 +62,7 @@ version = "v2.1"
 # The SetupTool
 try:
     if os.getuid() != 0:                                                            #   check if the user run ODST with root privilege
-        print("The OmegaDSToolkit's setup could be run with root privilege")        #
+        print("The SetupTool could be run with root privilege")                     #
         print("Re-run the setup.py with sudo")                                      #
         print('Run "sudo python3 setup.py install"')                                #
         sys.exit()                                                                  #
