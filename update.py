@@ -43,7 +43,7 @@ def updatetool():
     # heck if the user run update with root privilege
     try:
         if os.getuid() != 0:
-            print("The OmegaDSToolkit's update tool could be run with root privilege") 
+            print("The UpdateTool could be run with root privilege") 
             print("Re-run the update.py with sudo")
             print('Run "sudo python3 update.py"')
             sys.exit()
