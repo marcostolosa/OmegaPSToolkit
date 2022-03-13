@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ setup.py                      [Update: 2022-03-13 | 14:40 PM] #
+#  Filename ~ setup.py                      [Update: 2022-03-13 | 17:00 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -42,6 +42,7 @@ from time import sleep
 red = '\033[1;31m'
 lime = '\033[1;32m'
 blue = '\033[1;34m'
+ghostwhite = '\033[1;37m'
 reset = '\033[0m'
 ####
 
@@ -55,6 +56,8 @@ reset = '\033[0m'
 #     except:                                             #
 #         return False                                    #
 ####
+
+version = "v2.1"
 
 # The SetupTool
 try:
@@ -71,13 +74,13 @@ except AttributeError:
 else:
     try:
         print()
-        print("""
+        print(f"""
 ███████╗███████╗████████╗██╗   ██╗██████╗ ████████╗ ██████╗  ██████╗ ██╗
 ██╔════╝██╔════╝╚══██╔══╝██║   ██║██╔══██╗╚══██╔══╝██╔═══██╗██╔═══██╗██║
 ███████╗█████╗     ██║   ██║   ██║██████╔╝   ██║   ██║   ██║██║   ██║██║
 ╚════██║██╔══╝     ██║   ██║   ██║██╔═══╝    ██║   ██║   ██║██║   ██║██║
 ███████║███████╗   ██║   ╚██████╔╝██║        ██║   ╚██████╔╝╚██████╔╝███████╗
-╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝        ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝ v2.1""")    # Police = ANSI Shadow from https://www.coolgenerator.com/ascii-text-generator
+╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝        ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝ {version}""")    # Police = ANSI Shadow from https://www.coolgenerator.com/ascii-text-generator
         print("+ ------------------ !* Welcome to the ODST setuptool. *! ------------------ +")
         print()
         print("+ ------------------------------------ +")
@@ -143,24 +146,51 @@ else:
                 ],
             )
 
-            print("Create OmegaDSToolkit folder to \"/usr/share/OmegaDSToolkit\"...")
+            print("+ -- --=[------------------------------------------------------------------]")
+            print("+ -- --=[  Create OmegaDSToolkit folder to \"/usr/share/OmegaDSToolkit\"...  ]")
+            print("+ -- --=[------------------------------------------------------------------]")
+
             os.system("sudo mkdir /usr/share/OmegaDSToolkit")
-            print("Done for the folder.\n")
-            sleep(0.5)
 
-            print("Copy the OmegaDSToolkit to \"/usr/share/OmegaDSToolkit\"...")
-            os.system("sudo cp -r * /usr/share/OmegaDSToolkit")
-            print("Done for the OmegaDSToolkit's copy.\n")
-            sleep(0.5)
+            print("+ -- --=[------------------------]")
+            print("+ -- --=[  Done for the folder.  ]")
+            print("+ -- --=[------------------------]")
+            sleep(1)
 
-            print("Create the alias \"sudo \" and \"omegadstoolkit\"...")
-            user = str(input("Type your current username: "))
             print()
+            print()
+
+            print("+ -- --=[-------------------------------------------------------------]")
+            print("+ -- --=[  Copy the OmegaDSToolkit to \"/usr/share/OmegaDSToolkit\"...  ]")
+            print("+ -- --=[-------------------------------------------------------------]")
+
+            os.system("sudo cp -r * /usr/share/OmegaDSToolkit")
+
+            print("+ -- --=[---------------------------------------]")
+            print("+ -- --=[  Done for the OmegaDSToolkit's copy.  ]")
+            print("+ -- --=[---------------------------------------]")
+            sleep(1)
+
+            print()
+            print()
+
+            print("+ -- --=[----------------------------------------------------]")
+            print("+ -- --=[  Create the alias \"sudo \" and \"omegadstoolkit\"...  ]")
+            print("+ -- --=[----------------------------------------------------]")
+
+            print()
+
+            user = str(input("+ -- --=[  Type your current username: "))
+
+            print()
+
             try:
                 # make the alias for run odst just by typing "omegadstoolkit" to the current user ".bashrc" (home)
                 if user != "root":
-                    print(f"You username : {user} (not root user)")
-                    print(f"Writing alias' into your \"/home/{user}/.bashrc\"...")
+                    print("+ -- --=[--------------------------------------------------------------------------------]")
+                    print(f"+ -- --=[  You username : {user} (not root user)                                        ")
+                    print(f"+ -- --=[  Writing alias' into your \"/home/{user}/.bashrc\"...                         ")
+                    print("+ -- --=[--------------------------------------------------------------------------------]")
                     sleep(1)
 
                     ##########################
@@ -223,8 +253,10 @@ else:
 
                 else:
                     # make the alias for run odst just by typing "omegadstoolkit" to the root user ".bashrc" (root)
-                    print(f"You username : {user} (root)")
-                    print(f"Writing alias into your \"/root/.bashrc\"...")
+                    print("+ -- --=[--------------------------------------------------------------------------------]")
+                    print(f"+ -- --=[  You username : {user} (root)")
+                    print(f"+ -- --=[  Writing alias into your \"/root/.bashrc\"...")
+                    print("+ -- --=[--------------------------------------------------------------------------------]")
                     sleep(1)
 
                     #####################
@@ -252,15 +284,22 @@ else:
 
             except FileNotFoundError:
                 print()
-                print(blue+"["+red+"ERROR"+blue+"]"+reset+f"""User '{user}' not found or file doesn't exist, check if you \".bashrc\" exist in your home repertory and 
-re-run the 'setup.py' and write a correct username\n""")
+                print(blue+"["+red+"ERROR"+blue+"]"+ghostwhite+f"""User '{user}' not found or file doesn't exist, check if you \".bashrc\" exist in your home repertory,
+re-run the 'setup.py' and write a correct username\n"""+reset)
                 sys.exit()
 
-            print("Done for alias'.")
-            sleep(0.3)
+            print("+ -- --=[--------------------]")
+            print("+ -- --=[  Done for alias'.  ]")
+            print("+ -- --=[--------------------]")
+            sleep(1)
 
             print()
-            print("All done.")
+
+            print("+ -- --=[-------------]")
+            print("+ -- --=[  All done.  ]")
+            print("+ -- --=[-------------]")
+
+            print()
             print()
 
             print("+ -- --=[------------------------------------------------------------------------------------------------------------------------------]")
