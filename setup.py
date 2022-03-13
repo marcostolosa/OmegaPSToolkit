@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ setup.py                      [Update: 2022-03-12 | 12:26 PM] #
+#  Filename ~ setup.py                      [Update: 2022-03-13 | 14:40 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -32,6 +32,7 @@
 #---------------------------------------------------------------------------#
 
 # Import Section
+import urllib.request
 import os,sys
 from setuptools import setup,find_packages
 from time import sleep
@@ -45,14 +46,14 @@ reset = '\033[0m'
 ####
 
 # Check if the user have a Internet connexion
-import urllib.request
-def connection(host='https://google.com'):              #
-    import urllib.request                               #
-    try:                                                #
-        urllib.request.urlopen(host)                    #
-        return True                                     #
-    except:                                             #
-        return False                                    #
+# import urllib.request
+# def connection(host='https://google.com'):              #
+#     import urllib.request                               #
+#     try:                                                #
+#         urllib.request.urlopen(host)                    #
+#         return True                                     #
+#     except:                                             #
+#         return False                                    #
 ####
 
 # The SetupTool
@@ -65,7 +66,7 @@ try:
 # If the user tries to run ODST from a non-Linux machine
 except AttributeError:
     print()
-    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+red+" You tried to run ODST on a no-linux machine, ODST can be run only on a Linux kernel"+reset#
+    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+reset+f" You tried to run ODST on a no-linux machine, ODST can be run only on a Linux kernel"+reset#
     exit(criticalmsg)
 else:
     try:
@@ -76,23 +77,21 @@ else:
 ███████╗█████╗     ██║   ██║   ██║██████╔╝   ██║   ██║   ██║██║   ██║██║
 ╚════██║██╔══╝     ██║   ██║   ██║██╔═══╝    ██║   ██║   ██║██║   ██║██║
 ███████║███████╗   ██║   ╚██████╔╝██║        ██║   ╚██████╔╝╚██████╔╝███████╗
-╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝        ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝""")    # Police = ANSI Shadow from https://www.coolgenerator.com/ascii-text-generator
+╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝        ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝ v2.1""")    # Police = ANSI Shadow from https://www.coolgenerator.com/ascii-text-generator
         print("+ ------------------ !* Welcome to the ODST setuptool. *! ------------------ +")
         print()
-        print("+ ----------------------------------- +")
-        print("  Checking for internet connection...")
-        print("+ ----------------------------------- +")
+        print("+ ------------------------------------ +")
+        print("   Checking for internet connexion...   ")
+        print("+ ------------------------------------ +")
         print()
+        
+        try:
+            urllib.request.urlopen('http://google.com')
+            connexion = True
+        except:
+            connexion =  False
 
-
-                
-        # try:
-        #     urllib.request.urlopen('http://google.com')
-        #     connection = True
-        # except:
-        #     connection =  False
-
-        if connection() == True:
+        if connexion == True:
             print("Internet status.......... "+lime+"Connected"+reset)
             pass
         else:
@@ -100,7 +99,7 @@ else:
             print("Not Internet connexion found, please check you are connected to Internet and retry.")
             sys.exit()
 
-        print('The setup will install all pip packages that ODST needs and copy the OemgaDSToolkit path to "/usr/share/OmegaDSToolkit"')
+        print("The setup will install all pip packages that ODST needs and copy the OemgaDSToolkit path to \"/usr/share/OmegaDSToolkit\"")
         yn = str(input("Do you want to continue? [Y/n] "))
 
         if yn != 'y' and yn != 'Y':
@@ -111,117 +110,172 @@ else:
             sys.exit()
         else:
             pass
+        try:
+            requirements = ["requests"]
+            setup_requirements = ["requests"]
+            test_requirements = ["requests"]
+            setup(classifiers=[
+                    "Copyright                          :: Copyright (C) 2022, Thomas Pellissier aka MyMeepSQL from © Delta_Society™",
+                    "Author                             :: Thomas Pellissier",
+                    "Developed for                      :: Linux",
+                    "Development Status                 :: 2 - In Development",
+                    "Natural Language                   :: English",
+                    "Environment                        :: Terminal",
+                    "Intended Audience                  :: Developers, Sec.",
+                    "Programming Language               :: Python :: 3.10-3.10.X",
+                    "Programming Language compatible    :: Python :: 3.1-3.x.x",
+                    "Other Programming Language         :: Bash (Linux)",
+                ],
+                name='OmegaDSToolkit',
+                description='A massive penetration testing toolkit',
+                url='https://github.com/MyMeepSQL/OmegaDSToolkit',
+                author='MyMeepSQL',
+                author_email='thomas.pellissier@outlook.com',
+                license='GNU-GPL-3.0',
+                keywords="omegadstoolkit",
+                version='0.0.1.3',
+                python_requires='>=3.1.0',
+                packages=find_packages(),
+                zip_safe=False,
+                include_package_data=True,
+                install_requires=[
+                    'progress', 'colored'
+                ],
+            )
 
-        requirements = ["requests"]
-        setup_requirements = ["requests"]
-        test_requirements = ["requests"]
-        setup(classifiers=[
-                "Copyright                          :: Copyright (C) 2022, Thomas Pellissier aka MyMeepSQL from © Delta_Society™",
-                "Author                             :: Thomas Pellissier",
-                "Developed for                      :: Linux",
-                "Development Status                 :: 2 - In Development",
-                "Natural Language                   :: English",
-                "Environment                        :: Terminal",
-                "Intended Audience                  :: Developers, Sec.",
-                "Programming Language               :: Python :: 3.10-3.10.X",
-                "Programming Language compatible    :: Python :: 3.1-3.x.x",
-                "Other Programming Language         :: Bash (Linux)",
-            ],
-            name='OmegaDSToolkit',
-            description='A massive penetration testing toolkit',
-            url='https://github.com/MyMeepSQL/OmegaDSToolkit',
-            author='MyMeepSQL',
-            author_email='thomas.pellissier@outlook.com',
-            license='GNU-GPL-3.0',
-            keywords="omegadstoolkit",
-            version='0.0.1.3',
-            python_requires='>=3.1.0',
-            packages=find_packages(),
-            zip_safe=False,
-            include_package_data=True,
-            install_requires=[
-                'progress', 'colored'
-            ],
-        )
+            print("Create OmegaDSToolkit folder to \"/usr/share/OmegaDSToolkit\"...")
+            os.system("sudo mkdir /usr/share/OmegaDSToolkit")
+            print("Done for the folder.\n")
+            sleep(0.5)
 
-        print('Create OmegaDSToolkit folder to "/usr/share/OmegaDSToolkit"...')
-        os.system("sudo mkdir /usr/share/OmegaDSToolkit")
-        print("Done for the folder.\n")
+            print("Copy the OmegaDSToolkit to \"/usr/share/OmegaDSToolkit\"...")
+            os.system("sudo cp -r * /usr/share/OmegaDSToolkit")
+            print("Done for the OmegaDSToolkit's copy.\n")
+            sleep(0.5)
 
-        print('Copy the OmegaDSToolkit to "/usr/share/OmegaDSToolkit"...')
-        os.system("sudo cp -r * /usr/share/OmegaDSToolkit")
-        print("Done for the OmegaDSToolkit's copy.\n")
+            print("Create the alias \"sudo \" and \"omegadstoolkit\"...")
+            user = str(input("Type your current username: "))
+            print()
+            try:
+                # make the alias for run odst just by typing "omegadstoolkit" to the current user ".bashrc" (home)
+                if user != "root":
+                    print(f"You username : {user} (not root user)")
+                    print(f"Writing alias' into your \"/home/{user}/.bashrc\"...")
+                    sleep(1)
 
-        print('Create the alias "sudo " and "omegadstoolkit"...')
-        user = str(input("Type your current usernme: "))
-        # make the alias for run odst just by typing "omegadstoolkit" to the current user ".bashrc" (home)
-        if user != "root":
-            print(f"You username : {user} (not root user)")
-            print(f"Writing alias into your /home/{user}/.bashrc")
+                    ##########################
+                    # For /home/user/.bashrc #
+                    ##########################
 
-            # # For remove the alias if already exist
-            # with open(f"/home/{user}/.bashrc", "r") as fp:
-            #     lines = fp.readlines()
+                    # Delete existing 'omegadstoolkit' alias (if exist)
 
-            # # Delete text "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py"
-            # with open(f"/home/{user}/.bashrc", "w") as fp:
-            #     for line in lines:
-            #         if line.strip("\n") != "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'":
-            #             fp.write(line)
+                    ## 'omegadstoolkit' alias
+                    ### Read file.txt
+                    with open(f'/home/{user}/.bashrc', 'r') as file:
+                        text = file.read()
+                    ### Delete text and Write
+                    with open(f'/home/{user}/.bashrc', 'w') as file:
+                        #### Delete
+                        new_text = text.replace("alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'", '')
+                        #### Write
+                        file.write(new_text)
 
-            # # Delete text "alias sudo='sudo '"
-            # with open(f"/home/{user}/.bashrc", "w") as fp:
-            #     for line in lines:
-            #         if line.strip("\n") != "alias sudo='sudo ''":
-            #             fp.write(line)
+                    ## 'sudo ' alias
+                    ### Read file.txt
+                    with open(f'/home/{user}/.bashrc', 'r') as file:
+                        text = file.read()
+                    ### Delete text and Write
+                    with open(f'/home/{user}/.bashrc', 'w') as file:
+                        #### Delete
+                        new_text = text.replace("alias sudo='sudo '", '')
+                        #### Write
+                        file.write(new_text)
 
-            # Writing the alias
-            alias =["alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n", "alias sudo='sudo '\n"]
-            with open(f"/home/{user}/.bashrc", "a") as aliasfile:
-                # Writing data to a file
-                aliasfile.writelines(alias)
-            with open(f"/home/{user}/.zshrc", "a") as aliasfile:
-                # Writing data to a file
-                aliasfile.writelines(alias)
+                    # Writit aliases
+                    alias =["alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n", "alias sudo='sudo '\n"]
+                    with open(f"/home/{user}/.bashrc", "a") as aliasfile:
+                        # Writing data to a file
+                        aliasfile.writelines(alias)
 
-            ## write to the "/root/.bashrc"
-            root_alias = "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n"
-            with open("/root/.bashrc", "a") as aliasfile:
-                # Writing data to a file
-                aliasfile.writelines(root_alias)
-        else:
-            # make the alias for run odst just by typing "omegadstoolkit" to the root user ".bashrc" (root)
-            print(f"You username : {user} (root)")
-            print(f'Writing alias into your "/root/.bashrc"')
 
-            # For remove the alias if already exist
-            # with open("/root/.bashrc", "r") as fp:
-            #     lines = fp.readlines()
+                    ###############################
+                    # For /root/.bashrc (in case) #
+                    ###############################
 
-            # # Delete text "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py"
-            # with open("/root/.bashrc", "w") as fp:
-            #     for line in lines:
-            #         if line.strip("\n") != "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'":
-            #             fp.write(line)
+                    # Delete existing 'omegadstoolkit' alias (if exist)
 
-            ## write to the "/root/.bashrc"
-            root_alias = "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n"
-            with open("/root/.bashrc", "a") as aliasfile:
-                # Writing data to a file
-                aliasfile.writelines(root_alias)
-            with open("/root/.zshrc", "a") as aliasfile:
-                # Writing data to a file
-                aliasfile.writelines(root_alias)
+                    ## 'omegadstoolkit''s alias
+                    ### Read file.txt
+                    with open('/root/.bashrc', 'r') as file:
+                        text = file.read()
+                    ### Delete text and Write
+                    with open('/root/.bashrc', 'w') as file:
+                        #### Delete
+                        new_text = text.replace("alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'", '')
+                        #### Write
+                        file.write(new_text)
 
-        print("Done for alias'.")
+                    # Writing alias
+                    root_alias = "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n"
+                    with open("/root/.bashrc", "a") as aliasfile:
+                        #### Writing data to a file
+                        aliasfile.writelines(root_alias)
 
-        print()
-        print("All done.")
-        print()
+                else:
+                    # make the alias for run odst just by typing "omegadstoolkit" to the root user ".bashrc" (root)
+                    print(f"You username : {user} (root)")
+                    print(f"Writing alias into your \"/root/.bashrc\"...")
+                    sleep(1)
 
-        print("+ --------------------------------------------------------------------------------------------------------------------------------- +")
-        print('   Done! All packages are install, now you can run OmegaDSToolkit with "sudo omegadstoolkit" (you can run omegadstoolkit anywhere) ')
-        print("+ --------------------------------------------------------------------------------------------------------------------------------- +")
+                    #####################
+                    # For /root/.bashrc #
+                    #####################
+
+                    # Delete existing 'omegadstoolkit' alias (if exist)
+
+                    ## 'omegadstoolkit''s alias
+                    ### Read file.txt
+                    with open('/root/.bashrc', 'r') as file:
+                        text = file.read()
+                    ### Delete text and Write
+                    with open('/root/.bashrc', 'w') as file:
+                        #### Delete
+                        new_text = text.replace("alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'", '')
+                        #### Write
+                        file.write(new_text)
+
+                    # Writing alias
+                    root_alias = "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n"
+                    with open("/root/.bashrc", "a") as aliasfile:
+                        #### Writing data to a file
+                        aliasfile.writelines(root_alias)
+
+            except FileNotFoundError:
+                print()
+                print(blue+"["+red+"ERROR"+blue+"]"+reset+f"""User '{user}' not found or file doesn't exist, check if you \".bashrc\" exist in your home repertory and 
+re-run the 'setup.py' and write a correct username\n""")
+                sys.exit()
+
+            print("Done for alias'.")
+            sleep(0.3)
+
+            print()
+            print("All done.")
+            print()
+
+            print("+ -- --=[------------------------------------------------------------------------------------------------------------------------------]")
+            print("+ -- --=[  All packages are install, now you can run OmegaDSToolkit with \"sudo omegadstoolkit\" (you can run omegadstoolkit anywhere).  ]")
+            print("+ -- --=[------------------------------------------------------------------------------------------------------------------------------]")
+
+        except EOFError:
+            print()
+            print("Abort.")
+            sys.exit()
+
+        except KeyboardInterrupt:
+            print()
+            print("Abort.")
+            sys.exit()
 
     except EOFError:
         print()

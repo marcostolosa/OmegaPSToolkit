@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ install.sh                    [Update: 2022-03-08 | 11:30 AM] #
+#  Filename ~ install.sh                    [Update: 2022-03-13 | 14:40 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -37,21 +37,23 @@ red='\033[1;31m'
 reset='\033[0m'
 ####
 
-# Many fresh installed linux distros do not come with sudo installed
-which sudo > /dev/null 2>&1
-if [ "$?" != "0" ]; then
-    echo "You Linux distribution doesn't have the \"sudo\" command pre-install. Install the current \"sudo\" command..."
-    sleep 1
-    apt-get install sudo -y
-fi
-####
-
 # Check if user have root privileges
-if [ $(id -u) != "0" ]; then
+if [ $(id -u) != "0" ]
+then
     echo 'The InstallTool could be run with root privilege.'
     echo 'Re-run the install.sh with sudo'
     echo 'Run sudo "sudo sh install.sh"';
     exit 0
+fi
+####
+
+# Many fresh installed linux distros do not come with sudo installed
+which sudo > /dev/null 2>&1
+if [ "$?" != "0" ]
+then
+    echo "You Linux distribution doesn't have the \"sudo\" command pre-install. Install the current \"sudo\" command..."
+    sleep 1
+    apt update -y && apt-get install sudo -y
 fi
 ####
 
@@ -62,42 +64,80 @@ echo '
 ██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║     ██║   ██║   ██║██║   ██║██║
 ██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║     ██║   ██║   ██║██║   ██║██║
 ██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗██║   ╚██████╔╝╚██████╔╝███████╗
-╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝    ╚═════╝  ╚═════╝ ╚══════╝'
+╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝    ╚═════╝  ╚═════╝ ╚══════╝ v1'
 echo '+ ------------------ !* Welcome to the ODST installation tool. *! ------------------ +'
 echo
-echo '+ ----------------------------------- +'
-echo '  Checking for internet connection...'
-echo '+ ----------------------------------- +'
+echo '+ ------------------------------------- +'
+echo '   Checking for internet connection...'
+echo '+ ------------------------------------- +'
 echo
 # First check of setup for internet connection by connecting to google over http
 wget -q --tries=10 --timeout=20 --spider http://google.com
-if [ $? -eq 0 ] 
+if [ $? -eq 0 ]
 then
     echo 'Internet status.......... '"$lime"'Connected.'"$reset"
-    echo 'This tool will install Python3 and PIP3 on this PC to run OmegaDSToolkit.'
+    echo 'This tool will install Python3 and PIP3 on this machine to run OmegaDSToolkit.'
     read -p 'Do you want to continue? [Y/n] ' y_n
 
     if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ]
     then
-        apt update -y
-        apt install python3 -y
-        apt install python3-pip -y
+        echo
+        echo '+ -- --=[---------------]'
+        echo '+ -- --=[  Updating...  ]'
+        echo '+ -- --=[---------------]'
+        echo
+        sleep 1
+        apt update && apt update --fix-missing
+        echo
+        echo '+ -- --=[--------------------]'
+        echo '+ -- --=[  Update complete.  ]'
+        echo '+ -- --=[--------------------]'
+        echo
+        sleep 1
+
+        echo
+        echo '+ -- --=[----------------------------------]'
+        echo '+ -- --=[  Installing Python3 and PIP3...  ]'
+        echo '+ -- --=[----------------------------------]'
+        echo
+        apt install python3 python3-pip -y
+        echo
+        echo '+ -- --=[--------------------------]'
+        echo '+ -- --=[  Installation complete.  ]'
+        echo '+ -- --=[--------------------------]'
+        echo
+        sleep 1
 
         # Apply all rights
-        echo 'Apply all rights to files...'
-        chmod +xrw OmegaDSToolkit.py     # for the OmegaDSToolkitz
-        chmod +xrw setup.py              # for the SetupTool
-        chmod +xrw update.py             # for the UpdateTool
         echo
-        echo 'Done.'
+        echo '+ -- --=[--------------------------------]'
+        echo '+ -- --=[  Apply all rights to files...  ]'
+        echo '+ -- --=[--------------------------------]'
+        chmod 777 OmegaDSToolkit.py     # for the OmegaDSToolkitz
+        chmod 777 setup.py              # for the SetupTool
+        chmod 777 update.py             # for the UpdateTool
+        echo '+ -- --=[-------------------]'
+        echo '+ -- --=[  Apply complete.  ]'
+        echo '+ -- --=[-------------------]'
         echo
-        echo 'Python3 and PIP3 are now install on you PC. Now you can run the setup.py with "sudo python3 setup.py install".'
+        sleep 1
+
+        echo
+        echo '+ -- --=[-------------]'
+        echo '+ -- --=[  All Done.  ]'
+        echo '+ -- --=[-------------]'
+        echo
+        echo '+ -- --=[---------------------------------------------------------------------------------------------------------------------]'
+        echo '+ -- --=[ Python3 and PIP3 are now install on you machine. Now you can run the setup.py with "sudo python3 setup.py install". ]'
+        echo '+ -- --=[---------------------------------------------------------------------------------------------------------------------]'
+        exit 0
     else
         echo 'Abort.'
+        exit 1
     fi
 else
     echo 'Internet status.......... '"$red"'Not connected.'"$reset"
     echo 'Not Internet connexion found, please check you are connected to Internet and retry.'
-    exit 0
+    exit 1
 fi
 ####

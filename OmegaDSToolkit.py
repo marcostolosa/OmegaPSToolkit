@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ OmegaDSToolkit.py             [Update: 2022-03-07 | 14:27 PM] #
+#  Filename ~ OmegaDSToolkit.py             [Update: 2022-03-13 | 14:40 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -39,18 +39,18 @@ try:
     from colors import *
 except ModuleNotFoundError:
     print()
-    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"
+    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo python3 setup.py install)\n"
     exit(criticalmsg)
 except ImportError:
     print()
-    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"
+    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo python3 setup.py install)\n"
     exit(criticalmsg)
 except NameError:
     print()
-    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"
+    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo python3 setup.py install)\n"
     exit(criticalmsg)
 
-#-Check module is installed------------------------------------------#
+#-Check module is installed---------------------------------------------#
 #########################################################################
 try:                                                                    #
     if os.getuid() != 0:                                                #   Check if the user run ODST with root privilege
@@ -59,9 +59,9 @@ try:                                                                    #
         print('Run "sudo python3 OmegaDSToolkit.py"')                   #
         sys.exit()                                                      #
 except AttributeError:                                                  #
-    print()                                                             ############################################################
+    print()                                                             ############################################################################
     criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+red+" You tried to run ODST on a no-linux machine, ODST can be run only on a Linux kernel"+reset#
-    exit(criticalmsg)                                                   ############################################################
+    exit(criticalmsg)                                                   ############################################################################
 else:                                                                   #
     cls()                                                               ############################# checking if modules are installed
     sys.stdout.write("\x1b]2;Checking if all modules are [OK]\x07")                                 #
@@ -71,9 +71,6 @@ else:                                                                   #
         sleep(1.5)                                                                                  #
         import progress                                                                             #
         import colored                                                                              #
-        import nslookup                                                                             #
-        import keyboard                                                                             #
-        import pythonping                                                                           #
         import urllib.request                                                                       #
         import shutil                                                                               #
         import time                                                                                 #
@@ -82,30 +79,44 @@ else:                                                                   #
         import textwrap                                                                             #
         from collections import namedtuple                                                          #
         from builtins import format                                                                 #
-        print(blue+"["+lime+"OK"+blue+"]"+ghostwhite+"         All modules are install !"+reset)    #
+        print(blue+"["+lime+"OK"+blue+"]"+ghostwhite+"         All modules are install !"+reset)    ####################################
+        try:                                                                                                                           #
+            print(blue+"["+lime+"-"+blue+"]"+ghostwhite+"          Checking for Internet connexion... (Press CTRL + C to skip) "+reset)#
+            sleep(1)                                                                                                                   #
+            if connection() == True:                                                                                                   #
+                connectionstatus = lime+"Connected"+reset                                                                              #
+                print(blue+"["+lime+"!"+blue+"]"+ghostwhite+"          Internet status :"+lime+" Connected"+reset)                     #
+            else:                                                                                                                      #
+                connectionstatus = lime+"Not connected"+reset                                                                          #
+                print(blue+"["+lime+"!"+blue+"]"+ghostwhite+"          Internet status :"+red+" No Internet"+reset)                    #
+            print()                                                                                                                    #
+        except KeyboardInterrupt:                                                                                                      #
+            print(blue+"["+red+"*"+blue+"]"+ghostwhite+"         CTRL + C detected, skipping the Internet checker..."+reset)           #
+            connectionstatus = (yC+"?"+r)                                                           ####################################
+            pass                                                                                    #
         print(blue+"["+red+">>"+blue+"]"+ghostwhite+"         Launching of ODST..."+reset)          #
-        sleep(0.8)                                                                                  #
+        sleep(1)                                                                                    #
         version = underscore+"0.0.1.3"+reset                                                        #
         cli_version = underscore+"0.0.0.4"+reset                                                    #
-        if connection() == True:                                                                    #
-            connectionstatus = (lime+"Connected"+reset)                                             #
-        else:                                                                                       #
-            connectionstatus = (red+"No Internet"+reset)                                            #
     except KeyboardInterrupt:                                                                       #
+        print()                                                                                     #
+        abortmsg = blue+"["+red+"ERROR"+blue+"]"+ghostwhite+"      User aborted\n"                  #
+        exit(abortmsg)                                                                              #
+    except EOFError:                                                                                #
         print()                                                                                     #
         abortmsg = blue+"["+red+"ERROR"+blue+"]"+ghostwhite+"      User aborted\n"                  #
         exit(abortmsg)                                                                              #
     except ModuleNotFoundError:                                                                     #
         print()                                                                                     ##########################################################################
-        criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"#
+        criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo python3 setup.py install)\n"#
         exit(criticalmsg)                                                                                                                                                    #
     except ImportError:                                                                                                                                                      #
         print()                                                                                                                                                              #
-        criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"#
+        criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo python3 setup.py install)\n"#
         exit(criticalmsg)                                                                                                                                                    #
     except NameError:                                                                                                                                                        #
         print()                                                                                                                                                              #
-        criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"#
+        criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+ghostwhite+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo python3 setup.py install)\n"#
         exit(criticalmsg)                                                                                                                                                    #
 ##############################################################################################################################################################################
 
@@ -162,20 +173,18 @@ try:
         print(bC+"             ╟────"+gC+"► "+r+"["+bC+"x"+r+"]"+gC+"    Return to the"+rC+" OmegaDSToolkit"+gC+" main page"+r)
         print(bC+"             ╙────"+gC+"► "+r+"["+bC+"exit"+r+"]"+gC+" Exit the ODST\n"  +r)
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+r+gC+"Information Gathering"+r+bC+"]")
-        infogathering_mainpage = str(input(bC+"└╼"+rC+"$ "+r))
+        global commands
+        command = str(input(bC+"└╼"+rC+"$ "+r))
 
-        global command
-        command = infogathering_mainpage
-
-        if infogathering_mainpage == "1":
+        if command == "1":
             informationgathering_scan_mainpage()
-        elif infogathering_mainpage == "x":
+        elif command == "x":
             cls()
             main_page()
-        elif not infogathering_mainpage:
+        elif not command:
             error()
             cls()
-            infogathering_mainpage()
+            informationgathering_mainpage()
         else:
             invalid_option()
             cls()
@@ -204,30 +213,28 @@ try:
         print(bC+"                ╟────"+gC+"► "+r+"["+bC+"x"+r+"]"+gC+"    Return to the"+rC+" Information Gathering"+gC+" main page"+r)
         print(bC+"                ╟────"+gC+"► "+r+"["+bC+"o"+r+"]"+gC+"    Return to the"+rC+" OmegaDSToolkit"+gC+" main page"+r)
         print(bC+"                ╙────"+gC+"► "+r+"["+bC+"exit"+r+"]"+gC+" Exit the ODST\n"+r)
-
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+r+gC+"ScanTools"+bC+"]")
-        scan_mainpage = str(input(bC+"└╼"+rC+"$ "+r))
-
         global command
-        command = scan_mainpage
+        command = str(input(bC+"└╼"+rC+"$ "+r))
+
         # if scan_mainpage_ == 1:
             # informationgathering_nmap()
 
         # if scan_mainpage_ == 2:
             # informationgathering_sqlmap()
 
-        if scan_mainpage == "x":
+        if command == "x":
             cls()
-            informationgathering_mainpage()
-        elif scan_mainpage == "o":
+            informationgathering_scan_mainpage()
+        elif command == "o":
             cls()
             main_page()
-        elif scan_mainpage == "exit":
+        elif command == "exit":
             exitodst()
-        elif not scan_mainpage:
-                error()
-                cls()
-                scan_mainpage()
+        elif not command:
+            error()
+            cls()
+            informationgathering_scan_mainpage()
         else:
             invalid_option()
             cls()
@@ -259,22 +266,20 @@ try:
         print(bC+"        ╟────"+gC+"► "+r+"["+bC+"o"+r+"]"+gC+"     Return to the"+rC+" OmegaDSToolkit"+gC+" main page"+r)
         print(bC+"        ╙────"+gC+"► "+r+"["+bC+"exit"+r+"]"+gC+"  Exit the ODST\n"+r)
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"UWTools"+bC+"]")
-        windowsT_mainpage = str(input(bC+"└╼"+rC+"$ "+r))
-
         global command
-        command = windowsT_mainpage
+        command = str(input(bC+"└╼"+rC+"$ "+r))
 
-        if windowsT_mainpage == "1":
+        if command == "1":
             usefulltools_backup_main()
-        if windowsT_mainpage == "2":
+        if command == "2":
             usefulltools_networkC_main_page()
-        elif windowsT_mainpage == "o":
+        elif command == "o":
             main_page()
-        elif not windowsT_mainpage:
+        elif not command:
             error()
             cls()
             usefulltools_mainpage()
-        elif windowsT_mainpage == "exit":
+        elif command == "exit":
             exitodst()
         else:
             invalid_option()
@@ -306,25 +311,23 @@ try:
         print(bC+"               ╟────"+gC+"► "+r+"["+bC+"o"+r+"]"+gC+"     Return to the"+rC+" OmegaDSToolkit"+gC+" main page"+r)
         print(bC+"               ╙────"+gC+"► "+r+"["+bC+"exit"+r+"]"+gC+"  Exit the ODST\n"  +r)
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"Network commands"+bC+"]")
-        networkC_main_page = str(input(bC+"└╼"+rC+"$ "+r))
-
         global command
-        command = networkC_main_page
+        command = str(input(bC+"└╼"+rC+"$ "+r))
 
-        if networkC_main_page == "1":
+        if command == "1":
             usefulltools_networkC_ping()
-        elif networkC_main_page == "2":
+        elif command == "2":
             usefulltools_networkC_nslookup()
-        elif networkC_main_page == "exit":
-            exitodst()
-        elif networkC_main_page == "x":
+        elif command == "x":
             usefulltools_mainpage()
-        elif networkC_main_page == "o":
+        elif command == "o":
             main_page()
-        elif not networkC_main_page:
-                error()
-                cls()
-                usefulltools_networkC_main_page()
+        elif command == "exit":
+            exitodst()
+        elif not command:
+            error()
+            cls()
+            usefulltools_networkC_main_page()
         else:
             invalid_option()
             cls()
@@ -474,21 +477,21 @@ try:
         print(bC+"              ╟──────"+gC+"►"+bC2+" Codename   ::  @"+rC+"MyMeepSQL"+r)
         print(bC+"     ╔════════╝"+r)
         print(bC+"     ╚═══════════════════════════════════════════╗"+r)
-        print("            Do you want make backup (y/n)"+bC+"        ║"+r)
+        print("            Do you want make backup [Y/n]"+bC+"        ║"+r)
         print(bC+"     ════════════════════════════════════════════╝"+r)
         print()
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
-        choiceB = str(input(bC+"└╼"+rC+"$ "+r))
+        choiceA = str(input(bC+"└╼"+rC+"$ "+r))
 
-        if choiceB == "y" or choiceB == "Y":
+        if choiceA == "y" or choiceA == "Y":
             usefulltools_backup_source()
-        elif choiceB == "n":
+        elif choiceA == "n":
             usefulltools_mainpage()
-        elif not choiceB:
+        elif not choiceA:
             y_or_n_error()
             usefulltools_backup_main()
         else:
-            print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+"Invalid option, chose y or n"+bC+"]"+r)                         # the function for the error with no respond
+            print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+"Invalid option, chose [Y/n]"+bC+"]"+r)                          # the function for the error with no respond
             input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to retry"+bC+"]"+r)                           #
             usefulltools_backup_main()
 
@@ -507,12 +510,12 @@ try:
         print(rC+"             /!\ "+gC+"Type the source path"+rC+" /!\ "+bC+"       ║"+r)
         print(bC+"     ════════════════════════════════════════════╝"+r)
         print()
-        global source
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]"+r)
+        global source
         source = str(input(bC+"└╼"+rC+"$ "+r))
 
         if not source:
-            print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your source folder/file "+bC+"]"+r)
+            print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your source path (folder or file)"+bC+"]"+r)
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
             usefulltools_backup_source()
         else:
@@ -533,12 +536,12 @@ try:
         print(rC+"           /!\ "+gC+"Type the destination path"+rC+" /!\ "+bC+"    ║"+r)
         print(bC+"     ════════════════════════════════════════════╝"+r)
         print()
-        global destination
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
+        global destination
         destination = str(input(bC+"└╼"+rC+"$ "+r))
             
         if not destination:
-            print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your target folder/file"+bC+"]"+r)
+            print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Type your destination path"+bC+"]"+r)
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to retry"+bC+"]"+r)
             usefulltools_backup_destination()
         else:
@@ -555,7 +558,7 @@ try:
         print(bC+"     ╓─────────────────────────"+rC2+"|_____|"+bC+"──────────────────────────────────────"+rC2+"|__|"+bC+"────"+gC+"►"+r)
         print(bC+"     ║"+r)
         print(bC+"     ╚═══════════════════════════════════════════╗"+r)
-        print(gC+"          Are you sure you want backup (y/n)"+bC+"     ║"+r)
+        print(gC+"          Are you sure you want backup [Y/n]"+bC+"     ║"+r)
         print(bC+"     ╔═══════════════════════════════════════════╝"+r)
         print(bC+"     ╚════╗"+r)
         print(bC+"          ╟──────"+gC+"►"+rC+" Source"+bC+" ──"+gC+"► "+rC+'"'+r+f"{source}"+rC+'"'+r)
@@ -565,7 +568,7 @@ try:
         sure = str(input(bC+"└╼"+rC+"$ "+r))
 
         if not sure:
-            print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Chose y or n"+bC+"]"+r)
+            print(bC+"["+r+rC2+"!"+r+bC+"]"+r+bC+"──["+r+gC+"Chose [Y/n]"+bC+"]"+r)
             input(bC+"["+r+rC2+"-"+r+bC+"]"+r+bC+"──["+r+gC+"Press [ENTER] key to continue"+bC+"]"+r)
             usefulltools_backup_verification()
 
@@ -645,19 +648,19 @@ try:
                 print(gC+"          Folder/file copied successfully !"+bC+"     ║"+r)
                 print(bC+"     ╔══════════════════════════════════════════╝"+r)
                 sleep(1.5)
-                usefulltools_backup_reconfig()
+                usefulltools_backup_remakebackup()
             except KeyboardInterrupt:
                 print(bC+"     ║ ["+rC2+"*"+bC+"]"+bC+"─["+gC+"CTRL + C detected stop the ping."+bC+"]"+r)
-                print(bC+"     ║ ["+rC2+"!"+bC+"]"+bC+"─["+gC+"Backup interrupted"+bC+"]"+r)
+                print(bC+"     ║ ["+rC2+"!"+bC+"]"+bC+"─["+gC+"Backup interrupted."+bC+"]"+r)
             except PermissionError:
-                print(bC+"     ║ ["+rC2+"!"+bC+"]"+bC+"─["+gC+"Permission denied"+bC+"]"+r)
-                print(bC+"     ║ ["+rC2+"!"+bC+"]"+bC+"─["+gC+"Please check your permissions with your folder/users"+bC+"]"+r)
-                print(bC+"     ║ ["+rC2+"*"+bC+"]"+bC+"─["+gC+"If you want remake the backup config, type y else type n"+bC+"]"+r)
+                print(bC+"     ║ ["+rC2+"!"+bC+"]"+bC+"─["+gC+"Permission denied."+bC+"]"+r)
+                print(bC+"     ║ ["+rC2+"!"+bC+"]"+bC+"─["+gC+"Please check your permissions with your folder/users."+bC+"]"+r)
+                print(bC+"     ║ ["+rC2+"*"+bC+"]"+bC+"─["+gC+"Do you want to remake the backup config ? [Y/n]"+bC+"]"+r)
                 print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
                 permerror = str(input(bC+"└╼"+rC+"$ "+r))
 
                 while not permerror:
-                    print(bC+"["+rC2+"!"+r+bC+"]"+bC+"─["+r+gC+"Chose y or n"+bC+"]"+r)
+                    print(bC+"["+rC2+"!"+r+bC+"]"+bC+"─["+r+gC+"Chose [Y/n]"+bC+"]"+r)
                     print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
                     permerror = str(input(bC+"└╼"+rC+"$ "+r))
 
@@ -677,7 +680,7 @@ try:
             usefulltools_backup_reconfig()
 
         else:
-            print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+"Invalid option, chose y or n"+bC+"]"+r)                             # the function for the error with no respond
+            print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+"Invalid option, chose [Y/n]"+bC+"]"+r)                              # the function for the error with no respond
             input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to retry"+bC+"]"+r)                               #
             usefulltools_backup_verification()
 
@@ -692,7 +695,37 @@ try:
         print(bC+"     ╓─────────────────────────"+rC2+"|_____|"+bC+"──────────────────────────────────────"+rC2+"|__|"+bC+"────"+gC+"►"+r)
         print(bC+"     ║"+r)
         print(bC+"     ╚════════════════════════════════════════════════════╗"+r)
-        print(gC+"          Do you want reconfig the backup config ? (y/n)"+bC+"  ║"+r)
+        print(gC+"          Do you want reconfig the backup config ? [Y/n]"+bC+"  ║"+r)
+        print(bC+"     ═════════════════════════════════════════════════════╝"+r)
+        print()
+        print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
+        choice = str(input(bC+"└╼"+rC+"$ "+r))
+
+        if choice == "y" or choice == "Y":
+            usefulltools_backup_source()
+        elif choice == "n" or choice == "N":
+            usefulltools_mainpage()
+        elif not choice:
+            print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+"Choose [Y/n]"+bC+"]"+r)
+            input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to retry"+bC+"]"+r)
+            usefulltools_backup_reconfig()
+        else:
+            print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+"Invalid option, choose [Y/n]"+bC+"]"+r)                         # the function for the error with no respond
+            input(bC+"["+rC2+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to retry"+bC+"]"+r)                           #
+            usefulltools_backup_reconfig()
+
+    def usefulltools_backup_remakebackup():
+        import sys                                                                                       # Title page
+        sys.stdout.write("\x1b]2;OmegaDSToolkit | /ODST/UTools/BackupTool/Remake_the_backup_config\x07") #
+        cls()
+        print(rC2+"        _______                              ______              __                  "+r)
+        print(rC2+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+r)
+        print(rC2+"       |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  "+r)
+        print(rC2+"       |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  "+r)
+        print(bC+"     ╓─────────────────────────"+rC2+"|_____|"+bC+"──────────────────────────────────────"+rC2+"|__|"+bC+"────"+gC+"►"+r)
+        print(bC+"     ║"+r)
+        print(bC+"     ╚════════════════════════════════════════════════════╗"+r)
+        print(gC+"          Do you want to remake a backup ? [Y/n]"+bC+"  ║"+r)
         print(bC+"     ═════════════════════════════════════════════════════╝"+r)
         print()
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"OmegaBackup"+bC+"]")
@@ -742,20 +775,28 @@ try:
         print(bC+"        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM "+bC+"               ║                        "+ghostwhite+underscore+"SELECT AN OPTION"+reset)
         print()
         print()
-        print(bC+"["+gC+"This is the CLI version of OmegaDSToolkit, type help for all commands"+bC+"]"+r)
-
+        print(bC+"+ -- --=["+gC+"  This is the CLI version of OmegaDSToolkit, type "+red+"help"+gC+" for all commands"+bC+"  ]"+r)
+        print(bC+"+ -- --=["+gC+"  This version of OmegaDSToolkit is "+underscore+"TOTALLY"+reset+gC+" in "+rC+"BETA"+bC+"                      ]"+r)
+        print()
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~/CLI_BETA"+bC+"]─["+gC+"Menu"+bC+"]")
+        global command
         command = str(input(bC+"└╼"+rC+"$ "+r))
         while not command:
             print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~/CLI_BETA"+bC+"]─["+gC+"Menu"+bC+"]")
             command = str(input(bC+"└╼"+rC+"$ "+r))
         
         if command == "help":
-            cli_helpmsg()
+            cli_mainpage_helpmsg()
             cls()
             cli_main_page()
+        elif command == "info":
+            informationgathering_mainpage()
+        elif command == "exit":
+            exitodst()
         else:
-            print(bC+"["+rC2+"!"+bC+"]"+bC+"─["+gC+f"'{command}' is not a valid command"+bC+"]"+r)              # if the user enter a bad option (if the option type by the user are not recognized)
+            invalid_option()
+            cls()
+            cli_main_page()
 
         return command
 
@@ -798,6 +839,7 @@ try:
         print("                ["+bC+"exit"+r+"]"+gC+" Exit the ODST\n"  +r)
         print("ODST was not finish and he's totally in development!\n")
         print(bC+"┌──("+rC+"OmegaDSToolkit"+bC+")─["+r+"~"+bC+"]─["+gC+"Menu"+bC+"]"+r)
+        global command
         command = str(input(bC+"└╼"+rC+"$ "+r))
 
         if command == "1":
@@ -813,8 +855,9 @@ try:
             cls()
             cli_main_page()
         elif command == "help":
+            mainpage_helpmsg()
             cls()
-            helpmsg()
+            main_page()
         elif command == "exit":
             exitodst()
         elif not command:
@@ -825,8 +868,6 @@ try:
             invalid_option()
             cls()
             main_page()
-
-        return command
 
 #-END-OF-MAIN-PAGE---------------------------------------------------#
 

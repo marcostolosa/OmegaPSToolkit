@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ update.py                     [Update: 2022-03-07 | 22:51 PM] #
+#  Filename ~ update.py                     [Update: 2022-03-13 | 14:40 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -31,94 +31,111 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.              #
 #---------------------------------------------------------------------------#
 
+from asyncio import sleep
 from functions import *
 
-# heck if the user run update with root privilege
-try:
-    if os.getuid() != 0:
-        print("The OmegaDSToolkit's update tool could be run with root privilege") 
-        print("Re-run the update.py with sudo")
-        print('Run "sudo python3 update.py"')
-        sys.exit()
-
-# If the user tries to run ODST from a non-Linux machine
-except AttributeError:
-    print()
-    criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+red+" You tried to run ODST on a no-linux machine, ODST can be run only on a Linux kernel"+reset#
-    exit(criticalmsg)
-else:
+def updatetool():
+    # heck if the user run update with root privilege
     try:
-        print("""
-██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗████████╗ ██████╗  ██████╗ ██╗
-██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝╚══██╔══╝██╔═══██╗██╔═══██╗██║
-██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗     ██║   ██║   ██║██║   ██║██║
-██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝     ██║   ██║   ██║██║   ██║██║
-╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗   ██║   ╚██████╔╝╚██████╔╝███████╗
- ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝   ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝""")   # Police = ANSI Shadow from https://www.coolgenerator.com/ascii-text-generator
-        print("+ ------------------- !* UpdateTool for OmegaDSToolkit  *! ------------------- +")
-        print()
-        print("+ ----------------------------------- +")
-        print("  Checking for internet connection...")
-        print("+ ----------------------------------- +")
-        print()
-        
-        if connection() == True:
-            print("Internet status.......... "+lime+"Connected"+reset)
-            pass
-        else:
-            print("Internet status.......... "+red+"Not connected"+reset)
-            print("Not Internet connexion found, please check you are connected to Internet and retry.")
+        if os.getuid() != 0:
+            print("The OmegaDSToolkit's update tool could be run with root privilege") 
+            print("Re-run the update.py with sudo")
+            print('Run "sudo python3 update.py"')
             sys.exit()
 
-        print("The update tool will be install the latest version of OmegaDSToolkit")
-        yn = str(input("Do you want to continue? [Y/n] "))
-
-        if yn != 'y' and yn != 'Y':
-            print("Abort.")
-            sys.exit()
-        elif not yn:
-            print("Abort.")
-            sys.exit()
-        else:
-            pass
-
-        # For OmegaDSToolkit
-        print("Download the latest version of OmegaDSToolkit...")
-        ## Removing the current local OmegaDSToolkit
-        os.system("rm -f OmegaDSToolkit.py")
-        ## Download OmegaDSToolkit with wget from github raw
-        os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/OmegaDSToolkit.py")
-        print("Done for OmegaDSToolkit\n")
-
-        # For the SetupTool
-        print("Download the latest version of OmegaDSToolkit setuptool...")
-        ## Removing the current locl SetupTool
-        os.system("rm -f setup.py")
-        ## Download SetupTool with wget from github raw
-        os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/setup.py")
-        print("Done the SetupTool\n")
-
-        # For the InstallTool
-        print("Download the latest version of OmegaDSToolkit setuptool...")
-        ## Removing the current locl InstallTool
-        os.system("rm -f install.py")
-        ## Download InstallTool with wget from github raw
-        os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/install.sh")
-        print("Done the InstallTool\n")
-
-        # Apply all rights to the new files
-        print("Apply all rights to the new files...")
-        os.system('chmod +xrw OmegaDSToolkit.py')     # for the OmegaDSToolkit
-        os.system('chmod +xrw setup.py')              # for the SetupTool
-        os.system('chmod +xrw install.sh')            # for the InstallTool
-
-        print("Done\n")
-        print('''
-Update complete! For be sure, run the setup.py with "sudo python3 setup.py install" before running ODST. 
-After, you can run OmegaDSToolkit with "sudo python3 OmegaDSToolkit.py"''')
-        sys.exit()
-
-    except KeyboardInterrupt:
+    # If the user tries to run ODST from a non-Linux machine
+    except AttributeError:
         print()
-        print("CTRL + C detected, stoping the update tool...")
-        sys.exit()
+        criticalmsg = blue+"["+red+"CRITICAL"+blue+"]"+red+" You tried to run ODST on a no-linux machine, ODST can be run only on a Linux kernel"+reset#
+        exit(criticalmsg)
+    else:
+        try:
+            print("""
+    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗████████╗ ██████╗  ██████╗ ██╗
+    ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝╚══██╔══╝██╔═══██╗██╔═══██╗██║
+    ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗     ██║   ██║   ██║██║   ██║██║
+    ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝     ██║   ██║   ██║██║   ██║██║
+    ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗   ██║   ╚██████╔╝╚██████╔╝███████╗
+     ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝   ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝v1.7""")   # Police = ANSI Shadow from https://www.coolgenerator.com/ascii-text-generator
+            print("+ ------------------- !* UpdateTool for OmegaDSToolkit  *! ------------------- +")
+            print()
+            print("+ ----------------------------------- +")
+            print("  Checking for internet connection...")
+            print("+ ----------------------------------- +")
+            print()
+            
+            if connection() == True:
+                print("Internet status.......... "+lime+"Connected"+reset)
+                pass
+            else:
+                print("Internet status.......... "+red+"Not connected"+reset)
+                print("Not Internet connexion found, please check you are connected to Internet and retry.")
+                sys.exit()
+
+            print("The update tool will be install the latest version of OmegaDSToolkit")
+            yn = str(input("Do you want to continue? [Y/n] "))
+
+            if yn != 'y' and yn != 'Y':
+                print("Abort.")
+                sys.exit()
+            elif not yn:
+                print("Abort.")
+                sys.exit()
+            else:
+                pass
+
+            print("+ -- --=[  Remove the current OmegaDSToolkit, setup and install tools...  ]")
+            os.system("rm -f /usr/share/OmegaDSToolkit/OmegaDSToolkit.py")
+            os.system("rm -f /usr/share/OmegaDSToolkit/setup.py")
+            os.system("rm -f /usr/share/OmegaDSToolkit/install.sh")
+            print("+ -- --=[  Remove complete.  ]")
+            sleep(1)
+            # For OmegaDSToolkit
+            print("+ -- --=[  Download the latest version of OmegaDSToolkit...  ]")
+            ## Removing the current local OmegaDSToolkit
+            os.system("rm -f OmegaDSToolkit.py")
+            ## Download OmegaDSToolkit with wget from github raw
+            os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/OmegaDSToolkit.py")
+            print("+ -- --=[  Done for OmegaDSToolkit,  ]\n")
+
+            # For the SetupTool
+            print("+ -- --=[  Download the latest version of OmegaDSToolkit setuptool...")
+            ## Removing the current locl SetupTool
+            os.system("rm -f setup.py")
+            ## Download SetupTool with wget from github raw
+            os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/setup.py")
+            print("+ -- --=[  Done the SetupTool,  ]\n")
+
+            # For the InstallTool
+            print("+ -- --=[  Download the latest version of OmegaDSToolkit setuptool...")
+            ## Removing the current locl InstallTool
+            os.system("rm -f install.py")
+            ## Download InstallTool with wget from github raw
+            os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/install.sh")
+            print("+ -- --=[  Done the InstallTool,  ]\n")
+
+            # Apply all rights to the new files
+            print("+ -- --=[  Apply all rights to the new files...  ]")
+            os.system('chmod +xrw OmegaDSToolkit.py')     # for the OmegaDSToolkit
+            os.system('chmod +xrw setup.py')              # for the SetupTool
+            os.system('chmod +xrw install.sh')            # for the InstallTool
+            print("+ -- --=[  Done for the right files.  ]\n")
+
+            print("All Done.\n")
+            print("+ -- --=[------------------------------------------------------------------------------------------------------------]")
+            print("+ -- --=[  Update complete! For be sure, run the setup.py with \"sudo python3 setup.py install\" before running ODST.]")
+            print("+ -- --=[  After, you can run OmegaDSToolkit with \"sudo python3 OmegaDSToolkit.py\".                                ]")
+            print("+ -- --=[------------------------------------------------------------------------------------------------------------]")
+            sys.exit()
+
+        except KeyboardInterrupt:
+            print()
+            print("CTRL + C detected, stoping the update tool...")
+            sys.exit()
+        except EOFError:
+            print()
+            print("CTRL + C detected, stoping the update tool...")
+            sys.exit()
+
+# call the funtcion 'updatetool'
+updatetool()
