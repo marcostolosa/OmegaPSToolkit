@@ -10,6 +10,14 @@
 > # The changlog of OmegaDSToolkit
 > 
 > 
+> * v0.0.1.3  -  Fix UpdateTool
+> 
+> * v0.0.1.3  -  Fix InstallTool
+> 
+> * v0.0.1.3  -  Fix SetupTool
+> 
+> * v0.0.1.3  -  Fix import error from OmegaDSToolkit
+> 
 > * v0.0.1.3  -  Add a update file for install the latest version of OmegaDSToolki and the setuptool
 > 
 > * v0.0.1.2  -  Add a separated file for functions (better code)
