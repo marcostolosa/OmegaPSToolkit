@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ setup.py                      [Update: 2022-03-13 | 17:00 PM] #
+#  Filename ~ setup.py                       [Update: 2022-03-13 | 8:29 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -270,7 +270,7 @@ else:
 
 
                     # Writing alias
-                    root_alias = ["alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n", "alias odstupdate='python3 /usr/share/OmegaDSToolkit/update.py'\n"]
+                    root_alias = "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n alias odstupdate='python3 /usr/share/OmegaDSToolkit/update.py'\n"
                     with open("/root/.bashrc", "a") as aliasfile:
                         #### Writing data to a file
                         aliasfile.writelines(root_alias)
