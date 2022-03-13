@@ -31,7 +31,7 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.              #
 #---------------------------------------------------------------------------#
 
-from asyncio import sleep
+from time import sleep
 from functions import *
 
 def updatetool():
