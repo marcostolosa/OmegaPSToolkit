@@ -210,17 +210,6 @@ else:
                         #### Write
                         file.write(new_text)
 
-                    ## 'sudo ' alias
-                    ### Read file.txt
-                    with open(f'/home/{user}/.bashrc', 'r') as file:
-                        text = file.read()
-                    ### Delete text and Write
-                    with open(f'/home/{user}/.bashrc', 'w') as file:
-                        #### Delete
-                        new_text = text.replace("alias sudo='sudo '", '')
-                        #### Write
-                        file.write(new_text)
-
                     ## 'odstupdate ' alias
                     ### Read file.txt
                     with open(f'/home/{user}/.bashrc', 'r') as file:
@@ -232,8 +221,20 @@ else:
                         #### Write
                         file.write(new_text)
 
+                    ## 'sudo ' alias
+                    ### Read file.txt
+                    with open(f'/home/{user}/.bashrc', 'r') as file:
+                        text = file.read()
+                    ### Delete text and Write
+                    with open(f'/home/{user}/.bashrc', 'w') as file:
+                        #### Delete
+                        new_text = text.replace("alias sudo='sudo '", '')
+                        #### Write
+                        file.write(new_text)
+
+
                     # Writit aliases
-                    alias =["alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n", "alias odstupdate='python3 /usr/share/OmegaDSToolkit/update.py'\n","alias sudo='sudo '\n"]
+                    alias =["alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n", "alias odstupdate='python3 /usr/share/OmegaDSToolkit/update.py'\n", "alias sudo='sudo '\n"]
                     with open(f"/home/{user}/.bashrc", "a") as aliasfile:
                         # Writing data to a file
                         aliasfile.writelines(alias)
