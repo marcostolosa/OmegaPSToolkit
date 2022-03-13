@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ update.py                     [Update: 2022-03-13 | 16:40 PM] #
+#  Filename ~ update.py                     [Update: 2022-03-13 | 17:13 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -104,14 +104,13 @@ def updatetool():
             print()
             print()
 
-            os.system("cd /usr/share/OmegaDSToolkit/")
             # For OmegaDSToolkit
             print("+ -- --=[----------------------------------------------------]")
             print("+ -- --=[  Download the latest version of OmegaDSToolkit...  ]")
             print("+ -- --=[----------------------------------------------------]")
             print()
             ## Download OmegaDSToolkit with wget from github raw
-            os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/OmegaDSToolkit.py")
+            os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/OmegaDSToolkit.py -P /usr/share/OmegaDSToolkit")
             print()
             print("+ -- --=[----------------------------]")
             print("+ -- --=[  Done for OmegaDSToolkit.  ]")
@@ -121,14 +120,13 @@ def updatetool():
             print()
             print()
 
-            os.system("cd /usr/share/OmegaDSToolkit/")
             # For the SetupTool
             print("+ -- --=[-----------------------------------------------]")
             print("+ -- --=[  Download the latest version of SetupTool...  ]")
             print("+ -- --=[-----------------------------------------------]")
             print()
             ## Download SetupTool with wget from github raw
-            os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/setup.py")
+            os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/setup.py -P /usr/share/OmegaDSToolkit")
             print()
             print("+ -- --=[-----------------------]")
             print("+ -- --=[  Done the SetupTool.  ]")
@@ -138,14 +136,13 @@ def updatetool():
             print()
             print()
 
-            os.system("cd /usr/share/OmegaDSToolkit/")
             # For the InstallTool
             print("+ -- --=[-------------------------------------------------]")
             print("+ -- --=[  Download the latest version of InstallTool...  ]")
             print("+ -- --=[-------------------------------------------------]")
             print()
             ## Download InstallTool with wget from github raw
-            os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/install.sh")
+            os.system("wget https://raw.githubusercontent.com/MyMeepSQL/OmegaDSToolkit/main/install.sh -P /usr/share/OmegaDSToolkit")
             print()
             print("+ -- --=[-------------------------]")
             print("+ -- --=[  Done the InstallTool.  ]")
@@ -160,9 +157,9 @@ def updatetool():
             print("+ -- --=[  Apply all rights to the new files...  ]")
             print("+ -- --=[----------------------------------------]")
             print()
-            os.system('chmod +xrw OmegaDSToolkit.py')     # for the OmegaDSToolkit
-            os.system('chmod +xrw setup.py')              # for the SetupTool
-            os.system('chmod +xrw install.sh')            # for the InstallTool
+            os.system('chmod +xrw /usr/share/OmegaDSToolkit/OmegaDSToolkit.py')     # for the OmegaDSToolkit
+            os.system('chmod +xrw /usr/share/OmegaDSToolkit/setup.py')              # for the SetupTool
+            os.system('chmod +xrw /usr/share/OmegaDSToolkit/install.sh')            # for the InstallTool
             print("+ -- --=[-----------------------------]")
             print("+ -- --=[  Done for the right files.  ]")
             print("+ -- --=[-----------------------------]")
