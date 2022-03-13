@@ -18,6 +18,9 @@
 > * Can only be run on **Linux machine**
 > * This tool is for educational purposes only, the use of **OmegaDSToolkit** on a target without its consent is totally **illegal!** I will not take any responsibility if this program is used explicitly
 > 
+> ## Changelog
+> All new changes compared to _**OmegaDSToolkit**_ can be found _[here](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/CHANGLOG.md)_
+> 
 > ## **Features**
 > * The tools will be categorized as: 
 >   * Scanning tools,
@@ -51,9 +54,20 @@
 >   ```bash
 >   sudo python3 setup.py install
 >   ```
-> * _Step 5_ : Run the **OmegaDSToolkit** with:
+> * _Step 5_ : Reload your **.bashrc** file like this:
+> 
+>   `You must run this command with your basic user and root user (type this command with you current user and, after, enter in root 
+>   user with **sudo su** and type the command. If you actually in root, type directly this command)`
 >   ```bash
->   sudo python3 OmegaDSToolkit.py          # To start ODST, you must be in its directory
+>   source ~/bashrc
+>   ```
+> * _Step 6_ : Run the **OmegaDSToolkit** with:
+>   ```bash
+>   sudo omegadstoolkit                     # With the alias, you can run ODST anywhere (tell me if a problem appears) 
+>   ```
+>   **Or**
+>   ```bash
+>   sudo python3 OmegaDSToolkit.py          # You must be in its directory to run ODST like this
 >   ``` 
 >>## **Update**
 >>To download the latest version of OmegaDSToolkit and the SetupTool.
@@ -66,8 +80,6 @@
 > | ------------- | 
 > | ![menu](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/Screens/odst_main_page.png)  |
 > 
-> ## Changelog
-> All new changes compared to _**OmegaDSToolkit**_ can be found _[here](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/CHANGLOG.md)_
 > 
 > ## License 
 > This program uses the license _[General Public License v3.0](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/LICENSE)_
