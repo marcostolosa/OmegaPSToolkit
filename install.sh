@@ -100,6 +100,7 @@ then
         echo '+ -- --=[  Installing Python3 and PIP3...  ]'
         echo '+ -- --=[----------------------------------]'
         echo
+        sleep 1
         apt install python3 python3-pip -y
         echo
         echo '+ -- --=[--------------------------]'
