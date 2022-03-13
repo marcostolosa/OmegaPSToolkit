@@ -37,34 +37,37 @@
 >  * UTools (UsefullTools made by me),
 >  * _**And more**_
 > 
->
 > ## **Installation**
 > Instructions to install ***OmegaDSToolkit***... (Linux commands)
 > 
-> * _Step 1_ : **Clone** the repositories with:
+> * _Step 1_ : Install **git** tool for clone this repositories with:
+>   ```bash
+>   sudo apt install git -y
+>   ```
+> * _Step 2_ : **Clone** the repositories with:
 >   ```bash
 >   sudo git clone https://github.com/MyMeepSQL/OmegaDSToolkit.git
 >   ```
-> * _Step 2_ : Go to the **OmegaDSToolkit repositories folder** with:
+> * _Step 3_ : Go to the **OmegaDSToolkit repositories folder** with:
 >   ```bash
 >   cd OmegaDSToolkit
 >   ```
-> * _Step 3_ : To install **Python3** and **PIP3**, run the "install.sh" with:
+> * _Step 4_ : To install **Python3** and **PIP3**, run the "install.sh" with:
 >   ```bash
 >   sudo sh install.sh
 >   ```
-> * _Step 4_ : Run the "**setup.py**" for install all _pip modules_ that you must have with:
+> * _Step 5_ : Run the "**setup.py**" for install all _pip modules_ that you must have with:
 >   ```bash
 >   sudo python3 setup.py install
 >   ```
-> * _Step 5_ : Reload your **.bashrc** file like this:
+> * _Step 6_ : Reload your **.bashrc** file like this:
 > 
 >   `You must run this command with your basic user and root user (type this command with you current user and, after, enter in root 
 >   user with **sudo su** and type the command. If you actually in root, type directly this command)`
 >   ```bash
 >   source ~/.bashrc
 >   ```
-> * _Step 6_ : Run the **OmegaDSToolkit** with:
+> * _Step 7_ : Run the **OmegaDSToolkit** with:
 >   ```bash
 >   sudo omegadstoolkit                     # With the alias, you can run ODST anywhere (tell me if a problem appears) 
 >   ```
@@ -78,11 +81,11 @@
 >>   ```bash
 >>   sudo python3 update.py
 >>   ```
+>
 > ## Tool overview
 > | The main page | 
 > | ------------- | 
 > | ![menu](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/Screens/odst_main_page.png)  |
-> 
 > 
 > ## License 
 > This program uses the license _[General Public License v3.0](https://github.com/MyMeepSQL/OmegaDSToolkit/blob/main/LICENSE)_
