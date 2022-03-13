@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ setup.py                      [Update: 2022-03-13 | 17:00 PM] #
+#  Filename ~ setup.py                      [Update: 2022-03-13 | 17:32 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -145,7 +145,6 @@ else:
                     'progress', 'colored'
                 ],
             )
-            
             print()
             print("+ -- --=[------------------------------------------------------------------]")
             print("+ -- --=[  Create OmegaDSToolkit folder to \"/usr/share/OmegaDSToolkit\"...  ]")
@@ -222,8 +221,19 @@ else:
                         #### Write
                         file.write(new_text)
 
+                    ## 'odstupdate ' alias
+                    ### Read file.txt
+                    with open(f'/home/{user}/.bashrc', 'r') as file:
+                        text = file.read()
+                    ### Delete text and Write
+                    with open(f'/home/{user}/.bashrc', 'w') as file:
+                        #### Delete
+                        new_text = text.replace("alias odstupdate='python3 /usr/share/OmegaDSToolkit/update.py'", '')
+                        #### Write
+                        file.write(new_text)
+
                     # Writit aliases
-                    alias =["alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n", "alias sudo='sudo '\n"]
+                    alias =["alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n", "alias odstupdate='python3 /usr/share/OmegaDSToolkit/update.py'\n","alias sudo='sudo '\n"]
                     with open(f"/home/{user}/.bashrc", "a") as aliasfile:
                         # Writing data to a file
                         aliasfile.writelines(alias)
@@ -245,9 +255,21 @@ else:
                         new_text = text.replace("alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'", '')
                         #### Write
                         file.write(new_text)
+                    
+                    ## 'odstupdate ' alias
+                    ### Read file.txt
+                    with open(f'/home/{user}/.bashrc', 'r') as file:
+                        text = file.read()
+                    ### Delete text and Write
+                    with open(f'/home/{user}/.bashrc', 'w') as file:
+                        #### Delete
+                        new_text = text.replace("alias odstupdate='python3 /usr/share/OmegaDSToolkit/update.py'", '')
+                        #### Write
+                        file.write(new_text)
+
 
                     # Writing alias
-                    root_alias = "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n"
+                    root_alias = ["alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n", "alias odstupdate='python3 /usr/share/OmegaDSToolkit/update.py'\n"]
                     with open("/root/.bashrc", "a") as aliasfile:
                         #### Writing data to a file
                         aliasfile.writelines(root_alias)
@@ -259,6 +281,7 @@ else:
                     print(f"+ -- --=[  Writing alias into your \"/root/.bashrc\"...")
                     print("+ -- --=[--------------------------------------------------------------------------------]")
                     sleep(1)
+
 
                     #####################
                     # For /root/.bashrc #
@@ -276,9 +299,21 @@ else:
                         new_text = text.replace("alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'", '')
                         #### Write
                         file.write(new_text)
+                    
+                    ## 'odstupdate ' alias
+                    ### Read file.txt
+                    with open(f'/home/{user}/.bashrc', 'r') as file:
+                        text = file.read()
+                    ### Delete text and Write
+                    with open(f'/home/{user}/.bashrc', 'w') as file:
+                        #### Delete
+                        new_text = text.replace("alias odstupdate='python3 /usr/share/OmegaDSToolkit/update.py'", '')
+                        #### Write
+                        file.write(new_text)
+
 
                     # Writing alias
-                    root_alias = "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n"
+                    root_alias = ["alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n", "alias odstupdate='python3 /usr/share/OmegaDSToolkit/update.py'\n"]
                     with open("/root/.bashrc", "a") as aliasfile:
                         #### Writing data to a file
                         aliasfile.writelines(root_alias)
@@ -326,4 +361,4 @@ re-run the 'setup.py' and write a correct username\n"""+reset)
         print()
         print("Abort.")
         sys.exit()
-###
+####
