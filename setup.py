@@ -233,8 +233,8 @@ else:
                         file.write(new_text)
 
 
-                    # Writit aliases
-                    alias =["alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n", "alias odstupdate='python3 /usr/share/OmegaDSToolkit/update.py'\n", "alias sudo='sudo '\n"]
+                    # Writing aliases
+                    alias = "alias omegadstoolkit='python3 /usr/share/OmegaDSToolkit/OmegaDSToolkit.py'\n alias odstupdate='python3 /usr/share/OmegaDSToolkit/update.py'\n alias sudo='sudo '\n"
                     with open(f"/home/{user}/.bashrc", "a") as aliasfile:
                         # Writing data to a file
                         aliasfile.writelines(alias)
