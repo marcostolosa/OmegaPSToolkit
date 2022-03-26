@@ -210,11 +210,11 @@ if [ $? -eq 0 ]; then
             sleep 0.5
             reset
             echo
-            echo "$G$D""---------------------------------------------------------------------------------------------------------------------------------------------------------"$W
+            echo "$G$D""-------------------------------------------------------------------------------------------------------------------------------------"$W
             echo
-            echo "$B[OK]$W    '$R'OPSTConsole'$W', '$R'OPSTHelp'$W', '$R'OPSTUpdate'$W', '$R'OPSTInstall-all'$W' and '$R'OPSTSetup'$W' are now install with the latest version exist from GitHub."
+            echo "$B[OK]$W    "$R"OPSTConsole"$W", "$R"OPSTHelp"$W", "$R"OPSTUpdate"$W", "$R"OPSTInstall-all"$W" and "$R"OPSTSetup"$W" are now install with the latest version exist from GitHub."
             echo
-            echo "$G$D""---------------------------------------------------------------------------------------------------------------------------------------------------------"$W
+            echo "$G$D""-------------------------------------------------------------------------------------------------------------------------------------"$W
             echo
             exit 0
         else
@@ -223,11 +223,11 @@ if [ $? -eq 0 ]; then
             echo "$B$D[+]$W    Answer: "$R"No"$W"."
             echo "$G$D""--------------------"$W
             echo
-            echo "$G$D""---------------------------------------------------------------------------------------------------------------------------------------------------------"$W
+            echo "$G$D""-------------------------------------------------------------------------------------------------------------------------------------"$W
             echo
-            echo "$B[OK]$W    '"$R"OPSTConsole"$W"', '$R"OPSTHelp"$W', '$R"OPSTUpdate"$W', '$R"OPSTInstall-all"$W' and '$R"OPSTSetup"$W' are now install with the latest version exist from GitHub."
+            echo "$B[OK]$W    "$R"OPSTConsole"$W", "$R"OPSTHelp"$W", "$R"OPSTUpdate"$W", "$R"OPSTInstall-all"$W" and "$R"OPSTSetup"$W" are now install with the latest version exist from GitHub."
             echo
-            echo "$G$D""---------------------------------------------------------------------------------------------------------------------------------------------------------"$W
+            echo "$G$D""-------------------------------------------------------------------------------------------------------------------------------------"$W
             echo
             exit 0
         fi
