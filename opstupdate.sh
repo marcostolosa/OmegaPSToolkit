@@ -72,7 +72,7 @@ if [ $(id -u) != "0" ]; then
                 exit 1
         else # Switch to sudo (root)
             echo
-            echo "$R[!]$W    OPSTUpdate-all could be run as the 'root' user or with 'sudo'"
+            echo "$R[!]$W    OPSTUpdate could be run as the 'root' user or with 'sudo'"
             echo "$G[-]$W    Switching to root user to run the 'opstupdate'"
             sudo -E sh $0 $@
             exit 0
@@ -95,8 +95,8 @@ echo
 #First check of setup for internet connection by connecting to google over http
 wget -q --tries=10 --timeout=5 --spider http://google.com
 if [ $? -eq 0 ]; then
-    echo '+ -- --=[  Internet status.......... '"$G"'Connected'"$W"'.                                                                               ]'
-    echo '+ -- --=[  '$underscore'This tool will:'$W'                                                                                                    ]
+    echo '+ -- --=[  Internet status.......... '"$G"'Connected'"$W"'.                                                              ]'
+    echo '+ -- --=[  '$underscore'This tool will:'$W'                                                                                   ]
         [  ...'$G'Install'$W' the latest verion of '$R'OPSTConsole'$W', '$R'OPSTHelp'$W', '$R'OPSTUpdate'$W', '$R'OPSTInstall-all'$W' and '$R'OPSTSetup'$W'  ]'
     echo
     echo -n "$C[?]$W    Do you want to continue? [Y/n] "
