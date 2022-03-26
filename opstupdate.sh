@@ -51,7 +51,7 @@ underscore='\033[4m'
 normal='\033[22m'
 ####
 
-opstinstallall_version="v1.8"
+opstupdate_version="v1.8"
 INSTALL_DIR="/usr/share/OmegaPSToolkit"
 BIN_DIR="/usr/share/"
 
