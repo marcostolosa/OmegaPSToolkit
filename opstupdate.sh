@@ -225,7 +225,7 @@ if [ $? -eq 0 ]; then
             echo
             echo "$G$D""---------------------------------------------------------------------------------------------------------------------------------------------------------"$W
             echo
-            echo "$B[OK]$W    '$R'OPSTConsole'$W', '$R'OPSTHelp'$W', '$R'OPSTUpdate'$W', '$R'OPSTInstall-all'$W' and '$R'OPSTSetup'$W' are now install with the latest version exist from GitHub."
+            echo "$B[OK]$W    '"$R"OPSTConsole"$W"', '$R"OPSTHelp"$W', '$R"OPSTUpdate"$W', '$R"OPSTInstall-all"$W' and '$R"OPSTSetup"$W' are now install with the latest version exist from GitHub."
             echo
             echo "$G$D""---------------------------------------------------------------------------------------------------------------------------------------------------------"$W
             echo
