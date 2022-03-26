@@ -166,7 +166,7 @@ if [ $? -eq 0 ]; then
         echo "#!/bin/bash
         python3 $INSTALL_DIR/opstconsole.py" '${1+"$@"}' > opstconsole
         echo "#!/bin/bash
-        python3 $INSTALL_DIR/opstupdate.py" '${1+"$@"}' > opstupdate
+        python3 $INSTALL_DIR/opstupdate.sh" '${1+"$@"}' > opstupdate
         echo "#!/bin/bash
         python3 $INSTALL_DIR/opstsetup.py" '${1+"$@"}' > opstsetup
         echo "#!/bin/bash
@@ -198,7 +198,7 @@ if [ $? -eq 0 ]; then
 
         # for '/usr/share/OmegaPSToolkit'
         chmod 777 /usr/share/OmegaPSToolkit/opstconsole.py
-        chmod 777 /usr/share/OmegaPSToolkit/opstupdate.py
+        chmod 777 /usr/share/OmegaPSToolkit/opstupdate.sh
         chmod 777 /usr/share/OmegaPSToolkit/opstsetup.py
         chmod 777 /usr/share/OmegaPSToolkit/opstinstall-all.sh
         chmod 777 /usr/share/OmegaPSToolkit/opsthelp.py
