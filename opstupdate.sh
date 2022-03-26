@@ -84,7 +84,7 @@ if [ $(id -u) != "0" ]; then
 
 echo
 echo "$GR$D _______ ______ _______ _______ _______           __         __ $W"
-echo "$GR$D|       |   __ \     __|_     _|   |   |.-----.--|  |.---.-.|  |_.-----.$W$G  OPSTUpdate $D$W$opstupdate_version"
+echo "$GR$D|       |   __ \     __|_     _|   |   |.-----.--|  |.---.-.|  |_.-----.$W$G  OPSTUpdate $D$opstupdate_version"
 echo "$GR$D|   -   |    __/__     | |   | |   |   ||  _  |  _  ||  _  ||   _|  -__|$W$D  A massive penetration testing toolkit"          # Police = Chunky from https://www.coolgenerator.com/ascii-text-generator
 echo "$GR$D|_______|___|  |_______| |___| |_______||   __|_____||___._||____|_____|$C$D  https://github.com/MyMeepSQL/OmegaPSToolkit$W"
 echo "$GR$D +- !* Welcome to the OPSTUpdate. *! -+ |__|$W"
