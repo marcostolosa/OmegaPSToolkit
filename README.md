@@ -85,7 +85,7 @@
 > ## Tool overview
 > | The main page | 
 > | ------------- | 
-> | ![menu](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opst_main_page.png)  |
+> | ![menu](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/odst_main_page.png)  |
 > 
 > ## License 
 > This program uses the license _[General Public License v3.0](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/LICENSE)_.
