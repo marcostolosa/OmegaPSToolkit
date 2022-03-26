@@ -10,8 +10,8 @@
 [![Release](https://img.shields.io/badge/Release-In%20Development-yellow?style=flat-square)]()
 [![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-brightgreen?style=flat-square)]()
 [![Licence](https://img.shields.io/badge/License-GNU%20GPL--3.0-important?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/LICENSE)
-[![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow?style=flat-square)]()
 [![Views](https://hits.dwyl.com/MyMeepSQL/OmegaPSToolkit.svg?style=flat-square)](http://hits.dwyl.com/MyMeepSQL/OmegaPSToolkit)
+[![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow?style=flat-square)]()
 > > ### _**A massive penetration testing toolkit**_
 > 
 > ## **About OmegaPSToolkit**
