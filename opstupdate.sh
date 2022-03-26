@@ -171,7 +171,7 @@ if [ $? -eq 0 ]; then
 
         # for '/usr/share/OmegaPSToolkit'
         chmod 777 /usr/share/OmegaPSToolkit/opstconsole.py
-        chmod 777 /usr/share/OmegaPSToolkit/opstupdate.py
+        chmod 777 /usr/share/OmegaPSToolkit/opstupdate.sh
         chmod 777 /usr/share/OmegaPSToolkit/opstsetup.py
         chmod 777 /usr/share/OmegaPSToolkit/opstinstall-all.sh
         chmod 777 /usr/share/OmegaPSToolkit/opsthelp.py
@@ -195,9 +195,9 @@ if [ $? -eq 0 ]; then
         echo
         echo "$B[+]$W    All Done."
         echo
+        sleep 1
         echo "$G$D""--------------------------------------------------------------------------------------"$W
         echo
-        sleep 0.3
         echo -n "$C[?]$W    Do you want to reload your terminal (just in case) ? [Y/n] "
         read y_n
         if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ]; then
@@ -210,11 +210,11 @@ if [ $? -eq 0 ]; then
             sleep 0.5
             reset
             echo
-            echo "$G$D""-----------------------------------------------------------------------------------------------------------------------------------------------------------------------"$W
+            echo "$G$D""---------------------------------------------------------------------------------------------------------------------------------------------------------"$W
             echo
             echo "$B[OK]$W    '$R'OPSTConsole'$W', '$R'OPSTHelp'$W', '$R'OPSTUpdate'$W', '$R'OPSTInstall-all'$W' and '$R'OPSTSetup'$W' are now install with the latest version exist from GitHub."
             echo
-            echo "$G$D""-----------------------------------------------------------------------------------------------------------------------------------------------------------------------"$W
+            echo "$G$D""---------------------------------------------------------------------------------------------------------------------------------------------------------"$W
             echo
             exit 0
         else
@@ -223,11 +223,11 @@ if [ $? -eq 0 ]; then
             echo "$B$D[+]$W    Answer: "$R"No"$W"."
             echo "$G$D""--------------------"$W
             echo
-            echo "$G$D""-----------------------------------------------------------------------------------------------------------------------------------------------------------------------"$W
+            echo "$G$D""---------------------------------------------------------------------------------------------------------------------------------------------------------"$W
             echo
             echo "$B[OK]$W    '$R'OPSTConsole'$W', '$R'OPSTHelp'$W', '$R'OPSTUpdate'$W', '$R'OPSTInstall-all'$W' and '$R'OPSTSetup'$W' are now install with the latest version exist from GitHub."
             echo
-            echo "$G$D""-----------------------------------------------------------------------------------------------------------------------------------------------------------------------"$W
+            echo "$G$D""---------------------------------------------------------------------------------------------------------------------------------------------------------"$W
             echo
             exit 0
         fi
