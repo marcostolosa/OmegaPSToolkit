@@ -95,9 +95,9 @@ echo
 #First check of setup for internet connection by connecting to google over http
 wget -q --tries=10 --timeout=5 --spider http://google.com
 if [ $? -eq 0 ]; then
-    echo '+ -- --=[  Internet status.......... '"$G"'Connected'"$W"'.                                                              ]'
-    echo '+ -- --=[  '$underscore'This tool will:'$W'                                                                                   ]
-        [  ...'$G'Install'$W' the latest verion of '$R'OPSTConsole'$W', '$R'OPSTHelp'$W', '$R'OPSTUpdate'$W', '$R'OPSTInstall-all'$W' and '$R'OPSTSetup'$W'  ]'
+    echo '+ -- --=[  Internet status.......... '"$G"'Connected'"$W"'.                                                                          ]'
+    echo '+ -- --=[  '$underscore'This tool will:'$W'                                                                                               ]
+        [  ...'$G'Install'$W' the latest verion of '$R'OPSTConsole'$W', '$R'OPSTHelp'$W', '$R'OPSTUpdate'$W', '$R'OPSTInstall-all'$W' and '$R'OPSTSetup'$W' from '$G'Github'$W'  ]'
     echo
     echo -n "$C[?]$W    Do you want to continue? [Y/n] "
     read y_n
@@ -108,8 +108,8 @@ if [ $? -eq 0 ]; then
         echo "$G[-]$W    Removing the current OPST's commands from '"$G"/usr/share/OmegaPSToolkit"$W"'..."
         rm -fr "$INSTALL_DIR/opstconsole.py"
         rm -fr "$INSTALL_DIR/opsthelp.py"
-        rm -fr "$INSTALL_DIR/opstupdate.py"
         rm -fr "$INSTALL_DIR/opstsetup.py"
+        rm -fr "$INSTALL_DIR/opstupdate.sh"
         rm -fr "$INSTALL_DIR/opstinstall-all.sh"
 
         rm -fr "$INSTALL_DIR/opstfunctions.py"
@@ -125,15 +125,15 @@ if [ $? -eq 0 ]; then
         echo
         sleep 0.5
 
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstconsole.py -P /usr/share/OmegaPSToolkit/opstconsole.py
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opsthelp.py -P /usr/share/OmegaPSToolkit/opsthelp.py
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstupdate.py -P /usr/share/OmegaPSToolkit/opstupdate.py
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstsetup.py -P /usr/share/OmegaPSToolkit/opstsetup.py
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstinstall-all.sh -P /usr/share/OmegaPSToolkit/opstinstall-all.sh
+        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstconsole.py -P /usr/share/OmegaPSToolkit/
+        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opsthelp.py -P /usr/share/OmegaPSToolkit/
+        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstsetup.py -P /usr/share/OmegaPSToolkit/
+        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstupdate.sh -P /usr/share/OmegaPSToolkit/
+        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstinstall-all.sh -P /usr/share/OmegaPSToolkit/
 
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstfunctions.py -P /usr/share/OmegaPSToolkit/opstfunctions.py
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstcolors.py -P /usr/share/OmegaPSToolkit/opstcolors.py
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstversions.py -P /usr/share/OmegaPSToolkit/opstversions.py
+        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstfunctions.py -P /usr/share/OmegaPSToolkit/
+        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstcolors.py -P /usr/share/OmegaPSToolkit/
+        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstversions.py -P /usr/share/OmegaPSToolkit/
 
         echo "#!/bin/bash
         python3 $INSTALL_DIR/opstconsole.py" '${1+"$@"}' > opstconsole
