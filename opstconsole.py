@@ -62,8 +62,8 @@ try:
     if os.getuid() != 0:                                                                           #check if the user run OPST with root privilege
         permerror =f"""
 {R}[!]{W}    OPSTConsole could be run as the 'root' user or with 'sudo'
-    Re-run the 'opstconsole' with 'sudo' or with the 'root' user
-    Run \"sudo opstconsole\"
+       Re-run the 'opstconsole' with 'sudo' or with the 'root' user
+       Run \"sudo opstconsole\"
 """
         sys.exit(permerror)
 except AttributeError:
