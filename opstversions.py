@@ -42,10 +42,15 @@ opstinstallall_version = "v1.8"
 
 # current python version
 from platform import *
-import os 
+import os
+
+def pip():
+    import subprocess
+    subprocess.run(["pip", "-V"])
 
 OS = platform()
 python_version = python_version()
 
-pip_version = os.system("python -m pip --version")
+pip_version = pip()
+
 ####
