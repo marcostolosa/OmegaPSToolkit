@@ -70,7 +70,7 @@ try:
         permerror =f"""
 {R}[!]{W}    OPSTSetup could be run as the 'root' user or with 'sudo'
        Re-run the 'opstsetup' with 'sudo' or with the 'root' user
-       Run \"sudo opstsetup\"
+       Run \"sudo opstsetup install\"
 """
         sys.exit(permerror)
 except AttributeError:
