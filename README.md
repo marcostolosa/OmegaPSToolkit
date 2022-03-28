@@ -80,7 +80,7 @@
 >>If you want the help message with all the commands "odst" and with other information like the version of each command, what is your OS and other information.
 >>* Run the "OPSThelp" with:
 >>   ```bash
->>   sudo opsthelp
+>>   opsthelp
 >>   ```
 >
 > ## Tool overview
