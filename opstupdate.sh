@@ -138,13 +138,13 @@ if [ $? -eq 0 ]; then
         echo "#!/bin/bash
         python3 $INSTALL_DIR/opstconsole.py" '${1+"$@"}' > opstconsole
         echo "#!/bin/bash
-        python3 $INSTALL_DIR/opstupdate.py" '${1+"$@"}' > opstupdate
+        sh $INSTALL_DIR/opstupdate.sh" '${1+"$@"}' > opstupdate
         echo "#!/bin/bash
         python3 $INSTALL_DIR/opstsetup.py" '${1+"$@"}' > opstsetup
         echo "#!/bin/bash
         python3 $INSTALL_DIR/opsthelp.py" '${1+"$@"}' > opsthelp
         echo "#!/bin/bash
-        python3 $INSTALL_DIR/opstinstall-all.sh" '${1+"$@"}' > opstinstall-all
+        sh $INSTALL_DIR/opstinstall-all.sh" '${1+"$@"}' > opstinstall-all
 
         sudo cp opstconsole /usr/bin/
         sudo cp opstupdate /usr/bin/

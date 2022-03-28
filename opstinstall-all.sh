@@ -180,7 +180,7 @@ if [ $? -eq 0 ]; then
         sudo cp opsthelp /usr/bin/
         sudo cp opstinstall-all /usr/bin/
 
-        sudo rm opstconsole
+        sudo rm opstconsole     
         sudo rm opstupdate
         sudo rm opstsetup
         sudo rm opsthelp
