@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opsthelp.py                   [Update: 2022-03-26 | 9:47 PM] #
+#  Filename ~ opsthelp.py                    [Update: 2022-03-26 | 9:47 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
@@ -37,9 +37,12 @@ from opstcolors import GR,D,W,G,C
 from opstversions import *
 ####
 
+
+
+
 # The main command
 print(f"{GR}{D} ______  ______ _______ _______ {W}")
-print(f"{GR}{D}|       |   __ \     __|_     _|{W}{G}  OmegaPSToolkit {D}%s{W}" % opstconsole_version)
+print(f"{GR}{D}|       |   __ \     __|_     _|{W}{G}  OmegaPSToolkit {D}v%s{W}" % opstconsole_version)
 print(f"{GR}{D}|   -   |    __/__     | |   |  {W}{D}  A massive penetration testing toolkit")          # Police = Chunky from https://www.coolgenerator.com/ascii-text-generator
 print(f"{GR}{D}|_______|___|  |_______| |___|  {C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}")
 print()
@@ -55,8 +58,8 @@ print(f"""{C}Informations about OmegaPSToolkit{GR}:{W}
         odstinstall-all     Update you system, copy OPST to {G}"{C}/usr/bin/OmegaPSToolkit{G}"{W} and write all comamnds in your PATH
 
     {G}OPST Versions{GR}:{W}
-        opstconsole         {opstconsole_version}
-        odstconsole CLI     {opstconsole_cli_version}
+        opstconsole         v{opstconsole_version}
+        odstconsole CLI     v{opstconsole_cli_version}
         opstupdate          {opstupdate_version}
         opsthelp            {opstupdate_help}
         odstsetup           {opstsetup_version}
@@ -64,7 +67,7 @@ print(f"""{C}Informations about OmegaPSToolkit{GR}:{W}
 
     {G}Other Versions{GR}:{W}
         python              v{python_version}
-        pip                 
+        pip                 {pip_version}
 
 {C}Informations about author{GR}:{W}
     Author                  Thomas Pellissier
@@ -73,6 +76,7 @@ print(f"""{C}Informations about OmegaPSToolkit{GR}:{W}
 
 {C}Ohter informations{GR}:{W}
     Operating System        {OS}
-
 """)
+
+
 sys.exit()
