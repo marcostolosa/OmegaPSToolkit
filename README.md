@@ -16,7 +16,7 @@
 > > ### _**A massive penetration testing toolkit**_
 > 
 > ## **About OmegaPSToolkit**
-> _**`The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL ! 2022, All rights reserved.`**_
+> _**`The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL ! 2021-2022, All rights reserved.`**_
 >
 >  **OmegaPSToolkit (OPST)** is a toolkit that brings together penetration testing tools such as wireless tools, web tools, password cracking tools, etc.
 > * **`Totally in development!`**
