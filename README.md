@@ -84,7 +84,7 @@
 >>   ```
 >
 > ## Tool overview
-> | The main page | 
+> | OPSTConsole   | 
 > | ------------- | 
 > | ![menu](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opst_main_page.png)  |
 > 
