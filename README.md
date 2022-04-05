@@ -25,7 +25,8 @@
 > 
 > ## **Changelogs**
 > All new changes compared to _**OmegaPSToolkit**_ can be found _[here](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)_.
-> 
+>  ## License 
+> This program uses the license _[General Public License v3.0](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/LICENSE)_.
 > ## **Features**
 > The tools will be categorized as:
 >  * Scanning tools,
@@ -84,9 +85,14 @@
 >>   ```
 >
 > ## Tool overview
-> | OPSTConsole   | 
-> | ------------- | 
-> | ![menu](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opst_main_page.png)  |
-> 
-> ## License 
-> This program uses the license _[General Public License v3.0](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/LICENSE)_.
+> |  OPSTConsole  |  OPSTConsole CLI  |
+> | ------------- | ----------------- |
+> | ![opstconsole](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstconsole_main_page.png) | ![opstconsole_cli](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstconsole_cli.png)
+>
+> |   OPSTHelp    |     OPSTUpdate    |
+> | ------------- | ----------------- |
+> | ![opsthelp](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opsthelp.png) | ![opstupdate](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstupdate.png)
+>
+> |   OPSTSetup   |     OPSTInstall-all    |
+> | ------------- | ---------------------- |
+> | ![opsthelp](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstsetup.png) | ![opstupdate](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstinstall-all.png)
