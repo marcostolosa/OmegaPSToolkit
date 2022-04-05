@@ -17,7 +17,8 @@
 > 
 > # **Summary**
 > - [**About OmegaPSToolkit**](https://github.com/MyMeepSQL/OmegaPSToolkit#about-omegapstoolkit)
->   - [**Changelog**](https://github.com/MyMeepSQL/OmegaPSToolkit#license)
+>   - [**Changelog**](https://github.com/MyMeepSQL/OmegaPSToolkit#changelogs)
+>   - [**License**](https://github.com/MyMeepSQL/OmegaPSToolkit#license)
 >   - [**Features**](https://github.com/MyMeepSQL/OmegaPSToolkit#features)
 > - [**Installation**](https://github.com/MyMeepSQL/OmegaPSToolkit#installation)
 >   - [**Install Git tool**](https://github.com/MyMeepSQL/OmegaPSToolkit#step-1--install-git-tool-for-clone-this-repositories-with-if-you-didnt-have-it)
@@ -45,7 +46,7 @@
 > 
 > ## **Changelogs**
 > All new changes compared to all _**OPSTs'**_ commands can be found _[here](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)_.
->  ## License 
+> ## **License**
 > This program uses the license _[General Public License v3.0](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/LICENSE)_.
 > ## **Features**
 > The tools will be categorized as:
