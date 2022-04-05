@@ -181,11 +181,11 @@ if [ $? -eq 0 ]; then
         echo "#!/bin/bash
         sh $INSTALL_DIR/opstinstall-all.sh" '${1+"$@"}' > opstinstall-all
 
-        sudo cp opstconsole "$BIN_DIR/"
-        sudo cp opstupdate "$BIN_DIR/"
-        sudo cp opstsetup "$BIN_DIR/"
-        sudo cp opsthelp "$BIN_DIR/"
-        sudo cp opstinstall-all "$BIN_DIR/"
+        sudo cp opstconsole "$BIN_DIR"
+        sudo cp opstupdate "$BIN_DIR"
+        sudo cp opstsetup "$BIN_DIR"
+        sudo cp opsthelp "$BIN_DIR"
+        sudo cp opstinstall-all "$BIN_DIR"
 
         sudo rm opstconsole
         sudo rm opstupdate
