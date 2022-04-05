@@ -20,7 +20,22 @@
 >   - [**Changelog**](https://github.com/MyMeepSQL/OmegaPSToolkit#license)
 >   - [**Features**](https://github.com/MyMeepSQL/OmegaPSToolkit#features)
 > - [**Installation**](https://github.com/MyMeepSQL/OmegaPSToolkit#installation)
-> ## **About OmegaPSToolkit**
+>   - [**Install Git tool**](https://github.com/MyMeepSQL/OmegaPSToolkit#step-1--install-git-tool-for-clone-this-repositories-with-if-you-didnt-have-it)
+>   - [**Clone repositorie**](https://github.com/MyMeepSQL/OmegaPSToolkit#step-2--clone-the-repositories-with)
+>   - [**Go to the OmegaPSToolkit repositorie**](https://github.com/MyMeepSQL/OmegaPSToolkit#step-3--go-to-the-omegapstoolkit-repositories-folder-with)
+>   - [**Install Python3, PIP3 and make all "opst"'s commands**](https://github.com/MyMeepSQL/OmegaPSToolkit#step-4--to-install-python3-and-pip3-run-the-opstinstall-allsh-with)
+>   - [**Install all PIP3's packages and make the OmegaPSToolkit's package**](https://github.com/MyMeepSQL/OmegaPSToolkit#step-5--run-the-setuptool-for-install-all-pip-modules-that-you-must-have-with)
+>   - [**Run OPSTConsole**](https://github.com/MyMeepSQL/OmegaPSToolkit#step-6--run-the-omegapstoolkit-with)
+> - [**Update**](https://github.com/MyMeepSQL/OmegaPSToolkit#update)
+> - [**Help**](https://github.com/MyMeepSQL/OmegaPSToolkit#help)
+> - [**Overview**](https://github.com/MyMeepSQL/OmegaPSToolkit#tool-overview)
+>   - [**OPSTConsole**](https://github.com/MyMeepSQL/OmegaPSToolkit#tool-overview)
+>   - [**OPSTConsole CLI**](https://github.com/MyMeepSQL/OmegaPSToolkit#opstconsole-cli)
+>   - [**OPSTHelp**](https://github.com/MyMeepSQL/OmegaPSToolkit#opsthelp)
+>   - [**OPSTUpdate**](https://github.com/MyMeepSQL/OmegaPSToolkit#opstupdate)
+>   - [**OPSTSetup**](https://github.com/MyMeepSQL/OmegaPSToolkit#opstsetup)
+>   - [**OPSTInstall-all**](https://github.com/MyMeepSQL/OmegaPSToolkit#opstinstall-all)
+> # **About OmegaPSToolkit**
 > _**`The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL ! 2021-2022, All rights reserved.`**_
 >
 >  **OmegaPSToolkit (OPST)** is a toolkit that brings together penetration testing tools such as wireless tools, web tools, password cracking tools, etc.
@@ -52,11 +67,11 @@
 >   ```bash
 >   sudo apt install git -y
 >   ```
-> * ### _Step 2_ : **Clone** the repositories with:
+> * ### _Step 2_ : **Clone** the repositorie with:
 >   ```bash
 >   sudo git clone https://github.com/MyMeepSQL/OmegaPSToolkit.git
 >   ```
-> * ### _Step 3_ : Go to the **OmegaPSToolkit repositories folder** with:
+> * ### _Step 3_ : Go to the **OmegaPSToolkit repositorie folder** with:
 >   ```bash
 >   cd OmegaPSToolkit
 >   ```
