@@ -3,7 +3,7 @@
 [![Codename](https://img.shields.io/badge/Codename-MyMeepSQL-informational?style=flat-square)](https://github.com/MyMeepSQL)
 [![Owner](https://img.shields.io/badge/Owner-©%20PSociety™-informational?style=flat-square)](https://github.com/MyMeepSQL)
 [![opstconsole_version](https://img.shields.io/badge/opstconsole%20version-v0.0.1.3-brightgreen?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
-[![opstconsole_cli_Version](https://img.shields.io/badge/opstconsole_CLI%20Version%20[BETA]-v0.0.0.4-red?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
+[![opstconsole_cli_Version](https://img.shields.io/badge/opstconsole_CLI%20Version%20[BETA]-v0.0.0.9-red?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
 [![opsthelp_version](https://img.shields.io/badge/opsthelp%20version-v1.4-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
 [![opstsetup_version](https://img.shields.io/badge/opstsetup%20version-v2.6-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
 [![opstupdate_version](https://img.shields.io/badge/opstupdate%20version-v2.2-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
