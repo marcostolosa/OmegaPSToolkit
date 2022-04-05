@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opstsetup.py                   [Update: 2022-03-26 | 9:47 PM] #
+#  Filename ~ opstsetup.py                   [Update: 2022-04-05 | 1:30 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
@@ -64,6 +64,9 @@ underscore = '\033[4m'
 normal = '\033[22m'
 ####
 
+
+
+
 # The SetupTool
 try:
     if os.getuid() != 0:                                                            #   check if the user run ODST with root privilege
@@ -87,6 +90,8 @@ except KeyboardInterrupt:
     sys.exit()
 else:
     try:
+        with open("README.md", "r", encoding="utf-8") as fh:
+            long_description = fh.read()
         print()
         print(f"{GR}{D} _______ ______ _______ _______ _______         __               ")
         print(f"{GR}{D}|       |   __ \     __|_     _|     __|.-----.|  |_.--.--.-----.{W}{G}  OPSTSetup {D}%s{W}" % opstsetup_version)
@@ -142,11 +147,11 @@ else:
                 ],
                 name='OmegaPSToolkit',
                 description='A massive penetration testing toolkit',
+                long_description = long_description,
                 url='https://github.com/MyMeepSQL/OmegaDSToolkit',
                 author='MyMeepSQL',
                 author_email='thomas.pellissier@outlook.com',
                 license='GNU-GPL-3.0',
-                keywords="omegapstoolkit",
                 opstsetup_version='0.0.1.3',
                 python_requires='>=3.1.0',
                 packages=find_packages(),

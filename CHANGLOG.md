@@ -16,8 +16,13 @@
 > 
 > ## The changlogs of **OPSTConsole**, **OPSThelp**, **OPSTSetup**, **OPSTUpdate** and **OPSTInstall-all**.
 > 
+> 
+> # **OPSTconsole CLI** ```BETA```
+> * v0.0.0.9 | (2022-04-05 | 1:33  PM)       Make the base of OPSTConsole CLI with a loop for interactiv shell like CMD or Powershell
+> * v0.0.0.4 | (2022-03-10 | 10:35 AM)       Create a CLI version of OPSTConsole directly include into it
+> 
 > # **OPSTConsole**
-> * v0.0.1.3 | (2022-03-13 | 2:40 PM)   Fix import error from OmegaDSToolkit
+> * v0.0.1.3 | (2022-03-13 | 2:40  PM)       Fix import error from OmegaDSToolkit
 > 
 > * v0.0.1.2  -  Add a separated file for functions (better code)
 > 
@@ -40,20 +45,20 @@
 > * v0.0.0.1  -  Creation of DS-Toolbox (the first name before OmegaPSToolkit)
 > 
 > # **OPSTHelp**
-> * v1.4 | (2022-03-26 | 9:47  PM)       Upgrade opsthelp   
-> * v0.7 | (2022-03-20 | 4:12  PM)       Create OPSTHelp    
+> * v1.4 | (2022-03-26 | 9:47  PM)       Upgrade opsthelp
+> * v0.7 | (2022-03-20 | 4:12  PM)       Create OPSTHelp
 > 
 > # **OPSTSetup**
-> * v2.6 | (2022-03-26 | 9:47  PM)      Upgrade opstsetup      
+> * v2.6 | (2022-03-26 | 9:47  PM)      Upgrade opstsetup
 > * v1.1 | (2022-03-10 | 12:22 PM)      Fix opstsetup
 > * v0.1 | (2022-03-10 | 12:22 PM)      Create opstsetup
 > 
 > # **OPSTUpdate**
-> * v2.2 | (2022-03-20 | 9:47  PM)      Upgrade opstupdate    
-> * v1.4 | (2022-03-20 | 5:31  PM)      Fix opstupdate     
+> * v2.2 | (2022-03-20 | 9:47  PM)      Upgrade opstupdate
+> * v1.4 | (2022-03-20 | 5:31  PM)      Fix opstupdate
 > * v0.3 | (2022-03-09 | 10:09 AM)      Add a update file for install the latest version of OPSTConsole, OPSTHelp, OPSTSetup and OPSTInstall-all
 > 
 > # **OPSTInstall-all**
-> * v1.8 | (2022-03-26 | 9:47  PM)      Upgrade opstinstall-all    
+> * v1.8 | (2022-03-26 | 9:47  PM)      Upgrade opstinstall-all
 > * v1.4 | (2022-03-17 | 1:12  PM)      Fix opstinstall-all
 > * v0.1 | (2022-03-09 | 2:38  PM)      Create OPSTInstall-all

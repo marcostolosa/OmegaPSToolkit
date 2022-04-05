@@ -1,7 +1,7 @@
 #!/usr/bin/python3.8.10
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ version.py                     [Update: 2022-03-26 | 7:31 PM] #
+#  Filename ~ version.py                     [Update: 2022-04-05 | 1:30 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -33,7 +33,7 @@
 
 # Versions
 opstconsole_version = "0.0.1.3"
-opstconsole_cli_version = "0.0.0.4"
+opstconsole_cli_version = "0.0.0.9"
 opstupdate_help = "v1.4"
 
 opstsetup_version = "v2.6"
@@ -44,13 +44,6 @@ opstinstallall_version = "v1.8"
 from platform import *
 import os
 
-def pip():
-    import subprocess
-    subprocess.run(["pip", "-V"])
-
 OS = platform()
 python_version = python_version()
-
-pip_version = pip()
-
 ####

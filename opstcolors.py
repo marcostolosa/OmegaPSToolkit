@@ -1,7 +1,7 @@
 #!/usr/bin/python3.8.10
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ colors.py                     [Update: 2022-03-04 | 14:21 PM] #
+#  Filename ~ colors.py                      [Update: 2022-04-05 | 1:30 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #

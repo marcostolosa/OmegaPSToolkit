@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opstupdate.sh                 [Update: 2022-03-24 | 10:00 PM] #
+#  Filename ~ opstupdate.sh                  [Update: 2022-04-05 | 1:30 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #

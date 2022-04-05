@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opstinstall-all.sh             [Update: 2022-03-26 | 9:47 PM] #
+#  Filename ~ opstinstall-all.sh             [Update: 2022-04-05 | 1:30 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #

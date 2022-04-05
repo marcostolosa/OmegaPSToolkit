@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opsthelp.py                    [Update: 2022-03-26 | 9:47 PM] #
+#  Filename ~ opsthelp.py                    [Update: 2022-04-05 | 1:30 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
@@ -41,12 +41,14 @@ from opstversions import *
 
 
 # The main command
-print(f"{GR}{D} ______  ______ _______ _______ {W}")
-print(f"{GR}{D}|       |   __ \     __|_     _|{W}{G}  OmegaPSToolkit {D}v%s{W}" % opstconsole_version)
-print(f"{GR}{D}|   -   |    __/__     | |   |  {W}{D}  A massive penetration testing toolkit")          # Police = Chunky from https://www.coolgenerator.com/ascii-text-generator
-print(f"{GR}{D}|_______|___|  |_______| |___|  {C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}")
-print()
-print(f"""{C}Informations about OmegaPSToolkit{GR}:{W}
+# Police = Chunky from https://www.coolgenerator.com/ascii-text-generator
+print(f"""
+{GR}{D} ______  ______ _______ _______ {W}
+{GR}{D}|       |   __ \     __|_     _|{W}{G}  OmegaPSToolkit {D}v{W}{opstconsole_version}
+{GR}{D}|   -   |    __/__     | |   |  {W}{D}  A massive penetration testing toolkit
+{GR}{D}|_______|___|  |_______| |___|  {C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}
+
+{C}Informations about OmegaPSToolkit{GR}:{W}
 
     {G}Main commands{GR}:{W}
         odstconsole         Start the current tool
@@ -67,7 +69,6 @@ print(f"""{C}Informations about OmegaPSToolkit{GR}:{W}
 
     {G}Other Versions{GR}:{W}
         python              v{python_version}
-        pip                 {pip_version}
 
 {C}Informations about author{GR}:{W}
     Author                  Thomas Pellissier

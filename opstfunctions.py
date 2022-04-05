@@ -1,7 +1,7 @@
 #!/usr/bin/python3.8.10
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ functions.py                  [Update: 2022-03-13 | 14:40 PM] #
+#  Filename ~ opstfunctions.py               [Update: 2022-04-05 | 1:30 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -32,40 +32,40 @@
 #---------------------------------------------------------------------------#
 
 # Import section
-# try:
-import os,sys
-from opstcolors import *
-# except ModuleNotFoundError:
-#     print()
-#     criticalmsg = f"{B}[{r}CRITICAL{B}]{GR}   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo python3 setup.py install)\n"
-#     sys.exit(criticalmsg)
-# except NameError:
-#     print()
-#     criticalmsg = f"{B}[{r}CRITICAL{B}]{GR}   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo python3 setup.py install)\n"
-#     sys.exit(criticalmsg)
+try:
+    import os,sys
+    from opstcolors import *
+    from opstversions import *
+except ModuleNotFoundError:
+    print()
+    criticalmsg = f"{B}[{r}CRITICAL{B}]{GR}   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo python3 setup.py install)\n"
+    sys.exit(criticalmsg)
+except NameError:
+    print()
+    criticalmsg = f"{B}[{r}CRITICAL{B}]{GR}   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo python3 setup.py install)\n"
+    sys.exit(criticalmsg)
 ####
-
 
 
 # Functions
 def non_linux():
     print()
-    criticalmsg = B+"["+R+"FATAL ERROR"+B+"]"+R+" You tried to run OPST on a non-linux machine. OPST can be run only on a Linux kernel.\n"+W
+    criticalmsg = f"{B}[{R}FATAL ERROR{B}]{R} You tried to run OPST on a non-linux machine. OPST can be run only on a Linux kernel.\n{W}"
     sys.exit(criticalmsg)
 
-def connection(host='https://google.com'):              #
-    import urllib.request                               #
-    try:                                                #
-        urllib.request.urlopen(host, timeout=5)         #
-        return True                                     #
-    except:                                             #   Check if the user have an Internet connection
-        return False                                    #
+def connexion(host='https://google.com'):
+    import urllib.request
+    try:
+        urllib.request.urlopen(host, timeout=10)    # Check if the user have an Internet connection
+        return True
+    except:
+        return False
 
 def cls():
     os.system('clear')
 
 def exitodst():
-    exitodst = f"{bC}[{gC}Goodby{bC}]{r}\n"
+    exitodst = f"\n{bC}[{gC}Goodby{bC}]{r}\n"
     exit(exitodst)
 
 def error():
@@ -77,25 +77,36 @@ def y_or_n_error():
     input(f"{bC}[{rC2}-{bC}]{bC}─[{gC}Press [ENTER] key to retry{bC}]{r}")       #
 
 def cli_mainpage_helpmsg():
-    print()
-    print("All commands of the OmegaDSToolkit you can use is the main page\n")
-    print(f"{B}COMMAND:{W}")
-    print("     info        ::   Go to the Information Gathering page")
-    print("     wireless    ::   Go to the Wireless Tools page")
-    print("     usefull     ::   Go to the Usefull tools page")
-    print("     cli         ::   Use the OmegaDSToolkit like a CLI")
-    print("     help        ::   Print this help message\n")
-    input(f"{bC}[{rC2}-{bC}]{bC}─[{gC}Press [ENTER] key to continue{bC}]{r}")
+    print(f"""
+{GR}{D} _______ ______ _______ _______ {W}
+{GR}{D}|       |   __ \     __|_     _|{W}{G}  OmegaPSToolkit CLI {D}v{opstconsole_cli_version}
+{GR}{D}|   -   |    __/__     | |   |  {W}{D}  A massive penetration testing toolkit
+{GR}{D}|_______|___|  |_______| |___|  {C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}
+
+All commands of the OmegaDSToolkit CLI you can use is the main page
+
+{B}COMMAND:{W}
+    help        ::   Show this help message
+    leave       ::   Exit opstconsole's CLI version
+    exit        ::   Exit opstconsole
+""")
 
 def mainpage_helpmsg():
-    print()
-    print("All commands of the OmegaDSToolkit you can use is the main page\n")
-    print(f"""{B}COMMAND:{W}
+    print(f"""
+{GR}{D} _______ ______ _______ _______ {W}
+{GR}{D}|       |   __ \     __|_     _|{W}{G}  OmegaPSToolkit {D}v{opstconsole_version}
+{GR}{D}|   -   |    __/__     | |   |  {W}{D}  A massive penetration testing toolkit
+{GR}{D}|_______|___|  |_______| |___|  {C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}
+
+All commands of the OmegaDSToolkit you can use is the main page
+
+{B}COMMAND:{W}
     1           ::   Go to the Information Gathering page
     2           ::   Go to the Wireless Tools page
     3           ::   Go to the Usefull tools page
-    cli         ::   Use the OmegaDSToolkit like a CLI
-    help        ::   Print this help message
-    exit        ::   Exit the OmegaDSToolkit\n""")
+    cli         ::   Use the opstconsole like a CLI
+    help        ::   Show this help message
+    exit        ::   Exit opstconsole
+    """)
     input(f"{bC}[{rC2}-{bC}]{bC}─[{gC}Press [ENTER] key to continue{bC}]{r}")
 # End of functions section
