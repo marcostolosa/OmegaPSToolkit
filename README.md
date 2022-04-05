@@ -15,6 +15,11 @@
 [![Contrinutions](https://img.shields.io/badge/Contributions-Open%20!-yellow?style=flat-square)]()
 > > ### _**A massive penetration testing toolkit**_
 > 
+> # **Summary**
+> - [**About OmegaPSToolkit**](https://github.com/MyMeepSQL/OmegaPSToolkit#about-omegapstoolkit)
+>   - [**Changelog**](https://github.com/MyMeepSQL/OmegaPSToolkit#license)
+>   - [**Features**](https://github.com/MyMeepSQL/OmegaPSToolkit#features)
+> - [**Installation**](https://github.com/MyMeepSQL/OmegaPSToolkit#installation)
 > ## **About OmegaPSToolkit**
 > _**`The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL ! 2021-2022, All rights reserved.`**_
 >
@@ -40,30 +45,30 @@
 >  * UTools (UsefullTools made by me),
 >  * _**And more**_
 > 
-> ## **Installation**
+> # **Installation**
 > Instructions to install ***OmegaPSToolkit***... (Linux commands)
 > 
-> * _Step 1_ : Install **git** tool for clone this repositories with (if you didn’t have it):
+> * ### _Step 1_ : Install **git** tool for clone this repositories with (if you didn’t have it):
 >   ```bash
 >   sudo apt install git -y
 >   ```
-> * _Step 2_ : **Clone** the repositories with:
+> * ### _Step 2_ : **Clone** the repositories with:
 >   ```bash
 >   sudo git clone https://github.com/MyMeepSQL/OmegaPSToolkit.git
 >   ```
-> * _Step 3_ : Go to the **OmegaPSToolkit repositories folder** with:
+> * ### _Step 3_ : Go to the **OmegaPSToolkit repositories folder** with:
 >   ```bash
 >   cd OmegaPSToolkit
 >   ```
-> * _Step 4_ : To install **Python3** and **PIP3**, run the "opstinstall-all.sh" with:
+> * ### _Step 4_ : To install **Python3** and **PIP3**, run the "opstinstall-all.sh" with:
 >   ```bash
 >   sudo sh opstinstall-all.sh
 >   ```
-> * _Step 5_ : Run the "**SetupTool**" for install all _pip modules_ that you must have with:
+> * ### _Step 5_ : Run the "**SetupTool**" for install all _pip modules_ that you must have with:
 >   ```bash
 >   sudo opstsetup install
 >   ```
-> * _Step 6_ : Run the **OmegaPSToolkit** with:
+> * ### _Step 6_ : Run the **OmegaPSToolkit** with:
 >   ```bash
 >   sudo opstconsole                      # You can run OPST anywhere (tell me if a problem appears) 
 >   ```
@@ -71,28 +76,46 @@
 >   ```bash
 >   sudo python3 opstconsole              # You must be in its directory to run OPST like this (/usr/share/OmegaPSToolkit/)
 >   ``` 
->>## **Update**
+>> ## **Update**
 >>To download the latest version of OPSTConsole, OPSTSetup, OPSTHelp and the OPSTInstall-all.
 >>* Run the "OPSTUpdate" with:
 >>   ```bash
 >>   sudo opstupdate
 >>   ```
->>## **Help**
+>> ## **Help**
 >>If you want the help message with all the commands "odst" and with other information like the version of each command, what is your OS and other information.
 >>* Run the "OPSThelp" with:
 >>   ```bash
 >>   opsthelp
 >>   ```
 >
-> ## Tool overview
-> |  OPSTConsole  |  OPSTConsole CLI  |
-> | ------------- | ----------------- |
-> | ![opstconsole](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstconsole_main_page.png) | ![opstconsole_cli](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstconsole_cli.png)
+> # Tool overview
+> ## OPSTConsole
+> |  OPSTConsole  | 
+> | ------------- |
+> | ![opstconsole](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstconsole_main_page.png) |
+> 
+> ## OPSTConsole CLI
+> | OPSTConsole CLI  |
+> | ---------------- |
+> | ![opstconsole_cli](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstconsole_cli.png) |
+> 
+> ## OPSTHelp
+> |   OPSTHelp    |
+> | ------------- |
+> | ![opsthelp](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opsthelp.png) | 
+> 
+> ## OPSTUpdate
+> |     OPSTUpdate    |
+> | ----------------- |
+> | ![opstupdate](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstupdate.png)
 >
-> |   OPSTHelp    |     OPSTUpdate    |
-> | ------------- | ----------------- |
-> | ![opsthelp](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opsthelp.png) | ![opstupdate](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstupdate.png)
+> ## OPSTSetup
+> |   OPSTSetup   |
+> | ------------- | 
+> | ![opsthelp](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstsetup.png) | 
 >
-> |   OPSTSetup   |     OPSTInstall-all    |
-> | ------------- | ---------------------- |
-> | ![opsthelp](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstsetup.png) | ![opstupdate](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstinstall-all.png)
+> ## OPSTInstall-all
+> |  OPSTInstall-all   |
+> | ------------------ |
+> | ![opstupdate](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstinstall-all.png)
