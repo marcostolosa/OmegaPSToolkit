@@ -54,7 +54,7 @@ normal='\033[22m'
 opstinstallall_version="v1.8"
 
 INSTALL_DIR="/usr/share/OmegaPSToolkit"
-BIN_DIR="/usr/share"
+BIN_DIR="/usr/bin"
 TEMP_DIR="/tmp/OmegaPSToolkit"
 
 # Check if user have root privileges
@@ -74,8 +74,8 @@ if [ $(id -u) != "0" ]; then
                 exit 1
         else # Switch to sudo (root)
             echo
-            echo "$R[!]$W    OPSTInstall-all could be run as the 'root' user or with 'sudo'"
-            echo "$G[-]$W    Switching to root user to run the 'opstinstall-all'"
+            echo -e "$R[!]$W    OPSTInstall-all could be run as the 'root' user or with 'sudo'"
+            echo -e "$G[-]$W    Switching to root user to run the 'opstinstall-all'"
             sudo -E sh $0 $@
             exit 0
         fi
@@ -142,7 +142,15 @@ if [ $? -eq 0 ]; then
                 echo "$G$D""---------------------"$W
                 echo
                 echo "$G[-]$W    Removing the current OmegaPSToolkit folder..."
+
                 rm -fr "$INSTALL_DIR"
+                rm -fr "$TEMP_DIR"
+                rm -f "$BIN_DIR/opstconsole"
+                rm -f "$BIN_DIR/opstsetup"
+                rm -f "$BIN_DIR/opstupdate"
+                rm -f "$BIN_DIR/opsthelp"
+                rm -f "$BIN_DIR/opstinstall-all"
+
                 echo "$G[+]$W    Done for the OmegaPSToolkit's remove."
                 sleep 1
                 echo
@@ -161,38 +169,46 @@ if [ $? -eq 0 ]; then
 
         # for run the SetupTool (opstsetup) anywhere in the terminal. The "opstsetup" will be write into "/usr/share/OmegaPSToolkit"
         echo "$G[-]$W    Installing OmegaPSToolkit into \"/usr/share/OmegaPSToolkit/\"..."
+        echo
         sleep 0.5
 
         mkdir $INSTALL_DIR
         mkdir $TEMP_DIR
-        cd $TEMP_DIR
-        git clone https://github.com/MyMeepSQL/OmegaPSToolkit.git
-        cd OmegaPSToolkit
-        cp -r * $INSTALL_DIR
 
-        echo "#!/bin/bash
-        python3 $INSTALL_DIR/opstconsole.py" '${1+"$@"}' > opstconsole
-        echo "#!/bin/bash
-        sh $INSTALL_DIR/opstupdate.sh" '${1+"$@"}' > opstupdate
-        echo "#!/bin/bash
-        python3 $INSTALL_DIR/opstsetup.py" '${1+"$@"}' > opstsetup
-        echo "#!/bin/bash
-        python3 $INSTALL_DIR/opsthelp.py" '${1+"$@"}' > opsthelp
-        echo "#!/bin/bash
-        sh $INSTALL_DIR/opstinstall-all.sh" '${1+"$@"}' > opstinstall-all
+        git clone -q https://github.com/MyMeepSQL/OmegaPSToolkit.git "$TEMP_DIR"
 
-        sudo cp opstconsole "$BIN_DIR"
-        sudo cp opstupdate "$BIN_DIR"
-        sudo cp opstsetup "$BIN_DIR"
-        sudo cp opsthelp "$BIN_DIR"
-        sudo cp opstinstall-all "$BIN_DIR"
+        # for the "/usr/share/OmegaPSToolkit"
+        cp -r "$TEMP_DIR/"* "$INSTALL_DIR/"
+        ##
 
-        sudo rm opstconsole
-        sudo rm opstupdate
-        sudo rm opstsetup
-        sudo rm opsthelp
-        sudo rm opstinstall-all
+        # for the "/usr/bin"
+        echo "#!/bin/bash
+        python3 $INSTALL_DIR/opstconsole.py" '${1+"$@"}' > "$TEMP_DIR/opstconsole"
+        echo "#!/bin/bash
+        bash $INSTALL_DIR/opstupdate.sh" '${1+"$@"}' > "$TEMP_DIR/opstupdate"
+        echo "#!/bin/bash
+        python3 $INSTALL_DIR/opstsetup.py" '${1+"$@"}' > "$TEMP_DIR/opstsetup"
+        echo "#!/bin/bash
+        python3 $INSTALL_DIR/opsthelp.py" '${1+"$@"}' > "$TEMP_DIR/opsthelp"
+        echo "#!/bin/bash
+        bash $INSTALL_DIR/opstinstall-all.sh" '${1+"$@"}' > "$TEMP_DIR/opstinstall-all"
 
+        cp "$TEMP_DIR/opstconsole" "$BIN_DIR"
+        cp "$TEMP_DIR/opstupdate" "$BIN_DIR"
+        cp "$TEMP_DIR/opstsetup" "$BIN_DIR"
+        cp "$TEMP_DIR/opsthelp" "$BIN_DIR"
+        cp "$TEMP_DIR/opstinstall-all" "$BIN_DIR"
+
+        rm "$TEMP_DIR/opstconsole"
+        rm "$TEMP_DIR/opstupdate"
+        rm "$TEMP_DIR/opstsetup"
+        rm "$TEMP_DIR/opsthelp"
+        rm "$TEMP_DIR/opstinstall-all"
+
+        rm -fr "$TEMP_DIR"
+        ##
+
+        echo
         echo "$G[+]$W    Done for the OmegaPSToolkit's installation."
         sleep 1
         echo
@@ -212,6 +228,7 @@ if [ $? -eq 0 ]; then
 
         chmod 777 "$INSTALL_DIR/opstfunctions.py"
         chmod 777 "$INSTALL_DIR/opstcolors.py"
+        chmod 777 "$INSTALL_DIR/opstversions.py"
         ##
 
         # for '/usr/bin'
@@ -222,8 +239,7 @@ if [ $? -eq 0 ]; then
         chmod 777 "$BIN_DIR/opsthelp"
         ##
 
-        rm -fr "$TEMP_DIR/OmegaPSToolkit/"
-
+        echo
         echo "$G[+]$W    Apply complete."
         sleep 1
         echo
@@ -242,7 +258,7 @@ if [ $? -eq 0 ]; then
             echo
             echo "$G$D""---------------------"$W
             echo "$G[-]$W    Reloading..."
-            echo "$G$D""---------------------"$W
+            echo "$G$D""---------------------"$W¨
             sleep 0.5
             reset
             echo
