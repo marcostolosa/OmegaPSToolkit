@@ -76,9 +76,9 @@
 >   ```bash
 >   cd OmegaPSToolkit
 >   ```
-> * ### _Step 4_ : To install **Python3** and **PIP3**, run the "opstinstall-all.sh" with:
+> * ### _Step 4_ : To install **Python3**,**PIP3**  and **all the tools that OPST must have**, run the "opstinstall-all.sh" with:
 >   ```bash
->   sudo sh opstinstall-all.sh
+>   ./opstinstall-all.sh
 >   ```
 > * ### _Step 5_ : Run the "**SetupTool**" for install all _pip modules_ that you must have with:
 >   ```bash
