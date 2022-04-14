@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ version.py                     [Update: 2022-04-05 | 1:30 PM] #
+#  Filename ~ version.py                    [Update: 2022-04-14 | 10:26 AM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -37,8 +37,8 @@ opstconsole_cli_version = "0.0.0.9"
 opstupdate_help = "v1.4"
 
 opstsetup_version = "v2.6"
-opstupdate_version = "v2.2"
-opstinstallall_version = "v1.8"
+opstupdate_version = "v2.5"
+opstinstallall_version = "2"
 
 # current python version
 from platform import *
