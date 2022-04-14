@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opstconsole.py                 [Update: 2022-04-05 | 1:30 PM] #
+#  Filename ~ opstconsole.py                [Update: 2022-04-11 | 12:57 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
@@ -37,6 +37,8 @@ from time import sleep
 ####
 
 
+            
+
 # Custom imports
 try:
     from opstversions import *
@@ -63,7 +65,7 @@ try:
     if os.getuid() != 0:    
         permerror =f"""
 {R}[!]{W}    OPSTConsole could be run as the 'root' user or with 'sudo'
-       Re-run the 'opstconsole' with 'sudo' or with the 'root' user
+       Re-run the 'opstconsol   e' with 'sudo' or with the 'root' user
        Run \"sudo opstconsole\"
 """
         sys.exit(permerror)
@@ -154,28 +156,29 @@ try:
 ### Information Gathering | main page ###
     def informationgathering_mainpage():
         cls() 
-        print(f"{rC2}      _______         ___                             __   __                    {r}")
-        print(f"{rC2}     |_     _|.-----.'  _|.-----.----.--------.---.-.|  |_|__|.-----.-----.      {r}")
-        print(f"{rC2}      _|   |_ |     |   _||  _  |   _|        |  _  ||   _|  ||  _  |     |      {r}")
-        print(f"{rC2}     |_______||__|__|__|  |_____|__| |__|__|__|___._||____|__||_____|__|__|      {r}")
-        print(f"{bC}   ◄═════════════════════════════════════════════════════════════════════════►    {r}")
-        print(f"{rC2}          _______         __   __                __ {r}")
-        print(f"{rC2}         |     __|.---.-.|  |_|  |--.-----.----.|__|.-----.-----.                {r}")
-        print(f"{rC2}         |    |  ||  _  ||   _|     |  -__|   _||  ||     |  _  |                {r}")
-        print(f"{rC2}         |_______||___._||____|__|__|_____|__|  |__||__|__|___  |                {r}")
-        print(f"{bC}       ╔══════════════════════════════════════════════════{rC2}|_____|{bC}══►{r}")
-        print(f"{bC}       ╚═════╗{r}")
-        print(f"{bC}             ║{r}   In this category you will find tools to collect information,")
-        print(f"{bC}             ║{r}              such as port scan, SQL injections etc")
-        print(f"{bC}             ║{r}")
-        print(f"{bC}             ╟──── [{gC}  Made by   "+bC+"] ───"+{gC}+"► "+{rC}+"Thomas Pellissier"+{bC2}+" (from © PSociety™)"+{r})
-        print(f"{bC}             ╟──── [{gC}  Codename  "+bC+"] ───"+{gC}+"► "+{bC2}+"@"+{r}+{rC}+"MyMeepSQL")
-        print(f"{bC}             ╟──── [{gC}  Version   "+bC+"] ───"+{gC}+"► "+{bC2}+"v"+{rC}+"0.0.1"+{r})
-        print(f"{bC}             ║{r}")
-        print(f"{bC}             ╟────{gC}► {r}[{bC}1{r}]{gC}    Scan{r}")
-        print(f"{bC}             ╟────{gC}► {r}[{bC}o{r}]{gC}    Return to the{rC} OmegaPSToolkit{gC} main page{r}")
-        print(f"{bC}             ╙────{gC}► {r}[{bC}exit{r}]{gC} Exit the opstconsole\n{r}")
-        print(f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/Information_Gathering{bC}]{r}")
+        print(f"""
+{rC2}      _______         ___                             __   __                    {r}
+{rC2}     |_     _|.-----.'  _|.-----.----.--------.---.-.|  |_|__|.-----.-----.      {r}
+{rC2}      _|   |_ |     |   _||  _  |   _|        |  _  ||   _|  ||  _  |     |      {r}
+{rC2}     |_______||__|__|__|  |_____|__| |__|__|__|___._||____|__||_____|__|__|      {r}
+{bC}   ◄═════════════════════════════════════════════════════════════════════════►    {r}
+{rC2}          _______         __   __                __ {r}
+{rC2}         |     __|.---.-.|  |_|  |--.-----.----.|__|.-----.-----.                {r}
+{rC2}         |    |  ||  _  ||   _|     |  -__|   _||  ||     |  _  |                {r}
+{rC2}         |_______||___._||____|__|__|_____|__|  |__||__|__|___  |                {r}
+{bC}   ╔══════════════════════════════════════════════════════{rC2}|_____|{bC}══►{r}
+{bC}   ╚═════╗{r}
+{bC}         ║{r}   In this category you will find tools to collect information,
+{bC}         ║{r}              such as port scan, SQL injections etc
+{bC}         ║{r}
+{bC}         ╟──── [{gC}  Made by   {bC}] ───{gC}► {rC}Thomas Pellissier{bC2} (from © PSociety™){r}
+{bC}         ╟──── [{gC}  Codename  {bC}] ───{gC}► {bC2}@{r}{rC}MyMeepSQL")
+{bC}         ╟──── [{gC}  Version   {bC}] ───{gC}► {bC2}v{rC}0.0.1{r})
+{bC}         ║{r}
+{bC}         ╟────{gC}► {r}[{bC}1{r}]{gC}    Scan{r}
+{bC}         ╟────{gC}► {r}[{bC}o{r}]{gC}    Return to the{rC} OmegaPSToolkit{gC} main page{r}
+{bC}         ╙────{gC}► {r}[{bC}exit{r}]{gC} Exit the opstconsole\n{r}
+{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/Information_Gathering{bC}]{r}""")
         global commands
         command = str(input(f"{bC}└╼{rC}$ {r}"))
 
@@ -218,13 +221,13 @@ try:
         global command
         command = str(input(f"{bC}└╼{rC}$ {r}"))
 
-        # if scan_mainpage_ == 1:
-            # informationgathering_nmap()
+        if command == "2":
+            informationgathering_scan_sqlmap()
 
         # if scan_mainpage_ == 2:
             # informationgathering_sqlmap()
 
-        if command == "x":
+        elif command == "x":
             cls()
             informationgathering_scan_mainpage()
         elif command == "o":
@@ -241,6 +244,43 @@ try:
             cls()
             informationgathering_scan_mainpage()
 
+    def informationgathering_scan_sqlmap():
+        sqlmapdir="Tools/sqlmapmaster"
+        while True:
+            os.chdir(sqlmapdir)
+            prompt_for_command = f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/Information_Gathering/ScanTools/sqlmap{bC}]{r}"
+            user_input = input(prompt_for_command + f"\n{bC}└╼{rC}$ {r}")
+            command = user_input
+            if not command:
+                print()
+                user_input
+            # elif "connexionstatus" == command:
+            #     print(f"{B}[-]{GR}    Checking for Internet connexion...{W}")
+            #     sleep(1)
+            #     if connexion() == True:
+            #         internetstatus = f"{G}Connected{W}"
+            #         print(f"{G}[+]{GR}    Internet status : {G}Connected{W}.")
+            #     else:
+            #         internetstatus = f"{R}Not connected{W}"
+            #         print(f"{R}[!]{GR}    Internet status : {R}Not connected{W}.")
+            #     print()
+            
+            elif command:
+                os.system(command)
+            elif "clear" == command:
+                cls()
+                informationgathering_scan_sqlmap()
+            elif "info" == command:
+                cli_infomsg()
+            elif "leave" == command:
+                print(f"{G}[-]{W}   Exiting CLI mode...")
+                sleep(0.5)
+                informationgathering_scan_mainpage()
+            elif "exit" == command:
+                exitodst()
+            else:
+                unknown_command = f"{R}\n[!]{W}   '{command}' is not recognized as an internal or external command.\n"
+                print(unknown_command)
 #---End of Information Gathering-------------------------------------#
 
 #---Usefull tool-----------------------------------------------------#
@@ -590,7 +630,7 @@ try:
 {bC}    ╚════════════════════════════════╗{r}
       Do you want make backup [Y/n]  {bC}║{r}
 {bC}    ═════════════════════════════════╝\n{r}
-{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~{bC}]─[{gC}OmegaBackup{bC}]""")
+{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/menu{bC}]{r}""")
         choice = str(input(f"{bC}└╼{rC}$ {r}"))
 
         if choice == "y" or choice == "Y":
@@ -608,16 +648,17 @@ try:
     def usefulltools_backup_source():
         cls()
         print(f"""
-{rC2}        _______                              ______              __                  {r}
-{rC2}       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  {r}
-{rC2}       |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  {r}
-{rC2}       |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  {r}
-{bC}     ╓─────────────────────────{rC2}|_____|{bC}──────────────────────────────────────{rC2}|__|{bC}────{gC}►{r})
-{bC}     ╚═══════════════════════════════════════════╗{r}
-{gC}       Whish folder or file you want backup it ?         {bC}║{r}
-{rC}             /!\ {gC}Type the source path{rC} /!\        {bC}║{r}
-{bC}     ════════════════════════════════════════════╝{r}
-{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~{bC}]─[{gC}OmegaBackup{bC}]{r}""")
+{rC2}      _______                              ______              __                  {r}
+{rC2}     |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  {r}
+{rC2}     |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  {r}
+{rC2}     |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  {r}
+{bC}   ╓─────────────────────────{rC2}|_____|{bC}──────────────────────────────────────{rC2}|__|{bC}────{gC}►{r}
+{bC}   ╚════════════════════════════════════════════╗{r}
+     Whish folder or file you want backup it ?  {bC}║{r}
+           {rC}/!\{r} Type the source path {rC}/!\         {bC}║{r}
+{bC}   ═════════════════════════════════════════════╝{r}
+
+{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/source{bC}]{r}""")
         global omegabackup_source
         omegabackup_source = str(input(f"{bC}└╼{rC}$ {r}"))
 
@@ -636,13 +677,14 @@ try:
 {rC2}     |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  {r}
 {rC2}     |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  {r}
 {bC}   ╓─────────────────────────{rC2}|_____|{bC}──────────────────────────────────────{rC2}|__|{bC}────{gC}►{r}
-{bC}   ╚═════════════════════════════════════════════╗{r}
-{gC}           Where you want to backup it ?     {bC}║{r}
-{rC}     /!\ {gC}Type the destination path {rC}/!\  {bC}║{r}
-{bC}   ══════════════════════════════════════════════╝{r})
-{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/Destination{bC}]─[{gC}OmegaBackup{bC}]""")
+{bC}   ╚════════════════════════════════════╗{r}
+       Where you want to backup it ?    {bC}║{r}
+     {rC}/!\{r} Type the destination path {rC}/!\  {bC}║{r}
+{bC}   ═════════════════════════════════════╝{r}
+
+{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/destination{bC}]""")
         global oemgabackup_destination
-        oemgabackup_destination = str(input(bC+"└╼"+rC+"$ "+{r}))
+        oemgabackup_destination = str(input(f"{bC}└╼{rC}$ {r}"))
             
         if not oemgabackup_destination:
             print(f"{bC}[{rC2}!{bC}]{bC}─[{gC}Type your destination path{bC}]{r}")
@@ -654,19 +696,20 @@ try:
     def usefulltools_backup_verification():
         cls()
         print(f"""
-{rC2}        _______                              ______              __                  {r}
-{rC2}       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  {r}
-{rC2}       |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  {r}
-{rC2}       |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  {r}
-{bC}     ╓─────────────────────────{rC2}|_____|{bC}──────────────────────────────────────{rC2}|__|{bC}────{gC}►{r}
-{bC}     ╚═══════════════════════════════════════════╗{r}
-{gC}          Are you sure you want backup [Y/n] {bC}║{r})
-{bC}     ╔═══════════════════════════════════════════╝"+{r})
-{bC}     ╚════╗{r}
-{bC}          ╟──────{gC}►{rC} Source{bC} ──{gC}► {rC}"{r}{omegabackup_source}{rC}"{r}
-{bC}          ╚──────{gC}►{rC} Target{bC} ──{gC}► {rC}"{r}{oemgabackup_destination}{rC}"{r}
-{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/Verification{bC}]{r}""")
-        sure = str(input(bC+"└╼"+rC+"$ "+{r}))
+{rC2}      _______                              ______              __                  {r}
+{rC2}     |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  {r}
+{rC2}     |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  {r}
+{rC2}     |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  {r}
+{bC}   ╓─────────────────────────{rC2}|_____|{bC}──────────────────────────────────────{rC2}|__|{bC}────{gC}►{r}
+{bC}   ╚═════════════════════════════════════╗{r}
+     Are you sure you want backup [Y/n]  {bC}║{r}
+{bC}   ╔═════════════════════════════════════╝{r}
+{bC}   ╚════╗{r}
+{bC}        ╟──────{gC}►{rC} Source{bC} ───────{gC}► {rC}"{r}{omegabackup_source}{rC}"{r}
+{bC}        ╚──────{gC}►{rC} Destination{bC} ──{gC}► {rC}"{r}{oemgabackup_destination}{rC}"{r}
+
+{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/verification{bC}]{r}""")
+        sure = str(input(f"{bC}└╼{rC}$ {r}"))
 
         if not sure:
             print(f"{bC}[{rC2}!{bC}]{bC}─[{gC}Chose [Y/n]{bC}]{r}")
@@ -676,20 +719,20 @@ try:
         elif sure == "y" or sure == "Y":
             cls()
             print(f"""
-{rC2}         _______                              ______              __                {r}
-{rC2}        |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.{r}
-{rC2}        |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |{r}
-{rC2}        |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|{r}
-{bC}     ╓─────────────────────────{rC2}|_____|{bC}──────────────────────────────────────{rC2}|__|{bC}────{gC}►{r}
-{bC}     ╚══════════════════════╗{r}
-              Backuping...      ║{r}
-{bC}     ═══════════════════════╝{r}""")
+{rC2}      _______                              ______              __                {r}
+{rC2}     |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.{r}
+{rC2}     |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |{r}
+{rC2}     |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|{r}
+{bC}   ╓─────────────────────────{rC2}|_____|{bC}──────────────────────────────────────{rC2}|__|{bC}────{gC}►{r}
+{bC}   ╚═══════════╗{r}
+     Backuping...  {bC}║
+{bC}   ════════════╝{r}""")
             try:
                 from datetime import datetime
                 from pathlib import Path
                 import zipfile
-                OBJECT_TO_BACKUP = f'{omegabackup_source}'                      # The file or directory to backup
-                BACKUP_DIRECTORY = f'{oemgabackup_destination}'                 # The location to store the backups in
+                OBJECT_TO_BACKUP = f'{omegabackup_source}'          # The file or directory to backup
+                BACKUP_DIRECTORY = f'{oemgabackup_destination}'     # The location to store the backups in
                 MAX_BACKUP_AMOUNT = 20                              # The maximum amount of backups to have in BACKUP_DIRECTORY
 
                 object_to_backup_path = Path(OBJECT_TO_BACKUP)
@@ -735,28 +778,31 @@ try:
 
                 cls()
                 print(f"""
-{rC2}         _______                              ______              __                {r}
-{rC2}        |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.{r}
-{rC2}        |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |{r}
-{rC2}        |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|{r}
-{bC}     ╓─────────────────────────{rC2}|_____|{bC}──────────────────────────────────────{rC2}|__|{bC}────{gC}►{r}
-{bC}     ╚════════════════════════════╗{r}
-       Backup end successfully !{bC}  ║{r}
-{bC}     ╔════════════════════════════╝{r})""")
-                sleep(1.5)
+{rC2}      _______                              ______              __                {r}
+{rC2}     |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.{r}
+{rC2}     |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |{r}
+{rC2}     |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|{r}
+{bC}   ╓─────────────────────────{rC2}|_____|{bC}──────────────────────────────────────{rC2}|__|{bC}────{gC}►{r}
+{bC}   ╚════════════════════════════╗{r}
+     Backup end successfully !{bC}  ║{r}
+{bC}   ═════════════════════════════╝{r}""")
+                sleep(2)
                 usefulltools_backup_remakebackup()
             except KeyboardInterrupt:
                 print(f"{bC}     ║ [{rC2}*{bC}]─[{gC}CTRL + C detected stop the ping.{bC}]{r}")
                 print(f"{bC}     ║ [{rC2}!{bC}]─[{gC}Backup interrupted.{bC}]{r}")
+                print(f"{bC}     ║ [{rC2}-{bC}]─[{gC}Deleting current backup...{bC}]{r}")
+                os.system(f"rm -fr ")
             except PermissionError:
                 print(f"{bC}     ║ [{rC2}!{bC}]─[{gC}Permission denied.{bC}]{r}")
                 print(f"{bC}     ║ [{rC2}!{bC}]─[{gC}Please check your permissions with your folder/users.{bC}]{r}")
                 print(f"{bC}     ║ [{rC2}-{bC}]─[{gC}Do you want to remake the backup config ? [Y/n]{bC}]{r}")
-                print(f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/Successully_backuped{bC}]{r}")
+                print(f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/permission_denied{bC}]{r}")
                 permerror = str(input(f"{bC}└╼{rC}$ {r}"))
+                
                 while not permerror:
                     print(f"{bC}[{rC2}!{bC}]─[{gC}Chose [Y/n]{bC}]{r}")
-                    print(f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/Successully_backuped{bC}]{r}")
+                    print(f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/permission_denied{bC}]{r}")
                     permerror = str(input(f"{bC}└╼{rC}$ {r}"))
                 if permerror == "y" or permerror == "Y":
                     usefulltools_backup_source()
@@ -765,103 +811,104 @@ try:
             except:
                 print(f"{bC}     ║ [{rC2}*{bC}]─[{gC}Error occurred while copying file{bC}]{r}")
                 print(f"""{bC}     ║ [{rC2}!{bC}]─[{gC}Check the source/destination path whether they are correct or no,
-     ║ check that the files are not corrupted or some other problem and redo the backup configuration{bC}]{r}""")
+     {bC}║{gC}   check that the files are not corrupted or some other problem and redo the backup configuration{bC}]{r}""")
                 input(f"{bC}     ║ [{rC2}-{bC}]─[{gC}Press [ENTER] key to remake the backup configuration{bC}]{r}")
                 usefulltools_backup_source()
         elif sure == "n" or sure =="N":
             usefulltools_backup_reconfig()
         else:
-            print(f"{bC}[{rC2}!{bC}]─[{gC}Invalid option, chose [Y/n]{bC}]{r}")         # the function for the error with no respond
-            input(f"{bC}[{rC2}-{bC}]{bC}─[{gC}Press [ENTER] key to retry{bC}]{r}")      #
+            print(f"{bC}[{rC2}!{bC}]─[{gC}Invalid option, chose [Y/n]{bC}]{r}")
+            input(f"{bC}[{rC2}-{bC}]{bC}─[{gC}Press [ENTER] key to retry{bC}]{r}")
             usefulltools_backup_verification()
 
     def usefulltools_backup_reconfig():
         cls()
         print(F"""
-{rC2}         _______                              ______              __                {r}
-{rC2}        |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.{r}
-{rC2}        |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |{r}
-{rC2}        |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|{r}
-{bC}     ╓─────────────────────────{rC2}|_____|{bC}──────────────────────────────────────{rC2}|__|{bC}────{gC}►{r}
-{bC}     ╚═════════════════════════════════════════════════╗{r}
-       Do you want reconfig the backup config ? [Y/n]  {bC}║{r}
-{bC}     ══════════════════════════════════════════════════╝{r}""")
-        print()
-        print(f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/Remake_the_backup_config{bC}]{r}")
+{rC2}      _______                              ______              __                {r}
+{rC2}     |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.{r}
+{rC2}     |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |{r}
+{rC2}     |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|{r}
+{bC}   ╓─────────────────────────{rC2}|_____|{bC}──────────────────────────────────────{rC2}|__|{bC}────{gC}►{r}
+{bC}   ╚═════════════════════════════════════════════════╗{r}
+     Do you want reconfig the backup config ? [Y/n]  {bC}║{r}
+{bC}   ══════════════════════════════════════════════════╝{r}
+
+{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/Remake_the_backup_config{bC}]{r}""")
         choice = str(input(f"{bC}└╼{rC}$ {r}"))
         if choice == "y" or choice == "Y":
             usefulltools_backup_source()
         elif choice == "n" or choice == "N":
             usefulltools_mainpage()
         elif not choice:
-            print(bC+"["+{rC2}+"!"+bC+"]"+bC+"─["+gC+"Choose [Y/n]"+bC+"]"+{r})
-            input(bC+"["+{rC2}+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to retry"+bC+"]"+{r})
+            print(f"{bC}[{rC2}!{bC}]{bC}─[{gC}Choose [Y/n]{bC}]{r}")
+            input(f"{bC}[{rC2}-{bC}]{bC}─[{gC}Press [ENTER] key to retry{bC}]{r}")
             usefulltools_backup_reconfig()
         else:
-            print(bC+"["+{rC2}+"!"+bC+"]"+bC+"─["+gC+"Invalid option, choose [Y/n]"+bC+"]"+{r})                         # the function for the error with no respond
-            input(bC+"["+{rC2}+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to retry"+bC+"]"+{r})                           #
+            print(f"{bC}[{rC2}!{bC}]{bC}─[{gC}Invalid option, choose [Y/n]{bC}]{r}")
+            input(f"{bC}[{rC2}-{bC}]{bC}─[{gC}Press [ENTER] key to retry{bC}]{r}")
             usefulltools_backup_reconfig()
 
     def usefulltools_backup_remakebackup():
         cls()
-        print({rC2}+"        _______                              ______              __                  "+{r})
-        print({rC2}+"       |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.  "+{r})
-        print({rC2}+"       |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |  "+{r})
-        print({rC2}+"       |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|  "+{r})
-        print(bC+"     ╓─────────────────────────"+{rC2}+"|_____|"+bC+"──────────────────────────────────────"+{rC2}+"|__|"+bC+"────"+gC+"►"+{r})
-        print(bC+"     ║"+{r})
-        print(bC+"     ╚════════════════════════════════════════════════════╗"+{r})
-        print(gC+"          Do you want to remake a backup ? [Y/n]"+bC+"  ║"+{r})
-        print(bC+"     ═════════════════════════════════════════════════════╝"+{r})
-        print()
-        print(f"{bC}┌──({rC}OmegaPSToolkit{bC})─["+{r}+"~/UTools/BackupTool/Remake_the_backup_config"+bC+"]"+{r})
-        choice = str(input(bC+"└╼"+rC+"$ "+{r}))
+        print(f"""
+{rC2}      _______                              ______              __                {r}
+{rC2}     |       |.--------.-----.-----.---.-.|   __ \.---.-.----.|  |--.--.--.-----.{r}
+{rC2}     |   -   ||        |  -__|  _  |  _  ||   __ <|  _  |  __||    <|  |  |  _  |{r}
+{rC2}     |_______||__|__|__|_____|___  |___._||______/|___._|____||__|__|_____|   __|{r}
+{bC}   ╓─────────────────────────{rC2}|_____|{bC}──────────────────────────────────────{rC2}|__|{bC}────{gC}►{r}
+{bC}   ╚═════════════════════════════════════════╗{r}
+     Do you want to remake a backup ? [Y/n]  {bC}║{r}
+{bC}   ══════════════════════════════════════════╝{r}
+
+{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/remake_backup_config{bC}]{r}""")
+        choice = str(input(f"{bC}└╼{rC}$ {r}"))
         if choice == "y" or choice == "Y":
             usefulltools_backup_source()
         elif choice == "n" or choice == "N":
             usefulltools_mainpage()
         elif not choice:
-            print(bC+"["+{rC2}+"!"+bC+"]"+bC+"─["+gC+"Choose y or n"+bC+"]"+{r})
-            input(bC+"["+{rC2}+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to retry"+bC+"]"+{r})
+            print(f"{bC}[{rC2}!{bC}]{bC}─[{gC}Choose [Y/n]{bC}]{r}")
+            input(f"{bC}[{rC2}-{bC}]{bC}─[{gC}Press [ENTER] key to retry{bC}]{r}")
             usefulltools_backup_reconfig()
         else:
-            print(bC+"["+{rC2}+"!"+bC+"]"+bC+"─["+gC+"Invalid option, choose y or n"+bC+"]"+{r})                                       # the function for the error with no respond
-            input(bC+"["+{rC2}+"-"+bC+"]"+bC+"─["+gC+"Press [ENTER] key to retry"+bC+"]"+{r})                           #
+            print(f"{bC}[{rC2}!{bC}]{bC}─[{gC}Invalid option, choose [Y/n]{bC}]{r}")
+            input(f"{bC}[{rC2}-{bC}]{bC}─[{gC}Press [ENTER] key to retry{bC}]{r}")
             usefulltools_backup_reconfig()
 #-End-Usefull Windows tool-------------------------------------------#
 
 #-OmegaPSToolkit-CLI-main-page---------------------------------------#
     def cli_main_page():
         print(f"""
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {gC}    _____                   _____ _____ _____         _ _   _ _{r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {gC}   |     |_____ ___ ___ ___|  _  |   __|_   _|___ ___| | |_|_| |_{r}
-{bC}        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM {gC}   |  |  |     | -_| . | .'|   __|__   | | | | . | . | | '_| |  _|{r}
-{bC}        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM {gC}   |_____|_|_|_|___|_  |__,|__|  |_____| |_| |___|___|_|_,_|_|_|   {gC}v{rC}{opstconsole_cli_version}{r}
-{bC}        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM {bC} ╓─────────────────{gC}|___|{bC}─────────────────────────────────────────────────────{gC}►{r}
+{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {gC}      _____                   _____ _____ _____         _ _   _ _{r}
+{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {gC}     |     |_____ ___ ___ ___|  _  |   __|_   _|___ ___| | |_|_| |_{r}
+{bC}        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM {gC}     |  |  |     | -_| . | .'|   __|__   | | | | . | . | | '_| |  _|{r}
+{bC}        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM {gC}     |_____|_|_|_|___|_  |__,|__|  |_____| |_| |___|___|_|_,_|_|_|   {gC}v{rC}{opstconsole_cli_version}{r}
+{bC}        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM {bC} ╓───────────────────{gC}|___|{bC}─────────────────────────────────────────────────────{gC}►{r}
 {bC}        MMMMMNo.    :dNMMMMMMMMMMMNo`   `/dMMMMM {bC} ║{r}
-{bC}        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM {bC} ║     {r}OmegaPSToolkit factory for penetration testing{r}
+{bC}        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM {bC} ║     {r}OmegaPSToolkit factory for penetration testing
 {bC}        MMMy`     sMMMMMMMMMMMMMMMMMMm`     /MMM {bC} ║{r}
 {bC}        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM {bC} ╚════╗{r}
-{bC}        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM {bC}      ╟──────{gC}► {bC2}{underscore}Created by{W}{bC2}       ::{rC} Thomas Pellissier{bC2} (from © PSociety™){r}
-{bC}        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM {bC}      ╟──────{gC}► {bC2}{underscore}OPST_cli Version{W}{bC2} :: v{rC}{opstconsole_cli_version}{r}
-{bC}        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM {bC}      ╟──────{gC}► {bC2}{underscore}Internet Status{W}{bC2}  ::{rC} {internetstatus}{r}
+{bC}        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM {bC}      ╟──────{gC}► {bC2}{underscore}Created by{W}{bC2}       :: {rC}Thomas Pellissier{bC2} (from © PSociety™){r}
+{bC}        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM {bC}      ╟──────{gC}► {bC2}{underscore}OPSTC CLI Version{W}{bC2}:: v{rC}{opstconsole_cli_version}{r}
+{bC}        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM {bC}      ╟──────{gC}► {bC2}{underscore}Internet Status{W}{bC2}  ::    {rC}{internetstatus}{r}
 {bC}        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM {bC}      ╟────╥─{gC}► {bC2}{underscore}Codename{W}{bC2}         :: @{rC}MyMeepSQL or {bC2}@{bC2}th300905{r}
 {bC}        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM {bC}      ║{bC}    ╙───────────────────{gC}►{bC2}{rC}  The {bC2}{underscore}seconde{W}{rC} codename is also mine{r}
 {bC}        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM {bC}      ╚════════╗{r}
-{bC}        NdMMMMMNy/.` -smMMMMMMMMNy/` `:smMMMMMNm {bC}               ║                      {r}Developed for linux{r}
+{bC}        NdMMMMMNy/.` -smMMMMMMMMNy/` `:smMMMMMNm {bC}               ║                      {r}Developed for linux
 {bC}        m`hNMMMMMMNdy: `MMMMMMMM+ .shmMMMMMMNm:+ {bC}               ║{r}
 {bC}        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o {bC}               ║{gC}             Welcome to the OmegaPSToolkit (OPST).{r}
 {bC}        N               hMMMMMMM`              o {bC}               ║{gC} The toolkit which includes a set of penetration testing tools.{r}
 {bC}        M               yMMMMMMM               s {bC}               ║{r}
-{bC}        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM {bC}               ║         {rC}{r}{italic}The OmegaPSToolkit is a product of © PSociety™{W}{r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {bC}               ║{r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {bC}               ║{r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {bC}               ║                        {GR}{underscore}SELECT AN OPTION{W}
+{bC}        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM {bC}               ╚         {rC}{r}{italic}The OmegaPSToolkit is a product of © PSociety™{W}{r}
+{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {r}
+{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {r}
+{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {r}
 
-{G}[*]{GR}  This is the CLI opstconsole_version of OmegaPSToolkit, type "{B}help{GR}" for all commands
-{R}[!]{GR}  This CLI version of OmegaPSToolkit is {underscore}{R}TOTALLY{W}{GR} in {R}BETA
 
+{G}[*]{GR}  This is the CLI version of opstonsole, type "{B}help{GR}" for all commands
+{R}[!]{GR}  This CLI version of osptconsoel is {underscore}{R}TOTALLY{W}{GR} in {R}BETA
 """)
+
         while True:
             prompt_for_command = f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/CLI_BETA{bC}]{r}"
             user_input = input(prompt_for_command + f"\n{bC}└╼{rC}$ {r}")
@@ -880,15 +927,62 @@ try:
             #         print(f"{R}[!]{GR}    Internet status : {R}Not connected{W}.")
             #     print()
             elif "ping" == command:
-                print
+                print(f"""
+{C}[-]{W}    Type an IP/domain to ping it (type '-help' for the help message, type 'leave' for exit ping tool)
+{G}[+]{W}    Exemple: -c 4 1.1.1.1
+       Exemple: -c 4 google.com
+       Exemple: -c 4 https://duckduckgo.com
+    """)
+                while True:
+                    prompt_for_command = f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/CLI_BETA/ping{bC}]{r}"
+                    user_input = input(prompt_for_command + f"\n{bC}└╼{rC}$ {r}")
+                    command = user_input
+
+                    if not command:
+                        print()
+                        user_input
+                    elif "leave" == command:
+                        print()
+                        print(f"{G}[-]{W}    Exiting ping tool...")
+                        print()
+                        break
+                    else:
+                        os.system(f"ping {command}")
+                        print()
+            elif "nslookup" == command:
+                print(f"""
+{C}[-]{W}    Type an IP/domain to nslookup it (type 'leave' for exit nslookup tool)
+{G}[+]{W}    Exemple: 8.8.8.8
+       Exemple: google.com
+    """)
+                print()
+                while True:
+                    prompt_for_command = f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/CLI_BETA/nslookup{bC}]{r}"
+                    user_input = input(prompt_for_command + f"\n{bC}└╼{rC}$ {r}")
+                    command = user_input
+
+                    if not command:
+                        print()
+                        user_input
+                    elif "leave" == command:
+                        print()
+                        print(f"{G}[-]{W}    Exiting nslookup tool...")
+                        print()
+                        break
+                    else:
+                        os.system(f"nslookup {command}")
+                        print()
+
             elif "clear" == command:
                 cls()
                 cli_main_page()
             elif "help" == command:
-                cli_mainpage_helpmsg()
+                cli_helpmsg()
+            elif "info" == command:
+                cli_infomsg()
             elif "leave" == command:
                 print(f"{G}[-]{W}   Exiting CLI mode...")
-                sleep(1)
+                sleep(0.5)
                 main_page()
             elif "exit" == command:
                 exitodst()
@@ -900,17 +994,17 @@ try:
     def main_page():
         cls()
         print(f"""
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {gC}    _____                   _____ _____ _____         _ _   _ _{r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {gC}   |     |_____ ___ ___ ___|  _  |   __|_   _|___ ___| | |_|_| |_{r}
-{bC}        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM {gC}   |  |  |     | -_| . | .'|   __|__   | | | | . | . | | '_| |  _|{r}
-{bC}        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM {gC}   |_____|_|_|_|___|_  |__,|__|  |_____| |_| |___|___|_|_,_|_|_|   {gC}v{rC}{opstconsole_version}{r}
-{bC}        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM {bC} ╓─────────────────{gC}|___|{bC}─────────────────────────────────────────────────────{gC}►{r}
+{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {gC}      _____                   _____ _____ _____         _ _   _ _{r}
+{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {gC}     |     |_____ ___ ___ ___|  _  |   __|_   _|___ ___| | |_|_| |_{r}
+{bC}        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM {gC}     |  |  |     | -_| . | .'|   __|__   | | | | . | . | | '_| |  _|{r}
+{bC}        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM {gC}     |_____|_|_|_|___|_  |__,|__|  |_____| |_| |___|___|_|_,_|_|_|   {gC}v{rC}{opstconsole_version}{r}
+{bC}        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM {bC} ╓───────────────────{gC}|___|{bC}─────────────────────────────────────────────────────{gC}►{r}
 {bC}        MMMMMNo.    :dNMMMMMMMMMMMNo`   `/dMMMMM {bC} ║{r}
 {bC}        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM {bC} ║     {r}OmegaPSToolkit factory for penetration testing{r}
 {bC}        MMMy`     sMMMMMMMMMMMMMMMMMMm`     /MMM {bC} ║{r}
 {bC}        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM {bC} ╚════╗{r}
 {bC}        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM {bC}      ╟──────{gC}► {bC2}{underscore}Created by{W}{bC2}       ::{rC} Thomas Pellissier{bC2} (from © PSociety™){r}
-{bC}        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM {bC}      ╟──────{gC}► {bC2}{underscore}OPST Version{W}{bC2}     :: v{rC}{opstconsole_version}{r}
+{bC}        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM {bC}      ╟──────{gC}► {bC2}{underscore}OPSTC Version{W}{bC2}    :: v{rC}{opstconsole_version}{r}
 {bC}        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM {bC}      ╟──────{gC}► {bC2}{underscore}Internet Status{W}{bC2}  ::{rC} {internetstatus}{r}
 {bC}        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM {bC}      ╟────╥─{gC}► {bC2}{underscore}Codename{W}{bC2}         :: @{rC}MyMeepSQL or {bC2}@{bC2}th300905{r}
 {bC}        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM {bC}      ║{bC}    ╙───────────────────{gC}►{bC2}{rC}  The {bC2}{underscore}seconde{W}{rC} codename is also mine{r}
@@ -920,10 +1014,10 @@ try:
 {bC}        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o {bC}               ║{gC}             Welcome to the OmegaPSToolkit (OPST).{r}
 {bC}        N               hMMMMMMM`              o {bC}               ║{gC} The toolkit which includes a set of penetration testing tools.{r}
 {bC}        M               yMMMMMMM               s {bC}               ║{r}
-{bC}        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM {bC}               ║         {rC}{r}{italic}The OmegaPSToolkit is a product of © PSociety™{W}{r}
+{bC}        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM {bC}               ║          {r}{italic}The OmegaPSToolkit is a product of © PSociety™.{W}
+{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {bC}               ║{r}{italic}                  2021-2022, All rights reserved.
 {bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {bC}               ║{r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {bC}               ║{r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {bC}               ║                        {GR}{underscore}SELECT AN OPTION{W}
+{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {bC}               ╚                        {GR}{underscore}SELECT AN OPTION{W}
 
 
                 [{bC}1{r}]{gC}    Information Gathering tools{r}
@@ -931,8 +1025,10 @@ try:
                 [{bC}3{r}]{gC}    Useful tools (UT){r}
                 [{bC}cli{r}]{gC}  Use OPST like a Command Line Interpeter {bC}[{rC}BETA{bC}]{r}
                 [{bC}help{r}]{gC} Show the help message{r}
-                [{bC}exit{r}]{gC} Exit the opstconsole\n{r}
-OPST was not finish and he's totally in development!\n
+                [{bC}exit{r}]{gC} Exit the opstconsole{r}
+
+OPST was not finish and he's totally in development!
+
 {bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~{bC}]{r}""")
         global command
         command = str(input(f"{bC}└╼{rC}$ {r}"))
@@ -947,6 +1043,8 @@ OPST was not finish and he's totally in development!\n
             cls()
             usefulltools_mainpage()
         elif command == "cli":
+            print(f"{G}[-]{W}   Loading CLI mode...")
+            sleep(0.5)
             cls()
             cli_main_page()
         elif command == "help":
@@ -963,6 +1061,7 @@ OPST was not finish and he's totally in development!\n
             invalid_option()
             cls()
             main_page()
+            
     #-END-OF-MAIN-PAGE---------------------------------------------------#
 
     main_page()      # call the main function
@@ -1051,4 +1150,4 @@ except EOFError:
 #      __||__   /</      \_/
 #  ___| OPST |_/</
 # |  __________  |
-# \_____________/
+# \__________                          

@@ -1,4 +1,4 @@
-#!/usr/bin/python3.8.10
+#!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
 #  Filename ~ version.py                     [Update: 2022-04-05 | 1:30 PM] #

@@ -96,14 +96,14 @@ echo
 #First check of setup for internet connection by connecting to google over http
 wget -q --tries=10 --timeout=5 --spider http://google.com
 if [ $? -eq 0 ]; then
-    echo '+ -- --=[  Internet status.......... '"$G"'Connected'"$W"'.                                                                               ]'
-    echo '+ -- --=[  '$underscore'This tool will:'$W'                                                                                                    ]
-        [  ...'$G'Update'$W' your system ('$R'apt update'$W'),                                                                                ]
-        [  ...Install '$G'Python3'$W' and '$G'PIP3'$W' ('$R'apt install python3 python3-pip'$W'),                                                     ]
-        [  ...Install all '$G'tools'$W' that OPST must have                                                                           ]
-        [  ...Create the OmegaPSToolkit folder to "'$G'/usr/share/OmegaPSToolkit/'$W'" and '$R'move all OmegaPSToolkit files into it'$W',     ]
-        [  ...Create the commands "'$G'opstconsole'$W'", "'$G'opsthelp'$W'", "'$G'opstupdate'$W'", "'$G'opstsetup'$W'" and "'$G'opstinstall-all'$W'" into '$G'/usr/bin/'$W',  ]
-        [  ...Apply all rights on the new file in "'$G'/usr/share/OmegaPSToolkit/'$W'" and for all commands in "'$G'/usr/bin/'$W'".           ]'
+    echo '+ -- --=[  Internet status.......... '"$G"'Connected'"$W"'.                                                                                       ]'
+    echo '+ -- --=[  '$underscore'This tool will:'$W'                                                                                                            ]
+        [  ...'$G'Update'$W' your system ('$R'apt update'$W'),                                                                                        ]
+        [  ...Install '$G'Python3'$W' and '$G'PIP3'$W' ('$R'apt install python3 python3-pip'$W'),                                                             ]
+        [  ...Install all '$G'tools'$W' that OPST must have                                                                                   ]
+        [  ...Create the OmegaPSToolkit folder to "'$G'/usr/share/OmegaPSToolkit/'$W'" and '$R'clone OmegaPSToolkit files into it'$W' (from'$R' GitHub'$W'),  ]
+        [  ...Create the commands "'$G'opstconsole'$W'", "'$G'opsthelp'$W'", "'$G'opstupdate'$W'", "'$G'opstsetup'$W'" and "'$G'opstinstall-all'$W'" into '$G'/usr/bin/'$W',          ]
+        [  ...Apply all rights on the new file in "'$G'/usr/share/OmegaPSToolkit/'$W'" and for all commands in "'$G'/usr/bin/'$W'".                   ]'
     echo
     echo -n "$C[?]$W    Do you want to continue? [Y/n] "
     read y_n
@@ -114,23 +114,23 @@ if [ $? -eq 0 ]; then
         echo "$G[-]$W    Updating..."
         echo
         sleep 0.5
-        apt update -y && apt update --fix-missing -y
+        apt -qq update -y && apt -qq update --fix-missing -y
         echo
         echo "$G[+]$W    Update complete."
-        echo
         sleep 1
+        echo
         echo "$G$D""--------------------------------------------------------------------------------------"$W
         echo
         echo "$G[-]$W    Installing Python3 and PIP3..."
         echo
         sleep 0.5
-        apt install python3 python3-pip whois traceroute net-tools -y
+        apt -qq install python3 python3-pip whois traceroute net-tools -y
         echo
         echo "$G[+]$W    Installation complete."
+        sleep 1
         echo
         echo "$G$D""--------------------------------------------------------------------------------------"$W
         echo
-        sleep 1
         if [ -d "$INSTALL_DIR" ]; then
             echo "$R[!]$W    A OmegaPSToolkit directory was Found."
             echo -n "$C[?]$W    Do you want to replace it ? [Y/n] "
@@ -150,7 +150,7 @@ if [ $? -eq 0 ]; then
                 rm -f "$BIN_DIR/opstupdate"
                 rm -f "$BIN_DIR/opsthelp"
                 rm -f "$BIN_DIR/opstinstall-all"
-
+ 
                 echo "$G[+]$W    Done for the OmegaPSToolkit's remove."
                 sleep 1
                 echo
@@ -247,9 +247,9 @@ if [ $? -eq 0 ]; then
         echo
         echo "$B[+]$W    All Done."
         echo
+        sleep 0.4
         echo "$G$D""--------------------------------------------------------------------------------------"$W
         echo
-        sleep 0.3
         echo -n "$C[?]$W    Do you want to reload your terminal (just in case) ? [Y/n] "
         read y_n
         if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ]; then
@@ -258,7 +258,7 @@ if [ $? -eq 0 ]; then
             echo
             echo "$G$D""---------------------"$W
             echo "$G[-]$W    Reloading..."
-            echo "$G$D""---------------------"$W¨
+            echo "$G$D""---------------------"$W
             sleep 0.5
             reset
             echo

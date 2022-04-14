@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opsthelp.py                    [Update: 2022-04-05 | 1:30 PM] #
+#  Filename ~ opsthelp.py                   [Update: 2022-04-11 | 12:57 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
@@ -37,9 +37,6 @@ from opstcolors import GR,D,W,G,C
 from opstversions import *
 ####
 
-
-
-
 # The main command
 # Police = Chunky from https://www.coolgenerator.com/ascii-text-generator
 print(f"""
@@ -57,7 +54,7 @@ print(f"""
 
     {G}Other commands (to install OPST){GR}:{W}
         odstsetup           Install all pip packages that OPST needs
-        odstinstall-all     Update you system, copy OPST to {G}"{C}/usr/bin/OmegaPSToolkit{G}"{W} and write all comamnds in your PATH
+        odstinstall-all     Update you system, copy OPST to {G}"{C}/usr/share/OmegaPSToolkit{G}"{W} and write all comamnds in {G}"{C}/usr/bin/ss{G}"{W}
 
     {G}OPST Versions{GR}:{W}
         opstconsole         v{opstconsole_version}

@@ -1,7 +1,7 @@
-#!/usr/bin/python3.8.10
+#!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opstfunctions.py               [Update: 2022-04-05 | 1:30 PM] #
+#  Filename ~ opstfunctions.py              [Update: 2022-04-11 | 12:57 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -46,8 +46,8 @@ except NameError:
     sys.exit(criticalmsg)
 ####
 
-
 # Functions
+## Main functions
 def non_linux():
     print()
     criticalmsg = f"{B}[{R}FATAL ERROR{B}]{R} You tried to run OPST on a non-linux machine. OPST can be run only on a Linux kernel.\n{W}"
@@ -76,21 +76,6 @@ def y_or_n_error():
     print(f"{bC}[{rC2}!{bC}]{bC}─[{gC}Chose y or n{bC}]{r}")                     # If the user does not choose "y" or "n"
     input(f"{bC}[{rC2}-{bC}]{bC}─[{gC}Press [ENTER] key to retry{bC}]{r}")       #
 
-def cli_mainpage_helpmsg():
-    print(f"""
-{GR}{D} _______ ______ _______ _______ {W}
-{GR}{D}|       |   __ \     __|_     _|{W}{G}  OmegaPSToolkit CLI {D}v{opstconsole_cli_version}
-{GR}{D}|   -   |    __/__     | |   |  {W}{D}  A massive penetration testing toolkit
-{GR}{D}|_______|___|  |_______| |___|  {C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}
-
-All commands of the OmegaDSToolkit CLI you can use is the main page
-
-{B}COMMAND:{W}
-    help        ::   Show this help message
-    leave       ::   Exit opstconsole's CLI version
-    exit        ::   Exit opstconsole
-""")
-
 def mainpage_helpmsg():
     print(f"""
 {GR}{D} _______ ______ _______ _______ {W}
@@ -109,4 +94,67 @@ All commands of the OmegaDSToolkit you can use is the main page
     exit        ::   Exit opstconsole
     """)
     input(f"{bC}[{rC2}-{bC}]{bC}─[{gC}Press [ENTER] key to continue{bC}]{r}")
+
+
+
+###
+
+## CLI functions
+def cli_helpmsg():
+    print(f"""
+{GR}{D} _______ ______ _______ _______ {W}
+{GR}{D}|       |   __ \     __|_     _|{W}{G}  OmegaPSToolkit CLI {D}v{opstconsole_cli_version}
+{GR}{D}|   -   |    __/__     | |   |  {W}{D}  A massive penetration testing toolkit
+{GR}{D}|_______|___|  |_______| |___|  {C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}
+
+All commands of the OmegaDSToolkit CLI you can use is the main page
+
+{B}COMMAND:{W}
+    ping        ::      The ping tool
+    nslookup    ::      The nslookup tool
+    netstat     ::      The netstat tool
+    which       ::      The which tool
+
+{B}OTHER COMMAND:{W}
+    help        ::      Show this help message
+    info        ::      Show informations about OSPT and other informations
+    leave       ::      Exit opstconsole's CLI version
+    exit        ::      Exit opstconsole
+""")
+
+def cli_infomsg():
+    print(f"""
+{GR}{D} _______ ______ _______ _______ {W}
+{GR}{D}|       |   __ \     __|_     _|{W}{G}  OmegaPSToolkit CLI {D}v{opstconsole_cli_version}
+{GR}{D}|   -   |    __/__     | |   |  {W}{D}  A massive penetration testing toolkit
+{GR}{D}|_______|___|  |_______| |___|  {C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}
+
+Some informations about the OmegaPSToolkit
+
+{C}Informations about OmegaPSToolkit{GR}:{W}
+
+    {G}OPST versions{GR}:{W}
+        opstconsole         v{opstconsole_version}
+        odstconsole CLI     v{opstconsole_cli_version}
+        opstupdate          {opstupdate_version}
+        opsthelp            {opstupdate_help}
+        odstsetup           {opstsetup_version}
+        odstinstall-all     {opstinstallall_version}
+
+    {G}Other versions{GR}:{W}
+        python              v{python_version}
+
+{C}Informations about author{GR}:{W}
+    Author                  Thomas Pellissier
+    Codename                MyMeepSQL
+    Owner                   © PSociety™. 2022, All rights reserved.
+
+{C}Ohter informations{GR}:{W}
+    Operating System (OS)   {OS}
+""")
+###
+
+
+
+
 # End of functions section

@@ -64,12 +64,9 @@ underscore = '\033[4m'
 normal = '\033[22m'
 ####
 
-
-
-
 # The SetupTool
 try:
-    if os.getuid() != 0:                                                            #   check if the user run ODST with root privilege
+    if os.getuid() != 0:    #   check if the user run OPST with root privilege
         permerror =f"""
 {R}[!]{W}    OPSTSetup could be run as the 'root' user or with 'sudo'
        Re-run the 'opstsetup' with 'sudo' or with the 'root' user
@@ -78,7 +75,7 @@ try:
         sys.exit(permerror)
 except AttributeError:
     print()
-    criticalmsg = B+"["+R+"FATAL ERROR"+B+"]"+R+" You tried to run OPST on a non-linux machine. OPST can be run only on a Linux kernel.\n"+W
+    criticalmsg = f"{B}[{R}FATAL ERROR{B}]{R}    You tried to run OPST on a non-linux machine. OPST can be run only on a Linux kernel.\n{W}"
     sys.exit(criticalmsg)
 except EOFError:
     print()
@@ -94,7 +91,7 @@ else:
             long_description = fh.read()
         print()
         print(f"{GR}{D} _______ ______ _______ _______ _______         __               ")
-        print(f"{GR}{D}|       |   __ \     __|_     _|     __|.-----.|  |_.--.--.-----.{W}{G}  OPSTSetup {D}%s{W}" % opstsetup_version)
+        print(f"{GR}{D}|       |   __ \     __|_     _|     __|.-----.|  |_.--.--.-----.{W}{G}  OPSTSetup {D}{opstsetup_version}")
         print(f"{GR}{D}|   -   |    __/__     | |   | |__     ||  -__||   _|  |  |  _  |{W}{D}  A massive penetration testing toolkit")         # Police = Chunky from https://www.coolgenerator.com/ascii-text-generator
         print(f"{GR}{D}|_______|___|  |_______| |___| |_______||_____||____|_____|   __|{C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}")
         print(f"{GR}{D}  + -------- !* Welcome to the OPSTSetup. *! -------- +   |__|{W}")
@@ -127,12 +124,9 @@ else:
             print()
             print(f"{G}{D}--------------------------------------------------------------------------------------{W}")
             print()
-            print(f"{G}[-]{W}    Installing {G}Colored{W}, {G}Progress{W} and make a OmegaPSToolkit package...")
+            print(f"{G}[-]{W}    Installing {G}Colored{W}, {G}Progress{W} and make a {G}OmegaPSToolkit package{W}...")
             print()
             sleep(0.5)
-            requirements = ["requests"]
-            setup_requirements = ["requests"]
-            test_requirements = ["requests"]
             setup(classifiers=[
                     "Copyright                          :: Copyright (C) 2022, Thomas Pellissier aka MyMeepSQL from © PSociety™",
                     "Author                             :: Thomas Pellissier",
@@ -148,11 +142,11 @@ else:
                 name='OmegaPSToolkit',
                 description='A massive penetration testing toolkit',
                 long_description = long_description,
-                url='https://github.com/MyMeepSQL/OmegaDSToolkit',
-                author='MyMeepSQL',
+                url='https://github.com/MyMeepSQL/OmegaPSToolkit',
+                author='Thomas Pellissier',
                 author_email='thomas.pellissier@outlook.com',
                 license='GNU-GPL-3.0',
-                opstsetup_version='0.0.1.3',
+                version='0.0.1.3',
                 python_requires='>=3.1.0',
                 packages=find_packages(),
                 zip_safe=False,
@@ -204,3 +198,4 @@ else:
         abort()
     except KeyboardInterrupt:
         abort()
+####
