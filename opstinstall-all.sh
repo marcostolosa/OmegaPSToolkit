@@ -169,7 +169,6 @@ if [ $? -eq 0 ]; then
 
         # for run the SetupTool (opstsetup) anywhere in the terminal. The "opstsetup" will be write into "/usr/share/OmegaPSToolkit"
         echo "$G[-]$W    Installing OmegaPSToolkit into \"/usr/share/OmegaPSToolkit/\"..."
-        echo
         sleep 0.5
 
         mkdir $INSTALL_DIR
@@ -199,16 +198,9 @@ if [ $? -eq 0 ]; then
         cp "$TEMP_DIR/opsthelp" "$BIN_DIR"
         cp "$TEMP_DIR/opstinstall-all" "$BIN_DIR"
 
-        rm "$TEMP_DIR/opstconsole"
-        rm "$TEMP_DIR/opstupdate"
-        rm "$TEMP_DIR/opstsetup"
-        rm "$TEMP_DIR/opsthelp"
-        rm "$TEMP_DIR/opstinstall-all"
-
         rm -fr "$TEMP_DIR"
         ##
 
-        echo
         echo "$G[+]$W    Done for the OmegaPSToolkit's installation."
         sleep 1
         echo
@@ -239,7 +231,6 @@ if [ $? -eq 0 ]; then
         chmod 777 "$BIN_DIR/opsthelp"
         ##
 
-        echo
         echo "$G[+]$W    Apply complete."
         sleep 1
         echo

@@ -53,7 +53,8 @@ normal='\033[22m'
 
 opstupdate_version="v1.8"
 INSTALL_DIR="/usr/share/OmegaPSToolkit"
-BIN_DIR="/usr/share/"
+BIN_DIR="/usr/bin"
+TEMP_DIR="/tmp/OmegaPSToolkit"
 
 # Check if user have root privileges
 if [ $(id -u) != "0" ]; then
@@ -72,8 +73,8 @@ if [ $(id -u) != "0" ]; then
                 exit 1
         else # Switch to sudo (root)
             echo
-            echo "$R[!]$W    OPSTUpdate could be run as the 'root' user or with 'sudo'"
-            echo "$G[-]$W    Switching to root user to run the 'opstupdate'"
+            echo -e "$R[!]$W    OPSTUpdate could be run as the 'root' user or with 'sudo'"
+            echo -e "$G[-]$W    Switching to root user to run the 'opstupdate'"
             sudo -E sh $0 $@
             exit 0
         fi
@@ -122,43 +123,68 @@ if [ $? -eq 0 ]; then
         echo "$G$D""--------------------------------------------------------------------------------------"$W
         echo
         echo "$G[-]$W    "$G"Updating"$W" all commands from "$G"GitHub"$W"..."
-        echo
         sleep 0.5
 
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstconsole.py -P /usr/share/OmegaPSToolkit/
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opsthelp.py -P /usr/share/OmegaPSToolkit/
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstsetup.py -P /usr/share/OmegaPSToolkit/
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstupdate.sh -P /usr/share/OmegaPSToolkit/
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstinstall-all.sh -P /usr/share/OmegaPSToolkit/
+        if [ -e $TEMP_DIR ];then
+            echo "$G[*]$W    A OmegaPSToolkit folder already exist in "$G"/tmp/"$W", append the new files..."
 
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstfunctions.py -P /usr/share/OmegaPSToolkit/
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstcolors.py -P /usr/share/OmegaPSToolkit/
-        wget https://raw.githubusercontent.com/MyMeepSQL/OmegaPSToolkit/main/opstversions.py -P /usr/share/OmegaPSToolkit/
+            rm -fr /tmp/OmegaPSToolkit
 
-        echo "#!/bin/bash
-        python3 $INSTALL_DIR/opstconsole.py" '${1+"$@"}' > opstconsole
-        echo "#!/bin/bash
-        sh $INSTALL_DIR/opstupdate.sh" '${1+"$@"}' > opstupdate
-        echo "#!/bin/bash
-        python3 $INSTALL_DIR/opstsetup.py" '${1+"$@"}' > opstsetup
-        echo "#!/bin/bash
-        python3 $INSTALL_DIR/opsthelp.py" '${1+"$@"}' > opsthelp
-        echo "#!/bin/bash
-        sh $INSTALL_DIR/opstinstall-all.sh" '${1+"$@"}' > opstinstall-all
+            git clone -q https://github.com/MyMeepSQL/OmegaPSToolkit.git "$TEMP_DIR"
 
-        sudo cp opstconsole /usr/bin/
-        sudo cp opstupdate /usr/bin/
-        sudo cp opstsetup /usr/bin/
-        sudo cp opsthelp /usr/bin/
-        sudo cp opstinstall-all /usr/bin/
+            # for the "/usr/share/OmegaPSToolkit"
+            cp -r "$TEMP_DIR/"* "$INSTALL_DIR/"
+            ##
 
-        sudo rm opstconsole
-        sudo rm opstupdate
-        sudo rm opstsetup
-        sudo rm opsthelp
-        sudo rm opstinstall-all
+            # for the "/usr/bin"
+            echo "#!/bin/bash
+            python3 $INSTALL_DIR/opstconsole.py" '${1+"$@"}' > "$TEMP_DIR/opstconsole"
+            echo "#!/bin/bash
+            bash $INSTALL_DIR/opstupdate.sh" '${1+"$@"}' > "$TEMP_DIR/opstupdate"
+            echo "#!/bin/bash
+            python3 $INSTALL_DIR/opstsetup.py" '${1+"$@"}' > "$TEMP_DIR/opstsetup"
+            echo "#!/bin/bash
+            python3 $INSTALL_DIR/opsthelp.py" '${1+"$@"}' > "$TEMP_DIR/opsthelp"
+            echo "#!/bin/bash
+            bash $INSTALL_DIR/opstinstall-all.sh" '${1+"$@"}' > "$TEMP_DIR/opstinstall-all"
 
-        echo
+            cp "$TEMP_DIR/opstconsole" "$BIN_DIR"
+            cp "$TEMP_DIR/opstupdate" "$BIN_DIR"
+            cp "$TEMP_DIR/opstsetup" "$BIN_DIR"
+            cp "$TEMP_DIR/opsthelp" "$BIN_DIR"
+            cp "$TEMP_DIR/opstinstall-all" "$BIN_DIR"
+
+            rm -fr "$TEMP_DIR"
+            ##
+        else
+            git clone -q https://github.com/MyMeepSQL/OmegaPSToolkit.git "$TEMP_DIR"
+
+            # for the "/usr/share/OmegaPSToolkit"
+            cp -r "$TEMP_DIR/"* "$INSTALL_DIR/"
+            ##
+
+            # for the "/usr/bin"
+            echo "#!/bin/bash
+            python3 $INSTALL_DIR/opstconsole.py" '${1+"$@"}' > "$TEMP_DIR/opstconsole"
+            echo "#!/bin/bash
+            bash $INSTALL_DIR/opstupdate.sh" '${1+"$@"}' > "$TEMP_DIR/opstupdate"
+            echo "#!/bin/bash
+            python3 $INSTALL_DIR/opstsetup.py" '${1+"$@"}' > "$TEMP_DIR/opstsetup"
+            echo "#!/bin/bash
+            python3 $INSTALL_DIR/opsthelp.py" '${1+"$@"}' > "$TEMP_DIR/opsthelp"
+            echo "#!/bin/bash
+            bash $INSTALL_DIR/opstinstall-all.sh" '${1+"$@"}' > "$TEMP_DIR/opstinstall-all"
+
+            cp "$TEMP_DIR/opstconsole" "$BIN_DIR"
+            cp "$TEMP_DIR/opstupdate" "$BIN_DIR"
+            cp "$TEMP_DIR/opstsetup" "$BIN_DIR"
+            cp "$TEMP_DIR/opsthelp" "$BIN_DIR"
+            cp "$TEMP_DIR/opstinstall-all" "$BIN_DIR"
+
+            rm -fr "$TEMP_DIR"
+            ##
+        fi
+
         echo "$G[+]$W    Update complete."
         echo
         sleep 1
@@ -170,22 +196,23 @@ if [ $? -eq 0 ]; then
         sleep 0.5
 
         # for '/usr/share/OmegaPSToolkit'
-        chmod 777 /usr/share/OmegaPSToolkit/opstconsole.py
-        chmod 777 /usr/share/OmegaPSToolkit/opstupdate.sh
-        chmod 777 /usr/share/OmegaPSToolkit/opstsetup.py
-        chmod 777 /usr/share/OmegaPSToolkit/opstinstall-all.sh
-        chmod 777 /usr/share/OmegaPSToolkit/opsthelp.py
+        chmod 777 "$INSTALL_DIR/opstconsole.py"
+        chmod 777 "$INSTALL_DIR/opstupdate.sh"
+        chmod 777 "$INSTALL_DIR/opstsetup.py"
+        chmod 777 "$INSTALL_DIR/opstinstall-all.sh"
+        chmod 777 "$INSTALL_DIR/opsthelp.py"
 
-        chmod 777 /usr/share/OmegaPSToolkit/opstfunctions.py
-        chmod 777 /usr/share/OmegaPSToolkit/opstcolors.py
+        chmod 777 "$INSTALL_DIR/opstfunctions.py"
+        chmod 777 "$INSTALL_DIR/opstcolors.py"
+        chmod 777 "$INSTALL_DIR/opstversions.py"
         ##
 
         # for '/usr/bin'
-        chmod 777 /usr/bin/opstconsole
-        chmod 777 /usr/bin/opstupdate
-        chmod 777 /usr/bin/opstsetup
-        chmod 777 /usr/bin/opstinstall-all
-        chmod 777 /usr/bin/opsthelp
+        chmod 777 "$BIN_DIR/opstconsole"
+        chmod 777 "$BIN_DIR/opstupdate"
+        chmod 777 "$BIN_DIR/opstsetup"
+        chmod 777 "$BIN_DIR/opstinstall-all"
+        chmod 777 "$BIN_DIR/opsthelp"
         ##
 
         echo "$G[+]$W    Apply complete."
