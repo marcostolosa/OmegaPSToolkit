@@ -29,7 +29,7 @@
 > - [**Update**](https://github.com/MyMeepSQL/OmegaPSToolkit#update)
 > - [**Help**](https://github.com/MyMeepSQL/OmegaPSToolkit#help)
 > - [**Overview**](https://github.com/MyMeepSQL/OmegaPSToolkit#tool-overview)
->   - [**OPSTConsole**](https://github.com/MyMeepSQL/OmegaPSToolkit#tool-overview)
+>   - [**OPSTConsole**](https://github.com/MyMeepSQL/OmegaPSToolkit#opstconsole)
 >   - [**OPSTConsole CLI**](https://github.com/MyMeepSQL/OmegaPSToolkit#opstconsole-cli)
 >   - [**OPSTHelp**](https://github.com/MyMeepSQL/OmegaPSToolkit#opsthelp)
 >   - [**OPSTUpdate**](https://github.com/MyMeepSQL/OmegaPSToolkit#opstupdate)
