@@ -54,7 +54,7 @@ print(f"""
 
     {G}Other commands (to install OPST){GR}:{W}
         odstsetup           Install all pip packages that OPST needs
-        odstinstall-all     Update you system, copy OPST to {G}"{C}/usr/share/OmegaPSToolkit{G}"{W} and write all comamnds in {G}"{C}/usr/bin/ss{G}"{W}
+        odstinstall-all     Update you system, copy OPST to {G}"{C}/usr/share/OmegaPSToolkit{G}"{W} and write all comamnds in {G}"{C}/usr/bin/{G}"{W}
 
     {G}OPST Versions{GR}:{W}
         opstconsole         v{opstconsole_version}
