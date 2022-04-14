@@ -38,7 +38,7 @@ opstupdate_help = "v1.4"
 
 opstsetup_version = "v2.6"
 opstupdate_version = "v2.5"
-opstinstallall_version = "2"
+opstinstallall_version = "v2"
 
 # current python version
 from platform import *
