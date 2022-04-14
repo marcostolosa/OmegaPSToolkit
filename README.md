@@ -77,7 +77,7 @@
 >   ```
 > * ### _Step 4_ : To install **Python3**,**PIP3**  and **all the tools that OPST must have**, run the "opstinstall-all.sh" with:
 >   ```bash
->   ./opstinstall-all.sh
+>   bash opstinstall-all.sh
 >   ```
 > * ### _Step 5_ : Run the "**SetupTool**" for install all _pip modules_ that you must have with:
 >   ```bash
