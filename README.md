@@ -90,7 +90,7 @@
 >   **Or**
 >   ```bash
 >   sudo python3 opstconsole              # You must be in its directory to run OPST like this (/usr/share/OmegaPSToolkit/)
->   ``` 
+>   ```
 >> ## **Update**
 >>To download the latest version of OPSTConsole, OPSTSetup, OPSTHelp and the OPSTInstall-all.
 >>* Run the "OPSTUpdate" with:
@@ -98,7 +98,7 @@
 >>   sudo opstupdate
 >>   ```
 >> ## **Help**
->>If you want the help message with all the commands "odst" and with other information like the version of each command, what is your OS and other information.
+>>If you want the help message with all "opst" commands and with other information like the version of each command, what is your OS and other informations.
 >>* Run the "OPSThelp" with:
 >>   ```bash
 >>   opsthelp
