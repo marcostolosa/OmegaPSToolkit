@@ -41,7 +41,7 @@ from opstversions import *
 # Police = Chunky from https://www.coolgenerator.com/ascii-text-generator
 print(f"""
 {GR}{D} ______  ______ _______ _______ {W}
-{GR}{D}|       |   __ \     __|_     _|{W}{G}  OmegaPSToolkit {D}v{W}{opstconsole_version}
+{GR}{D}|       |   __ \     __|_     _|{W}{G}  OmegaPSToolkit {D}v{opstconsole_version}
 {GR}{D}|   -   |    __/__     | |   |  {W}{D}  A massive penetration testing toolkit
 {GR}{D}|_______|___|  |_______| |___|  {C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}
 
