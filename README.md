@@ -1,12 +1,46 @@
+<!--
+
+#---[Metadata]--------------------------------------------------------------#
+#  Filename ~ README.MD                      [Update: 2022-04-16 | 2:39 AM] #
+#---[Info]------------------------------------------------------------------#
+#  {The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL}              #
+#                                                                           #
+#  A long description of OmegaPSToolkit                                     #
+#---[Author]----------------------------------------------------------------#
+#  Thomas Pellissier ~ @MyMeepSQL                                           #
+#  Copyright (C) 2022 MyMeepSQL - © PSociety™                               #
+#---[Operating System]------------------------------------------------------#
+#  Developed for linux                                                      #
+#---[Licence]---------------------------------------------------------------#
+#  GNU General Public License v3.0                                          #
+#  -------------------------------                                          #
+#                                                                           #
+#  This program is free software; you can redistribute it and/or modify     #
+#  it under the terms of the GNU General Public License as published by     #
+#  the Free Software Foundation; either version 2 of the License, or        #
+#  (at your option) any later version.                                      #
+#                                                                           #
+#  This program is distributed in the hope that it will be useful,          #
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of           #
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the             #
+#  GNU General Public License for more details.                             #
+#                                                                           #
+#  You should have received a copy of the GNU General Public License along  #
+#  with this program; if not, write to the Free Software Foundation, Inc.,  #
+#  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.              #
+#---------------------------------------------------------------------------#
+
+-->
+
 # **OmegaPSToolkit**
 > [![MadeBy](https://img.shields.io/badge/Made%20by-Thomas%20Pellissier-informational?style=flat-square)](https://github.com/MyMeepSQL)
 [![Codename](https://img.shields.io/badge/Codename-MyMeepSQL-informational?style=flat-square)](https://github.com/MyMeepSQL)
 [![Owner](https://img.shields.io/badge/Owner-©%20PSociety™-informational?style=flat-square)](https://github.com/MyMeepSQL)
 [![opstconsole_version](https://img.shields.io/badge/opstconsole%20version-v0.0.1.3-brightgreen?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
 [![opstconsole_cli_Version](https://img.shields.io/badge/opstconsole_CLI%20Version%20[BETA]-v0.0.0.9-red?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
-[![opsthelp_version](https://img.shields.io/badge/opsthelp%20version-v1.4-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
+[![opsthelp_version](https://img.shields.io/badge/opsthelp%20version-v1.65-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
 [![opstsetup_version](https://img.shields.io/badge/opstsetup%20version-v2.6-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
-[![opstupdate_version](https://img.shields.io/badge/opstupdate%20version-v2.5-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
+[![opstupdate_version](https://img.shields.io/badge/opstupdate%20version-v2.9-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
 [![opstinstall-all_version](https://img.shields.io/badge/opstinstall%20version-v2-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
 [![Release](https://img.shields.io/badge/Release-In%20Development-yellow?style=flat-square)]()
 [![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-brightgreen?style=flat-square)]()
