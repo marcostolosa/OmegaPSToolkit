@@ -140,31 +140,19 @@
 >
 > # Tool overview
 > ## OPSTConsole
-> |  OPSTConsole  | 
-> | ------------- |
-> | ![opstconsole](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstconsole_main_page.png) |
+> ![opstconsole](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstconsole_main_page.png)
 > 
 > ## OPSTConsole CLI
-> | OPSTConsole CLI  |
-> | ---------------- |
-> | ![opstconsole_cli](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstconsole_cli.png) |
+> ![opstconsole_cli](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstconsole_cli.png)
 > 
 > ## OPSTHelp
-> |   OPSTHelp    |
-> | ------------- |
-> | ![opsthelp](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opsthelp.png) | 
+> ![opsthelp](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opsthelp.png)
 > 
 > ## OPSTUpdate
-> |     OPSTUpdate    |
-> | ----------------- |
-> | ![opstupdate](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstupdate.png)
+> ![opstupdate](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstupdate.png)
 >
-> ## OPSTSetup
-> |   OPSTSetup   |
-> | ------------- | 
-> | ![opsthelp](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstsetup.png) | 
+> ## OPSTSetup 
+> ![opsthelp](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstsetup.png)
 >
 > ## OPSTInstall-all
-> |  OPSTInstall-all   |
-> | ------------------ |
-> | ![opstupdate](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstinstall-all.png)
+> ![opstupdate](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/Screens/opstinstall-all.png)
