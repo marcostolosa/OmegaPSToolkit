@@ -1,7 +1,7 @@
 <!--
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ README.MD                      [Update: 2022-04-16 | 2:39 AM] #
+#  Filename ~ README.MD                     [Update: 2022-04-16 | 11:32 AM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
@@ -41,7 +41,7 @@
 [![opsthelp_version](https://img.shields.io/badge/opsthelp%20version-v1.65-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
 [![opstsetup_version](https://img.shields.io/badge/opstsetup%20version-v2.6-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
 [![opstupdate_version](https://img.shields.io/badge/opstupdate%20version-v2.9-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
-[![opstinstall-all_version](https://img.shields.io/badge/opstinstall%20version-v2-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
+[![opstinstall-all_version](https://img.shields.io/badge/opstinstall%20version-v2.2-success?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md)
 [![Release](https://img.shields.io/badge/Release-In%20Development-yellow?style=flat-square)]()
 [![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-brightgreen?style=flat-square)]()
 [![Licence](https://img.shields.io/badge/License-GNU%20GPL--3.0-important?style=flat-square)](https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/LICENSE)
