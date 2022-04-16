@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opstfunctions.py              [Update: 2022-04-11 | 12:57 PM] #
+#  Filename ~ opstfunctions.py              [Update: 2022-04-16 | 11:29 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
 #                                                                           #
@@ -140,17 +140,28 @@ Some informations about the OmegaPSToolkit
         opsthelp            {opsthelp_version}
         odstsetup           {opstsetup_version}
         odstinstall-all     {opstinstallall_version}
-
-    {G}Other versions{GR}:{W}
-        python              v{python_version}
+        
+    {G}Other informations{GR}:{W}
+        GitHub page                 {underscore}{C}https://github.com/MyMeepSQL/OmegaPSToolkit{W}
 
 {C}Informations about author{GR}:{W}
-    Author                  Thomas Pellissier
-    Codename                MyMeepSQL
-    Owner                   © PSociety™. 2022, All rights reserved.
+
+    {G}General informations{GR}:{W}
+        Author                      {italic}Thomas Pellissier{W}
+        Codename                    {G}@{W}MyMeepSQL{W}
+        Owner                       {italic}© PSociety™{W}. 2022, {R}All rights reserved.{W}
 
 {C}Ohter informations{GR}:{W}
-    Operating System (OS)   {OS}
+
+    {G}Other Versions{GR}:{W}
+        Python's version            v{python_version}
+        
+    {G}System{GR}:{W}
+        Operating System            {OS}
+        Distribution / Release      {distribution}
+        PC's Name                   {my_system.node}
+        Machine                     {my_system.machine}
+        Processor                   {my_system.processor}
 """)
 ###
 
