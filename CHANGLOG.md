@@ -52,7 +52,7 @@
 > 
 > 
 > # **OPSTconsole CLI** ```BETA```
-> * v0.0.0.9 | (2022-04-05 | 1:33  PM)       Make the base of OPSTConsole CLI with a loop for interactiv shell like CMD or Powershell
+> * v0.0.0.9 | (2022-04-05 | 1:33  PM)       Make the base of OPSTConsole CLI with a loop for interactive shell like CMD or Powershell
 > * v0.0.0.4 | (2022-03-10 | 10:35 AM)       Create a CLI version of OPSTConsole directly include into it
 > 
 > # **OPSTConsole**
@@ -95,7 +95,7 @@
 > * v0.3  |  (2022-03-09 | 10:09 AM)        Add a update file for install the latest version of OPSTConsole, OPSTHelp, OPSTSetup and OPSTInstall-all
 > 
 > # **OPSTInstall-all**
-> * v2    |  (2022-04-14 | 10:26 AM)        Fix issues
+> * v2.2  |  (2022-04-14 | 10:26 AM)        Fix issues
 > * v1.8  |  (2022-03-26 | 9:47  PM)        Upgrade opstinstall-all
 > * v1.4  |  (2022-03-17 | 1:12  PM)        Fix opstinstall-all
 > * v0.1  |  (2022-03-09 | 2:38  PM)        Create OPSTInstall-all
