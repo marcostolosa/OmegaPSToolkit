@@ -137,7 +137,7 @@ Some informations about the OmegaPSToolkit
         opstconsole         v{opstconsole_version}
         odstconsole CLI     v{opstconsole_cli_version}
         opstupdate          {opstupdate_version}
-        opsthelp            {opstupdate_help}
+        opsthelp            {opsthelp_version}
         odstsetup           {opstsetup_version}
         odstinstall-all     {opstinstallall_version}
 
