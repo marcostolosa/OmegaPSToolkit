@@ -51,7 +51,7 @@ underscore='\033[4m'
 normal='\033[22m'
 ####
 
-opstupdate_version="v2.5"
+opstupdate_version="v2.9"
 INSTALL_DIR="/usr/share/OmegaPSToolkit"
 BIN_DIR="/usr/bin"
 TEMP_DIR="/tmp/OmegaPSToolkit"
@@ -75,38 +75,39 @@ if [ $(id -u) != "0" ]; then
             echo
             echo -e "$R[!]$W    OPSTUpdate could be run as the 'root' user or with 'sudo'"
             echo -e "$G[-]$W    Switching to root user to run the 'opstupdate'"
-            sudo -E sh $0 $@
+            sudo -E bash $0 $@
             exit 0
         fi
     fi
 ####
 
 # The main script
+# Font = Chunky from https://www.coolgenerator.com/ascii-text-generator
 
-echo
-echo "$GR$D _______ ______ _______ _______ _______           __         __ $W"
-echo "$GR$D|       |   __ \     __|_     _|   |   |.-----.--|  |.---.-.|  |_.-----.$W$G  OPSTUpdate $D$opstupdate_version"
-echo "$GR$D|   -   |    __/__     | |   | |   |   ||  _  |  _  ||  _  ||   _|  -__|$W$D  A massive penetration testing toolkit"          # Police = Chunky from https://www.coolgenerator.com/ascii-text-generator
-echo "$GR$D|_______|___|  |_______| |___| |_______||   __|_____||___._||____|_____|$C$D  https://github.com/MyMeepSQL/OmegaPSToolkit$W"
-echo "$GR$D +- !* Welcome to the OPSTUpdate. *! -+ |__|$W"
-echo
-echo "$G[-]$W    Checking for internet connexion..."
-echo
+echo -e "
+$GR$D _______ ______ _______ _______ _______           __         __  $W
+$GR$D|       |   __ \     __|_     _|   |   |.-----.--|  |.---.-.|  |_.-----.$W$G  OPSTUpdate $D$opstupdate_version
+$GR$D|   -   |    __/__     | |   | |   |   ||  _  |  _  ||  _  ||   _|  -__|$W$D  A massive penetration testing toolkit
+$GR$D|_______|___|  |_______| |___| |_______||   __|_____||___._||____|_____|$C$D  https://github.com/MyMeepSQL/OmegaPSToolkit$W
+$GR$D +- !* Welcome to the OPSTUpdate. *! -+ |__|$W
+
+$G[-]$W    Checking for internet connexion...
+"
 
 #First check of setup for internet connection by connecting to google over http
 wget -q --tries=10 --timeout=5 --spider http://google.com
 if [ $? -eq 0 ]; then
-    echo '+ -- --=[  Internet status.......... '"$G"'Connected'"$W"'.                                                                          ]'
-    echo '+ -- --=[  '$underscore'This tool will:'$W'                                                                                               ]
-        [  ...'$G'Install'$W' the latest verion of '$R'OPSTConsole'$W', '$R'OPSTHelp'$W', '$R'OPSTUpdate'$W', '$R'OPSTInstall-all'$W' and '$R'OPSTSetup'$W' from '$G'Github'$W'  ]'
-    echo
-    echo -n "$C[?]$W    Do you want to continue? [Y/n] "
+    echo -en '+ -- --=[  Internet status.......... '"$G"'Connected'"$W"'.                                                                          ]
++ -- --=[  '$underscore'This tool will:'$W'                                                                                               ]
+        [  ...'$G'Install'$W' the latest verion of '$R'OPSTConsole'$W', '$R'OPSTHelp'$W', '$R'OPSTUpdate'$W', '$R'OPSTInstall-all'$W' and '$R'OPSTSetup'$W' from '$G'Github'$W'  ]
+
+'$C'[?]'$W'    Do you want to continue? [Y/n] '
     read y_n
     if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ]; then
-        echo
-        echo "$G$D""--------------------------------------------------------------------------------------"$W
-        echo
-        echo "$G[-]$W    Removing the current OPST's commands from '"$G"/usr/share/OmegaPSToolkit"$W"'..."
+        echo -e "
+$G$D--------------------------------------------------------------------------------------$W
+
+$G[-]$W    Removing the current OPST's commands from '"$G"/usr/share/OmegaPSToolkit"$W"'..."
         rm -fr "$INSTALL_DIR/opstconsole.py"
         rm -fr "$INSTALL_DIR/opsthelp.py"
         rm -fr "$INSTALL_DIR/opstsetup.py"
@@ -117,12 +118,12 @@ if [ $? -eq 0 ]; then
         rm -fr "$INSTALL_DIR/opstcolors.py"
         rm -fr "$INSTALL_DIR/opstversions.py"
 
-        echo "$G[+]$W    Done for the OPST's commands remove."
-        echo
+        echo -e "$G[+]$W    Done for the OPST's commands remove.
+"
         sleep 1
-        echo "$G$D""--------------------------------------------------------------------------------------"$W
-        echo
-        echo "$G[-]$W    "$G"Updating"$W" all commands from "$G"GitHub"$W"..."
+        echo "$G$D--------------------------------------------------------------------------------------$W
+
+$G[-]$W    "$G"Updating"$W" all commands from "$G"GitHub"$W"..."
         sleep 0.5
 
         if [ -e $TEMP_DIR ];then
@@ -185,14 +186,14 @@ if [ $? -eq 0 ]; then
             ##
         fi
 
-        echo "$G[+]$W    Update complete."
-        echo
+        echo -e "$G[+]$W    Update complete.
+"
         sleep 1
-        echo "$G$D""--------------------------------------------------------------------------------------"$W
-        echo
+        echo -e "$G$D--------------------------------------------------------------------------------------$W2
+"
 
         # Apply all rights
-        echo "$G[-]$W    Apply all rights to files..."
+        echo -e "$G[-]$W    Apply all rights to files..."
         sleep 0.5
 
         # for '/usr/share/OmegaPSToolkit'
@@ -215,55 +216,55 @@ if [ $? -eq 0 ]; then
         chmod 777 "$BIN_DIR/opsthelp"
         ##
 
-        echo "$G[+]$W    Apply complete."
+        echo -e "$G[+]$W    Apply complete."
         sleep 1
-        echo
-        echo "$G$D""--------------------------------------------------------------------------------------"$W
-        echo
-        echo "$B[+]$W    All Done."
-        echo
+        echo -e "
+$G$D--------------------------------------------------------------------------------------$W
+
+$B[+]$W    All Done.
+"
         sleep 1
-        echo "$G$D""--------------------------------------------------------------------------------------"$W
-        echo
-        echo -n "$C[?]$W    Do you want to reload your terminal (just in case) ? [Y/n] "
+        echo -ne "$G$D--------------------------------------------------------------------------------------$W
+
+$C[?]$W    Do you want to reload your terminal (just in case) ? [Y/n] "
         read y_n
         if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ]; then
-            echo
-            echo "$G$D""--------------------------------------------------------------------------------------"$W
-            echo
-            echo "$G$D""---------------------"$W
-            echo "$G[-]$W    Reloading..."
-            echo "$G$D""---------------------"$W
+            echo -e "
+$G$D--------------------------------------------------------------------------------------$W
+
+$G$D---------------------$W
+$G[-]$W    Reloading...
+$G$D---------------------$W"
             sleep 0.5
             reset
-            echo
-            echo "$G$D""-------------------------------------------------------------------------------------------------------------------------------------"$W
-            echo
-            echo "$B[OK]$W    "$R"OPSTConsole"$W", "$R"OPSTHelp"$W", "$R"OPSTUpdate"$W", "$R"OPSTInstall-all"$W" and "$R"OPSTSetup"$W" are now install with the latest version exist from GitHub."
-            echo
-            echo "$G$D""-------------------------------------------------------------------------------------------------------------------------------------"$W
-            echo
+            echo -e "
+$G$D-------------------------------------------------------------------------------------------------------------------------------------$W
+
+$B[OK]$W    "$R"OPSTConsole"$W", "$R"OPSTHelp"$W", "$R"OPSTUpdate"$W", "$R"OPSTInstall-all"$W" and "$R"OPSTSetup"$W" are now install with the latest version exist from GitHub.
+
+$G$D-------------------------------------------------------------------------------------------------------------------------------------$W
+"
             exit 0
         else
-            echo
-            echo "$G$D""--------------------"$W
-            echo "$B$D[+]$W    Answer: "$R"No"$W"."
-            echo "$G$D""--------------------"$W
-            echo
-            echo "$G$D""-------------------------------------------------------------------------------------------------------------------------------------"$W
-            echo
-            echo "$B[OK]$W    "$R"OPSTConsole"$W", "$R"OPSTHelp"$W", "$R"OPSTUpdate"$W", "$R"OPSTInstall-all"$W" and "$R"OPSTSetup"$W" are now install with the latest version exist from GitHub."
-            echo
-            echo "$G$D""-------------------------------------------------------------------------------------------------------------------------------------"$W
-            echo
+            echo -e "
+$G$D--------------------$W
+$B$D[+]$W    Answer: "$R"No"$W".
+$G$D--------------------$W
+
+$G$D-------------------------------------------------------------------------------------------------------------------------------------$W
+
+$B[OK]$W    "$R"OPSTConsole"$W", "$R"OPSTHelp"$W", "$R"OPSTUpdate"$W", "$R"OPSTInstall-all"$W" and "$R"OPSTSetup"$W" are now install with the latest version exist from GitHub.
+
+$G$D-------------------------------------------------------------------------------------------------------------------------------------$W
+"
             exit 0
         fi
     else
-        echo "$GR$D[-]$W    Abort."
+        echo -e "$GR$D[-]$W    Abort."
         exit 1
     fi
 else
-    echo "$R[!]$W   Internet status.......... "$R"Not connected"$W"."
-    echo "$R[*]$W   Not Internet connexion found, please check you are connected to Internet and retry."
+    echo -e "$R[!]$W   Internet status.......... "$R"Not connected"$W".
+$R[*]$W   Not Internet connexion found, please check you are connected to Internet and retry."
     exit 1
 fi
