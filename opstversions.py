@@ -34,13 +34,25 @@
 
 
 # OPST's commands versions
+
+## Console
 opstconsole_version = "0.0.1.3"
+
+## CLI Beta
 opstconsole_cli_version = "0.0.0.9"
+
+## Help
 opsthelp_version = "1.65"
 
+## Setup
 opstsetup_version = "v2.6"
+
+## Update
 opstupdate_version = "v2.9"
-opstinstallall_version = "v2"
+
+## Install-all
+opstinstallall_version = "v2.2"
+
 ####
 
 
