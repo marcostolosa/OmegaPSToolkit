@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opstinstall-all.sh            [Update: 2022-04-14 | 10:26 AM] #
+#  Filename ~ opstinstall-all.sh             [Update: 2022-05-04 | 9:42 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
@@ -67,14 +67,17 @@ if [ $(id -u) != "0" ]; then
     fi
     ####
         if ! hash sudo 2>/dev/null; then
-                echo "$R[!]$W    OPSTInstall-all could be run as the 'root' user or with 'sudo'"
-                echo "       Re-run the 'opstinstall-all.sh' with sudo or with the root user"
-                echo '       Run sudo "sudo sh opstinstall-all.sh"'
+            echo -e " 
+$R[!]$W  OPSTInstall-all could be run as the$R root user$W or with the$R sudo command$W
+     Re-run the opstinstall-all with$R sudo$W or with the$R root$W user
+     Run :$B sudo opstinstall-all $W"
                 exit 1
         else # Switch to sudo (root)
             echo
-            echo -e "$R[!]$W    OPSTInstall-all could be run as the 'root' user or with 'sudo'"
-            echo -e "$G[-]$W    Switching to root user to run the 'opstinstall-all'"
+            echo -e "
+$R[!]$W  OPSTInstall-all could be run as the$R root user$W or with the$R sudo command$W
+$G[-]$W  Switching to$R root user$W to run the$B opstinstall-all$W
+"
             sudo -E bash $0 $@
             exit 0
         fi
@@ -89,7 +92,7 @@ $GR$D|   -   |    __/__     | |   |  _|   |_ |     |__ --||   _|  _  ||  |  |___
 $GR$D|_______|___|  |_______| |___| |_______||__|__|_____||____|___._||__|__|      |___._||__|__|$C$D  https://github.com/MyMeepSQL/OmegaPSToolkit$W
 $GR$D + ------------------------ !* Welcome to the OPSTInstall-all *! ------------------------ +$W
 
-$G[-]$W    Checking for internet connection...
+$G[-]$W  Checking for internet connection...
 "
 
 #First check of setup for internet connection by connecting to google over http
@@ -104,43 +107,43 @@ if [ $? -eq 0 ]; then
         [  ...Create the commands "'$G'opstconsole'$W'", "'$G'opsthelp'$W'", "'$G'opstupdate'$W'", "'$G'opstsetup'$W'" and "'$G'opstinstall-all'$W'" into '$G'/usr/bin/'$W',          ]
         [  ...Apply all rights on the new file in "'$G'/usr/share/OmegaPSToolkit/'$W'" and for all commands in "'$G'/usr/bin/'$W'".                   ]'
     echo
-    echo -ne "$C[?]$W    Do you want to continue? [Y/n] "
+    echo -ne "$C[?]$W  Do you want to continue? [Y/n] "
     read y_n
-    if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ]; then
+    if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ] || [ ! "$y_n" ]; then
         echo -e "
 $G$D--------------------------------------------------------------------------------------$W
 
-$G[-]$W    Updating...
+$G[-]$W  Updating...
 "
         sleep 0.5
-        apt -qq update -y && apt -qq update --fix-missing -y
+        apt-get -qq update -y && apt-get -qq update --fix-missing -y
         echo -e "
-$G[+]$W    Update complete."
+$G[+]$W  Update complete."
         sleep 1
         echo -e "
 $G$D--------------------------------------------------------------------------------------$W
 
-$G[-]$W    Installing Python3 and PIP3...
+$G[-]$W  Installing Python3 and PIP3...
 "
         sleep 0.5
-        apt -qq install python3 python3-pip whois traceroute net-tools -y
+        apt-get -qq install git python3 python3-pip whois traceroute net-tools -y
         echo -e "
-$G[+]$W    Installation complete."
+$G[+]$W  Installation complete."
         sleep 1
         echo -e "
 $G$D--------------------------------------------------------------------------------------$W
 "
         if [ -d "$INSTALL_DIR" ]; then
-            echo -e "$R[!]$W    A OmegaPSToolkit directory was Found."
-            echo -ne "$C[?]$W    Do you want to replace it ? [Y/n] "
+            echo -e "$R[!]$W  A OmegaPSToolkit directory was Found."
+            echo -ne "$C[?]$W  Do you want to replace it ? [Y/n] "
             read y_n
-            if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ]; then
+            if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ] || [ ! "$y_n" ]; then
                 echo -e "
 $G$D---------------------$W
-$B$D[+]$W    Answer: "$G"Yes$W.
+$B$D[+]$W  Answer: "$G"Yes$W.
 $G$D---------------------$W
 
-$G[-]$W    Removing the current OmegaPSToolkit folder..."
+$G[-]$W  Removing the current OmegaPSToolkit folder..."
                 rm -fr "$INSTALL_DIR"
                 rm -fr "$TEMP_DIR"
                 rm -f "$BIN_DIR/opstconsole"
@@ -148,8 +151,8 @@ $G[-]$W    Removing the current OmegaPSToolkit folder..."
                 rm -f "$BIN_DIR/opstupdate"
                 rm -f "$BIN_DIR/opsthelp"
                 rm -f "$BIN_DIR/opstinstall-all"
- 
-                echo -e "$G[+]$W    Done for the OmegaPSToolkit's remove."
+
+                echo -e "$G[+]$W  Done for the OmegaPSToolkit's remove."
                 sleep 1
                 echo -e "
 $G$D--------------------------------------------------------------------------------------$W
@@ -157,16 +160,16 @@ $G$D----------------------------------------------------------------------------
             else
                 echo -e "
 $G$D--------------------$W
-$B$D[+]$W    Answer: "$R"No$W.
+$B$D[+]$W  Answer: "$R"No$W.
 $G$D--------------------$W
 
-$GR$D[-]$W    Exiting opstinstall-all..."
+$GR$D[-]$W  Exiting opstinstall-all..."
                 exit 1
             fi
         fi
 
         # for run the SetupTool (opstsetup) anywhere in the terminal. The "opstsetup" will be write into "/usr/share/OmegaPSToolkit"
-        echo -e "$G[-]$W    Installing OmegaPSToolkit into \"/usr/share/OmegaPSToolkit/\"..."
+        echo -e "$G[-]$W  Installing OmegaPSToolkit into \"/usr/share/OmegaPSToolkit/\"..."
         sleep 0.5
 
         mkdir $INSTALL_DIR
@@ -199,14 +202,14 @@ $GR$D[-]$W    Exiting opstinstall-all..."
         rm -fr "$TEMP_DIR"
         ##
 
-        echo -e "$G[+]$W    Done for the OmegaPSToolkit's installation."
+        echo -e "$G[+]$W  Done for the OmegaPSToolkit's installation."
         sleep 1
         echo -e "
 $G$D--------------------------------------------------------------------------------------$W
 "
 
         # Apply all rights
-        echo -e "$G[-]$W    Apply all rights to files..."
+        echo -e "$G[-]$W  Apply all rights to files..."
         sleep 0.5
 
         # for '/usr/share/OmegaPSToolkit'
@@ -229,31 +232,31 @@ $G$D----------------------------------------------------------------------------
         chmod 777 "$BIN_DIR/opsthelp"
         ##
 
-        echo -e "$G[+]$W    Apply complete."
+        echo -e "$G[+]$W  Apply complete."
         sleep 1
         echo -e "
 $G$D--------------------------------------------------------------------------------------$W
 
-$B[+]$W    All Done.
+$B[+]$W  All Done.
 "
         sleep 0.4
         echo -e "$G$D--------------------------------------------------------------------------------------$W
 "
-        echo -ne "$C[?]$W    Do you want to reload your terminal (just in case) ? [Y/n] "
+        echo -ne "$C[?]$W  Do you want to reload your terminal (just in case) ? [Y/n] "
         read y_n
-        if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ]; then
+        if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ] || [ ! "$y_n" ]; then
             echo -e "
 $G$D--------------------------------------------------------------------------------------$W
 
 $G$D---------------------$W
-$G[-]$W    Reloading...
+$G[-]$W  Reloading...
 $G$D---------------------$W"
             sleep 0.5
             reset
             echo -e "
 $G$D-----------------------------------------------------------------------------------------------------------------------------------$W
 
-$B[OK]$W    "$G"Python3"$W","$G"PIP3"$W" and all '"$G"opst"$W"' commands are now "$G"install"$W" on you machine. Now run the OPSTSetup with '"$G"sudo opstsetup install"$W"'.
+$B[OK]$W  "$G"Python3"$W","$G"PIP3"$W" and all '"$G"opst"$W"' commands are now "$G"install"$W" on you machine. Now run the OPSTSetup with '"$G"sudo opstsetup install"$W"'.
 
 $G$D-----------------------------------------------------------------------------------------------------------------------------------$W
 "
@@ -261,23 +264,23 @@ $G$D----------------------------------------------------------------------------
         else
             echo -e "
 $G$D--------------------$W
-$B$D[+]$W    Answer: "$R"No$W.
+$B$D[+]$W  Answer: "$R"No$W.
 $G$D--------------------$W
 
 $G$D-----------------------------------------------------------------------------------------------------------------------------------$W
 
-$B[OK]$W    "$G"Python3"$W","$G"PIP3"$W" and all '"$G"opst"$W"' commands are now "$G"install"$W" on you machine. Now run the OPSTSetup with '"$G"sudo opstsetup install"$W"'.
+$B[OK]$W  "$G"Python3"$W","$G"PIP3"$W" and all '"$G"opst"$W"' commands are now "$G"install"$W" on you machine. Now run the OPSTSetup with '"$G"sudo opstsetup install"$W"'.
 
 $G$D-----------------------------------------------------------------------------------------------------------------------------------$W
 "
             exit 0
         fi
     else
-        echo -e "$GR$D[-]$W    Abort."
+        echo -e "$GR$D[-]$W  Abort."
         exit 1
     fi
 else
-    echo -e "$R[!]$W   Internet status.......... "$R"Not connected"$W".
+    echo -e "$R[!]$W  Internet status.......... "$R"Not connected"$W".
 $R[*]$W   Not Internet connexion found, please check you are connected to Internet and retry."
     exit 1
 fi

@@ -36,41 +36,39 @@ import os, sys
 from time import sleep
 ####
 
-
-            
-
 # Custom imports
+from opstcolors import B,R,GR,W
 try:
     from opstversions import *
     from opstfunctions import *
     from opstcolors import *
 except ModuleNotFoundError:
     print()
-    criticalmsg = f"{B}[{R}CRITICAL{B}]{GR}   A current(s) module(s) was not installed, run 'sudo opstsetup install' command for install it.\n"
+    criticalmsg = f"{R}[CRITICAL]{GR}   A current(s) module(s) was not installed, run the {R}opstsetup{W} for install it. ({R}sudo opstsetup install{W})\n"
     exit(criticalmsg)
 except ImportError:
     print()
-    criticalmsg = f"{B}[{R}CRITICAL{B}]{GR}   A current(s) module(s) was not installed, run 'sudo opstsetup install' command for install it.\n"
+    criticalmsg = f"{R}[CRITICAL]{GR}   A current(s) module(s) was not installed, run the {R}opstsetup{W} for install it. ({R}sudo opstsetup install{W})\n"
     exit(criticalmsg)
 except NameError:
     print()
-    criticalmsg = f"{B}[{R}CRITICAL{B}]{GR}   A current(s) module(s) was not installed, run 'sudo opstsetup install' command for install it.\n"
-    exit(criticalmsg)
+    criticalmsg = f"{R}[CRITICAL]{GR}   A current(s) module(s) was not installed, run the {R}opstsetup{W} for install it. ({R}sudo opstsetup install{W})\n"
 ####
+
 
 
 #-Check module is installed---------------------------------------------------------------------#
 try:
     # Check if the user run OPST with root privilege
-    if os.getuid() != 0:    
+    if os.getuid() != 0:
         permerror =f"""
-{R}[!]{W}    OPSTConsole could be run as the 'root' user or with 'sudo'
-       Re-run the 'opstconsol   e' with 'sudo' or with the 'root' user
-       Run \"sudo opstconsole\"
+{R}[!]{W}  OPSTConsole could be run as the {R}root user{W} or with the {R}sudo command{W}
+     Re-run the opstconsole with {R}sudo{W} or with the {R}root{W} user
+     Run : {B}sudo opstconsole{W}
 """
         sys.exit(permerror)
 except AttributeError:
-    non_linux()
+    not_linux()
 else:
     cls()
     # Checking if modules are installed
@@ -80,6 +78,7 @@ else:
         print()
         sleep(1.5)
         import itertools
+        import psutil
         import progress
         import colored
         import shutil
@@ -89,44 +88,34 @@ else:
         import textwrap
         from collections import namedtuple
         from builtins import format
-        print(f"{B}[{G}OK{B}]{GR}         All modules are install !{W}")
+        print(f"{B}[{G}✓{B}]{GR}  All modules are install !{W}")
         try:
-            print(f"{B}[{G}-{B}]{GR}          Checking for Internet connexion... (Press CTRL + C to skip){W}")
+            print(f"{B}[{G}-{B}]{GR}  Checking for Internet connexion... (Press CTRL + C to skip){W}")
             sleep(1)
             if connexion() == True:
                 internetstatus = f"{G}Connected{W}"
-                print(f"{B}[{G}!{B}]{GR}          Internet status : {G}Connected{W}.")
+                print(f"{B}[{G}*{B}]{GR}  Internet status : {G}Connected{W}.")
             else:
                 internetstatus = f"{R}Not connected{W}"
-                print(f"{B}[{G}!{B}]{GR}          Internet status : {R}Not connected{W}.")
+                print(f"{B}[{G}*{B}]{GR}  Internet status : {R}Not connected{W}.")
             print()
         except KeyboardInterrupt:
-            print(f"{B}\n[{R}*{B}]{GR}         CTRL + C detected, skipping the Internet checker...{W}")
+            print(f"{B}\n[{R}*{B}]{GR}  CTRL + C detected, skipping the Internet checker...{W}")
             internetstatus = (f"{yC}?{r}")
             pass
-        print(f"{B}[{R}>>{B}]{GR}         Launching of OPST...{W}")
-        sys.stdout.write("\x1b]2;OmegaPSToolkit | A massive penetration testing toolkit.\x07")  # Title page
+        print(f"{B}[{G}-{B}]{GR}  Launching of OPST...{W}")
+        sys.stdout.write("\x1b]2;OmegaPSToolkit | A massive penetration testing toolkit.\x07")  # Main title page
         sleep(1)
     except KeyboardInterrupt:
-        print()
-        abortmsg = f"{B}[{R}ERROR{B}]{GR}      User aborted\n"
-        exit(abortmsg)
+        abort()
     except EOFError:
-        print()
-        abortmsg = f"{B}[{R}ERROR{B}]{GR}      User aborted\n"
-        exit(abortmsg)
+        abort()
     except ModuleNotFoundError:
-        print()
-        criticalmsg = f"{B}[{R}CRITICAL{B}]{GR}   A current(s) module(s) was not installed, run 'sudo opstsetup install' command for install it.\n"
-        exit(criticalmsg)
+        criticalmsg()
     except ImportError:
-        print()
-        criticalmsg = f"{B}[{R}CRITICAL{B}]{GR}   A current(s) module(s) was not installed, run 'sudo opstsetup install' command for install it.\n"
-        exit(criticalmsg)
+        criticalmsg()
     except NameError:
-        print()
-        criticalmsg = f"{B}[{R}CRITICAL{B}]{GR}   A current(s) module(s) was not installed, run 'sudo opstsetup install' command for install it.\n"
-        exit(criticalmsg)
+        criticalmsg()
 #-END-OF-MODULES-CHECKER----------------------------------------------------------------------------------------------------------------------------#
 
 #-Main-tool----------------------------------------------------------#
@@ -138,7 +127,6 @@ try:
     def cli_invalid_command():
         print(f"{bC}[{rC2}!{bC}]─[{gC}{command}' is not a valid command{bC}]{r}")   # if the user enter a bad option (if the option type by the user are not recognized)
 
-
 ### Wireless Atack | main page
     def wireless_mainpage():
         cls()
@@ -149,7 +137,6 @@ try:
         print(f"{bC}     ╓────────────────────────────────────────────────────────────────────────────────{gC}►{r}")
 
         ##          coming soon
-
 
 #---Information Gathering--------------------------------------------#
 
@@ -245,9 +232,7 @@ try:
             informationgathering_scan_mainpage()
 
     def informationgathering_scan_sqlmap():
-        sqlmapdir="Tools/sqlmapmaster"
         while True:
-            os.chdir(sqlmapdir)
             prompt_for_command = f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/Information_Gathering/ScanTools/sqlmap{bC}]{r}"
             user_input = input(prompt_for_command + f"\n{bC}└╼{rC}$ {r}")
             command = user_input
@@ -325,7 +310,7 @@ try:
             invalid_option()
             cls()
             usefulltools_mainpage()
-            
+
 ### Usefull Windows tool  | Network commands ###
     def usefulltools_networkC_main_page():
         while connexion == False:
@@ -799,7 +784,7 @@ try:
                 print(f"{bC}     ║ [{rC2}-{bC}]─[{gC}Do you want to remake the backup config ? [Y/n]{bC}]{r}")
                 print(f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/permission_denied{bC}]{r}")
                 permerror = str(input(f"{bC}└╼{rC}$ {r}"))
-                
+
                 while not permerror:
                     print(f"{bC}[{rC2}!{bC}]─[{gC}Chose [Y/n]{bC}]{r}")
                     print(f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/UTools/BackupTool/permission_denied{bC}]{r}")
@@ -879,34 +864,40 @@ try:
 #-OmegaPSToolkit-CLI-main-page---------------------------------------#
     def cli_main_page():
         print(f"""
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {gC}      _____                   _____ _____ _____         _ _   _ _{r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {gC}     |     |_____ ___ ___ ___|  _  |   __|_   _|___ ___| | |_|_| |_{r}
-{bC}        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM {gC}     |  |  |     | -_| . | .'|   __|__   | | | | . | . | | '_| |  _|{r}
-{bC}        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM {gC}     |_____|_|_|_|___|_  |__,|__|  |_____| |_| |___|___|_|_,_|_|_|   {gC}v{rC}{opstconsole_cli_version}{r}
-{bC}        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM {bC} ╓───────────────────{gC}|___|{bC}─────────────────────────────────────────────────────{gC}►{r}
-{bC}        MMMMMNo.    :dNMMMMMMMMMMMNo`   `/dMMMMM {bC} ║{r}
-{bC}        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM {bC} ║     {r}OmegaPSToolkit factory for penetration testing
-{bC}        MMMy`     sMMMMMMMMMMMMMMMMMMm`     /MMM {bC} ║{r}
-{bC}        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM {bC} ╚════╗{r}
-{bC}        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM {bC}      ╟──────{gC}► {bC2}{underscore}Created by{W}{bC2}       :: {rC}Thomas Pellissier{bC2} (from © PSociety™){r}
-{bC}        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM {bC}      ╟──────{gC}► {bC2}{underscore}OPSTC CLI Version{W}{bC2}:: v{rC}{opstconsole_cli_version}{r}
-{bC}        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM {bC}      ╟──────{gC}► {bC2}{underscore}Internet Status{W}{bC2}  ::    {rC}{internetstatus}{r}
-{bC}        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM {bC}      ╟────╥─{gC}► {bC2}{underscore}Codename{W}{bC2}         :: @{rC}MyMeepSQL or {bC2}@{bC2}th300905{r}
-{bC}        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM {bC}      ║{bC}    ╙───────────────────{gC}►{bC2}{rC}  The {bC2}{underscore}seconde{W}{rC} codename is also mine{r}
-{bC}        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM {bC}      ╚════════╗{r}
-{bC}        NdMMMMMNy/.` -smMMMMMMMMNy/` `:smMMMMMNm {bC}               ║                      {r}Developed for linux
-{bC}        m`hNMMMMMMNdy: `MMMMMMMM+ .shmMMMMMMNm:+ {bC}               ║{r}
-{bC}        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o {bC}               ║{gC}             Welcome to the OmegaPSToolkit (OPST).{r}
-{bC}        N               hMMMMMMM`              o {bC}               ║{gC} The toolkit which includes a set of penetration testing tools.{r}
-{bC}        M               yMMMMMMM               s {bC}               ║{r}
-{bC}        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM {bC}               ╚         {rC}{r}{italic}The OmegaPSToolkit is a product of © PSociety™{W}{r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\        {r}{bC} 
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM \       {r}{gC}      _____                   _____ _____ _____         _ _   _ _{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  \      {r}{gC}     |     |_____ ___ ___ ___|  _  |   __|_   _|___ ___| | |_|_| |_{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM   |     {r}{gC}     |  |  |     | -_| . | .'|   __|__   | | | | . | . | | '_| |  _|{r}
+{bC}{italic}        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM   |     {r}{gC}     |_____|_|_|_|___|_  |__,|__|  |_____| |_| |___|___|_|_,_|_|_|   {gC}v{R}{opstconsole_version}{r}
+{bC}{italic}        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM   |     {r}{bC} ╓───────────────────{gC}|___|{bC}─────────────────────────────────────────────────────{gC}►{r}
+{bC}{italic}        MMMMMNo.    :dNMMMMMMMMMMMNo`   `/dMMMMM   |     {r}{bC} ║{r}
+{bC}{italic}        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM   |     {r}{bC} ║     {r}OmegaPSToolkit factory for penetration testing{r}
+{bC}{italic}        MMMy`     sMMMMMMMMMMMMMMMMMMm`     /MMM   |     {r}{bC} ║{r}
+{bC}{italic}        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM   |     {r}{bC} ╚════╗{r}
+{bC}{italic}        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM   |     {r}{bC}      ╟──────{gC}► {C}{underscore}Created by{W}{C}       ::{R} Thomas Pellissier{C} (from © PSociety™){r}
+{bC}{italic}        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM   |     {r}{bC}      ╟──────{gC}► {C}{underscore}OPSTC Version{W}{C}    :: v{R}{opstconsole_version}{r}
+{bC}{italic}        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM   |     {r}{bC}      ╟──────{gC}► {C}{underscore}Internet Status{W}{C}  ::{R} {internetstatus}{r}
+{bC}{italic}        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM   |     {r}{bC}      ╟──────{gC}► {C}{underscore}Public IP{W}{C}        ::{O} {publicIP}{r}
+{bC}{italic}        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM   |     {r}{bC}      ╟──────{gC}► {C}{underscore}Private IP{W}{C}       ::{O} {privateIP}{r}{bC}        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM {bC}  |           ╟──────{gC}► {C}{underscore}MAC adress{W}{C}       ::{O} {MAC_adress}{r}
+{bC}{italic}        NdMMMMMNy/.` -smMMMMMMMMNy/` `:smMMMMMNm   |     {r}{bC}      ╟────╥─{gC}► {C}{underscore}Codename{W}{C}         :: {C}@{R}MyMeepSQL or {C}@{D}th300905{r}
+{bC}{italic}        m`hNMMMMMMNdy: `MMMMMMMM+ .shmMMMMMMNm:+   |     {r}{bC}      ║{bC}    ╙───────────────────────{gC}►{C}{R}  The {C}{D}{underscore}seconde{W}{R} codename is also mine{r}
+{bC}{italic}        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o   |     {r}{bC}      ╚════════╗{r}
+{bC}{italic}        N               hMMMMMMM`              o   |     {r}{bC}               ║                      {r}Developed for linux{r}
+{bC}{italic}        M               yMMMMMMM               s   |     {r}{bC}               ║{r}
+{bC}{italic}        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM   |     {r}{bC}               ║{gC}             Welcome to the OmegaPSToolkit (OPST).{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   |     {r}{bC}               ║{gC} The toolkit which includes a set of penetration testing tools.{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   |     {r}{bC}               ║{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   |     {r}{bC}               ║         {r}{italic}The OmegaPSToolkit is a product of © PSociety™.{W}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   |     {r}{bC}               ║{r}{italic}                 2021-2022, All rights reserved.{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   |     {r}{bC}               ║{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   |     {r}{bC}               ║{R}       No responsability is taken by developers in case of{W}
+{bC}{italic}        \                                       \  |     {r}{bC}               ╚{R}                 explicit uses of OmegaPSToolkit!{W}
+{bC}{italic}         \                                       \ |     {r}
+{bC}{italic}          \_______________________________________\|     {r}
 
+{G}[*]{GR}  This is the CLI version of opstonsole, type {B}help{GR} for all commands
+{R}[!]{GR}  This CLI version of osptconsoel is {underscore}{R}TOTALLY{W}{GR} in {R}BETA{R}
 
-{G}[*]{GR}  This is the CLI version of opstonsole, type "{B}help{GR}" for all commands
-{R}[!]{GR}  This CLI version of osptconsoel is {underscore}{R}TOTALLY{W}{GR} in {R}BETA
 """)
 
         while True:
@@ -926,13 +917,13 @@ try:
             #         internetstatus = f"{R}Not connected{W}"
             #         print(f"{R}[!]{GR}    Internet status : {R}Not connected{W}.")
             #     print()
+
+
+            ## Ping
             elif "ping" == command:
                 print(f"""
-{C}[-]{W}    Type an IP/domain to ping it (type '-help' for the help message, type 'leave' for exit ping tool)
-{G}[+]{W}    Exemple: -c 4 1.1.1.1
-       Exemple: -c 4 google.com
-       Exemple: -c 4 https://duckduckgo.com
-    """)
+{C}[*]{W}  Type an IP/domain to ping it (type {B}help{W} for the help message (you can also use {B}man ping{W} for all details), type {B}leave{W} for exit ping tool)
+""")
                 while True:
                     prompt_for_command = f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/CLI_BETA/ping{bC}]{r}"
                     user_input = input(prompt_for_command + f"\n{bC}└╼{rC}$ {r}")
@@ -941,21 +932,60 @@ try:
                     if not command:
                         print()
                         user_input
+                    elif "ping" == command:
+                        print(f"{R}\n[!]{W}  You don't need to write {R}ping{W} before option(s). Write directly the option(s) before.\n")
+                    elif "help" == command:
+                        cli_ping_help()
+                    elif "man ping" == command:
+                        cli_ping_manhelp()
+                    elif "clear" == command:
+                        cls()
                     elif "leave" == command:
                         print()
-                        print(f"{G}[-]{W}    Exiting ping tool...")
+                        print(f"{G}[-]{W}  Exiting ping tool...")
                         print()
                         break
                     else:
                         os.system(f"ping {command}")
                         print()
+
+
+            ## Traeroute
+            elif "traceroute" == command:
+                print(f"""
+{C}[*]{W}  Type an IP/domain to trace to network host (type {B}help{W} for the help message (you can also use {B}man traceroute{W} for all details), type {B}leave{W} for exit traceroute tool)
+""")
+                while True:
+                    prompt_for_command = f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/CLI_BETA/traceroute{bC}]{r}"
+                    user_input = input(prompt_for_command + f"\n{bC}└╼{rC}$ {r}")
+                    command = user_input
+
+                    if not command:
+                        print()
+                        user_input
+                    elif "traceroute" == command:
+                        print(f"{R}\n[!]{W}  You don't need to write {R}traceroute{W} before option(s). Write directly the option(s) before .\n")
+                    elif "help" == command:
+                        cli_traceroute_help()
+                    elif "man traceroute" == command:
+                        cli_traceroute_manhelp()
+                    elif "clear" == command:
+                        cls()
+                    elif "leave" == command:
+                        print()
+                        print(f"{G}[-]{W}  Exiting traceroute tool...")
+                        print()
+                        break
+                    else:
+                        os.system(f"traceroute {command}")
+                        print()
+
+
+            ## NSLookup
             elif "nslookup" == command:
                 print(f"""
-{C}[-]{W}    Type an IP/domain to nslookup it (type 'leave' for exit nslookup tool)
-{G}[+]{W}    Exemple: 8.8.8.8
-       Exemple: google.com
-    """)
-                print()
+{C}[*]{W}  Type an IP/domain to nslookup it (type {B}help{W} for the help message (you can also use {B}man nslookup{W} for all details), type {B}leave{W} for exit nslookup tool)
+""")
                 while True:
                     prompt_for_command = f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/CLI_BETA/nslookup{bC}]{r}"
                     user_input = input(prompt_for_command + f"\n{bC}└╼{rC}$ {r}")
@@ -964,6 +994,16 @@ try:
                     if not command:
                         print()
                         user_input
+                    elif "nslookup" == command:
+                        print(f"""
+{R}\n[!]{W}  You don't need to write {R}nslookup{W} before option(s). Write directly the option(s) before.
+""")
+                    elif "help" == command:
+                        cli_nslookup_help()
+                    elif "man nslookup" == command:
+                        cli_nslookup_manhelp()
+                    elif "clear" == command:
+                        cls()
                     elif "leave" == command:
                         print()
                         print(f"{G}[-]{W}    Exiting nslookup tool...")
@@ -973,59 +1013,128 @@ try:
                         os.system(f"nslookup {command}")
                         print()
 
+            ## Netstat
+            elif "netstat" == command:
+                print(f"""
+{C}[*]{W}  Type {B}help{W} for the help message (you can also use {B}man nslookup{W} for all details), type {B}leave{W} for exit nslookup tool
+""")
+                while True:
+                    prompt_for_command = f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/CLI_BETA/netstat{bC}]{r}"
+                    user_input = input(prompt_for_command + f"\n{bC}└╼{rC}$ {r}")
+                    command = user_input
+
+                    if not command:
+                        print()
+                        user_input
+                    elif "netstat" == command:
+                        print(f"{R}\n[!]{W}  You don't need to write {R}netstat{W} before option(s). Write directly the option(s) before.\n")
+                    elif "help" == command:
+                        cli_netstat_help()
+                    elif "man netstat" == command:
+                        cli_netstat_manhelp()
+                    elif "clear" == command:
+                        cls()
+                    elif "leave" == command:
+                        print()
+                        print(f"{G}[-]{W}      Exiting nslookup tool...")
+                        print()
+                        break
+                    else:
+                        os.system(f"netstat {command}")
+                        print()
+            ## Whois
+            elif "whois" == command:
+                print(f"""
+{C}[*]{W}  Type an IP/domain to get information about it (type {B}help{W} for the help message (you can also use {B}man whois{W} for all details), type {B}leave{W} for exit whois tool)
+""")
+                while True:
+                    prompt_for_command = f"{bC}┌──({rC}OmegaPSToolkit{bC})─[{r}~/CLI_BETA/whois{bC}]{r}"
+                    user_input = input(prompt_for_command + f"\n{bC}└╼{rC}$ {r}")
+                    command = user_input
+
+                    if not command:
+                        print()
+                        user_input
+                    elif "whois" == command:
+                        print(f"{R}\n[!]{W}  You don't need to write {R}netstat{W} before option(s). Write directly the option(s) before.\n")
+                    elif "help" == command:
+                        cli_whois_help()
+                    elif "man netstat" == command:
+                        cli_whois_manhelp()
+                    elif "clear" == command:
+                        cls()
+                    elif "leave" == command:
+                        print()
+                        print(f"{G}[-]{W}  Exiting whois tool...")
+                        print()
+                        break
+                    else:
+                        os.system(f"whois {command}")
+                        print()
             elif "clear" == command:
+                cls()
+            elif "cls" == command:
+                print(f"{R}\n[!]{W}  The 'cls' command doesn't active, type 'clear' for clear the terminal.\n")
+            elif "reset" == command:
                 cls()
                 cli_main_page()
             elif "help" == command:
                 cli_helpmsg()
             elif "info" == command:
                 cli_infomsg()
+            elif "fullinfo" == command:
+                cli_fullinfomsg()
             elif "leave" == command:
-                print(f"{G}[-]{W}   Exiting CLI mode...")
+                print(f"{G}[-]{W}  Exiting CLI mode...")
                 sleep(0.5)
                 main_page()
             elif "exit" == command:
                 exitodst()
             else:
-                unknown_command = f"{R}\n[!]{W}   '{command}' is not recognized as an internal or external command.\n"
+                unknown_command = f"{R}\n[!]{W}  '{command}' is not recognized as an internal command. Type {B}help{W} for all commands.\n"
                 print(unknown_command)
 
 #-OmegaPSToolkit-main-page-------------------------------------------#
     def main_page():
         cls()
         print(f"""
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {gC}      _____                   _____ _____ _____         _ _   _ _{r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {gC}     |     |_____ ___ ___ ___|  _  |   __|_   _|___ ___| | |_|_| |_{r}
-{bC}        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM {gC}     |  |  |     | -_| . | .'|   __|__   | | | | . | . | | '_| |  _|{r}
-{bC}        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM {gC}     |_____|_|_|_|___|_  |__,|__|  |_____| |_| |___|___|_|_,_|_|_|   {gC}v{rC}{opstconsole_version}{r}
-{bC}        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM {bC} ╓───────────────────{gC}|___|{bC}─────────────────────────────────────────────────────{gC}►{r}
-{bC}        MMMMMNo.    :dNMMMMMMMMMMMNo`   `/dMMMMM {bC} ║{r}
-{bC}        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM {bC} ║     {r}OmegaPSToolkit factory for penetration testing{r}
-{bC}        MMMy`     sMMMMMMMMMMMMMMMMMMm`     /MMM {bC} ║{r}
-{bC}        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM {bC} ╚════╗{r}
-{bC}        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM {bC}      ╟──────{gC}► {bC2}{underscore}Created by{W}{bC2}       ::{rC} Thomas Pellissier{bC2} (from © PSociety™){r}
-{bC}        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM {bC}      ╟──────{gC}► {bC2}{underscore}OPSTC Version{W}{bC2}    :: v{rC}{opstconsole_version}{r}
-{bC}        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM {bC}      ╟──────{gC}► {bC2}{underscore}Internet Status{W}{bC2}  ::{rC} {internetstatus}{r}
-{bC}        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM {bC}      ╟────╥─{gC}► {bC2}{underscore}Codename{W}{bC2}         :: @{rC}MyMeepSQL or {bC2}@{bC2}th300905{r}
-{bC}        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM {bC}      ║{bC}    ╙───────────────────{gC}►{bC2}{rC}  The {bC2}{underscore}seconde{W}{rC} codename is also mine{r}
-{bC}        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM {bC}      ╚════════╗{r}
-{bC}        NdMMMMMNy/.` -smMMMMMMMMNy/` `:smMMMMMNm {bC}               ║                      {r}Developed for linux{r}
-{bC}        m`hNMMMMMMNdy: `MMMMMMMM+ .shmMMMMMMNm:+ {bC}               ║{r}
-{bC}        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o {bC}               ║{gC}             Welcome to the OmegaPSToolkit (OPST).{r}
-{bC}        N               hMMMMMMM`              o {bC}               ║{gC} The toolkit which includes a set of penetration testing tools.{r}
-{bC}        M               yMMMMMMM               s {bC}               ║{r}
-{bC}        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM {bC}               ║          {r}{italic}The OmegaPSToolkit is a product of © PSociety™.{W}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {bC}               ║{r}{italic}                  2021-2022, All rights reserved.
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {bC}               ║{r}
-{bC}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM {bC}               ╚                        {GR}{underscore}SELECT AN OPTION{W}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM\        {r}{bC} 
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM \       {r}{gC}      _____                   _____ _____ _____         _ _   _ _{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  \      {r}{gC}     |     |_____ ___ ___ ___|  _  |   __|_   _|___ ___| | |_|_| |_{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMNmmmmNNMMMMMMMMMMMMMMMM   |     {r}{gC}     |  |  |     | -_| . | .'|   __|__   | | | | . | . | | '_| |  _|{r}
+{bC}{italic}        MMMMMMMMMMMdy+:.```..```.-/shNMMMMMMMMMM   |     {r}{gC}     |_____|_|_|_|___|_  |__,|__|  |_____| |_| |___|___|_|_,_|_|_|   {gC}v{R}{opstconsole_version}{r}
+{bC}{italic}        MMMMMMMNy/``  -ohmNNNNNdy/`  `:smMMMMMMM   |     {r}{bC} ╓───────────────────{gC}|___|{bC}─────────────────────────────────────────────────────{gC}►{r}
+{bC}{italic}        MMMMMNo.    :dNMMMMMMMMMMMNo`   `/dMMMMM   |     {r}{bC} ║{r}
+{bC}{italic}        MMMMh.     sMMMMMMMMMMMMMMMMd.    `+NMMM   |     {r}{bC} ║     {r}OmegaPSToolkit factory for penetration testing{r}
+{bC}{italic}        MMMy`     sMMMMMMMMMMMMMMMMMMm`     /MMM   |     {r}{bC} ║{r}
+{bC}{italic}        MMm`     :MMMMMMMMMMMMMMMMMMMMy      oMM   |     {r}{bC} ╚════╗{r}
+{bC}{italic}        MM-      MMMMMMMMMMMMMMMMMMMMMM+      mM   |     {r}{bC}      ╟──────{gC}► {C}{underscore}Created by{W}{C}       ::{R} Thomas Pellissier{C} (from © PSociety™){r}
+{bC}{italic}        MMo      NMMMMMMMMMMMMMMMMMMMMM/     `MM   |     {r}{bC}      ╟──────{gC}► {C}{underscore}OPSTC Version{W}{C}    :: v{R}{opstconsole_version}{r}
+{bC}{italic}        MMN`     yMMMMMMMMMMMMMMMMMMMMN`     sMM   |     {r}{bC}      ╟──────{gC}► {C}{underscore}Internet Status{W}{C}  ::{R} {internetstatus}{r}
+{bC}{italic}        MMMh`    .NMMMMMMMMMMMMMMMMMMM+     /MMM   |     {r}{bC}      ╟──────{gC}► {C}{underscore}Public IP{W}{C}        ::{O} {publicIP}{r}
+{bC}{italic}        MMMMh.    :NMMMMMMMMMMMMMMMMMs    `oMMMM   |     {r}{bC}      ╟──────{gC}► {C}{underscore}Private IP{W}{C}       ::{O} {privateIP}{r}{bC}        MMMMMNo.   -hNMMMMMMMMMMMMMm+   `/dMMMMM {bC}  |           ╟──────{gC}► {C}{underscore}MAC adress{W}{C}       ::{O} {MAC_adress}{r}
+{bC}{italic}        NdMMMMMNy/.` -smMMMMMMMMNy/` `:smMMMMMNm   |     {r}{bC}      ╟────╥─{gC}► {C}{underscore}Codename{W}{C}         :: {C}@{R}MyMeepSQL or {C}@{D}th300905{r}
+{bC}{italic}        m`hNMMMMMMNdy: `MMMMMMMM+ .shmMMMMMMNm:+   |     {r}{bC}      ║{bC}    ╙───────────────────────{gC}►{C}{R}  The {C}{D}{underscore}seconde{W}{R} codename is also mine{r}
+{bC}{italic}        m  -/+ooooooo+  mMMMMMMM: .ooooooo+/:` o   |     {r}{bC}      ╚════════╗{r}
+{bC}{italic}        N               hMMMMMMM`              o   |     {r}{bC}               ║                      {r}Developed for linux{r}
+{bC}{italic}        M               yMMMMMMM               s   |     {r}{bC}               ║{r}
+{bC}{italic}        MNmmmmmmmmmmmmmmMMMMMMMMmmmmmmmmmmmmmmmM   |     {r}{bC}               ║{gC}             Welcome to the OmegaPSToolkit (OPST).{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   |     {r}{bC}               ║{gC} The toolkit which includes a set of penetration testing tools.{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   |     {r}{bC}               ║{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   |     {r}{bC}               ║         {r}{italic}The OmegaPSToolkit is a product of © PSociety™.{W}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   |     {r}{bC}               ║{r}{italic}                 2021-2022, All rights reserved.{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   |     {r}{bC}               ║{r}
+{bC}{italic}        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   |     {r}{bC}               ║{R}       No responsability is taken by developers in case of{W}
+{bC}{italic}        \                                       \  |     {r}{bC}               ║{R}                 explicit uses of OmegaPSToolkit!{W}
+{bC}{italic}         \                                       \ |     {r}{bC}               ║{r}
+{bC}{italic}          \_______________________________________\|     {r}{bC}               ╚                        {GR}{underscore}SELECT AN OPTION{W}
 
-
-                [{bC}1{r}]{gC}    Information Gathering tools{r}
-                [{bC}2{r}]{gC}    Wireless tools{r}
-                [{bC}3{r}]{gC}    Useful tools (UT){r}
-                [{bC}cli{r}]{gC}  Use OPST like a Command Line Interpeter {bC}[{rC}BETA{bC}]{r}
-                [{bC}help{r}]{gC} Show the help message{r}
-                [{bC}exit{r}]{gC} Exit the opstconsole{r}
+                [{C}1{r}]{gC}    Information Gathering tools{r}
+                [{C}2{r}]{gC}    Wireless tools{r}
+                [{C}3{r}]{gC}    Useful tools (UT){r}
+                [{C}cli{r}]{gC}  Use OPST like a Command Line Interpeter {bC}[{R}BETA{bC}]{r}
+                [{C}help{r}]{gC} Show the help message{r}
+                [{C}exit{r}]{gC} Exit the opstconsole{r}
 
 OPST was not finish and he's totally in development!
 
@@ -1061,10 +1170,10 @@ OPST was not finish and he's totally in development!
             invalid_option()
             cls()
             main_page()
-            
+
     #-END-OF-MAIN-PAGE---------------------------------------------------#
 
-    main_page()      # call the main function
+    main_page()     # call the main function
 
 except KeyboardInterrupt:
     print()
@@ -1150,4 +1259,4 @@ except EOFError:
 #      __||__   /</      \_/
 #  ___| OPST |_/</
 # |  __________  |
-# \__________                          
+# \_____________/

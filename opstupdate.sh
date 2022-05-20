@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opstupdate.sh                 [Update: 2022-04-14 | 10:26 AM] #
+#  Filename ~ opstupdate.sh                  [Update: 2022-05-04 | 9:31 PM] #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
@@ -52,6 +52,7 @@ normal='\033[22m'
 ####
 
 opstupdate_version="v2.9"
+
 INSTALL_DIR="/usr/share/OmegaPSToolkit"
 BIN_DIR="/usr/bin"
 TEMP_DIR="/tmp/OmegaPSToolkit"
@@ -61,20 +62,22 @@ if [ $(id -u) != "0" ]; then
     # Many fresh installed linux distros do not come with sudo installed
     which sudo > /dev/null 2>&1
     if [ "$?" != "0" ]; then
-        echo "$R[!]$W   You Linux distribution doesn't have the \"sudo\" command pre-install. Install the current \"sudo\" command..."
+        echo "$R[!]$W   You Linux distribution doesn't have the$B sudo command pre-install. Install the current$B sudo command..."
         sleep 1
         apt update -y && apt-get install sudo -y
     fi
     ####
         if ! hash sudo 2>/dev/null; then
-                echo "$R[!]$W    OPSTUpdate could be run as the 'root' user or with 'sudo'"
-                echo "       Re-run the 'opstupdate.sh' with sudo or with the root user"
-                echo '       Run sudo "sudo opstupdate"'
-                exit 1
+            echo -e " 
+$R[!]$W  OPSTUpdate could be run as the$R root user$W or with the$R sudo command$W
+     Re-run the opstupdate with$R sudo$W or with the$R root$W user
+     Run :$B sudo opstupdate $W"
+            exit 1
         else # Switch to sudo (root)
-            echo
-            echo -e "$R[!]$W    OPSTUpdate could be run as the 'root' user or with 'sudo'"
-            echo -e "$G[-]$W    Switching to root user to run the 'opstupdate'"
+            echo -e "
+$R[!]$W  OPSTUpdate could be run as the$R root user$W or with the$R sudo command$W
+$G[-]$W  Switching to$R root user$W to run the$B opstupdate$W
+"
             sudo -E bash $0 $@
             exit 0
         fi
@@ -101,13 +104,13 @@ if [ $? -eq 0 ]; then
 + -- --=[  '$underscore'This tool will:'$W'                                                                                               ]
         [  ...'$G'Install'$W' the latest verion of '$R'OPSTConsole'$W', '$R'OPSTHelp'$W', '$R'OPSTUpdate'$W', '$R'OPSTInstall-all'$W' and '$R'OPSTSetup'$W' from '$G'Github'$W'  ]
 
-'$C'[?]'$W'    Do you want to continue? [Y/n] '
+'$C'[?]'$W'  Do you want to continue? [Y/n] '
     read y_n
     if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ]; then
         echo -e "
 $G$D--------------------------------------------------------------------------------------$W
 
-$G[-]$W    Removing the current OPST's commands from '"$G"/usr/share/OmegaPSToolkit"$W"'..."
+$G[-]$W  Removing the current OPST's commands from '"$G"/usr/share/OmegaPSToolkit"$W"'..."
         rm -fr "$INSTALL_DIR/opstconsole.py"
         rm -fr "$INSTALL_DIR/opsthelp.py"
         rm -fr "$INSTALL_DIR/opstsetup.py"
@@ -123,13 +126,15 @@ $G[-]$W    Removing the current OPST's commands from '"$G"/usr/share/OmegaPSTool
         sleep 1
         echo "$G$D--------------------------------------------------------------------------------------$W
 
-$G[-]$W    "$G"Updating"$W" all commands from "$G"GitHub"$W"..."
+$G[-]$W  "$G"Updating"$W" all commands from "$G"GitHub"$W"..."
         sleep 0.5
 
         if [ -e $TEMP_DIR ];then
-            echo "$G[*]$W    A OmegaPSToolkit folder already exist in "$G"/tmp/"$W", append the new files..."
+            echo "$G[*]$W  A OmegaPSToolkit folder already exist in "$G"/tmp/"$W". "
+            sleep 0.5
+            echo "$G[-]$W  Append the new files..."
 
-            rm -fr /tmp/OmegaPSToolkit
+            rm -fr $TEMP_DIR
 
             git clone -q https://github.com/MyMeepSQL/OmegaPSToolkit.git "$TEMP_DIR"
 
@@ -186,14 +191,14 @@ $G[-]$W    "$G"Updating"$W" all commands from "$G"GitHub"$W"..."
             ##
         fi
 
-        echo -e "$G[+]$W    Update complete.
+        echo -e "$G[+]$W  Update complete.
 "
         sleep 1
         echo -e "$G$D--------------------------------------------------------------------------------------$W2
 "
 
         # Apply all rights
-        echo -e "$G[-]$W    Apply all rights to files..."
+        echo -e "$G[-]$W  Apply all rights to files..."
         sleep 0.5
 
         # for '/usr/share/OmegaPSToolkit'
@@ -216,31 +221,31 @@ $G[-]$W    "$G"Updating"$W" all commands from "$G"GitHub"$W"..."
         chmod 777 "$BIN_DIR/opsthelp"
         ##
 
-        echo -e "$G[+]$W    Apply complete."
+        echo -e "$G[+]$W  Apply complete."
         sleep 1
         echo -e "
 $G$D--------------------------------------------------------------------------------------$W
 
-$B[+]$W    All Done.
+$B[+]$W  All Done.
 "
         sleep 1
         echo -ne "$G$D--------------------------------------------------------------------------------------$W
 
-$C[?]$W    Do you want to reload your terminal (just in case) ? [Y/n] "
+$C[?]$W  Do you want to reload your terminal (just in case) ? [Y/n] "
         read y_n
-        if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ]; then
+        if [ "$y_n" = 'Y' ] || [ "$y_n" = 'y' ] || [ ! "$y_n" ]; then
             echo -e "
 $G$D--------------------------------------------------------------------------------------$W
 
 $G$D---------------------$W
-$G[-]$W    Reloading...
+$G[-]$W  Reloading...
 $G$D---------------------$W"
             sleep 0.5
             reset
             echo -e "
 $G$D-------------------------------------------------------------------------------------------------------------------------------------$W
 
-$B[OK]$W    "$R"OPSTConsole"$W", "$R"OPSTHelp"$W", "$R"OPSTUpdate"$W", "$R"OPSTInstall-all"$W" and "$R"OPSTSetup"$W" are now install with the latest version exist from GitHub.
+$B[OK]$W  "$R"OPSTConsole"$W", "$R"OPSTHelp"$W", "$R"OPSTUpdate"$W", "$R"OPSTInstall-all"$W" and "$R"OPSTSetup"$W" are now install with the latest version exist from GitHub.
 
 $G$D-------------------------------------------------------------------------------------------------------------------------------------$W
 "
@@ -248,23 +253,23 @@ $G$D----------------------------------------------------------------------------
         else
             echo -e "
 $G$D--------------------$W
-$B$D[+]$W    Answer: "$R"No"$W".
+$B$D[+]$W  Answer: "$R"No"$W".
 $G$D--------------------$W
 
 $G$D-------------------------------------------------------------------------------------------------------------------------------------$W
 
-$B[OK]$W    "$R"OPSTConsole"$W", "$R"OPSTHelp"$W", "$R"OPSTUpdate"$W", "$R"OPSTInstall-all"$W" and "$R"OPSTSetup"$W" are now install with the latest version exist from GitHub.
+$B[OK]$W  "$R"OPSTConsole"$W", "$R"OPSTHelp"$W", "$R"OPSTUpdate"$W", "$R"OPSTInstall-all"$W" and "$R"OPSTSetup"$W" are now install with the latest version exist from GitHub.
 
 $G$D-------------------------------------------------------------------------------------------------------------------------------------$W
 "
             exit 0
         fi
     else
-        echo -e "$GR$D[-]$W    Abort."
+        echo -e "$GR$D[-]$W  Abort."
         exit 1
     fi
 else
-    echo -e "$R[!]$W   Internet status.......... "$R"Not connected"$W".
-$R[*]$W   Not Internet connexion found, please check you are connected to Internet and retry."
+    echo -e "$R[!]$W  Internet status.......... "$R"Not connected"$W".
+$R[*]$W  Not Internet connexion found, please check your Internet connexion and retry."
     exit 1
 fi

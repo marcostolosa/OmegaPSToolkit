@@ -32,67 +32,75 @@
 #---------------------------------------------------------------------------#
 
 
-
 # OPST's commands versions
 
 ## Console
 opstconsole_version = "0.0.1.3"
 
 ## CLI Beta
-opstconsole_cli_version = "0.0.0.9"
+opstconsole_cli_version = "0.0.1.5"
 
 ## Help
-opsthelp_version = "1.65"
+opsthelp_version = "3.0"
 
 ## Setup
 opstsetup_version = "v2.6"
+
 
 ## Update
 opstupdate_version = "v2.9"
 
 ## Install-all
 opstinstallall_version = "v2.2"
-
 ####
-
 
 
 # Other version
 import platform
-import os
-  
 python_version = platform.python_version()
-
 ####
+
 
 # Other informations
 
 ## Get the OS name
-my_system = platform.uname()
+my_system=platform.uname()
 
-OS = my_system.system
+OS=my_system.system
 Node_Name=my_system.node
 Release=my_system.release
 Version=my_system.version
 Machine=my_system.machine
 Processor=my_system.processor
 
+## Get usage of RAM
+import psutil
+# Total RAM
+RAM_total_memory=f"{round(psutil.virtual_memory().total/1000000000, 2)} GB"
+# Available RAM
+RAM_avalable_memory=f"{round(psutil.virtual_memory().available/1000000000, 2)} GB"
+# Used RAM
+RAM_used_memory=f"{round(psutil.virtual_memory().used/1000000000, 2)} GB"
+# RAM usage
+RAM_usage=f"{psutil.virtual_memory().percent}%"
+
 ## For the distribution's name
-import csv
-RELEASE_DATA = {}
-with open("/etc/os-release") as f:
-    reader = csv.reader(f, delimiter="=")
-    for row in reader:
-        if row:
-            RELEASE_DATA[row[0]] = row[1]
+class distribName():
+    import csv
+    RELEASE_DATA = {}
+    with open("/etc/os-release") as f:
+        reader = csv.reader(f, delimiter="=")
+        for row in reader:
+            if row:
+                RELEASE_DATA[row[0]] = row[1]
 
-if RELEASE_DATA["ID"] in ["debian", "raspbian"]:
-    with open("/etc/debian_version") as f:
-        DEBIAN_VERSION = f.readline().strip()
-    major_version = DEBIAN_VERSION.split(".")[0]
-    version_split = RELEASE_DATA["VERSION"].split(" ", maxsplit=1)
-    if version_split[0] == major_version:
-        # Just major version shown, replace it with the full version
-        RELEASE_DATA["VERSION"] = " ".join([DEBIAN_VERSION] + version_split[1:])
-
-distribution = "{} {}".format(RELEASE_DATA["NAME"], RELEASE_DATA["VERSION"])
+    if RELEASE_DATA["ID"] in ["debian", "raspbian"]:
+        with open("/etc/debian_version") as f:
+            DEBIAN_VERSION = f.readline().strip()
+        major_version = DEBIAN_VERSION.split(".")[0]
+        version_split = RELEASE_DATA["VERSION"].split(" ", maxsplit=1)
+        if version_split[0] == major_version:
+            # Just major version shown, replace it with the full version
+            RELEASE_DATA["VERSION"] = " ".join([DEBIAN_VERSION] + version_split[1:])
+    global distribution
+    distribution = "{} {}".format(RELEASE_DATA["NAME"], RELEASE_DATA["VERSION"])

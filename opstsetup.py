@@ -32,16 +32,15 @@
 #---------------------------------------------------------------------------#
 
 # Import Section
-import urllib.request
-import os,sys
-from opstversions import opstsetup_version
+import urllib.request,os,sys
+from opstversions import opstsetup_version,opstconsole_version
 from setuptools import setup,find_packages
 from time import sleep
 ####
 
 # Some functions
 def abort():
-    abort_msg = f"\n{GR}{D}[-]{W}    Abort."
+    abort_msg = f"\n{GR}{D}[-]{W}  Abort."
     sys.exit(abort_msg)
 ####
 
@@ -66,25 +65,21 @@ normal = '\033[22m'
 
 # The SetupTool
 try:
-    if os.getuid() != 0:    #   check if the user run OPST with root privilege
+    if os.getuid() != 0:    # check if the user run OPST with root privilege
         permerror =f"""
-{R}[!]{W}    OPSTSetup could be run as the 'root' user or with 'sudo'
-       Re-run the 'opstsetup' with 'sudo' or with the 'root' user
-       Run \"sudo opstsetup install\"
+{R}[!]{W}  OPSTSetup could be run as the {R}root user{W} or with the {R}sudo command{W}
+     Re-run the opstsetup with {R}sudo{W} or with the {R}root{W} user 
+     Run : {B}sudo opstsetup install{W}
 """
         sys.exit(permerror)
 except AttributeError:
     print()
-    criticalmsg = f"{B}[{R}FATAL ERROR{B}]{R}    You tried to run OPST on a non-linux machine. OPST can be run only on a Linux kernel.\n{W}"
+    criticalmsg = f"{B}[{R}ERROR{B}]{R} You tried to run OPST on a non-linux machine. OPST can be run only on a Linux kernel.\n{W}"
     sys.exit(criticalmsg)
 except EOFError:
-    print()
-    print(f"{GR}{D}    Abort.{W}")
-    sys.exit()
+    abort()
 except KeyboardInterrupt:
-    print()
-    print(f"{GR}{D}    Abort.{W}")
-    sys.exit()
+    abort()
 else:
     try:
         with open("README.md", "r", encoding="utf-8") as fh:
@@ -92,11 +87,11 @@ else:
         print()
         print(f"{GR}{D} _______ ______ _______ _______ _______         __               ")
         print(f"{GR}{D}|       |   __ \     __|_     _|     __|.-----.|  |_.--.--.-----.{W}{G}  OPSTSetup {D}{opstsetup_version}")
-        print(f"{GR}{D}|   -   |    __/__     | |   | |__     ||  -__||   _|  |  |  _  |{W}{D}  A massive penetration testing toolkit")         # Police = Chunky from https://www.coolgenerator.com/ascii-text-generator
+        print(f"{GR}{D}|   -   |    __/__     | |   | |__     ||  -__||   _|  |  |  _  |{W}{D}  A massive penetration testing toolkit")         # Font = Chunky from https://www.coolgenerator.com/ascii-text-generator
         print(f"{GR}{D}|_______|___|  |_______| |___| |_______||_____||____|_____|   __|{C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}")
         print(f"{GR}{D}  + -------- !* Welcome to the OPSTSetup. *! -------- +   |__|{W}")
         print()
-        print(f"{G}[-]{W}    Checking for internet connexion...")
+        print(f"{G}[-]{W}  Checking for internet connexion...")
         print()
         try:
             urllib.request.urlopen('http://google.com')
@@ -113,23 +108,21 @@ else:
         print(f"+ -- --=[  {underscore}The tool will:{W}                                                                                                   ]")
         print(f"        [    ...Install {G}Colored{W} and {G}Progress{W} PIP3 modules that OmegaPSToolkit must have and make a {G}OmegaPSToolkit package{W}.  ]")
         print()
-        yn = str(input(f"{C}[?]{W}    Do you want to continue? [Y/n] "))
-        if yn != 'y' and yn != 'Y':
-            abort()
-        elif not yn:
-            abort()
-        else:
+        yn = str(input(f"{C}[?]{W}  Do you want to continue? [Y/n] "))
+        if yn == 'y' or yn == 'Y' or not yn:
             pass
+        else:
+            abort()
         try:
             print()
             print(f"{G}{D}--------------------------------------------------------------------------------------{W}")
             print()
-            print(f"{G}[-]{W}    Installing {G}Colored{W}, {G}Progress{W} and make a {G}OmegaPSToolkit package{W}...")
+            print(f"{G}[-]{W}  Installing {G}Colored{W}, {G}Progress{W} and make a {G}OmegaPSToolkit package{W}...")
             print()
             sleep(0.5)
             setup(classifiers=[
                     "Copyright                          :: Copyright (C) 2022, Thomas Pellissier aka MyMeepSQL from © PSociety™",
-                    "Author                             :: Thomas Pellissier",
+                    "Author name                        :: Thomas Pellissier",
                     "Developed for                      :: Linux",
                     "Development Status                 :: 2 - In Development",
                     "Natural Language                   :: English",
@@ -143,36 +136,36 @@ else:
                 description='A massive penetration testing toolkit',
                 long_description = long_description,
                 url='https://github.com/MyMeepSQL/OmegaPSToolkit',
-                author='Thomas Pellissier',
+                author='MyMeepSQL',
                 author_email='thomas.pellissier@outlook.com',
                 license='GNU-GPL-3.0',
-                version='0.0.1.3',
+                version=opstconsole_version,
                 python_requires='>=3.1.0',
                 packages=find_packages(),
                 zip_safe=False,
                 include_package_data=True,
                 install_requires=[
-                    'progress', 'colored'
+                    'progress','colored','psutil','GPUtil','tabulate','requests','py-cpuinfo'
                 ],
             )
             print()
-            print(f"{G}[-]{W}    Instalation complete.")
+            print(f"{G}[-]{W}  Instalation complete.")
             sleep(1)
             print()
             print(f"{G}{D}--------------------------------------------------------------------------------------{W}")
             print()
-            yn = str(input(f"{C}[?]{W}    Do you want to reload your terminal (just in case) ? [Y/n] "))
-            if yn == 'y' or yn == 'Y':
+            yn = str(input(f"{C}[?]{W}  Do you want to reload your terminal (just in case) ? [Y/n] "))
+            if yn == 'y' or yn == 'Y' or not yn:
                 print()
                 print(f"{G}{D}---------------------{W}")
-                print(f"{G}[-]{W}    Reloading...")
+                print(f"{G}[-]{W}  Reloading...")
                 print(f"{G}{D}---------------------{W}")
                 sleep(0.5)
                 os.system("reset")
                 print()
                 print(f"{G}{D}-----------------------------------------------------------------------------------------------------------------------------------------{W}")
                 print()
-                print(f"{B}[OK]{W}    {G}Colored{W}, {G}Progress{W} and {G}OmegaPSToolkit{W} PIP modules was succefully {G}installed{W}. Now you can run OPSTConsole with '{G}sudo opstconsole{W}'.")
+                print(f"{B}[OK]{W}  {G}Colored{W}, {G}Progress{W} and {G}OmegaPSToolkit{W} PIP modules was succefully {G}installed{W}. Now you can run OPSTConsole with '{G}sudo opstconsole{W}'.")
                 print()
                 print(f"{G}{D}-----------------------------------------------------------------------------------------------------------------------------------------{W}")
                 print()
@@ -180,16 +173,16 @@ else:
             else:
                 print()
                 print(f"{G}{D}--------------------{W}")
-                print(f"{B}{D}[+]{W}    Answer: {R}No{W}.")
+                print(f"{B}{D}[+]{W}  Answer: {R}No{W}.")
                 print(f"{G}{D}--------------------{W}")
                 print()
                 print(f"{G}{D}-----------------------------------------------------------------------------------------------------------------------------------------{W}")
                 print()
-                print(f"{B}[OK]{W}    {G}Colored{W}, {G}Progress{W} and {G}OmegaPSToolkit{W} PIP modules was succefully {G}installed{W}. Now you can run OPSTConsole with '{G}sudo opstconsole{W}'.")
+                print(f"{B}[OK]{W}  {G}Colored{W}, {G}Progress{W} and {G}OmegaPSToolkit{W} PIP modules was succefully {G}installed{W}. Now you can run OPSTConsole with '{G}sudo opstconsole{W}'.")
                 print()
                 print(f"{G}{D}-----------------------------------------------------------------------------------------------------------------------------------------{W}")
                 print()
-                sys.exit()  
+                sys.exit()
         except EOFError:
             abort()
         except KeyboardInterrupt:

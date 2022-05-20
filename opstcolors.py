@@ -73,18 +73,18 @@ normal = '\033[22m'
 ## The colors for the rest of the tool
 
 # Import section
+
 try:
     from colored import fg, attr
 except ModuleNotFoundError:
     print()
-    criticalmsg = B+"["+R+"CRITICAL"+B+"]"+GR+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"
+    criticalmsg = f"{B}[{W}CRITICAL{B}]{GR}   A current(s) module(s) was not installed, run the {B}opstsetup{W} for install it. ({B}sudo opstsetup install{W})\n"
     exit(criticalmsg)
 except NameError:
     print()
-    criticalmsg = B+"["+R+"CRITICAL"+B+"]"+GR+"   A current(s) module(s) was not installed, run the 'setup.py' for install it. (sudo setup.py install)\n"
+    criticalmsg = f"{B}[{W}CRITICAL{B}]{GR}   A current(s) module(s) was not installed, run the {B}opstsetup{W} for install it. ({B}sudo opstsetup install{W})\n"
     exit(criticalmsg)
-####
-
+    
 ### The Bs
 bC = fg('#1d89f3')      # B
 bC2 = fg('#0B4D8F')     # dark B
@@ -102,4 +102,7 @@ yC = fg('#EDFF00')
 
 ### Reset
 r = attr('reset')       # to finish the color formatting
+
+
+####
 # End of colors section
