@@ -42,6 +42,7 @@ try:
     from opstversions import *
     from opstfunctions import *
     from opstcolors import *
+    from opsthelp import *
 except ModuleNotFoundError:
     print()
     criticalmsg = f"{R}[CRITICAL]{GR}   A current(s) module(s) was not installed, run the {R}opstsetup{W} for install it. ({R}sudo opstsetup install{W})\n"
@@ -1083,7 +1084,7 @@ try:
             elif "info" == command:
                 cli_infomsg()
             elif "fullinfo" == command:
-                cli_fullinfomsg()
+                opsthelp()
             elif "leave" == command:
                 print(f"{G}[-]{W}  Exiting CLI mode...")
                 sleep(0.5)

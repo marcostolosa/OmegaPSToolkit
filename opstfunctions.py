@@ -75,7 +75,11 @@ def connexion(host='https://google.com'):
 # Get the private IP of the machine (for show in the menu of OPST)
 GET_IP_CMD ='hostname -I'
 def run_cmd(cmd):
-     return subprocess.check_output(cmd, shell=True).decode('utf-8')
+    try:
+        return subprocess.check_output(cmd, shell=True).decode('utf-8')
+    except:
+        return f"{R}Not connected to a network{W}"
+global privateIP
 privateIP = run_cmd(GET_IP_CMD)
 ####
 
@@ -83,14 +87,13 @@ privateIP = run_cmd(GET_IP_CMD)
 def getPublicIP():
     try:
         endpoint = 'https://ipinfo.io/json'
-        response = requests.get(endpoint, verify = True, timeout=5)
+        response = requests.get(endpoint, verify=True, timeout=2)
         if response.status_code != 200:
             return 'Status:', response.status_code, 'Problem with the request. Exiting.'
         data = response.json()
         return data['ip']
-    except Timeout:
-        publicIP=f"{R}Not connected{W}"
-        return publicIP
+    except:
+        return f"{R}Not connected{W}"
 global publicIP
 publicIP = getPublicIP()
 ####

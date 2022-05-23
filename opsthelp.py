@@ -33,7 +33,6 @@
 
 # Import section
 import sys,psutil,GPUtil
-from cpuinfo import get_cpu_info
 from opstcolors import GR,D,W,G,C,R,P,B,O,underscore,italic,bold
 from opstversions import *
 from opstfunctions import privateIP,publicIP,MAC_adress
@@ -169,7 +168,7 @@ def opsthelp():
                 Temperature        {GPU_details_temperature}
                 Driver version     v{GPU_details_driverVersion}
                 UUID               {GPU_details_uuid}             """)
-    print(f"                                                                                            {G}/[{W} Scroll {O}up{W} for the main informations {G}]\{W}\n")
+    print(f"                                                                                            {G}/[{W} Scroll {O}UP{W} for the main informations {G}]\{W}\n")
 
 if __name__ == '__main__':
     opsthelp()
