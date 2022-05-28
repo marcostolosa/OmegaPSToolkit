@@ -5,7 +5,9 @@
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
-#  The tool for install Python3,PIP3 and write all command into the /usr/bin#
+#  The tool for install Python3,PIP3 and write all command into the         #
+#  /usr/bin/                                                                #
+#                                                                           #
 #  Language  ~  Bash                                                        #
 #---[Author]----------------------------------------------------------------#
 #  Thomas Pellissier ~ @MyMeepSQL                                           #
@@ -85,9 +87,10 @@ $G[-]$W  Switching to$R root user$W to run the$B opstinstall-all$W
 ####
 
 # The main script
+clear
 echo -e "
-$GR$D _______ ______ _______ _______ _______               __          __ __               __ __ 
-$GR$D|       |   __ \     __|_     _|_     _|.-----.-----.|  |_.---.-.|  |  |______.---.-.|  |  |$W$G  OPSTInstall-all $D$opstinstallall_version
+$GR$D _______ ______ _______ _______ _______               __          __ __               __ __ $W$G  OPSTInstall-all $D$opstinstallall_version
+$GR$D|       |   __ \     __|_     _|_     _|.-----.-----.|  |_.---.-.|  |  |______.---.-.|  |  |$G$D  Coded by MyMeepSQL for © PSociety™
 $GR$D|   -   |    __/__     | |   |  _|   |_ |     |__ --||   _|  _  ||  |  |______|  _  ||  |  |$W$D  A massive penetration testing toolkit
 $GR$D|_______|___|  |_______| |___| |_______||__|__|_____||____|___._||__|__|      |___._||__|__|$C$D  https://github.com/MyMeepSQL/OmegaPSToolkit$W
 $GR$D + ------------------------ !* Welcome to the OPSTInstall-all *! ------------------------ +$W
@@ -113,22 +116,19 @@ if [ $? -eq 0 ]; then
         echo -e "
 $G$D--------------------------------------------------------------------------------------$W
 
-$G[-]$W  Updating...
-"
+$G[-]$W  Updating..."
         sleep 0.5
-        apt-get -qq update -y && apt-get -qq update --fix-missing -y
-        echo -e "
-$G[+]$W  Update complete."
+        sudo apt-get install git htop -qq > /dev/null
+        apt-get update -qq -y > /dev/null && apt-get update -qq --fix-missing -y > /dev/null
+        echo -e "$G[+]$W  Update complete."
         sleep 1
         echo -e "
 $G$D--------------------------------------------------------------------------------------$W
 
-$G[-]$W  Installing Python3 and PIP3...
-"
+$G[-]$W  Installing Python3 and PIP3..."
         sleep 0.5
-        apt-get -qq install git python3 python3-pip whois traceroute net-tools -y
-        echo -e "
-$G[+]$W  Installation complete."
+        apt-get install git python3 python3-pip whois traceroute ping  net-tools -qq -y > /dev/null
+        echo -e "$G[+]$W  Installation complete."
         sleep 1
         echo -e "
 $G$D--------------------------------------------------------------------------------------$W

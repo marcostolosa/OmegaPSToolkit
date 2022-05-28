@@ -1,15 +1,16 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opsthelp.py                    [Update: 2022-04-16 | 2:32 AM] #
+#  Filename ~ opsthelp.py                  [Update: 2022-05-25 | 20:49 AM]  #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
 #  The help message for OmegaPSToolkit                                      #
+#                                                                           #
 #  Language  ~  Python3                                                     #
 #---[Author]----------------------------------------------------------------#
 #  Thomas Pellissier ~ @MyMeepSQL                                           #
-#  Copyright (C) 2022 MyMeepSQL - © PSociety™                               #
+#  Copyright (C) 2022 MyMeepSQL - © PSociety™, 2022 All rights reserved     #
 #---[Operating System]------------------------------------------------------#
 #  Developed for linux                                                      #
 #---[Licence]---------------------------------------------------------------#
@@ -32,10 +33,18 @@
 #---------------------------------------------------------------------------#
 
 # Import section
-import sys,psutil,GPUtil
-from opstcolors import GR,D,W,G,C,R,P,B,O,underscore,italic,bold
-from opstversions import *
-from opstfunctions import privateIP,publicIP,MAC_adress
+import sys
+sys.path.insert(0, '/usr/share/OmegaPSToolkit/functions')
+from functions.system_colors import system_colors as sc
+from functions.versions.opst_commands_version import *
+from functions.versions.python_version import *
+from functions.get_private_ip import *
+from functions.get_public_ip import *
+from functions.get_mac_adress import *
+from functions.os_details import *
+from functions.distribution_name import distribution_name_class as dn
+from functions.ram_info import *
+from functions.gpudetails import *
 # from opstfunctions import GPU_details_id,GPU_details_id,GPU_details_gpuName,GPU_details_totalMemoy, GPU_details_freeMemory,GPU_details_usedMemory,GPU_details_uuid
 
 ####
@@ -44,82 +53,81 @@ from opstfunctions import privateIP,publicIP,MAC_adress
 ## Font = Chunky from https://www.coolgenerator.com/ascii-text-generator
 def opsthelp():
     print(f"""
-{GR}{D} ______  ______ _______ _______ {W}
-{GR}{D}|       |   __ \     __|_     _|{W}{G}  OmegaPSToolkit {D}v{opsthelp_version} (opsthelp's version)
-{GR}{D}|   -   |    __/__     | |   |  {W}{D}  A massive penetration testing toolkit
-{GR}{D}|_______|___|  |_______| |___|  {C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}
+{sc.GR}{sc.D} ______  ______ _______ _______ {sc.W}{sc.G}  OmegaPSToolkit {sc.D}v{opsthelp_version} (opsthelp's version)
+{sc.GR}{sc.D}|       |   __ \     __|_     _|{sc.G}{sc.D}  Coded by MyMeepSQL for © PSociety™
+{sc.GR}{sc.D}|   -   |    __/__     | |   |  {sc.W}{sc.D}  A massive penetration testing toolkit
+{sc.GR}{sc.D}|_______|___|  |_______| |___|  {sc.C}{sc.D}  https://github.com/MyMeepSQL/OmegaPSToolkit{sc.W}
 
-{G}[>]{W} All informations about OmegaPSToolkit and other{W}
-{G}[*]{W} This is the biggest version, for less informations, run {B}info{W}
+{sc.G}[>]{sc.W} All informations about OmegaPSToolkit and other{sc.W}
+{sc.G}[*]{sc.W} This is the biggest version, for less informations, run {sc.B}info{sc.W}
 
-{C}Informations about OmegaPSToolkit{GR}:{W}
+{sc.C}Informations about OmegaPSToolkit{sc.GR}:{sc.W}
 
-    {G}Main commands{GR}:{W}
+    {sc.G}Main commands{sc.GR}:{sc.W}
         odstconsole                Start the current tool
         odstupdate                 Update OPST with the latest version from GitHub
         odsthelp                   Print this message and exit
 
-    {G}Other commands (to install OPST the first time){GR}:{W}
+    {sc.G}Other commands (to install OPST the first time){sc.GR}:{sc.W}
         odstsetup                  Install all pip packages that OPST needs
-        odstinstall-all            Update you system, copy OPST to {G}"{C}/usr/share/OmegaPSToolkit{G}"{W} and write all comamnds in {G}"{C}/usr/bin/{G}"{W}
+        odstinstall-all            Update you system, copy OPST to {sc.G}"{sc.C}/usr/share/OmegaPSToolkit{sc.G}"{sc.W} and write all comamnds in {sc.G}"{sc.C}/usr/bin/{sc.G}"{sc.W}
 
-    {G}All OPST commands versions{GR}:{W}
-        opstconsole                v{opstconsole_version}
-        odstconsole CLI            v{opstconsole_cli_version}
+    {sc.G}All OPST commands versions{sc.GR}:{sc.W}
+        opstconsole                {opstconsole_version}
+        odstconsole CLI            {opstconsole_cli_version}
         opstupdate                 {opstupdate_version}
-        opsthelp                   v{opsthelp_version}
+        opsthelp                   {opsthelp_version}
         odstsetup                  {opstsetup_version}
         odstinstall-all            {opstinstallall_version}
 
-    {G}Other informations{GR}:{W}
-        GitHub page                {underscore}{C}https://github.com/MyMeepSQL/OmegaPSToolkit{W}
-        Changelogs                 {underscore}{C}https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md{W}
+    {sc.G}Other informations{sc.GR}:{sc.W}
+        GitHub page                {sc.underscore}{sc.C}https://github.com/MyMeepSQL/OmegaPSToolkit{sc.W}
+        Changelogs                 {sc.underscore}{sc.C}https://github.com/MyMeepSQL/OmegaPSToolkit/blob/main/CHANGLOG.md{sc.W}
 
-{C}Informations about author{GR}:{W}
+{sc.C}Informations about author{sc.GR}:{sc.W}
 
-    {G}General informations{GR}:{W}
-        Author                     {italic}Thomas Pellissier{W}
-        Codename                   {G}@{W}MyMeepSQL{W} or {G}@{W}th300905{W}
-        Email                      {P}thomas.pellissier@outlook.com{W} ({R}only for professional{W} or for {G}repport bugs of OmegaPSToolkit{W})
-        Owner                      {italic}Copyright © 2021-2022 PSociety™{W}, {R}All rights reserved{W}. {italic}By Thomas Pellissier aka MyMeepSQL{W}
+    {sc.G}General informations{sc.GR}:{sc.W}
+        Author                     {sc.italic}Thomas Pellissier{sc.W}
+        Codename                   {sc.G}@{sc.W}MyMeepSQL{sc.W} or {sc.G}@{sc.W}th300905{sc.W}
+        Email                      {sc.P}thomas.pellissier@outlook.com{sc.W} ({sc.R}only for professional{sc.W} or for {sc.G}repport bugs of OmegaPSToolkit{sc.W})
+        Owner                      {sc.italic}Copyright © 2021-2022 PSociety™{sc.W}, {sc.R}All rights reserved{sc.W}. {sc.italic}By Thomas Pellissier aka MyMeepSQL{sc.W}
 
-    {G}Other informations{GR}:{W}
-        GitHub profile             {underscore}{C}https://github.com/MyMeepSQL{W}
-        Twitter profile            {C}@{W}MyMeepSQL
-        Discord profile            $_MyMeepSQL{C}#{G}0141{W}
+    {sc.G}Other informations{sc.GR}:{sc.W}
+        GitHub profile             {sc.underscore}{sc.C}https://github.com/MyMeepSQL{sc.W}
+        Twitter profile            {sc.C}@{sc.W}MyMeepSQL
+        Discord profile            $_MyMeepSQL{sc.C}#{sc.G}0141{sc.W}
 
-{C}Ohter informations{GR}:{W}
+{sc.C}Ohter informations{sc.GR}:{sc.W}
 
-    {G}Other versions{GR}:{W}
+    {sc.G}Other versions{sc.GR}:{sc.W}
         Python's version           v{python_version}
 
-    {G}Network{GR}:{W}
-        Private IP                 {O}{privateIP}{W}        Public IP                  {O}{publicIP}{W}
-        MAC adress                 {O}{MAC_adress}{W}
+    {sc.G}Network{sc.GR}:{sc.W}
+        Private IP                 {sc.O}{privateIP}{sc.W}        Public IP                  {sc.O}{publicIP}{sc.W}
+        MAC adress                 {sc.O}{mac_adress}{sc.W}
 
-        {G}Details {W}({C}with all inrefaces{W}){GR}:{W}""")
+        {sc.G}Details {sc.W}({sc.C}with all inrefaces{sc.W}){sc.GR}:{sc.W}""")
     if_addrs = psutil.net_if_addrs()
     for interface_name, interface_addresses in if_addrs.items():
         for address in interface_addresses:
-            print(f"            Interface: {C}{interface_name}{W}")
+            print(f"            Interface: {sc.C}{interface_name}{sc.W}")
             if str(address.family) == 'AddressFamily.AF_INET':
-                print(f"""                  IP Address:      {O}{address.address}{W}
-                  Netmask:         {O}{address.netmask}{W}
-                  Broadcast IP:    {O}{address.broadcast}{W}""")
+                print(f"""                  IP Address:      {sc.O}{address.address}{sc.W}
+                  Netmask:         {sc.O}{address.netmask}{sc.W}
+                  Broadcast IP:    {sc.O}{address.broadcast}{sc.W}""")
             elif str(address.family) == 'AddressFamily.AF_PACKET':
-                print(f"""                  MAC Address:     {O}{address.address}{W}
-                  Netmask:         {O}{address.netmask}{W}
-                  Broadcast MAC:   {O}{address.broadcast}{W}""")
+                print(f"""                  MAC Address:     {sc.O}{address.address}{sc.W}
+                  Netmask:         {sc.O}{address.netmask}{sc.W}
+                  Broadcast MAC:   {sc.O}{address.broadcast}{sc.W}""")
     print(f"""
-    {G}System{GR}:{W}
+    {sc.G}System{sc.GR}:{sc.W}
         Operating System           {OS}
-        Distribution / Release     {distribution}
+        Distribution / Release     {dn.distribution_name}
         PC's Name                  {my_system.node}
         Machine                    {my_system.machine}
         Processor                  {my_system.processor}
-""")
 
-    print(f"""        {G}RAM details{GR}:{W}
+        {sc.G}RAM details{sc.GR}:{sc.W}
             Total memory           {RAM_total_memory}
             Free memory            {RAM_avalable_memory}
             Used memory            {RAM_used_memory}
@@ -127,40 +135,10 @@ def opsthelp():
 
     import os 
     os.system("exit")
-    print(f"\n        {G}GPU details{GR}:{W}")
-    import GPUtil
-    gpus = GPUtil.getGPUs()
+    print(f"\n        {sc.G}GPU details{sc.GR}:{sc.W}")
     for gpu in gpus:
-
-        # get the GPU id
-        GPU_details_id = gpu.id
-        # name of GPU
-        GPU_details_gpuName = gpu.name
-        # get % percentage of GPU usage of that GPU
-        GPU_details_load = f"{gpu.load*100}%"
-        # get free memory in MB format
-        GPU_details_freeMemory = f"{gpu.memoryFree}MB"
-        # get used memory
-        GPU_details_usedMemory = f"{gpu.memoryUsed}MB"
-        # get total memory
-        GPU_details_totalMemoy = f"{gpu.memoryTotal}MB"
-        # get GPU temperature in Celsius
-        GPU_details_temperature = f"{gpu.temperature} °C"
-        # get the driver version
-        GPU_details_driverVersion = f"{gpu.driver}"
-        # get the gpu uuid
-        GPU_details_uuid = gpu.uuid
-        GPU_details_id = GPU_details_id + 1
-
-        if GPU_details_temperature >= "65":
-            GPU_details_temperature = f"{R}{GPU_details_temperature}{W}"
-        elif GPU_details_temperature <= "60":
-            GPU_details_temperature = f"{O}{GPU_details_temperature}{W}"
-        elif GPU_details_temperature <= "45":
-            GPU_details_temperature = f"{B}{GPU_details_temperature}{W}"
-
-        print(rf"""            Card {C}{GPU_details_id}{W}:
-                Name               {C}{GPU_details_gpuName}{W}
+        print(rf"""            Card {sc.C}{GPU_details_id}{sc.W}:
+                Name               {sc.C}{GPU_details_gpuName}{sc.W}
                 Total memory       {GPU_details_totalMemoy}
                 Free memory        {GPU_details_freeMemory}
                 Loaded memory      {GPU_details_load}
@@ -168,8 +146,9 @@ def opsthelp():
                 Temperature        {GPU_details_temperature}
                 Driver version     v{GPU_details_driverVersion}
                 UUID               {GPU_details_uuid}             """)
-    print(f"                                                                                            {G}/[{W} Scroll {O}UP{W} for the main informations {G}]\{W}\n")
-
+        print(f"Cannot get GPU informations")
+    print(f"                                                                                            {sc.G}/[{sc.W} Scroll {sc.O}UP{sc.W} for the main informations {sc.G}]\{sc.W}")
+    
 if __name__ == '__main__':
     opsthelp()
     sys.exit(0)

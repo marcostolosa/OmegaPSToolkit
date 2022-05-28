@@ -1,15 +1,16 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opstsetup.py                   [Update: 2022-04-05 | 1:30 PM] #
+#  Filename ~ opstsetup.py                 [Update: 2022-05-27 | 23:50 PM]  #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
 #  The SetupTool for ODST                                                   #
+#                                                                           #
 #  Language  ~  Python3                                                     #
 #---[Author]----------------------------------------------------------------#
 #  Thomas Pellissier ~ @MyMeepSQL                                           #
-#  Copyright (C) 2022 MyMeepSQL - © PSociety™                               #
+#  Copyright (C) 2022 MyMeepSQL - © PSociety™, 2022 All rights reserved     #
 #---[Operating System]------------------------------------------------------#
 #  Developed for linux                                                      #
 #---[Licence]---------------------------------------------------------------#
@@ -32,50 +33,31 @@
 #---------------------------------------------------------------------------#
 
 # Import Section
-import urllib.request,os,sys
-from opstversions import opstsetup_version,opstconsole_version
+import urllib.request
+import os
+import sys
+sys.path.insert(0, '/usr/share/OmegaPSToolkit/functions')
+from functions.system_colors import system_colors as sc
+from functions.abort import *
+from functions.not_linux import *
+from functions.internet_check import *
+from functions.versions.opst_commands_version import opstsetup_version, opstconsole_version
 from setuptools import setup,find_packages
 from time import sleep
 ####
 
-# Some functions
-def abort():
-    abort_msg = f"\n{GR}{D}[-]{W}  Abort."
-    sys.exit(abort_msg)
-####
-
-# Colors
-## Basic colors
-W = '\033[0m'      # white (normal)
-R = '\033[31m'     # red
-G = '\033[32m'     # green
-O = '\033[33m'     # orange
-B = '\033[34m'     # blue
-P = '\033[35m'     # purple
-C = '\033[36m'     # cyan
-GR = '\033[37m'    # gray
-D = '\033[2m'      # dims current color. {W} resets.
-## Text formating
-bold = '\033[1m'
-dark = '\033[2m'
-italic = '\033[3m'
-underscore = '\033[4m'
-normal = '\033[22m'
-####
 
 # The SetupTool
 try:
     if os.getuid() != 0:    # check if the user run OPST with root privilege
         permerror =f"""
-{R}[!]{W}  OPSTSetup could be run as the {R}root user{W} or with the {R}sudo command{W}
-     Re-run the opstsetup with {R}sudo{W} or with the {R}root{W} user 
-     Run : {B}sudo opstsetup install{W}
+{sc.R}[!]{sc.W}  OPSTSetup could be run as the {sc.R}root user{sc.W} or with the {sc.R}sudo command{sc.W}
+     Re-run the opstsetup with {sc.R}sudo{sc.W} or with the {sc.R}root{sc.W} user 
+     Run : {sc.B}sudo opstsetup install{sc.W}
 """
         sys.exit(permerror)
 except AttributeError:
-    print()
-    criticalmsg = f"{B}[{R}ERROR{B}]{R} You tried to run OPST on a non-linux machine. OPST can be run only on a Linux kernel.\n{W}"
-    sys.exit(criticalmsg)
+    not_linux()
 except EOFError:
     abort()
 except KeyboardInterrupt:
@@ -85,43 +67,39 @@ else:
         with open("README.md", "r", encoding="utf-8") as fh:
             long_description = fh.read()
         print()
-        print(f"{GR}{D} _______ ______ _______ _______ _______         __               ")
-        print(f"{GR}{D}|       |   __ \     __|_     _|     __|.-----.|  |_.--.--.-----.{W}{G}  OPSTSetup {D}{opstsetup_version}")
-        print(f"{GR}{D}|   -   |    __/__     | |   | |__     ||  -__||   _|  |  |  _  |{W}{D}  A massive penetration testing toolkit")         # Font = Chunky from https://www.coolgenerator.com/ascii-text-generator
-        print(f"{GR}{D}|_______|___|  |_______| |___| |_______||_____||____|_____|   __|{C}{D}  https://github.com/MyMeepSQL/OmegaPSToolkit{W}")
-        print(f"{GR}{D}  + -------- !* Welcome to the OPSTSetup. *! -------- +   |__|{W}")
+        print(f"{sc.GR}{sc.D} _______ ______ _______ _______ _______         __               {sc.W}{sc.G}  OPSTSetup {sc.D}{opstsetup_version}")
+        print(f"{sc.GR}{sc.D}|       |   __ \     __|_     _|     __|.-----.|  |_.--.--.-----.{sc.G}{sc.D}  Coded by MyMeepSQL for © PSociety™")
+        print(f"{sc.GR}{sc.D}|   -   |    __/__     | |   | |__     ||  -__||   _|  |  |  _  |{sc.W}{sc.D}  A massive penetration testing toolkit")         # Font = Chunky from https://www.coolgenerator.com/ascii-text-generator
+        print(f"{sc.GR}{sc.D}|_______|___|  |_______| |___| |_______||_____||____|_____|   __|{sc.C}{sc.D}  https://github.com/MyMeepSQL/OmegaPSToolkit{sc.W}")
+        print(f"{sc.GR}{sc.D}  + -------- !* Welcome to the OPSTSetup. *! -------- +   |__|{sc.W}")
         print()
-        print(f"{G}[-]{W}  Checking for internet connexion...")
+        print(f"{sc.G}[-]{sc.W}  Checking for internet connexion...")
         print()
-        try:
-            urllib.request.urlopen('http://google.com')
-            connexion = True
-        except:
-            connexion =  False
-        if connexion == True:
-            print(f"+ -- --=[  Internet status.......... {G}Connected{W}.                                                                             ]")
+        if internet_check() == True:
+            print(f"+ -- --=[  Internet status.......... {sc.G}Connected{sc.W}.                                                                             ]")
             pass
         else:
-            print(f"{R}[!]{W}   Internet status.......... {R}Not connected{W}.                                            ]")
-            print(f"{R}[*]{W}   No Internet connexion found, please check you are connected to Internet and retry.  ]")
+            print(f"{sc.R}[!]{sc.W}   Internet status.......... {sc.R}Not connected{sc.W}.                                            ]")
+            print(f"{sc.R}[*]{sc.W}   No Internet connexion found, please check you are connected to Internet and retry.  ]")
             sys.exit()
-        print(f"+ -- --=[  {underscore}The tool will:{W}                                                                                                   ]")
-        print(f"        [    ...Install {G}Colored{W} and {G}Progress{W} PIP3 modules that OmegaPSToolkit must have and make a {G}OmegaPSToolkit package{W}.  ]")
+        print(f"+ -- --=[  {sc.underscore}The tool will:{sc.W}                                                                                                   ]")
+        print(f"        [    ...Install {sc.G}Colored{sc.W}, {sc.G}Progress{sc.W}, {sc.G}psutil{sc.W}, {sc.G}GPUtil{sc.W}, {sc.G}tabulate{sc.W}, {sc.G}requests{sc.W}, {sc.G}py-cpuinfo{sc.W} and {sc.G}requests{sc.W} PIP3 modules         ]")
+        print(f"                that OmegaPSToolkit must have and make a {sc.G}OmegaPSToolkit package{sc.W}.                                            ]")
         print()
-        yn = str(input(f"{C}[?]{W}  Do you want to continue? [Y/n] "))
+        yn = str(input(f"{sc.C}[?]{sc.W}  Do you want to continue? [Y/n] "))
         if yn == 'y' or yn == 'Y' or not yn:
             pass
         else:
             abort()
         try:
             print()
-            print(f"{G}{D}--------------------------------------------------------------------------------------{W}")
+            print(f"{sc.G}{sc.D}--------------------------------------------------------------------------------------{sc.W}")
             print()
-            print(f"{G}[-]{W}  Installing {G}Colored{W}, {G}Progress{W} and make a {G}OmegaPSToolkit package{W}...")
+            print(f"{sc.G}[-]{sc.W}  Installing all {sc.G}PIP3{sc.W} packages and make a {sc.G}OmegaPSToolkit package{sc.W}...")
             print()
             sleep(0.5)
             setup(classifiers=[
-                    "Copyright                          :: Copyright (C) 2022, Thomas Pellissier aka MyMeepSQL from © PSociety™",
+                    "Copyright                          :: Copyright © 2021-2022 , Thomas Pellissier aka MyMeepSQL from © PSociety™. All rights reserved.",
                     "Author name                        :: Thomas Pellissier",
                     "Developed for                      :: Linux",
                     "Development Status                 :: 2 - In Development",
@@ -145,42 +123,42 @@ else:
                 zip_safe=False,
                 include_package_data=True,
                 install_requires=[
-                    'progress','colored','psutil','GPUtil','tabulate','requests','py-cpuinfo'
+                    'progress','colored','psutil','GPUtil','tabulate','requests','py-cpuinfo','requests','psutil','GPUtil'
                 ],
             )
             print()
-            print(f"{G}[-]{W}  Instalation complete.")
+            print(f"{sc.G}[+]{sc.W}  Instalation complete.")
             sleep(1)
             print()
-            print(f"{G}{D}--------------------------------------------------------------------------------------{W}")
+            print(f"{sc.G}{sc.D}--------------------------------------------------------------------------------------{sc.W}")
             print()
-            yn = str(input(f"{C}[?]{W}  Do you want to reload your terminal (just in case) ? [Y/n] "))
+            yn = str(input(f"{sc.C}[?]{sc.W}  Do you want to reload your terminal (just in case) ? [Y/n] "))
             if yn == 'y' or yn == 'Y' or not yn:
                 print()
-                print(f"{G}{D}---------------------{W}")
-                print(f"{G}[-]{W}  Reloading...")
-                print(f"{G}{D}---------------------{W}")
+                print(f"{sc.G}{sc.D}---------------------{sc.W}")
+                print(f"{sc.G}[-]{sc.W}  Reloading...")
+                print(f"{sc.G}{sc.D}---------------------{sc.W}")
                 sleep(0.5)
                 os.system("reset")
                 print()
-                print(f"{G}{D}-----------------------------------------------------------------------------------------------------------------------------------------{W}")
+                print(f"{sc.G}{sc.D}-----------------------------------------------------------------------------------------------------------------------------------------{sc.W}")
                 print()
-                print(f"{B}[OK]{W}  {G}Colored{W}, {G}Progress{W} and {G}OmegaPSToolkit{W} PIP modules was succefully {G}installed{W}. Now you can run OPSTConsole with '{G}sudo opstconsole{W}'.")
+                print(f"{sc.C}[OK]{sc.W}  All pip and {sc.G}OmegaPSToolkit{sc.W} PIP modules was succefully {sc.G}installed{sc.W}. Now you can run OPSTConsole with '{sc.B}sudo opstconsole{sc.W}'.")
                 print()
-                print(f"{G}{D}-----------------------------------------------------------------------------------------------------------------------------------------{W}")
+                print(f"{sc.G}{sc.D}-----------------------------------------------------------------------------------------------------------------------------------------{sc.W}")
                 print()
                 sys.exit()
             else:
                 print()
-                print(f"{G}{D}--------------------{W}")
-                print(f"{B}{D}[+]{W}  Answer: {R}No{W}.")
-                print(f"{G}{D}--------------------{W}")
+                print(f"{sc.G}{sc.D}--------------------{sc.W}")
+                print(f"{sc.B}{sc.D}[+]{sc.W}  Answer: {sc.R}No{sc.W}.")
+                print(f"{sc.G}{sc.D}--------------------{sc.W}")
                 print()
-                print(f"{G}{D}-----------------------------------------------------------------------------------------------------------------------------------------{W}")
+                print(f"{sc.G}{sc.D}-----------------------------------------------------------------------------------------------------------------------------------------{sc.W}")
                 print()
-                print(f"{B}[OK]{W}  {G}Colored{W}, {G}Progress{W} and {G}OmegaPSToolkit{W} PIP modules was succefully {G}installed{W}. Now you can run OPSTConsole with '{G}sudo opstconsole{W}'.")
+                print(f"{sc.C}[OK]{sc.W}  All pip and {sc.G}OmegaPSToolkit{sc.W} PIP modules was succefully {sc.G}installed{sc.W}. Now you can run OPSTConsole with '{sc.B}sudo opstconsole{sc.W}'.")
                 print()
-                print(f"{G}{D}-----------------------------------------------------------------------------------------------------------------------------------------{W}")
+                print(f"{sc.G}{sc.D}-----------------------------------------------------------------------------------------------------------------------------------------{sc.W}")
                 print()
                 sys.exit()
         except EOFError:

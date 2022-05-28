@@ -1,15 +1,17 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opstversion.py                 [Update: 2022-04-16 | 2:32 AM] #
+#  Filename ~ distribution_name.py        [Created: 2022-05-25 | 18:06 PM]  #
+#                                         [Update: 2022-05-25 | 18:15 PM]   #
 #---[Info]------------------------------------------------------------------#
-#  {The OmegaDSToolkit is a product of Delta_Society™ by MyMeepSQL}         #
+#  {The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
-#  The file wich include all version of all 'opst' commands                 #
+#  The function for get the current Linux's distribution name               #
+#                                                                           #
 #  Language  ~  Python3                                                     #
 #---[Author]----------------------------------------------------------------#
 #  Thomas Pellissier ~ @MyMeepSQL                                           #
-#  Copyright (C) 2022 MyMeepSQL - © Delta_Society™                          #
+#  Copyright (C) 2022 MyMeepSQL - © PSociety™, 2022 All rights reserved     #
 #---[Operating System]------------------------------------------------------#
 #  Developed for linux                                                      #
 #---[Licence]---------------------------------------------------------------#
@@ -31,76 +33,27 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.              #
 #---------------------------------------------------------------------------#
 
-
-# OPST's commands versions
-
-## Console
-opstconsole_version = "0.0.1.3"
-
-## CLI Beta
-opstconsole_cli_version = "0.0.1.5"
-
-## Help
-opsthelp_version = "3.0"
-
-## Setup
-opstsetup_version = "v2.6"
-
-
-## Update
-opstupdate_version = "v2.9"
-
-## Install-all
-opstinstallall_version = "v2.2"
-####
-
-
-# Other version
-import platform
-python_version = platform.python_version()
-####
-
-
-# Other informations
-
-## Get the OS name
-my_system=platform.uname()
-
-OS=my_system.system
-Node_Name=my_system.node
-Release=my_system.release
-Version=my_system.version
-Machine=my_system.machine
-Processor=my_system.processor
-
-## Get usage of RAM
-import psutil
-# Total RAM
-RAM_total_memory=f"{round(psutil.virtual_memory().total/1000000000, 2)} GB"
-# Available RAM
-RAM_avalable_memory=f"{round(psutil.virtual_memory().available/1000000000, 2)} GB"
-# Used RAM
-RAM_used_memory=f"{round(psutil.virtual_memory().used/1000000000, 2)} GB"
-# RAM usage
-RAM_usage=f"{psutil.virtual_memory().percent}%"
-
 ## For the distribution's name
-class distribName():
+from system_colors import system_colors as sc
+
+class distribution_name_class():
     import csv
     RELEASE_DATA = {}
     with open("/etc/os-release") as f:
         reader = csv.reader(f, delimiter="=")
         for row in reader:
             if row:
-                RELEASE_DATA[row[0]] = row[1]
+                RELEASE_DATA[row[0]]=row[1]
 
     if RELEASE_DATA["ID"] in ["debian", "raspbian"]:
         with open("/etc/debian_version") as f:
             DEBIAN_VERSION = f.readline().strip()
-        major_version = DEBIAN_VERSION.split(".")[0]
-        version_split = RELEASE_DATA["VERSION"].split(" ", maxsplit=1)
+        major_version=DEBIAN_VERSION.split(".")[0]
+        version_split=RELEASE_DATA["VERSION"].split(" ", maxsplit=1)
         if version_split[0] == major_version:
             # Just major version shown, replace it with the full version
-            RELEASE_DATA["VERSION"] = " ".join([DEBIAN_VERSION] + version_split[1:])
-    global distribution
-    distribution = "{} {}".format(RELEASE_DATA["NAME"], RELEASE_DATA["VERSION"])
+            RELEASE_DATA["VERSION"]=" ".join([DEBIAN_VERSION]+version_split[1:])
+
+        distribution_name="{} {}".format(RELEASE_DATA["NAME"])
+    else:
+        distribution_name=f"{sc.O}Can't find the distribution name or not a Linux distribution{sc.W}"

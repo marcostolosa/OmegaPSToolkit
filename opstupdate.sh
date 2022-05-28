@@ -88,8 +88,8 @@ $G[-]$W  Switching to$R root user$W to run the$B opstupdate$W
 # Font = Chunky from https://www.coolgenerator.com/ascii-text-generator
 
 echo -e "
-$GR$D _______ ______ _______ _______ _______           __         __  $W
-$GR$D|       |   __ \     __|_     _|   |   |.-----.--|  |.---.-.|  |_.-----.$W$G  OPSTUpdate $D$opstupdate_version
+$GR$D _______ ______ _______ _______ _______           __         __         $W$G  OPSTUpdate $D$opstupdate_version
+$GR$D|       |   __ \     __|_     _|   |   |.-----.--|  |.---.-.|  |_.-----.$G$D  Coded by MyMeepSQL for © PSociety™
 $GR$D|   -   |    __/__     | |   | |   |   ||  _  |  _  ||  _  ||   _|  -__|$W$D  A massive penetration testing toolkit
 $GR$D|_______|___|  |_______| |___| |_______||   __|_____||___._||____|_____|$C$D  https://github.com/MyMeepSQL/OmegaPSToolkit$W
 $GR$D +- !* Welcome to the OPSTUpdate. *! -+ |__|$W
