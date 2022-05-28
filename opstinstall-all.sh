@@ -127,7 +127,7 @@ $G$D----------------------------------------------------------------------------
 
 $G[-]$W  Installing Python3 and PIP3..."
         sleep 0.5
-        apt-get install git python3 python3-pip whois traceroute ping  net-tools -qq -y > /dev/null
+        apt-get install git python3 python3-pip whois traceroute net-tools -qq -y > /dev/null
         echo -e "$G[+]$W  Installation complete."
         sleep 1
         echo -e "
