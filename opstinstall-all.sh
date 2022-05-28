@@ -213,15 +213,17 @@ $G$D----------------------------------------------------------------------------
         sleep 0.5
 
         # for '/usr/share/OmegaPSToolkit'
-        chmod 777 "$INSTALL_DIR/opstconsole.py"
-        chmod 777 "$INSTALL_DIR/opstupdate.sh"
-        chmod 777 "$INSTALL_DIR/opstsetup.py"
-        chmod 777 "$INSTALL_DIR/opstinstall-all.sh"
-        chmod 777 "$INSTALL_DIR/opsthelp.py"
+        chmod 777 -R "$INSTALL_DIR"
 
-        chmod 777 "$INSTALL_DIR/opstfunctions.py"
-        chmod 777 "$INSTALL_DIR/opstcolors.py"
-        chmod 777 "$INSTALL_DIR/opstversions.py"
+        # chmod 777 "$INSTALL_DIR/opstconsole.py"
+        # chmod 777 "$INSTALL_DIR/opstupdate.sh"
+        # chmod 777 "$INSTALL_DIR/opstsetup.py"
+        # chmod 777 "$INSTALL_DIR/opstinstall-all.sh"
+        # chmod 777 "$INSTALL_DIR/opsthelp.py"
+
+        # chmod 777 "$INSTALL_DIR/opstfunctions.py"
+        # chmod 777 "$INSTALL_DIR/opstcolors.py"
+        # chmod 777 "$INSTALL_DIR/opstversions.py"
         ##
 
         # for '/usr/bin'

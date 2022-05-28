@@ -86,7 +86,7 @@ $G[-]$W  Switching to$R root user$W to run the$B opstupdate$W
 
 # The main script
 # Font = Chunky from https://www.coolgenerator.com/ascii-text-generator
-
+clear
 echo -e "
 $GR$D _______ ______ _______ _______ _______           __         __         $W$G  OPSTUpdate $D$opstupdate_version
 $GR$D|       |   __ \     __|_     _|   |   |.-----.--|  |.---.-.|  |_.-----.$G$D  Coded by MyMeepSQL for © PSociety™
@@ -97,7 +97,7 @@ $GR$D +- !* Welcome to the OPSTUpdate. *! -+ |__|$W
 $G[-]$W    Checking for internet connexion...
 "
 
-#First check of setup for internet connection by connecting to google over http
+# First check of setup for internet connection by connecting to google over http
 wget -q --tries=10 --timeout=5 --spider http://google.com
 if [ $? -eq 0 ]; then
     echo -en '+ -- --=[  Internet status.......... '"$G"'Connected'"$W"'.                                                                          ]
@@ -110,23 +110,15 @@ if [ $? -eq 0 ]; then
         echo -e "
 $G$D--------------------------------------------------------------------------------------$W
 
-$G[-]$W  Removing the current OPST's commands from '"$G"/usr/share/OmegaPSToolkit"$W"'..."
-        rm -fr "$INSTALL_DIR/opstconsole.py"
-        rm -fr "$INSTALL_DIR/opsthelp.py"
-        rm -fr "$INSTALL_DIR/opstsetup.py"
-        rm -fr "$INSTALL_DIR/opstupdate.sh"
-        rm -fr "$INSTALL_DIR/opstinstall-all.sh"
+$G[-]$W  Removing the current$O OmegaPSToolkit directory from$W '"$G"/usr/share/OmegaPSToolkit"$W"'..."
+        rm -fr "$INSTALL_DIR"
 
-        rm -fr "$INSTALL_DIR/opstfunctions.py"
-        rm -fr "$INSTALL_DIR/opstcolors.py"
-        rm -fr "$INSTALL_DIR/opstversions.py"
-
-        echo -e "$G[+]$W    Done for the OPST's commands remove.
+        echo -e "$G[+]$W    Done for the OmegaPSToolkit directory remove.
 "
         sleep 1
         echo "$G$D--------------------------------------------------------------------------------------$W
 
-$G[-]$W  "$G"Updating"$W" all commands from "$G"GitHub"$W"..."
+$G[-]$W  "$G"Updating"$W" OmegaPSToolkit from "$G"GitHub"$W"..."
         sleep 0.5
 
         if [ -e $TEMP_DIR ];then
@@ -202,15 +194,16 @@ $G[-]$W  "$G"Updating"$W" all commands from "$G"GitHub"$W"..."
         sleep 0.5
 
         # for '/usr/share/OmegaPSToolkit'
-        chmod 777 "$INSTALL_DIR/opstconsole.py"
-        chmod 777 "$INSTALL_DIR/opstupdate.sh"
-        chmod 777 "$INSTALL_DIR/opstsetup.py"
-        chmod 777 "$INSTALL_DIR/opstinstall-all.sh"
-        chmod 777 "$INSTALL_DIR/opsthelp.py"
+        chmod 777 -R "$INSTALL_DIR"
+        # chmod 777 "$INSTALL_DIR/opstconsole.py"
+        # chmod 777 "$INSTALL_DIR/opstupdate.sh"
+        # chmod 777 "$INSTALL_DIR/opstsetup.py"
+        # chmod 777 "$INSTALL_DIR/opstinstall-all.sh"
+        # chmod 777 "$INSTALL_DIR/opsthelp.py"
 
-        chmod 777 "$INSTALL_DIR/opstfunctions.py"
-        chmod 777 "$INSTALL_DIR/opstcolors.py"
-        chmod 777 "$INSTALL_DIR/opstversions.py"
+        # chmod 777 "$INSTALL_DIR/opstfunctions.py"
+        # chmod 777 "$INSTALL_DIR/opstcolors.py"
+        # chmod 777 "$INSTALL_DIR/opstversions.py"
         ##
 
         # for '/usr/bin'
