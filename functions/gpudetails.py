@@ -40,41 +40,43 @@ from system_colors import system_colors as sc
 
 # Get GPU details
 gpus = GPUtil.getGPUs()
-def gpu_details():
-    gpus = GPUtil.getGPUs()
-    for gpu in gpus:
-        global GPU_details_id
-        global GPU_details_gpuName
-        global GPU_details_load
-        global GPU_details_freeMemory
-        global GPU_details_usedMemory
-        global GPU_details_totalMemoy
-        global GPU_details_temperature
-        global GPU_details_uuid 
-        global GPU_details_driverVersion
+gpus = GPUtil.getGPUs()
+for gpu in gpus:
 
-        # get the GPU id
-        GPU_details_id = gpu.id
-        # name of GPU
-        GPU_details_gpuName = gpu.name
-        # get % percentage of GPU usage of that GPU
-        GPU_details_load = f"{gpu.load*100}%"
-        # get free memory in MB format
-        GPU_details_freeMemory = f"{gpu.memoryFree}MB"
-        # get used memory
-        GPU_details_usedMemory = f"{gpu.memoryUsed}MB"
-        # get total memory
-        GPU_details_totalMemoy = f"{gpu.memoryTotal}MB"
-        # get GPU temperature in Celsius
-        GPU_details_temperature = f"{gpu.temperature} °C"
-        # get the driver version
-        GPU_details_driverVersion = f"{gpu.driver}"
+    global GPU_details_id
+    global GPU_details_gpuName
+    global GPU_details_load
+    global GPU_details_freeMemory
+    global GPU_details_usedMemory
+    global GPU_details_totalMemoy
+    global GPU_details_temperature
+    global GPU_details_uuid 
+    global GPU_details_driverVersion
 
-        GPU_details_uuid = gpu.uuid
+    # get the GPU id
+    GPU_details_id = gpu.id
+    # GPU_details_id = GPU_details_id+1
+    
+    # name of GPU
+    GPU_details_gpuName = gpu.name
+    # get % percentage of GPU usage of that GPU
+    GPU_details_load = f"{gpu.load*100}%"
+    # get free memory in MB format
+    GPU_details_freeMemory = f"{gpu.memoryFree}MB"
+    # get used memory
+    GPU_details_usedMemory = f"{gpu.memoryUsed}MB"
+    # get total memory
+    GPU_details_totalMemoy = f"{gpu.memoryTotal}MB"
+    # get GPU temperature in Celsius
+    GPU_details_temperature = f"{gpu.temperature} °C"
+    # get the driver version
+    GPU_details_driverVersion = f"{gpu.driver}"
 
-    if GPU_details_temperature >= "65":
-        GPU_details_temperature = f"{sc.R}{GPU_details_temperature}{sc.W}"
-    elif GPU_details_temperature <= "60":
-        GPU_details_temperature = f"{sc.O}{GPU_details_temperature}{sc.W}"
-    elif GPU_details_temperature <= "45":
-        GPU_details_temperature = f"{sc.B}{GPU_details_temperature}{sc.W}"
+    GPU_details_uuid = gpu.uuid
+
+if GPU_details_temperature >= "65":
+    GPU_details_temperature = f"{sc.R}{GPU_details_temperature}{sc.W}"
+elif GPU_details_temperature <= "60":
+    GPU_details_temperature = f"{sc.O}{GPU_details_temperature}{sc.W}"
+elif GPU_details_temperature <= "45":
+    GPU_details_temperature = f"{sc.B}{GPU_details_temperature}{sc.W}"
