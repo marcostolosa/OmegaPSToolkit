@@ -2,7 +2,7 @@
 
 #---[Metadata]--------------------------------------------------------------#
 #  Filename ~ gpu_details.py              [Created: 2022-05-25 | 12:08 AM]  #
-#                                         [Update: 2022-05-30 | 1:31 PM]    #
+#                                         [Update:  2022-05-30 | 1:31  PM]  #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
