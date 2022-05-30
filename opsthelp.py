@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 #---[Metadata]--------------------------------------------------------------#
-#  Filename ~ opsthelp.py                  [Update: 2022-05-25 | 20:49 AM]  #
+#  Filename ~ opsthelp.py                 [Update:  2022-05-30 | 1:33  PM]  #
 #---[Info]------------------------------------------------------------------#
 #  {The OmegaDSToolkit is a product of PSociety™ by MyMeepSQL}              #
 #                                                                           #
@@ -104,7 +104,7 @@ def opsthelp():
 
     {sc.G}Network{sc.GR}:{sc.W}
         Private IP                 {sc.O}{privateIP}{sc.W}        Public IP                  {sc.O}{publicIP}{sc.W}
-        MAC adress                 {sc.O}{mac_adress}{sc.W}
+        Ethernet MAC adress        {sc.O}{mac_adress}{sc.W}
 
         {sc.G}Details {sc.W}({sc.C}with all inrefaces{sc.W}){sc.GR}:{sc.W}""")
     if_addrs = psutil.net_if_addrs()
@@ -137,18 +137,20 @@ def opsthelp():
     os.system("exit")
     print(f"\n        {sc.G}GPU details{sc.GR}:{sc.W}")
     for gpu in gpus:
-        print(rf"""            Card {sc.C}{GPU_details_id}{sc.W}:
-                Name               {sc.C}{GPU_details_gpuName}{sc.W}
-                Total memory       {GPU_details_totalMemoy}
-                Free memory        {GPU_details_freeMemory}
-                Loaded memory      {GPU_details_load}
-                Used memory        {GPU_details_usedMemory}
-                Temperature        {GPU_details_temperature}
-                Driver version     v{GPU_details_driverVersion}
-                UUID               {GPU_details_uuid}             """)
-        print(f"Cannot get GPU informations")
-    print(f"                                                                                            {sc.G}/[{sc.W} Scroll {sc.O}UP{sc.W} for the main informations {sc.G}]\{sc.W}")
-    
+        try:
+            print(rf"""            Card {sc.C}{GPU_details_id}{sc.W}:
+                  Name               {sc.C}{GPU_details_gpuName}{sc.W}
+                  Total memory       {GPU_details_totalMemoy}
+                  Free memory        {GPU_details_freeMemory}
+                  Loaded memory      {GPU_details_load}
+                  Used memory        {GPU_details_usedMemory}
+                  Temperature        {GPU_details_temperature}
+                  Driver version     {GPU_details_driverVersion}
+                  UUID               {GPU_details_uuid}             """)
+        except:
+            print(f"            Card {sc.C}{sc.W}")
+            print(f"                    Cannot get GPU informations")
+    print(f"                                                                                            {sc.G}/[{sc.W} Scroll {sc.O}UP{sc.W} for the main informations {sc.G}]\{sc.W}\n")
+
 if __name__ == '__main__':
     opsthelp()
-    sys.exit(0)
