@@ -72,9 +72,10 @@
 >   - [**OPSTSetup**](https://github.com/MyMeepSQL/OmegaPSToolkit#opstsetup)
 >   - [**OPSTInstall-all**](https://github.com/MyMeepSQL/OmegaPSToolkit#opstinstall-all)
 > # **About OmegaPSToolkit**
-> _**`The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL!`**_
->
-> _**`Copyright (C) 2021-2022 © PSociety™. All rights reserved.`**_
+> ```
+> The OmegaPSToolkit is a product of PSociety™ by MyMeepSQL!
+> Copyright (C) 2021-2022 © PSociety™. All rights reserved.
+> ```
 >
 >  **OmegaPSToolkit (OPST)** is a toolkit that brings together penetration testing tools such as wireless tools, web tools, password cracking tools, etc.
 > * **`Totally in development!`**
